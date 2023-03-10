@@ -1,10 +1,13 @@
 import React from 'react';
-import {getIngredients} from '../../utils/api'
+import {getIngredients} from '../../utils/api';
+import {AppHeader} from '../app-header/app-header';
 
 class App extends React.Component {
+
   state = {
     ingredients: []
   }
+
   componentDidMount() {
     getIngredients()
         .then((ingredients) => {
@@ -19,7 +22,9 @@ class App extends React.Component {
 
   render() {
     return (
-        <h1>Hello, world!</h1>
+        <>
+          <AppHeader/>
+        </>
     );
   }
 }
