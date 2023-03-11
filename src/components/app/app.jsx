@@ -1,10 +1,8 @@
 import React from 'react';
-
 import {getIngredients} from '../../utils/api';
 import {AppHeader} from '../app-header/app-header';
 import {BurgerIngredients} from '../burger-ingredients/burger-ingredients';
 import {BurgerConstructor} from '../burger-constructor/burger-constructor';
-
 import appStyles from './app.module.css';
 
 export class App extends React.Component {
@@ -31,7 +29,7 @@ export class App extends React.Component {
           <AppHeader/>
           <main className={appStyles.main}>
             <BurgerIngredients ingredients={this.state.ingredients}/>
-            <BurgerConstructor/>
+            <BurgerConstructor ingredients={this.state.ingredients}/>
           </main>
         </div>
     );
