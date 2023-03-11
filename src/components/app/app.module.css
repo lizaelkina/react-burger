@@ -1,0 +1,11 @@
+.page {
+  display: flex;
+  flex-direction: column;
+}
+
+.main {
+  max-width: 1240px;
+  margin: 0 auto;
+  display: flex;
+  gap: 40px;
+}

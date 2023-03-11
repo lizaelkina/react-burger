@@ -1,8 +1,13 @@
 import React from 'react';
+
 import {getIngredients} from '../../utils/api';
 import {AppHeader} from '../app-header/app-header';
+import {BurgerIngredients} from '../burger-ingredients/burger-ingredients';
+import {BurgerConstructor} from '../burger-constructor/burger-constructor';
 
-class App extends React.Component {
+import appStyles from './app.module.css';
+
+export class App extends React.Component {
 
   state = {
     ingredients: []
@@ -22,11 +27,13 @@ class App extends React.Component {
 
   render() {
     return (
-        <>
+        <div className={appStyles.page}>
           <AppHeader/>
-        </>
+          <main className={appStyles.main}>
+            <BurgerIngredients ingredients={this.state.ingredients}/>
+            <BurgerConstructor/>
+          </main>
+        </div>
     );
   }
 }
-
-export default App;

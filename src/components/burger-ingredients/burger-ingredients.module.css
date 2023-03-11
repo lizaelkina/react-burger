@@ -1,0 +1,10 @@
+.ingredients {
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+}
+
+.menu {
+  width: 100%;
+  display: flex;
+}

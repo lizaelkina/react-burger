@@ -16,14 +16,14 @@ export const AppHeader = () => {
             <li>
               <a className={cn(appHeaderStyles.link, 'p-5')} href="#">
                 <ListIcon type="secondary"/>
-                <span className='ml-2 text text_type_main-default text_color_inactive'>Лента заказов</span>
+                <span className='text text_type_main-default text_color_inactive ml-2'>Лента заказов</span>
               </a>
             </li>
           </ul>
           <Logo/>
           <a className={cn(appHeaderStyles.link, 'p-5')} href="#">
             <ProfileIcon type="secondary"/>
-            <span className='ml-2 text text_type_main-default text_color_inactive'>Личный кабинет</span>
+            <span className='text text_type_main-default text_color_inactive ml-2'>Личный кабинет</span>
           </a>
         </nav>
       </header>
