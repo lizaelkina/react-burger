@@ -1,27 +1,6 @@
 .section {
-  max-width: 600px;
   display: flex;
   flex-direction: column;
-  height: 100%;
-}
-
-.list {
-  margin: 0;
-  padding-right: 0;
-  list-style-type: none;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.list__item {
-  position: relative;
-}
-
-.list__item > svg {
-  position: absolute;
-  top: 28px;
-  left: -35px;
 }
 
 .price {
