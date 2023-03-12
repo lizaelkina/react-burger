@@ -8,20 +8,20 @@ export const AppHeader = () => {
         <nav className={appHeaderStyles.navigation}>
           <ul className={appHeaderStyles.navigation__links}>
             <li>
-              <a className={cn(appHeaderStyles.link, 'p-5')} href="#">
+              <a className={cn(appHeaderStyles.link, 'm-5')} href="#">
                 <BurgerIcon type="primary"/>
                 <span className='ml-2 text text_type_main-default text_color_primary'>Конструктор</span>
               </a>
             </li>
             <li>
-              <a className={cn(appHeaderStyles.link, 'p-5')} href="#">
+              <a className={cn(appHeaderStyles.link, 'm-5')} href="#">
                 <ListIcon type="secondary"/>
                 <span className='text text_type_main-default text_color_inactive ml-2'>Лента заказов</span>
               </a>
             </li>
           </ul>
           <Logo/>
-          <a className={cn(appHeaderStyles.link, 'p-5')} href="#">
+          <a className={cn(appHeaderStyles.link, 'm-5')} href="#">
             <ProfileIcon type="secondary"/>
             <span className='text text_type_main-default text_color_inactive ml-2'>Личный кабинет</span>
           </a>
