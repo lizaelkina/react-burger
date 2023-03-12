@@ -4,7 +4,11 @@
   flex-direction: column;
 }
 
-.menu {
+.tab {
   width: 100%;
   display: flex;
+}
+
+.scroll {
+  overflow-y: auto;
 }
