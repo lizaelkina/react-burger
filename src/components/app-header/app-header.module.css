@@ -1,26 +1,33 @@
 .header {
-  width: 100%;
   background-color: var(--background);
 }
 
-.navigation {
+.nav {
   max-width: 1280px;
   margin: 0 auto;
   display: flex;
-  justify-content: space-between;
   align-items: center;
 }
 
-.navigation__links {
-  margin: 0;
-  padding: 0;
-  list-style-type: none;
+.nav__group {
+  flex: 1;
   display: flex;
-  gap: 8px;
+}
+
+.nav__group_links {
+  justify-content: flex-start;
+}
+
+.nav__group_logo {
+  justify-content: center;
+}
+
+.nav__group_profile {
+  justify-content: flex-end;
 }
 
 .link {
-  text-decoration: none;
   display: flex;
   align-items: center;
+  text-decoration: none;
 }
