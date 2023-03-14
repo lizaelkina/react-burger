@@ -7,7 +7,7 @@ export const IngredientDetails = ({ingredient, onClose}) => {
 
   return (
       <Modal title={'Детали ингредиента'} onClose={onClose}>
-        <div className={ingredientDetailsStyles.card}>
+        <div className={cn(ingredientDetailsStyles.card, 'pb-15')}>
           <img className={ingredientDetailsStyles.card__image} src={ingredient.image_large} alt={'Ингредиент'}/>
           <span className="text text_type_main-medium mt-4 mb-8">{ingredient.name}</span>
           <div className={ingredientDetailsStyles.card__info}>

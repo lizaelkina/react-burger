@@ -1,8 +1,8 @@
+import React from 'react';
 import cn from 'classnames';
 import {Counter, CurrencyIcon} from '@ya.praktikum/react-developer-burger-ui-components';
+import {IngredientDetails} from '../ingredient-details/ingredient-details';
 import burgerIngredientStyles from './burger-ingredient.module.css';
-import React from "react";
-import {IngredientDetails} from "../ingredient-details/ingredient-details";
 
 export class BurgerIngredient extends React.Component {
   state = {
@@ -16,7 +16,6 @@ export class BurgerIngredient extends React.Component {
   handleCloseModal = () => {
     this.setState({isOpenModal: false});
   }
-
 
   render() {
     let {ingredient, count} = this.props;
