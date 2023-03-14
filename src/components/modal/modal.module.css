@@ -30,3 +30,9 @@
   background-color: transparent;
   cursor: pointer;
 }
+
+.modal__close_absolute {
+  position: absolute;
+  top: 60px;
+  right: 40px;
+}

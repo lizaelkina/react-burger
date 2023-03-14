@@ -12,13 +12,20 @@ export const Modal = ({title, onClose, children}) => {
       (
           <>
             <ModalOverlay onClick={onClose}/>
-            <div className={cn(modalStyles.modal, 'pt-10', 'pl-10', 'pr-10', 'pb-15')}>
-              <header className={modalStyles.modal__header}>
-                <h2 className="text text_type_main-large">{title}</h2>
-                <button className={modalStyles.modal__close} aria-label="Закрыть окно">
-                  <CloseIcon onClick={onClose} type="primary"/>
-                </button>
-              </header>
+            <div className={modalStyles.modal}>
+              {
+                title.length > 0 ?
+                    <header className={cn(modalStyles.modal__header, 'pt-10', 'pl-10', 'pr-10')}>
+                      <h2 className="text text_type_main-large">{title}</h2>
+                      <button className={modalStyles.modal__close} aria-label="Закрыть окно">
+                        <CloseIcon onClick={onClose} type="primary"/>
+                      </button>
+                    </header> :
+                    <button className={cn(modalStyles.modal__close, modalStyles.modal__close_absolute)}
+                            aria-label="Закрыть окно">
+                      <CloseIcon onClick={onClose} type="primary"/>
+                    </button>
+              }
               {children}
             </div>
           </>
