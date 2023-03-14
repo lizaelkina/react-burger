@@ -1,6 +1,5 @@
 .section {
-  max-width: 600px;
-  padding-left: 12px;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
 }
