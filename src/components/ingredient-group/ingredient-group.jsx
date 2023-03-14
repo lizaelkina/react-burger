@@ -9,7 +9,7 @@ export const IngredientGroup = ({title, ingredients}) => {
         <ul className={cn(ingredientGroupStyles.group, 'pt-6', 'pl-4', 'pb-10')}>
           {
             ingredients.map((ingredient, index) => {
-              return <BurgerIngredient ingredient={ingredient} count={index === 0 ? 1 : 0}/>
+              return <BurgerIngredient ingredient={ingredient} key={ingredient._id} count={index === 0 ? 1 : 0}/>
             })
           }
         </ul>
