@@ -5,7 +5,7 @@ import burgerConstructorStyles from './burger-constructor.module.css';
 
 export const BurgerConstructor = ({ingredients}) => {
   return (
-      <section className={cn(burgerConstructorStyles.section, 'pt-25', 'pl-5', 'pb-10')}>
+      <section className={cn(burgerConstructorStyles.section, 'pt-25', 'pl-3', 'pb-10')}>
         <ConstructorList ingredients={ingredients}/>
         <div className={cn(burgerConstructorStyles.price, 'mt-10', 'mr-4')}>
           <div>
