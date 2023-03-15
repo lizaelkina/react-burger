@@ -28,7 +28,7 @@ export const ConstructorList = ({ingredients}) => {
             middle.map(ingredient => {
               return (
                   <li className={constructorListStyles.list__item} key={ingredient._id}>
-                    <DragIcon type="primary"/>
+                    <DragIcon type='primary'/>
                     <ConstructorElement
                         extraClass={'ml-2 mr-2'}
                         text={ingredient.name}

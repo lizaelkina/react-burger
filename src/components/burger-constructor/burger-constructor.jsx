@@ -22,14 +22,14 @@ export class BurgerConstructor extends React.Component {
     let {ingredients} = this.props;
 
     return (
-        <section className={cn(burgerConstructorStyles.section, 'pt-25', 'pl-3', 'pb-10')}>
+        <section className={cn(burgerConstructorStyles.section, 'pt-25 pl-3 pb-10')}>
           <ConstructorList ingredients={ingredients}/>
-          <div className={cn(burgerConstructorStyles.price, 'mt-10', 'mr-4')}>
+          <div className={cn(burgerConstructorStyles.price, 'mt-10 mr-4')}>
             <div>
               <span className='text text_type_digits-medium mr-4'>610</span>
-              <CurrencyIcon type="primary"/>
+              <CurrencyIcon type='primary'/>
             </div>
-            <Button htmlType="button" type="primary" size="large" onClick={this.handleOpenModal}>
+            <Button htmlType='button' type='primary' size='large' onClick={this.handleOpenModal}>
               Оформить заказ
             </Button>
             {this.state.isOpenModal && <OrderDetails onClose={this.handleCloseModal}/>}

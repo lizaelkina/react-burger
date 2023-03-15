@@ -6,7 +6,7 @@ export const IngredientGroup = ({title, ingredients, id}) => {
   return (
       <>
         <h2 className='text text_type_main-medium' id={id}>{title}</h2>
-        <ul className={cn(ingredientGroupStyles.group, 'pt-6', 'pl-4', 'pb-10')}>
+        <ul className={cn(ingredientGroupStyles.group, 'pt-6 pl-4 pb-10')}>
           {
             ingredients.map((ingredient, index) => {
               return <BurgerIngredient ingredient={ingredient} key={ingredient._id} count={index === 0 ? 1 : 0}/>
