@@ -10,7 +10,7 @@ export const IngredientDetails = ({ingredient, onClose}) => {
   return (
       <Modal title={'Детали ингредиента'} onClose={onClose}>
         <div className={cn(ingredientDetailsStyles.card, 'pb-15')}>
-          <img className={ingredientDetailsStyles.card__image} src={ingredient.image_large} alt={'Ингредиент'}/>
+          <img className={ingredientDetailsStyles.card__image} src={ingredient.image_large} alt={ingredient.name}/>
           <span className='text text_type_main-medium mt-4 mb-8'>{ingredient.name}</span>
           <div className={ingredientDetailsStyles.card__info}>
             <div className={cn(ingredientDetailsStyles.card__compound)}>

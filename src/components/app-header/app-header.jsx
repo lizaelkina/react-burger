@@ -11,7 +11,7 @@ export const AppHeader = () => {
               <BurgerIcon type='primary'/>
               <span className='text text_type_main-default text_color_primary ml-2'>Конструктор</span>
             </a>
-            <a className={cn(appHeaderStyles.link, 'p-5')} href='#'>
+            <a className={cn(appHeaderStyles.link, 'p-5')} href='#' aria-label='Логотип Stellar Burgers'>
               <ListIcon type="secondary"/>
               <span className='text text_type_main-default text_color_inactive ml-2'>Лента заказов</span>
             </a>

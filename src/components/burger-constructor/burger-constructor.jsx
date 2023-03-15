@@ -23,7 +23,7 @@ export class BurgerConstructor extends React.Component {
     let {ingredients} = this.props;
 
     return (
-        <section className={cn(burgerConstructorStyles.section, 'pt-25 pl-3 pb-10')}>
+        <section className={cn(burgerConstructorStyles.section, 'pt-25 pl-3 pb-10')} aria-label='Конструктор бургера'>
           <ConstructorList ingredients={ingredients}/>
           <div className={cn(burgerConstructorStyles.price, 'mt-10 mr-4')}>
             <div>

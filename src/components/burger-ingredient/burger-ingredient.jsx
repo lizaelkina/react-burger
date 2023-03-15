@@ -34,8 +34,8 @@ export class BurgerIngredient extends React.Component {
               <CurrencyIcon type='primary'/>
             </div>
             <span className={cn(burgerIngredientStyles.card__name, 'text text_type_main-default')}>
-          {ingredient.name}
-          </span>
+              {ingredient.name}
+            </span>
           </li>
           {this.state.isOpenModal && <IngredientDetails ingredient={ingredient} onClose={this.handleCloseModal}/>}
         </>
