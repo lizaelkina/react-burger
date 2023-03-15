@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import cn from 'classnames';
 import {CheckMarkIcon} from '@ya.praktikum/react-developer-burger-ui-components';
 import {Modal} from '../modal/modal';
@@ -5,7 +6,7 @@ import orderDetailsStyles from './order-details.module.css';
 
 export const OrderDetails = ({onClose}) => {
   return (
-      <Modal title={''} onClose={onClose}>
+      <Modal onClose={onClose}>
         <div className={cn(orderDetailsStyles.card, 'pt-30 pl-25 pr-25 pb-30')}>
           <span className='text text_type_digits-large mb-8'>034536</span>
           <span className='text text_type_main-medium mb-15'>идентификатор заказа</span>
@@ -17,4 +18,8 @@ export const OrderDetails = ({onClose}) => {
         </div>
       </Modal>
   );
+}
+
+OrderDetails.propTypes = {
+  onClose: PropTypes.func.isRequired
 }

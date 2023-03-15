@@ -1,4 +1,5 @@
 import {createPortal} from 'react-dom';
+import PropTypes from 'prop-types';
 import cn from 'classnames';
 import {CloseIcon} from '@ya.praktikum/react-developer-burger-ui-components';
 import {ModalOverlay} from '../modal-overlay/modal-overlay';
@@ -32,4 +33,14 @@ export const Modal = ({title, onClose, children}) => {
       ),
       modalRoot
   )
+}
+
+Modal.defaultProps = {
+  title: ''
+}
+
+Modal.propTypes = {
+  title: PropTypes.string.isRequired,
+  onClose: PropTypes.func.isRequired,
+  children: PropTypes.node.isRequired
 }

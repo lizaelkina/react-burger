@@ -1,6 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import cn from 'classnames';
 import {Modal} from '../modal/modal';
+import {ingredientPropTypes} from '../../utils/prop-types';
 import ingredientDetailsStyles from './ingredient-details.module.css';
 
 export const IngredientDetails = ({ingredient, onClose}) => {
@@ -31,4 +33,9 @@ export const IngredientDetails = ({ingredient, onClose}) => {
         </div>
       </Modal>
   );
+}
+
+IngredientDetails.propTypes = {
+  ingredient: ingredientPropTypes.isRequired,
+  onClose: PropTypes.func.isRequired
 }

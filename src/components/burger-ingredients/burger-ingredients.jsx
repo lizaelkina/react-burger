@@ -2,6 +2,7 @@ import React from 'react';
 import cn from 'classnames';
 import {Tab} from '@ya.praktikum/react-developer-burger-ui-components';
 import {IngredientGroup} from '../ingredient-group/ingredient-group';
+import {ingredientsPropTypes} from '../../utils/prop-types';
 import burgerIngredientsStyles from './burger-ingredients.module.css';
 
 export class BurgerIngredients extends React.Component {
@@ -52,4 +53,8 @@ export class BurgerIngredients extends React.Component {
         </section>
     )
   }
+}
+
+BurgerIngredients.propTypes = {
+  ingredients: ingredientsPropTypes.isRequired
 }

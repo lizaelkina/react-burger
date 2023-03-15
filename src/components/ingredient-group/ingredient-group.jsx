@@ -1,8 +1,10 @@
+import PropTypes from 'prop-types';
 import cn from 'classnames';
 import {BurgerIngredient} from '../burger-ingredient/burger-ingredient';
+import {ingredientsPropTypes} from '../../utils/prop-types';
 import ingredientGroupStyles from './ingredient-group.module.css';
 
-export const IngredientGroup = ({title, ingredients, id}) => {
+export const IngredientGroup = ({ingredients, title, id}) => {
   return (
       <>
         <h2 className='text text_type_main-medium' id={id}>{title}</h2>
@@ -15,4 +17,10 @@ export const IngredientGroup = ({title, ingredients, id}) => {
         </ul>
       </>
   );
+}
+
+IngredientGroup.propTypes = {
+  ingredients: ingredientsPropTypes.isRequired,
+  title: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired
 }
