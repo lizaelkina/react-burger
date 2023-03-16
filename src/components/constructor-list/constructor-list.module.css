@@ -11,6 +11,15 @@
   display: flex;
   align-items: center;
   box-sizing: border-box;
+
+}
+
+.list_default {
+  min-width: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
 }
 
 .scroll {
