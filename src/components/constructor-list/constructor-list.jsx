@@ -11,8 +11,8 @@ export const ConstructorList = ({ingredients}) => {
   }
 
   const firstBun = ingredients[0];
-  const lastBun = ingredients[ingredients.length - 1];
-  const middle = ingredients.slice(1, ingredients.length - 2);
+  const lastBun = firstBun;
+  const middle = ingredients.slice(2, ingredients.length - 2);
 
   return (
       <>
