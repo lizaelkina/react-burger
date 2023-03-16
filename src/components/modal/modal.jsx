@@ -1,3 +1,4 @@
+import {useEffect} from 'react';
 import {createPortal} from 'react-dom';
 import PropTypes from 'prop-types';
 import cn from 'classnames';
@@ -8,6 +9,19 @@ import modalStyles from './modal.module.css';
 const modalRoot = document.getElementById('modals');
 
 export const Modal = ({title, onClose, children}) => {
+
+  function closePopupByEsc(event) {
+    if (event.key === 'Escape') {
+      onClose();
+    }
+  }
+
+  useEffect(() => {
+    document.addEventListener('keydown', closePopupByEsc);
+    return () => {
+      document.removeEventListener('keydown', closePopupByEsc);
+    }
+  }, []);
 
   return createPortal(
       (
