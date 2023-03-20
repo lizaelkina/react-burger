@@ -14,15 +14,17 @@ export const App = () => {
         .then(data => {
           setIngredients([...data])
         })
+        .catch(error => console.log(error));
   }, [])
 
-    return (
-        <div className={appStyles.page}>
-          <AppHeader/>
-          <main className={appStyles.main}>
-            <BurgerIngredients ingredients={ingredients}/>
-            <BurgerConstructor ingredients={ingredients}/>
-          </main>
-        </div>
-    );
+
+  return (
+      <div className={appStyles.page}>
+        <AppHeader/>
+        <main className={appStyles.main}>
+          <BurgerIngredients ingredients={ingredients}/>
+          <BurgerConstructor ingredients={ingredients}/>
+        </main>
+      </div>
+  );
 }

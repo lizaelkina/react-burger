@@ -11,5 +11,4 @@ export const getIngredients = () => fetch(`${apiUrl}/ingredients`)
       if (dataIngredients.success) {
         return dataIngredients.data;
       }
-    })
-    .catch(error => console.log(error));
+    });
