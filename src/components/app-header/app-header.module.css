@@ -1,0 +1,35 @@
+.header {
+  width: 100%;
+  margin: 0 auto;
+  background-color: var(--background);
+}
+
+.nav {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+}
+
+.nav__group {
+  flex: 1;
+  display: flex;
+}
+
+.nav__group_links {
+  justify-content: flex-start;
+}
+
+.nav__group_logo {
+  justify-content: center;
+}
+
+.nav__group_profile {
+  justify-content: flex-end;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}

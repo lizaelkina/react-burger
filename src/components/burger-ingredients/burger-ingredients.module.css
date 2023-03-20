@@ -1,0 +1,14 @@
+.section {
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+}
+
+.tab {
+  display: flex;
+}
+
+.scroll {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
