@@ -24,7 +24,7 @@ export const ConstructorList = ({ingredients}) => {
             extraClass={'ml-8 mb-4'}
             type={'top'}
             isLocked={true}
-            text={bun.name}
+            text={bun.name + ' (верх)'}
             price={bun.price}
             thumbnail={bun.image}
         />
@@ -51,7 +51,7 @@ export const ConstructorList = ({ingredients}) => {
             extraClass={'ml-8 mt-4'}
             type={'bottom'}
             isLocked={true}
-            text={bun.name}
+            text={bun.name + ' (низ)'}
             price={bun.price}
             thumbnail={bun.image}
         />
