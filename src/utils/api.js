@@ -1,14 +1,23 @@
-const apiUrl = 'https://norma.nomoreparties.space/api';
+export const API_URL = 'https://norma.nomoreparties.space/api';
 
-export const getIngredients = () => fetch(`${apiUrl}/ingredients`)
-    .then(response => {
-      if (response.ok) {
-        return response.json();
-      }
-      return Promise.reject(`Ошибка получения данных: ${response.status}`);
-    })
-    .then(dataIngredients => {
-      if (dataIngredients.success) {
-        return dataIngredients.data;
-      }
-    });
+const checkResponse = response => {
+  if (response.ok) {
+    return response.json();
+  }
+  return Promise.reject(`Ошибка: ${response.status}`);
+};
+
+const checkSuccess = response => {
+  if (response && response.success) {
+    return response.data;
+  }
+  return Promise.reject(`Ответ: ${response}`);
+};
+
+const request = (endpoint, options) => {
+  return fetch(`${API_URL}/${endpoint}`, options)
+    .then(checkResponse)
+    .then(checkSuccess)
+}
+
+export const getIngredients = () => request('ingredients')
