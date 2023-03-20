@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useState, useMemo} from 'react';
 import cn from 'classnames';
 import {Tab} from '@ya.praktikum/react-developer-burger-ui-components';
 import {IngredientGroup} from '../ingredient-group/ingredient-group';
@@ -9,9 +9,9 @@ export const BurgerIngredients = ({ingredients}) => {
 
   const [current, setCurrent] = useState('buns');
 
-  const bun = ingredients.filter(ingredient => ingredient.type === 'bun');
-  const main = ingredients.filter(ingredient => ingredient.type === 'main');
-  const sauce = ingredients.filter(ingredient => ingredient.type === 'sauce');
+  const bun = useMemo(() => ingredients.filter(ingredient => ingredient.type === 'bun'),[ingredients]) ;
+  const main = useMemo(() => ingredients.filter(ingredient => ingredient.type === 'main'),[ingredients]) ;
+  const sauce = useMemo(() => ingredients.filter(ingredient => ingredient.type === 'sauce'),[ingredients]) ;
 
   function handleClickTab(value) {
     setCurrent(value);
