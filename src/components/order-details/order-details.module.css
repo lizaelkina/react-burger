@@ -49,7 +49,3 @@
     transform: rotate(360deg);
   }
 }
-
-.rotation {
-  animation: rotation 10s infinite linear;
-}
