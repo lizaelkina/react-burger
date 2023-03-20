@@ -3,7 +3,7 @@ import cn from 'classnames';
 import {Button, CurrencyIcon} from '@ya.praktikum/react-developer-burger-ui-components';
 import {ConstructorList} from '../constructor-list/constructor-list';
 import {OrderDetails} from '../order-details/order-details';
-import {ingredientsPropTypes} from '../../utils/prop-types';
+import {ingredientsArrayTypes} from '../../utils/prop-types';
 import burgerConstructorStyles from './burger-constructor.module.css';
 
 export const BurgerConstructor = ({ingredients}) => {
@@ -36,5 +36,5 @@ export const BurgerConstructor = ({ingredients}) => {
 }
 
 BurgerConstructor.propTypes = {
-  ingredients: ingredientsPropTypes.isRequired
+  ingredients: ingredientsArrayTypes.isRequired
 }

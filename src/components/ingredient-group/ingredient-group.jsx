@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import cn from 'classnames';
 import {BurgerIngredient} from '../burger-ingredient/burger-ingredient';
-import {ingredientsPropTypes} from '../../utils/prop-types';
+import {ingredientsArrayTypes} from '../../utils/prop-types';
 import ingredientGroupStyles from './ingredient-group.module.css';
 
 export const IngredientGroup = ({ingredients, title, id}) => {
@@ -20,7 +20,7 @@ export const IngredientGroup = ({ingredients, title, id}) => {
 }
 
 IngredientGroup.propTypes = {
-  ingredients: ingredientsPropTypes.isRequired,
+  ingredients: ingredientsArrayTypes.isRequired,
   title: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired
 }
