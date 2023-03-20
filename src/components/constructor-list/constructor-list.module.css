@@ -8,10 +8,10 @@
 }
 
 .list__item {
+  max-height: 80px;
   display: flex;
   align-items: center;
   box-sizing: border-box;
-
 }
 
 .list_default {

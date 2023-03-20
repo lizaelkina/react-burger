@@ -21,7 +21,7 @@ export const ConstructorList = ({ingredients}) => {
       <>
         <ConstructorElement
             key={bun._id + '_top'}
-            extraClass={'ml-8 mb-4'}
+            extraClass={cn(constructorListStyles.list__item, 'ml-8 mb-4')}
             type={'top'}
             isLocked={true}
             text={bun.name + ' (верх)'}
@@ -48,7 +48,7 @@ export const ConstructorList = ({ingredients}) => {
         </ul>
         <ConstructorElement
             key={bun._id + '_bottom'}
-            extraClass={'ml-8 mt-4'}
+            extraClass={cn(constructorListStyles.list__item, 'ml-8 mt-4')}
             type={'bottom'}
             isLocked={true}
             text={bun.name + ' (низ)'}
