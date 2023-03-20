@@ -1,20 +1,25 @@
-# Проект: Stellar Burgers
+# Stellar Burgers
+
+- Четвёртая проектная работа на курсе Яндекс Практикума "Фронтенд-разработчик буткемп".
 
 ## Описание проекта
 
-Четвёртая проектная работа на курсе Яндекс Практикума "Фронтенд-разработчик буткемп".
+- Веб-приложение бургерной со следующей функциональностью: главной страницей, личным
+  кабинетом и лентой заказов.
 
 ## Используемые технологии
 
-- HTML5
-- CCS3
-- JavaScript
-- TypeScript
 - React
 - Redux
+- TypeScript
+- JavaScript
+- HTML5
+- CCS3
 
 ## Сборка проекта
 
 - Create React App (CRA)
 
-## GitHub Pages [ссылка на сайт проекта](https://lizapetkova.github.io/react-burger/)
+## GitHub Pages 
+
+- [Ссылка на сайт](https://lizapetkova.github.io/react-burger/)
