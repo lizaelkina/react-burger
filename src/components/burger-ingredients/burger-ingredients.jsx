@@ -12,10 +12,12 @@ export const BurgerIngredients = () => {
 
   const dispatch = useDispatch();
 
-  const {ingredients, selectedGroup, selectedIngredient} = useSelector(store => ({
+  const {ingredients, selectedGroup, selectedIngredient, isLoading, error} = useSelector(store => ({
     ingredients: store.burgerIngredients.ingredients,
     selectedGroup: store.burgerIngredients.selectedGroup,
     selectedIngredient: store.burgerIngredients.selectedIngredient,
+    isLoading: store.burgerIngredients.isLoading,
+    error: store.burgerIngredients.error
   }))
 
   const bun = useMemo(() => ingredients.filter(ingredient => ingredient.type === 'bun'), [ingredients]);
@@ -30,26 +32,34 @@ export const BurgerIngredients = () => {
 
   return (
       <>
-        <section className={burgerIngredientsStyles.section}>
-          <h1 className='text text_type_main-large mt-10 mb-5'>Соберите бургер</h1>
-          <div className={cn(burgerIngredientsStyles.tab, 'mb-10')}>
-            <Tab value='bun' active={selectedGroup === 'bun'} onClick={handleClickTab}>
-              Булки
-            </Tab>
-            <Tab value='sauce' active={selectedGroup === 'sauce'} onClick={handleClickTab}>
-              Соусы
-            </Tab>
-            <Tab value='main' active={selectedGroup === 'main'} onClick={handleClickTab}>
-              Начинки
-            </Tab>
-          </div>
-          <div className={cn(burgerIngredientsStyles.scroll, 'custom-scroll')}>
-            <IngredientGroup title='Булки' ingredients={bun} id='bun'/>
-            <IngredientGroup title='Соусы' ingredients={sauce} id='sauce'/>
-            <IngredientGroup title='Начинки' ingredients={main} id='main'/>
-          </div>
-        </section>
-
+        {
+            isLoading && <>Загрузка</>
+        }
+        {
+            !isLoading && error && <>{error}</>
+        }
+        {
+            !isLoading && !error &&
+            <section className={burgerIngredientsStyles.section}>
+              <h1 className='text text_type_main-large mt-10 mb-5'>Соберите бургер</h1>
+              <div className={cn(burgerIngredientsStyles.tab, 'mb-10')}>
+                <Tab value='bun' active={selectedGroup === 'bun'} onClick={handleClickTab}>
+                  Булки
+                </Tab>
+                <Tab value='sauce' active={selectedGroup === 'sauce'} onClick={handleClickTab}>
+                  Соусы
+                </Tab>
+                <Tab value='main' active={selectedGroup === 'main'} onClick={handleClickTab}>
+                  Начинки
+                </Tab>
+              </div>
+              <div className={cn(burgerIngredientsStyles.scroll, 'custom-scroll')}>
+                <IngredientGroup title='Булки' ingredients={bun} id='bun'/>
+                <IngredientGroup title='Соусы' ingredients={sauce} id='sauce'/>
+                <IngredientGroup title='Начинки' ingredients={main} id='main'/>
+              </div>
+            </section>
+        }
         {selectedIngredient &&
             <Modal title={'Детали ингредиента'} onClose={() => dispatch(clearSelectedIngredient())}>
               <IngredientDetails ingredient={selectedIngredient}/>
