@@ -8,6 +8,7 @@ import {IngredientGroup} from '../ingredient-group/ingredient-group';
 import {IngredientDetails} from '../ingredient-details/ingredient-details';
 import {Modal} from '../modal/modal';
 import burgerIngredientsStyles from './burger-ingredients.module.css';
+import {Loader} from "../loader/loader";
 
 export const BurgerIngredients = () => {
 
@@ -33,34 +34,37 @@ export const BurgerIngredients = () => {
 
   return (
       <>
-        {
-            isLoading && <>Загрузка</>
-        }
-        {
-            !isLoading && error && <>{error}</>
-        }
-        {
-            !isLoading && !error &&
-            <section className={burgerIngredientsStyles.section}>
-              <h1 className='text text_type_main-large mt-10 mb-5'>Соберите бургер</h1>
-              <div className={cn(burgerIngredientsStyles.tab, 'mb-10')}>
-                <Tab value='bun' active={selectedGroup === 'bun'} onClick={handleClickTab}>
-                  Булки
-                </Tab>
-                <Tab value='sauce' active={selectedGroup === 'sauce'} onClick={handleClickTab}>
-                  Соусы
-                </Tab>
-                <Tab value='main' active={selectedGroup === 'main'} onClick={handleClickTab}>
-                  Начинки
-                </Tab>
-              </div>
-              <div className={cn(burgerIngredientsStyles.scroll, 'custom-scroll')}>
-                <IngredientGroup title='Булки' ingredients={bun} id='bun'/>
-                <IngredientGroup title='Соусы' ingredients={sauce} id='sauce'/>
-                <IngredientGroup title='Начинки' ingredients={main} id='main'/>
-              </div>
-            </section>
-        }
+        <section className={burgerIngredientsStyles.section}>
+          {
+              isLoading && <Loader/>
+          }
+          {
+              !isLoading && error && <>{error}</>
+          }
+          {
+              !isLoading && !error &&
+              <>
+                <h1 className='text text_type_main-large mt-10 mb-5'>Соберите бургер</h1>
+                <div className={cn(burgerIngredientsStyles.tab, 'mb-10')}>
+                  <Tab value='bun' active={selectedGroup === 'bun'} onClick={handleClickTab}>
+                    Булки
+                  </Tab>
+                  <Tab value='sauce' active={selectedGroup === 'sauce'} onClick={handleClickTab}>
+                    Соусы
+                  </Tab>
+                  <Tab value='main' active={selectedGroup === 'main'} onClick={handleClickTab}>
+                    Начинки
+                  </Tab>
+                </div>
+                <div className={cn(burgerIngredientsStyles.scroll, 'custom-scroll')}>
+                  <IngredientGroup title='Булки' ingredients={bun} id='bun'/>
+                  <IngredientGroup title='Соусы' ingredients={sauce} id='sauce'/>
+                  <IngredientGroup title='Начинки' ingredients={main} id='main'/>
+                </div>
+              </>
+          }
+        </section>
+
         {selectedIngredient &&
             <Modal title={'Детали ингредиента'} onClose={() => dispatch(clearSelectedIngredient())}>
               <IngredientDetails ingredient={selectedIngredient}/>
