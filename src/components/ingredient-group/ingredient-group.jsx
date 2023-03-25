@@ -4,7 +4,7 @@ import {BurgerIngredient} from '../burger-ingredient/burger-ingredient';
 import {ingredientsArrayTypes} from '../../utils/prop-types';
 import ingredientGroupStyles from './ingredient-group.module.css';
 
-export const IngredientGroup = ({ingredients, title, id, onClickIngredient}) => {
+export const IngredientGroup = ({ingredients, title, id}) => {
 
   return (
       <>
@@ -14,8 +14,7 @@ export const IngredientGroup = ({ingredients, title, id, onClickIngredient}) => 
             ingredients.map((ingredient, index) => {
               return <BurgerIngredient ingredient={ingredient}
                                        key={ingredient._id}
-                                       count={index === 0 ? 1 : 0}
-                                       onClick={onClickIngredient}/>
+                                       count={index === 0 ? 1 : 0}/>
             })
           }
         </ul>
@@ -27,5 +26,4 @@ IngredientGroup.propTypes = {
   ingredients: ingredientsArrayTypes.isRequired,
   title: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
-  onClickIngredient: PropTypes.func
 }
