@@ -9,6 +9,7 @@ import {IngredientDetails} from '../ingredient-details/ingredient-details';
 import {Modal} from '../modal/modal';
 import burgerIngredientsStyles from './burger-ingredients.module.css';
 import {Loader} from "../loader/loader";
+import {ErrorMessage} from "../error/error-message";
 
 export const BurgerIngredients = () => {
 
@@ -19,7 +20,7 @@ export const BurgerIngredients = () => {
     selectedGroup: store.burgerIngredients.selectedGroup,
     selectedIngredient: store.selectedIngredient.ingredient,
     isLoading: store.burgerIngredients.isLoading,
-    error: store.burgerIngredients.error
+    error: store.burgerIngredients.error,
   }))
 
   const bun = useMemo(() => ingredients.filter(ingredient => ingredient.type === 'bun'), [ingredients]);
@@ -39,7 +40,7 @@ export const BurgerIngredients = () => {
               isLoading && <Loader/>
           }
           {
-              !isLoading && error && <>{error}</>
+              !isLoading && error && <ErrorMessage message={error}/>
           }
           {
               !isLoading && !error &&

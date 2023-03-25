@@ -11,4 +11,5 @@
   overflow: hidden;
   display: flex;
   gap: 40px;
+  height: 100%;
 }
