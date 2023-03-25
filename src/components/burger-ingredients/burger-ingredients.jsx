@@ -7,20 +7,20 @@ import {clearSelectedIngredient} from '../../services/actions/selected-ingredien
 import {IngredientGroup} from '../ingredient-group/ingredient-group';
 import {IngredientDetails} from '../ingredient-details/ingredient-details';
 import {Modal} from '../modal/modal';
+import {Loader} from '../loader/loader';
+import {ErrorMessage} from '../error-message/error-message';
 import burgerIngredientsStyles from './burger-ingredients.module.css';
-import {Loader} from "../loader/loader";
-import {ErrorMessage} from "../error/error-message";
 
 export const BurgerIngredients = () => {
 
   const dispatch = useDispatch();
 
-  const {ingredients, selectedGroup, selectedIngredient, isLoading, error} = useSelector(store => ({
+  const {ingredients, isLoading, error, selectedGroup, selectedIngredient} = useSelector(store => ({
     ingredients: store.burgerIngredients.ingredients,
-    selectedGroup: store.burgerIngredients.selectedGroup,
-    selectedIngredient: store.selectedIngredient.ingredient,
     isLoading: store.burgerIngredients.isLoading,
     error: store.burgerIngredients.error,
+    selectedGroup: store.burgerIngredients.selectedGroup,
+    selectedIngredient: store.selectedIngredient.ingredient,
   }))
 
   const bun = useMemo(() => ingredients.filter(ingredient => ingredient.type === 'bun'), [ingredients]);
