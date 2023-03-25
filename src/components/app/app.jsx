@@ -1,6 +1,6 @@
 import {useEffect} from 'react';
 import {useDispatch} from 'react-redux';
-import {loadIngredients} from '../../services/actions/ingredients';
+import {loadIngredients} from '../../services/actions/burger-ingredients';
 import {AppHeader} from '../app-header/app-header';
 import {BurgerIngredients} from '../burger-ingredients/burger-ingredients';
 import {BurgerConstructor} from '../burger-constructor/burger-constructor';
@@ -13,7 +13,6 @@ export const App = () => {
   useEffect(() => {
     dispatch(loadIngredients())
   }, [])
-
 
   return (
       <div className={appStyles.page}>

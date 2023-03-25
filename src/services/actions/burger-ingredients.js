@@ -1,32 +1,31 @@
-export const INGREDIENTS_LOADED = 'INGREDIENTS_LOADED';
-export const SELECT_INGREDIENT_GROUP = 'SELECT_INGREDIENT_GROUP';
-export const SELECT_INGREDIENT = 'SELECT_INGREDIENT';
-export const CLEAR_SELECTED_INGREDIENT = 'CLEAR_SELECTED_INGREDIENT';
+import {getIngredients} from '../../utils/api';
 
-export function ingredientsLoaded(ingredients) {
-  return {
-    type: INGREDIENTS_LOADED,
-    ingredients,
-  }
-}
+export const GET_INGREDIENTS_LOADING = 'GET_INGREDIENTS_LOADING';
+export const GET_INGREDIENTS_SUCCESS = 'GET_INGREDIENTS_SUCCESS';
+export const GET_INGREDIENTS_FAILED = 'GET_INGREDIENTS_FAILED';
+export const SELECT_INGREDIENT_GROUP = 'SELECT_INGREDIENT_GROUP';
+
+export const loadIngredients = () => dispatch => {
+  dispatch({
+    type: GET_INGREDIENTS_LOADING,
+  })
+
+  getIngredients().then(ingredients => {
+    dispatch({
+      type: GET_INGREDIENTS_SUCCESS,
+      ingredients: ingredients,
+    })
+  }).catch(error => {
+    dispatch({
+      type: GET_INGREDIENTS_FAILED,
+      error: error,
+    })
+  })
+};
 
 export function selectIngredientGroup(group) {
   return {
     type: SELECT_INGREDIENT_GROUP,
     group,
-  }
-}
-
-export function selectIngredient(ingredient) {
-  return {
-    type: SELECT_INGREDIENT,
-    ingredient,
-  }
-}
-
-
-export function clearSelectedIngredient() {
-  return {
-    type: CLEAR_SELECTED_INGREDIENT,
   }
 }

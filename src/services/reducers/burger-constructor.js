@@ -1,4 +1,4 @@
-import {INGREDIENTS_LOADED} from '../actions/burger-ingredients';
+import {GET_INGREDIENTS_SUCCESS} from '../actions/burger-ingredients';
 
 const initialState = {
   ingredients: [],
@@ -6,7 +6,7 @@ const initialState = {
 
 export const burgerConstructorReducer = (state = initialState, action) => {
   switch (action.type) {
-    case INGREDIENTS_LOADED: {
+    case GET_INGREDIENTS_SUCCESS: {
       return {
         ...state,
         ingredients: action.ingredients,

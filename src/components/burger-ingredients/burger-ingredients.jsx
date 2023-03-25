@@ -2,7 +2,8 @@ import {useMemo} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import cn from 'classnames';
 import {Tab} from '@ya.praktikum/react-developer-burger-ui-components';
-import {clearSelectedIngredient, selectIngredientGroup} from '../../services/actions/burger-ingredients';
+import {selectIngredientGroup} from '../../services/actions/burger-ingredients';
+import {clearSelectedIngredient} from '../../services/actions/selected-ingredient';
 import {IngredientGroup} from '../ingredient-group/ingredient-group';
 import {IngredientDetails} from '../ingredient-details/ingredient-details';
 import {Modal} from '../modal/modal';
@@ -15,7 +16,7 @@ export const BurgerIngredients = () => {
   const {ingredients, selectedGroup, selectedIngredient, isLoading, error} = useSelector(store => ({
     ingredients: store.burgerIngredients.ingredients,
     selectedGroup: store.burgerIngredients.selectedGroup,
-    selectedIngredient: store.burgerIngredients.selectedIngredient,
+    selectedIngredient: store.selectedIngredient.ingredient,
     isLoading: store.burgerIngredients.isLoading,
     error: store.burgerIngredients.error
   }))

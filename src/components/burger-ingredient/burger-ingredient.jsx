@@ -2,8 +2,8 @@ import {useDispatch} from 'react-redux';
 import PropTypes from 'prop-types';
 import cn from 'classnames';
 import {Counter, CurrencyIcon} from '@ya.praktikum/react-developer-burger-ui-components';
-import {selectIngredient} from '../../services/actions/burger-ingredients';
 import {ingredientPropTypes} from '../../utils/prop-types';
+import {selectIngredient} from '../../services/actions/selected-ingredient';
 import burgerIngredientStyles from './burger-ingredient.module.css';
 
 export const BurgerIngredient = ({ingredient, count}) => {
