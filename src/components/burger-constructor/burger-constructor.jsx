@@ -4,17 +4,16 @@ import {Button, CurrencyIcon} from '@ya.praktikum/react-developer-burger-ui-comp
 import {ConstructorList} from '../constructor-list/constructor-list';
 import {OrderDetails} from '../order-details/order-details';
 import {Modal} from '../modal/modal';
-import {ingredientsArrayTypes} from '../../utils/prop-types';
 import burgerConstructorStyles from './burger-constructor.module.css';
 
-export const BurgerConstructor = ({ingredients}) => {
+export const BurgerConstructor = () => {
 
   const [isOpenOrderModal, setIsOpenOrderModal] = useState(false);
 
   return (
       <>
         <section className={cn(burgerConstructorStyles.section, 'pt-25 pl-3 pb-10')} aria-label='Конструктор бургера'>
-          <ConstructorList ingredients={ingredients}/>
+          <ConstructorList />
           <div className={cn(burgerConstructorStyles.price, 'mt-10 mr-4')}>
             <div>
               <span className='text text_type_digits-medium mr-4'>610</span>
@@ -35,8 +34,4 @@ export const BurgerConstructor = ({ingredients}) => {
             </Modal>}
       </>
   );
-}
-
-BurgerConstructor.propTypes = {
-  ingredients: ingredientsArrayTypes.isRequired
 }

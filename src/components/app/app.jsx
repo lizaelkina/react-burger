@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react';
+import {useEffect} from 'react';
 import {useDispatch} from 'react-redux';
 import {getIngredients} from '../../utils/api';
 import {ingredientsLoaded} from '../../services/actions/burger-ingredients';
@@ -9,14 +9,11 @@ import appStyles from './app.module.css';
 
 export const App = () => {
 
-  const [ingredients, setIngredients] = useState([]);
-
   const dispatch = useDispatch();
 
   useEffect(() => {
     getIngredients()
         .then(data => {
-          setIngredients([...data])
           dispatch(ingredientsLoaded(data));
         })
         .catch(error => console.log(error));
@@ -28,7 +25,7 @@ export const App = () => {
         <AppHeader/>
         <main className={appStyles.main}>
           <BurgerIngredients/>
-          <BurgerConstructor ingredients={ingredients}/>
+          <BurgerConstructor/>
         </main>
       </div>
   );

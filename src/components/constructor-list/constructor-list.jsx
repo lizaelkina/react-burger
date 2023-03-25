@@ -1,10 +1,12 @@
 import cn from 'classnames';
 import {ConstructorElement, DragIcon} from '@ya.praktikum/react-developer-burger-ui-components';
-import {ingredientsArrayTypes} from '../../utils/prop-types';
 import constructorListStyles from './constructor-list.module.css';
+import {useSelector} from "react-redux";
 
 
-export const ConstructorList = ({ingredients}) => {
+export const ConstructorList = () => {
+
+  const ingredients = useSelector(store => store.burgerIngredients.ingredients);
 
   if (ingredients.length === 0) {
     return (
@@ -57,8 +59,4 @@ export const ConstructorList = ({ingredients}) => {
         />
       </>
   );
-}
-
-ConstructorList.propTypes = {
-  ingredients: ingredientsArrayTypes.isRequired
 }
