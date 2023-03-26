@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import cn from 'classnames';
 import {Counter, CurrencyIcon} from '@ya.praktikum/react-developer-burger-ui-components';
 import {ingredientPropTypes} from '../../utils/prop-types';
-import {selectIngredient} from '../../services/actions/selected-ingredient';
+// import {selectIngredient} from '../../services/actions/selected-ingredient';
+import {addIngredient} from '../../services/actions/burger-constructor';
 import burgerIngredientStyles from './burger-ingredient.module.css';
 
 export const BurgerIngredient = ({ingredient, count}) => {
@@ -11,7 +12,7 @@ export const BurgerIngredient = ({ingredient, count}) => {
   const dispatch = useDispatch();
 
   return (
-      <li className={burgerIngredientStyles.card} onClick={() => dispatch(selectIngredient(ingredient))}>
+      <li className={burgerIngredientStyles.card} onClick={() => dispatch(addIngredient(ingredient))}>
         <img className='p-4' src={ingredient.image} alt={ingredient.name}/>
         {
           count > 0 ? <Counter count={count} size='default' extraClass='m-1'/> : null

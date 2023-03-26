@@ -11,7 +11,12 @@ export const BurgerConstructor = () => {
 
   const [isOpenOrderModal, setIsOpenOrderModal] = useState(false);
 
-  const isEmpty = useSelector(store => store.burgerConstructor.isEmpty);
+  const {bun, middle} = useSelector(store => ({
+    bun: store.burgerConstructor.bun,
+    middle: store.burgerConstructor.middle,
+  }))
+
+  const isEmpty = bun === null && middle.length === 0;
 
   return (
 
