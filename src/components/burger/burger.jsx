@@ -1,8 +1,8 @@
-import {useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import cn from 'classnames';
 import {ConstructorElement, DragIcon} from '@ya.praktikum/react-developer-burger-ui-components';
+import {deleteIngredient} from '../../services/actions/burger-constructor';
 import burgerStyles from './burger.module.css';
-
 
 export const Burger = () => {
 
@@ -10,6 +10,8 @@ export const Burger = () => {
     bun: store.burgerConstructor.bun,
     middle: store.burgerConstructor.middle,
   }))
+
+  const dispatch = useDispatch();
 
   return (
       <>
@@ -37,6 +39,7 @@ export const Burger = () => {
                         text={ingredient.name}
                         price={ingredient.price}
                         thumbnail={ingredient.image}
+                        handleClose={() => dispatch(deleteIngredient(ingredient))}
                     />
                   </li>
               )

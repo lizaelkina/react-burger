@@ -1,5 +1,5 @@
 import {v4 as uuidv4} from 'uuid';
-import {ADD_INGREDIENT} from '../actions/burger-constructor';
+import {ADD_INGREDIENT, DELETE_INGREDIENT} from '../actions/burger-constructor';
 
 const initialState = {
   bun: null,
@@ -26,6 +26,12 @@ export const burgerConstructorReducer = (state = initialState, action) => {
             ingredient
           ],
         }
+      }
+    }
+    case DELETE_INGREDIENT: {
+      return {
+        ...state,
+        middle: state.middle.filter(ingredient => ingredient.uuid !== action.ingredient.uuid),
       }
     }
     default: {
