@@ -1,5 +1,4 @@
-import {useDispatch} from 'react-redux';
-import PropTypes from 'prop-types';
+import {useDispatch, useSelector} from 'react-redux';
 import cn from 'classnames';
 import {Counter, CurrencyIcon} from '@ya.praktikum/react-developer-burger-ui-components';
 import {ingredientPropTypes} from '../../utils/prop-types';
@@ -7,9 +6,16 @@ import {ingredientPropTypes} from '../../utils/prop-types';
 import {addIngredient} from '../../services/actions/burger-constructor';
 import burgerIngredientStyles from './burger-ingredient.module.css';
 
-export const BurgerIngredient = ({ingredient, count}) => {
+export const BurgerIngredient = ({ingredient}) => {
 
   const dispatch = useDispatch();
+  
+  const {bun, middle} = useSelector(store => ({
+    bun: store.burgerConstructor.bun,
+    middle: store.burgerConstructor.middle,
+  }))
+  
+  const count = [...middle, bun, bun].filter(item => item._id === ingredient._id).length;
 
   return (
       <li className={burgerIngredientStyles.card} onClick={() => dispatch(addIngredient(ingredient))}>
@@ -30,5 +36,4 @@ export const BurgerIngredient = ({ingredient, count}) => {
 
 BurgerIngredient.propTypes = {
   ingredient: ingredientPropTypes.isRequired,
-  count: PropTypes.number.isRequired,
 }
