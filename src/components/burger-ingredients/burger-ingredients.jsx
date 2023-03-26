@@ -1,8 +1,8 @@
-import {useMemo} from 'react';
+import {useEffect, useMemo} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import cn from 'classnames';
 import {Tab} from '@ya.praktikum/react-developer-burger-ui-components';
-import {selectIngredientGroup} from '../../services/actions/burger-ingredients';
+import {loadIngredients, selectIngredientGroup} from '../../services/actions/burger-ingredients';
 import {clearSelectedIngredient} from '../../services/actions/selected-ingredient';
 import {IngredientGroup} from '../ingredient-group/ingredient-group';
 import {IngredientDetails} from '../ingredient-details/ingredient-details';
@@ -14,6 +14,10 @@ import burgerIngredientsStyles from './burger-ingredients.module.css';
 export const BurgerIngredients = () => {
 
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(loadIngredients())
+  }, [])
 
   const {ingredients, isLoading, error, selectedGroup, selectedIngredient} = useSelector(store => ({
     ingredients: store.burgerIngredients.ingredients,
