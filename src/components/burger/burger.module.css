@@ -7,7 +7,7 @@
   gap: 16px;
 }
 
-.list__item {
+.item {
   max-height: 80px;
   display: flex;
   align-items: center;

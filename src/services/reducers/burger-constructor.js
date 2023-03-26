@@ -1,3 +1,4 @@
+import {v4 as uuidv4} from 'uuid';
 import {ADD_INGREDIENT} from '../actions/burger-constructor';
 
 const initialState = {
@@ -8,17 +9,21 @@ const initialState = {
 export const burgerConstructorReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_INGREDIENT: {
-      if (action.ingredient.type === 'bun') {
+      const ingredient = {
+        ...action.ingredient,
+        uuid: uuidv4(),
+      }
+      if (ingredient.type === 'bun') {
         return {
           ...state,
-          bun: action.ingredient,
+          bun: ingredient,
         }
       } else {
         return {
           ...state,
           middle: [
             ...state.middle,
-            action.ingredient
+            ingredient
           ],
         }
       }

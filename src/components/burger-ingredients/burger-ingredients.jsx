@@ -17,7 +17,7 @@ export const BurgerIngredients = () => {
 
   useEffect(() => {
     dispatch(loadIngredients())
-  }, [])
+  }, [dispatch])
 
   const {ingredients, isLoading, error, selectedGroup, selectedIngredient} = useSelector(store => ({
     ingredients: store.burgerIngredients.ingredients,
