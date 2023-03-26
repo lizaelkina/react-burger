@@ -14,8 +14,9 @@ export const BurgerIngredient = ({ingredient}) => {
     bun: store.burgerConstructor.bun,
     middle: store.burgerConstructor.middle,
   }))
-  
-  const count = [...middle, bun, bun].filter(item => item._id === ingredient._id).length;
+
+  const allIngredients = bun ? [...middle, bun, bun] : middle;
+  const count = allIngredients.filter(item => item._id === ingredient._id).length;
 
   return (
       <li className={burgerIngredientStyles.card} onClick={() => dispatch(addIngredient(ingredient))}>
