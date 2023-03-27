@@ -14,7 +14,7 @@ export const Burger = () => {
   const dispatch = useDispatch();
 
   return (
-      <>
+      <div className={burgerStyles.order}>
         {
             bun &&
             <ConstructorElement
@@ -58,6 +58,6 @@ export const Burger = () => {
                 thumbnail={bun.image}
             />
         }
-      </>
+      </div>
   );
 }

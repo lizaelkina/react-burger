@@ -1,3 +1,11 @@
+.order {
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
 .list {
   margin: 0;
   padding: 0;
