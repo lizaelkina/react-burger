@@ -10,16 +10,17 @@ import {useMemo} from 'react';
 export const BurgerIngredient = ({ingredient}) => {
 
   const dispatch = useDispatch();
-  
+
   const {bun, middle} = useSelector(store => ({
     bun: store.burgerConstructor.bun,
     middle: store.burgerConstructor.middle,
   }))
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  const allIngredients = bun ? [...middle, bun, bun] : middle;
-
-  const count = useMemo(() => allIngredients.filter(item => item._id === ingredient._id).length, [allIngredients, ingredient._id]);
+  const count = useMemo(() => {
+    const allIngredients = bun ? [...middle, bun, bun] : middle;
+    return allIngredients.filter(item => item._id === ingredient._id).length
+  }, [bun, middle, ingredient._id]);
 
   return (
       <li className={burgerIngredientStyles.card} onClick={() => dispatch(addIngredient(ingredient))}>

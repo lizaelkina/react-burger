@@ -10,11 +10,10 @@ export const OrderTotal = () => {
   }))
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  const allIngredients = bun ? [...middle, bun, bun] : middle;
-
-  const total = useMemo(() => allIngredients.reduce((result, item) => {
-    return result + item.price
-  }, 0), [allIngredients]);
+  const total = useMemo(() => {
+    const allIngredients = bun ? [...middle, bun, bun] : middle;
+    return allIngredients.reduce((result, item) => result + item.price, 0)
+  }, [bun, middle]);
 
   return (
       <div>

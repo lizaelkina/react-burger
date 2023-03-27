@@ -16,8 +16,15 @@ const checkSuccess = response => {
 
 const request = (endpoint, options) => {
   return fetch(`${API_URL}/${endpoint}`, options)
-    .then(checkResponse)
-    .then(checkSuccess)
+      .then(checkResponse)
+      .then(checkSuccess)
 }
 
-export const getIngredients = () => request('ingredients')
+export const getIngredients = () => request('ingredients');
+export const createOrder = (ingredientIdList) => request('orders',
+    {
+      method: 'POST',
+      body: JSON.stringify({
+        ingredients: ingredientIdList,
+      })
+    });

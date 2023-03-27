@@ -1,20 +1,21 @@
-import {useState} from 'react';
-import {useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import cn from 'classnames';
 import {Button} from '@ya.praktikum/react-developer-burger-ui-components';
 import {Burger} from '../burger/burger';
 import {OrderTotal} from '../order-total/order-total';
-import {OrderDetails} from '../order-details/order-details';
+import {closeOrderModal, CREATE_ORDER_LOADING} from '../../services/actions/create-order';
 import {Modal} from '../modal/modal';
+import {OrderDetails} from '../order-details/order-details';
 import burgerConstructorStyles from './burger-constructor.module.css';
 
 export const BurgerConstructor = () => {
 
-  const [isOpenOrderModal, setIsOpenOrderModal] = useState(false);
+  const dispatch = useDispatch();
 
-  const {bun, middle} = useSelector(store => ({
+  const {bun, middle, isOpenModal} = useSelector(store => ({
     bun: store.burgerConstructor.bun,
     middle: store.burgerConstructor.middle,
+    isOpenModal: store.createOrder.isOpenModal,
   }))
 
   const isEmpty = bun === null && middle.length === 0;
@@ -41,7 +42,9 @@ export const BurgerConstructor = () => {
                           size='large'
                           extraClass={burgerConstructorStyles.button}
                           disabled={isButtonDisabled}
-                          onClick={() => setIsOpenOrderModal(true)}>
+                          onClick={() => dispatch({
+                            type: CREATE_ORDER_LOADING,
+                          })}>
                     Оформить заказ
                   </Button>
                 </div>
@@ -49,8 +52,8 @@ export const BurgerConstructor = () => {
           }
         </section>
 
-        {isOpenOrderModal &&
-            <Modal onClose={() => setIsOpenOrderModal(false)}>
+        {isOpenModal &&
+            <Modal onClose={() => dispatch(closeOrderModal())}>
               <OrderDetails/>
             </Modal>}
       </>
