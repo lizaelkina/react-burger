@@ -5,6 +5,7 @@ import {ingredientPropTypes} from '../../utils/prop-types';
 // import {selectIngredient} from '../../services/actions/selected-ingredient';
 import {addIngredient} from '../../services/actions/burger-constructor';
 import burgerIngredientStyles from './burger-ingredient.module.css';
+import {useMemo} from 'react';
 
 export const BurgerIngredient = ({ingredient}) => {
 
@@ -15,8 +16,10 @@ export const BurgerIngredient = ({ingredient}) => {
     middle: store.burgerConstructor.middle,
   }))
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const allIngredients = bun ? [...middle, bun, bun] : middle;
-  const count = allIngredients.filter(item => item._id === ingredient._id).length;
+
+  const count = useMemo(() => allIngredients.filter(item => item._id === ingredient._id).length, [allIngredients, ingredient._id]);
 
   return (
       <li className={burgerIngredientStyles.card} onClick={() => dispatch(addIngredient(ingredient))}>
