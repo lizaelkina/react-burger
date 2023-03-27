@@ -1,8 +1,9 @@
 import {useState} from 'react';
 import {useSelector} from 'react-redux';
 import cn from 'classnames';
-import {Button, CurrencyIcon} from '@ya.praktikum/react-developer-burger-ui-components';
+import {Button} from '@ya.praktikum/react-developer-burger-ui-components';
 import {Burger} from '../burger/burger';
+import {OrderTotal} from '../order-total/order-total';
 import {OrderDetails} from '../order-details/order-details';
 import {Modal} from '../modal/modal';
 import burgerConstructorStyles from './burger-constructor.module.css';
@@ -18,38 +19,40 @@ export const BurgerConstructor = () => {
 
   const isEmpty = bun === null && middle.length === 0;
 
-  return (
+  const isButtonDisabled = bun === null;
 
-      <section className={cn(burgerConstructorStyles.section, 'pt-25 pl-3 pb-10')} aria-label='Конструктор бургера'>
-        {
-            isEmpty &&
-            <h3 className={cn(burgerConstructorStyles.default, 'text text_type_main-default text_color_active')}>
-              Перенесите сюда ингредиенты для своего бургера
-            </h3>
-        }
-        {
-            !isEmpty &&
-            <>
-              <Burger/>
-              <div className={cn(burgerConstructorStyles.price, 'mt-10 mr-4')}>
-                <div>
-                  <span className='text text_type_digits-medium mr-4'>610</span>
-                  <CurrencyIcon type='primary'/>
+  return (
+      <>
+        <section className={cn(burgerConstructorStyles.section, 'pt-25 pl-3 pb-10')} aria-label='Конструктор бургера'>
+          {
+              isEmpty &&
+              <h3 className={cn(burgerConstructorStyles.default, 'text text_type_main-default text_color_active')}>
+                Перенесите сюда ингредиенты для своего бургера
+              </h3>
+          }
+          {
+              !isEmpty &&
+              <>
+                <Burger/>
+                <div className={cn(burgerConstructorStyles.checkout, 'mt-10 mr-4')}>
+                  <OrderTotal/>
+                  <Button htmlType='button'
+                          type='primary'
+                          size='large'
+                          extraClass={burgerConstructorStyles.button}
+                          disabled={isButtonDisabled}
+                          onClick={() => setIsOpenOrderModal(true)}>
+                    Оформить заказ
+                  </Button>
                 </div>
-                <Button htmlType='button'
-                        type='primary'
-                        size='large'
-                        onClick={() => setIsOpenOrderModal(true)}>
-                  Оформить заказ
-                </Button>
-              </div>
-            </>
-        }
+              </>
+          }
+        </section>
 
         {isOpenOrderModal &&
             <Modal onClose={() => setIsOpenOrderModal(false)}>
               <OrderDetails/>
             </Modal>}
-      </section>
+      </>
   );
 }

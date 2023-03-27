@@ -12,9 +12,14 @@
   flex: 1;
 }
 
-.price {
+.checkout {
   display: flex;
-  justify-content: end;
   align-items: center;
+  justify-content: end;
   gap: 40px;
+}
+
+.button {
+  max-width: 215px;
+  width: 100%;
 }
