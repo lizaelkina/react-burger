@@ -8,8 +8,9 @@ import {
 const initialState = {
   isOpenModal: false,
   isLoading: false,
+  success: false,
   number: null,
-  error: null,
+  errorMessage: null,
 };
 
 export const createOrderReducer = (state = initialState, action) => {
@@ -19,14 +20,16 @@ export const createOrderReducer = (state = initialState, action) => {
         ...state,
         isOpenModal: true,
         isLoading: true,
+        success: false,
         number: null,
-        error: null,
+        errorMessage: null,
       }
     }
     case CREATE_ORDER_SUCCESS: {
       return {
         ...state,
         isLoading: false,
+        success: true,
         number: action.number,
       }
     }
@@ -34,7 +37,7 @@ export const createOrderReducer = (state = initialState, action) => {
       return {
         ...state,
         isLoading: false,
-        error: action.error,
+        errorMessage: action.error,
       }
     }
     case CLOSE_ORDER_MODAL: {

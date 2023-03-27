@@ -7,10 +7,11 @@ import orderDetailsStyles from './order-details.module.css';
 
 export const OrderDetails = () => {
 
-  const {number, isLoading, error} = useSelector(store => ({
-    number: store.createOrder.number,
+  const {isLoading, success, number, errorMessage} = useSelector(store => ({
     isLoading: store.createOrder.isLoading,
-    error: store.createOrder.error,
+    success: store.createOrder.success,
+    number: store.createOrder.number,
+    errorMessage: store.createOrder.errorMessage,
   }))
 
   return (
@@ -19,10 +20,10 @@ export const OrderDetails = () => {
            isLoading && <Loader/>
         }
         {
-            !isLoading && error && <ErrorMessage message={error}/>
+            !isLoading && !success && <ErrorMessage message={errorMessage}/>
         }
         {
-            !isLoading && !error &&
+            success &&
             <>
               <span className={cn(orderDetailsStyles.shadow, 'text text_type_digits-large mb-8')}>
                 {number}

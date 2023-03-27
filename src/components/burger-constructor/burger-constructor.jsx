@@ -3,19 +3,22 @@ import cn from 'classnames';
 import {Button} from '@ya.praktikum/react-developer-burger-ui-components';
 import {Burger} from '../burger/burger';
 import {OrderTotal} from '../order-total/order-total';
-import {closeOrderModal, startCreatingOrder} from '../../services/actions/create-order';
 import {Modal} from '../modal/modal';
 import {OrderDetails} from '../order-details/order-details';
+import {closeOrderModal, startCreatingOrder} from '../../services/actions/create-order';
+import {clearIngredients} from '../../services/actions/burger-constructor';
 import burgerConstructorStyles from './burger-constructor.module.css';
 
 export const BurgerConstructor = () => {
 
   const dispatch = useDispatch();
 
-  const {bun, middle, isOpenModal} = useSelector(store => ({
+  const {bun, middle, isOpenModal, isOrderProcessing, isOrderCreated} = useSelector(store => ({
     bun: store.burgerConstructor.bun,
     middle: store.burgerConstructor.middle,
     isOpenModal: store.createOrder.isOpenModal,
+    isOrderProcessing: store.createOrder.isLoading,
+    isOrderCreated: store.createOrder.success,
   }))
 
   const isEmpty = bun === null && middle.length === 0;
@@ -25,6 +28,15 @@ export const BurgerConstructor = () => {
   function handleCreateOrder() {
     const ingredientIdList = [...middle, bun, bun].map(item => item._id);
     dispatch(startCreatingOrder(ingredientIdList));
+  }
+
+  function handleClickCloseModal() {
+    if (!isOrderProcessing) {
+      dispatch(closeOrderModal());
+    }
+    if (isOrderCreated) {
+      dispatch(clearIngredients());
+    }
   }
 
   return (
@@ -56,7 +68,7 @@ export const BurgerConstructor = () => {
         </section>
 
         {isOpenModal &&
-            <Modal onClose={() => dispatch(closeOrderModal())}>
+            <Modal onClose={handleClickCloseModal}>
               <OrderDetails/>
             </Modal>}
       </>
