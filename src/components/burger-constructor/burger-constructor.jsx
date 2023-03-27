@@ -3,7 +3,7 @@ import cn from 'classnames';
 import {Button} from '@ya.praktikum/react-developer-burger-ui-components';
 import {Burger} from '../burger/burger';
 import {OrderTotal} from '../order-total/order-total';
-import {closeOrderModal, CREATE_ORDER_LOADING} from '../../services/actions/create-order';
+import {closeOrderModal, startCreatingOrder} from '../../services/actions/create-order';
 import {Modal} from '../modal/modal';
 import {OrderDetails} from '../order-details/order-details';
 import burgerConstructorStyles from './burger-constructor.module.css';
@@ -21,6 +21,11 @@ export const BurgerConstructor = () => {
   const isEmpty = bun === null && middle.length === 0;
 
   const isButtonDisabled = bun === null;
+
+  function handleCreateOrder() {
+    const ingredientIdList = [...middle, bun, bun].map(item => item._id);
+    dispatch(startCreatingOrder(ingredientIdList));
+  }
 
   return (
       <>
@@ -42,9 +47,7 @@ export const BurgerConstructor = () => {
                           size='large'
                           extraClass={burgerConstructorStyles.button}
                           disabled={isButtonDisabled}
-                          onClick={() => dispatch({
-                            type: CREATE_ORDER_LOADING,
-                          })}>
+                          onClick={handleCreateOrder}>
                     Оформить заказ
                   </Button>
                 </div>

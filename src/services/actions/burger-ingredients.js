@@ -10,10 +10,10 @@ export const loadIngredients = () => dispatch => {
     type: GET_INGREDIENTS_LOADING,
   })
 
-  getIngredients().then(ingredients => {
+  getIngredients().then(response => {
     dispatch({
       type: GET_INGREDIENTS_SUCCESS,
-      ingredients: ingredients,
+      ingredients: response.data,
     })
   }).catch(error => {
     dispatch({

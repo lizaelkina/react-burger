@@ -1,4 +1,7 @@
-export const API_URL = 'https://norma.nomoreparties.space/api';
+const API_URL = 'https://norma.nomoreparties.space/api';
+const DEFAULT_HEADER = {
+  "Content-Type": "application/json",
+};
 
 const checkResponse = response => {
   if (response.ok) {
@@ -9,7 +12,7 @@ const checkResponse = response => {
 
 const checkSuccess = response => {
   if (response && response.success) {
-    return response.data;
+    return response;
   }
   return Promise.reject(`Ответ: ${response}`);
 };
@@ -24,6 +27,7 @@ export const getIngredients = () => request('ingredients');
 export const createOrder = (ingredientIdList) => request('orders',
     {
       method: 'POST',
+      headers: DEFAULT_HEADER,
       body: JSON.stringify({
         ingredients: ingredientIdList,
       })

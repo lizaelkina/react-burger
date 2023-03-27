@@ -10,10 +10,10 @@ export const startCreatingOrder = (ingredientIdList) => dispatch => {
     type: CREATE_ORDER_LOADING,
   })
 
-  createOrder(ingredientIdList).then(number => {
+  createOrder(ingredientIdList).then(response => {
     dispatch({
       type: CREATE_ORDER_SUCCESS,
-      number: number,
+      number: response.order.number,
     })
   }).catch(error => {
     dispatch({
