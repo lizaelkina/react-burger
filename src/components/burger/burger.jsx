@@ -1,10 +1,10 @@
 import {useDispatch, useSelector} from 'react-redux';
+import {useDrop} from 'react-dnd';
 import cn from 'classnames';
 import {ConstructorElement} from '@ya.praktikum/react-developer-burger-ui-components';
 import {DraggableIngredient} from '../draggable-ingredient/draggable-ingredient';
-import burgerStyles from './burger.module.css';
-import {useDrop} from 'react-dnd';
 import {addIngredient} from '../../services/actions/burger-constructor';
+import burgerStyles from './burger.module.css';
 
 export const Burger = () => {
 
