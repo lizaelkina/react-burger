@@ -23,7 +23,7 @@ export const BurgerConstructor = () => {
 
   const isEmpty = bun === null && middle.length === 0;
 
-  const isButtonDisabled = bun === null;
+  const isButtonDisabled = bun === null || middle.length === 0;
 
   function handleCreateOrder() {
     const ingredientIdList = [...middle, bun, bun].map(item => item._id);
@@ -44,27 +44,28 @@ export const BurgerConstructor = () => {
         <section className={cn(burgerConstructorStyles.section, 'pt-25 pl-3 pb-10')} aria-label='Конструктор бургера'>
           {
               isEmpty &&
-              <h3 className={cn(burgerConstructorStyles.default, 'text text_type_main-default text_color_active')}>
-                Перенесите сюда ингредиенты для своего бургера
-              </h3>
-          }
-          {
-              !isEmpty &&
-              <>
-                <Burger/>
-                <div className={cn(burgerConstructorStyles.checkout, 'mt-10 mr-4')}>
-                  <OrderTotal/>
-                  <Button htmlType='button'
-                          type='primary'
-                          size='large'
-                          extraClass={burgerConstructorStyles.button}
-                          disabled={isButtonDisabled}
-                          onClick={handleCreateOrder}>
-                    Оформить заказ
-                  </Button>
+              <div className={burgerConstructorStyles.default}>
+                <div className={cn(burgerConstructorStyles.item, burgerConstructorStyles.item_top, 'ml-8 mb-4')}>
                 </div>
-              </>
+                <div className={cn(burgerConstructorStyles.item, burgerConstructorStyles.item_bottom, 'ml-8 mb-4')}>
+                </div>
+                <h3 className='text text_type_main-default text_color_inactive ml-8 mt-4'>
+                  Перенесите сюда ингредиенты для своего бургера
+                </h3>
+              </div>
           }
+          {!isEmpty && <Burger/>}
+          <div className={cn(burgerConstructorStyles.checkout, 'mt-10 mr-4')}>
+            <OrderTotal/>
+            <Button htmlType='button'
+                    type='primary'
+                    size='large'
+                    extraClass={burgerConstructorStyles.button}
+                    disabled={isButtonDisabled}
+                    onClick={handleCreateOrder}>
+              Оформить заказ
+            </Button>
+          </div>
         </section>
 
         {isOpenModal &&
