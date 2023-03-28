@@ -13,18 +13,15 @@ export const Burger = () => {
 
   return (
       <div className={burgerStyles.order}>
-        {
-            bun &&
-            <ConstructorElement
-                key={bun.uuid + '_top'}
-                extraClass={cn(burgerStyles.item, 'ml-8 mb-4')}
-                type={'top'}
-                isLocked={true}
-                text={bun.name + ' (верх)'}
-                price={bun.price}
-                thumbnail={bun.image}
-            />
-        }
+        <ConstructorElement
+            key={(bun ? bun.uuid : '') + '_top'}
+            extraClass={cn(burgerStyles.item, 'ml-8 mb-4', (bun ? '' : burgerStyles.hide_icons))}
+            type={'top'}
+            isLocked={true}
+            text={bun ? bun.name + ' (низ)' : 'Выберете булку'}
+            price={bun ? bun.price : null}
+            thumbnail={bun ? bun.image : null}
+        />
         <ul className={cn(burgerStyles.list, burgerStyles.scroll, 'custom-scroll')}>
           {
             middle.map(ingredient => {
@@ -32,18 +29,15 @@ export const Burger = () => {
             })
           }
         </ul>
-        {
-            bun &&
-            <ConstructorElement
-                key={bun.uuid + '_bottom'}
-                extraClass={cn(burgerStyles.item, 'ml-8 mt-4')}
-                type={'bottom'}
-                isLocked={true}
-                text={bun.name + ' (низ)'}
-                price={bun.price}
-                thumbnail={bun.image}
-            />
-        }
+        <ConstructorElement
+            key={(bun ? bun.uuid : '') + '_bottom'}
+            extraClass={cn(burgerStyles.item, 'ml-8 mt-4', (bun ? '' : burgerStyles.hide_icons))}
+            type={'bottom'}
+            isLocked={true}
+            text={bun ? bun.name + ' (низ)' : 'Выберете булку'}
+            price={bun ? bun.price : null}
+            thumbnail={bun ? bun.image : null}
+        />
       </div>
   );
 }

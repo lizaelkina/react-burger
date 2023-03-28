@@ -19,7 +19,14 @@
   max-height: 80px;
   display: flex;
   align-items: center;
-  box-sizing: border-box;
+}
+
+.hide_icons svg {
+  display: none;
+}
+
+.hide_icons img {
+  visibility: hidden;
 }
 
 .scroll {

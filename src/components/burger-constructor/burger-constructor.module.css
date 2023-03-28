@@ -5,36 +5,6 @@
   flex-direction: column;
 }
 
-.default {
-  margin-left: 32px;
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  gap: 32px;
-}
-
-.item {
-  width: 536px;
-  height: 80px;
-  box-sizing: border-box;
-  padding: 16px 24px;
-  border-radius: var(--common-border-radius-s);
-  background: var(--background-element);
-}
-
-.item_top {
-  border-radius: var(--top-constructor-item-border-radius);
-}
-
-.item_bottom {
-  border-radius: var(--bottom-constructor-item-border-radius);
-}
-
-.default__text {
-  text-align: center;
-}
-
-
 .checkout {
   display: flex;
   align-items: center;

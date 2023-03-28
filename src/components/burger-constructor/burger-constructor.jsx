@@ -21,8 +21,6 @@ export const BurgerConstructor = () => {
     isOrderCreated: store.createOrder.success,
   }))
 
-  const isEmpty = bun === null && middle.length === 0;
-
   const isButtonDisabled = bun === null || middle.length === 0;
 
   function handleCreateOrder() {
@@ -42,17 +40,7 @@ export const BurgerConstructor = () => {
   return (
       <>
         <section className={cn(burgerConstructorStyles.section, 'pt-25 pl-3 pb-10')} aria-label='Конструктор бургера'>
-          {
-              isEmpty &&
-              <div className={burgerConstructorStyles.default}>
-                <div className={cn(burgerConstructorStyles.item, burgerConstructorStyles.item_top)}></div>
-                <div className={cn(burgerConstructorStyles.item, burgerConstructorStyles.item_bottom)}></div>
-                <h3 className={cn(burgerConstructorStyles.default__text, 'text text_type_main-default text_color_inactive')}>
-                  Перенесите сюда ингредиенты для своего бургера
-                </h3>
-              </div>
-          }
-          {!isEmpty && <Burger/>}
+          <Burger/>
           <div className={cn(burgerConstructorStyles.checkout, 'mt-10 mr-4')}>
             <OrderTotal/>
             <Button htmlType='button'
