@@ -16,14 +16,14 @@ export const OrderDetails = () => {
 
   return (
       <div className={cn(orderDetailsStyles.card, 'pt-30 pl-25 pr-25 pb-30')}>
-        {
-           isLoading && <Loader/>
+        {isLoading &&
+            <div className={orderDetailsStyles.load}>
+              <span className='text text_type_main-medium'>Формирование заказа...</span>
+              <Loader/>
+            </div>
         }
-        {
-            !isLoading && !success && <ErrorMessage message={errorMessage}/>
-        }
-        {
-            success &&
+        {!isLoading && !success && <ErrorMessage message={errorMessage}/>}
+        {success &&
             <>
               <span className={cn(orderDetailsStyles.shadow, 'text text_type_digits-large mb-8')}>
                 {number}
