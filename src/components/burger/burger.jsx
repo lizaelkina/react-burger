@@ -15,16 +15,18 @@ export const Burger = () => {
 
   const dispatch = useDispatch();
 
-  const [, dropRef] = useDrop({
+  const [{isHover}, dropRef] = useDrop({
     accept: 'ingredient',
     drop(ingredient) {
       dispatch(addIngredient(ingredient));
     },
-
+    collect: monitor => ({
+      isHover: monitor.isOver(),
+    })
   })
 
   return (
-      <div className={burgerStyles.order} ref={dropRef}>
+      <div className={cn(burgerStyles.order, isHover ? burgerStyles.order_drop : '')} ref={dropRef}>
         <ConstructorElement
             key={(bun ? bun.uuid : '') + '_top'}
             extraClass={cn(burgerStyles.item, 'ml-8 mb-4', (bun ? '' : burgerStyles.hide_icons))}

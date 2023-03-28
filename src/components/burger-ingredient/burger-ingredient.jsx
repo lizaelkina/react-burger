@@ -28,21 +28,25 @@ export const BurgerIngredient = ({ingredient}) => {
   }, [bun, middle, ingredient._id]);
 
   return (
-      <li className={burgerIngredientStyles.card}
-          ref={dragRef}
-          onClick={() => dispatch(selectIngredient(ingredient))}>
-        <img className={cn(burgerIngredientStyles.card__image, 'p-4')} src={ingredient.image} alt={ingredient.name}/>
-        {
-          count > 0 ? <Counter count={count} size='default' extraClass='m-1'/> : null
-        }
-        <div className={burgerIngredientStyles.card__price}>
-          <span className='text text_type_digits-default'>{ingredient.price}</span>
-          <CurrencyIcon type='primary'/>
-        </div>
-        <span className={cn(burgerIngredientStyles.card__name, 'text text_type_main-default')}>
-          {ingredient.name}
-        </span>
-      </li>
+      <>
+        <li className={burgerIngredientStyles.card}
+            onClick={() => dispatch(selectIngredient(ingredient))}>
+          <img className={cn(burgerIngredientStyles.card__image, 'p-4')}
+               ref={dragRef}
+               src={ingredient.image}
+               alt={ingredient.name}/>
+          {
+            count > 0 ? <Counter count={count} size='default' extraClass='m-1'/> : null
+          }
+          <div className={burgerIngredientStyles.card__price}>
+            <span className='text text_type_digits-default'>{ingredient.price}</span>
+            <CurrencyIcon type='primary'/>
+          </div>
+          <span className={cn(burgerIngredientStyles.card__name, 'text text_type_main-default')}>
+              {ingredient.name}
+            </span>
+        </li>
+      </>
   );
 }
 
