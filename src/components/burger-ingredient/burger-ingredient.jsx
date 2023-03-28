@@ -24,7 +24,7 @@ export const BurgerIngredient = ({ingredient}) => {
 
   return (
       <li className={burgerIngredientStyles.card} onClick={() => dispatch(addIngredient(ingredient))}>
-        <img className='p-4' src={ingredient.image} alt={ingredient.name}/>
+        <img className={cn(burgerIngredientStyles.card__image, 'p-4')} src={ingredient.image} alt={ingredient.name}/>
         {
           count > 0 ? <Counter count={count} size='default' extraClass='m-1'/> : null
         }

@@ -45,11 +45,9 @@ export const BurgerConstructor = () => {
           {
               isEmpty &&
               <div className={burgerConstructorStyles.default}>
-                <div className={cn(burgerConstructorStyles.item, burgerConstructorStyles.item_top, 'ml-8 mb-4')}>
-                </div>
-                <div className={cn(burgerConstructorStyles.item, burgerConstructorStyles.item_bottom, 'ml-8 mb-4')}>
-                </div>
-                <h3 className='text text_type_main-default text_color_inactive ml-8 mt-4'>
+                <div className={cn(burgerConstructorStyles.item, burgerConstructorStyles.item_top)}></div>
+                <div className={cn(burgerConstructorStyles.item, burgerConstructorStyles.item_bottom)}></div>
+                <h3 className={cn(burgerConstructorStyles.default__text, 'text text_type_main-default text_color_inactive')}>
                   Перенесите сюда ингредиенты для своего бургера
                 </h3>
               </div>
