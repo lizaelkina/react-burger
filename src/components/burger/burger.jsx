@@ -18,7 +18,7 @@ export const Burger = () => {
             extraClass={cn(burgerStyles.item, 'ml-8 mb-4', (bun ? '' : burgerStyles.hide_icons))}
             type={'top'}
             isLocked={true}
-            text={bun ? bun.name + ' (низ)' : 'Выберете булку и начинку'}
+            text={bun ? bun.name + ' (низ)' : 'Выберете булку' + (middle.length === 0 ? ' и начинку' : '')}
             price={bun ? bun.price : null}
             thumbnail={bun ? bun.image : null}
         />
@@ -34,7 +34,7 @@ export const Burger = () => {
             extraClass={cn(burgerStyles.item, 'ml-8 mt-4', (bun ? '' : burgerStyles.hide_icons))}
             type={'bottom'}
             isLocked={true}
-            text={bun ? bun.name + ' (низ)' : 'Выберете булку и начинку'}
+            text={bun ? bun.name + ' (низ)' : 'Выберете булку' + (middle.length === 0 ? ' и начинку' : '')}
             price={bun ? bun.price : null}
             thumbnail={bun ? bun.image : null}
         />
