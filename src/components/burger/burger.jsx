@@ -1,8 +1,10 @@
-import {useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import cn from 'classnames';
 import {ConstructorElement} from '@ya.praktikum/react-developer-burger-ui-components';
 import {DraggableIngredient} from '../draggable-ingredient/draggable-ingredient';
 import burgerStyles from './burger.module.css';
+import {useDrop} from 'react-dnd';
+import {addIngredient} from '../../services/actions/burger-constructor';
 
 export const Burger = () => {
 
@@ -11,14 +13,24 @@ export const Burger = () => {
     middle: store.burgerConstructor.middle,
   }))
 
+  const dispatch = useDispatch();
+
+  const [, dropRef] = useDrop({
+    accept: 'ingredient',
+    drop(ingredient) {
+      dispatch(addIngredient(ingredient));
+    },
+
+  })
+
   return (
-      <div className={burgerStyles.order}>
+      <div className={burgerStyles.order} ref={dropRef}>
         <ConstructorElement
             key={(bun ? bun.uuid : '') + '_top'}
             extraClass={cn(burgerStyles.item, 'ml-8 mb-4', (bun ? '' : burgerStyles.hide_icons))}
             type={'top'}
             isLocked={true}
-            text={bun ? bun.name + ' (низ)' : 'Выберете булку' + (middle.length === 0 ? ' и начинку' : '')}
+            text={bun ? bun.name + ' (низ)' : 'Перетащите сюда булку' + (middle.length === 0 ? ' и начинку' : '')}
             price={bun ? bun.price : null}
             thumbnail={bun ? bun.image : null}
         />
@@ -34,7 +46,7 @@ export const Burger = () => {
             extraClass={cn(burgerStyles.item, 'ml-8 mt-4', (bun ? '' : burgerStyles.hide_icons))}
             type={'bottom'}
             isLocked={true}
-            text={bun ? bun.name + ' (низ)' : 'Выберете булку' + (middle.length === 0 ? ' и начинку' : '')}
+            text={bun ? bun.name + ' (низ)' : 'Перетащите сюда булку' + (middle.length === 0 ? ' и начинку' : '')}
             price={bun ? bun.price : null}
             thumbnail={bun ? bun.image : null}
         />
