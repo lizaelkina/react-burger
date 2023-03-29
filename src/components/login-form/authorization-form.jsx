@@ -21,18 +21,20 @@ export const AuthorizationForm = () => {
       <section className={cn(authorizationFormStyles.card)}>
         <span className='text text_type_main-medium mb-6'>Вход</span>
         <form className={cn(authorizationFormStyles.form, 'mb-20')}>
-          <EmailInput name={'email'}
+          <EmailInput autocomplete="off"
+                      name={'email'}
                       value={valueEmail}
                       size={'default'}
                       isIcon={false}
                       onChange={e => onChange}
           />
-          <Input name={'password'}
+          <Input autocomplete="off"
+                 name={'password'}
                  value={valueInput}
                  type={'text'}
                  placeholder={'Пароль'}
                  error={false}
-                 errorText={'Ошибка'}
+                 errorText={'Неверный пароль'}
                  ref={inputRef}
                  size={'default'}
                  icon={'ShowIcon'}
@@ -40,7 +42,7 @@ export const AuthorizationForm = () => {
                  onIconClick={onIconClick}
           />
           <Button extraClass={cn(authorizationFormStyles.button_primary)}
-                  htmlType='button'
+                  htmlType='submit'
                   type='primary'
                   size='medium'>
             Войти
