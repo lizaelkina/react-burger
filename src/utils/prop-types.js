@@ -15,4 +15,4 @@ export const ingredientPropTypes = PropTypes.shape({
   __v: PropTypes.number.isRequired
 })
 
-export const ingredientsPropTypes = PropTypes.arrayOf(ingredientPropTypes);
+export const ingredientsArrayTypes = PropTypes.arrayOf(ingredientPropTypes);

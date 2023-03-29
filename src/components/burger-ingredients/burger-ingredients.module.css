@@ -1,5 +1,5 @@
 .section {
-  max-width: 600px;
+  width: 600px;
   display: flex;
   flex-direction: column;
 }
@@ -11,4 +11,5 @@
 .scroll {
   overflow-y: auto;
   overflow-x: hidden;
+  cursor: pointer;
 }

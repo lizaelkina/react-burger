@@ -6,6 +6,7 @@
 }
 
 .card__image {
+  min-height: 240px;
   padding-left: 20px;
   padding-right: 20px;
 }

@@ -1,27 +1,40 @@
-import {useState} from 'react';
-import PropTypes from 'prop-types';
+import {useMemo} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
+import {useDrag} from 'react-dnd';
 import cn from 'classnames';
 import {Counter, CurrencyIcon} from '@ya.praktikum/react-developer-burger-ui-components';
-import {IngredientDetails} from '../ingredient-details/ingredient-details';
 import {ingredientPropTypes} from '../../utils/prop-types';
+import {selectIngredient} from '../../services/actions/selected-ingredient';
 import burgerIngredientStyles from './burger-ingredient.module.css';
 
-export const BurgerIngredient = ({ingredient, count}) => {
+export const BurgerIngredient = ({ingredient}) => {
 
-  const [isOpenModal, setIsOpenModal] = useState(false);
+  const dispatch = useDispatch();
 
-  function handleOpenModal() {
-    setIsOpenModal(true);
-  }
+  const [, dragRef] = useDrag({
+    type: 'ingredient',
+    item: ingredient,
+  });
 
-  function handleCloseModal() {
-    setIsOpenModal(false);
-  }
+  const {bun, middle} = useSelector(store => ({
+    bun: store.burgerConstructor.bun,
+    middle: store.burgerConstructor.middle,
+  }))
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const count = useMemo(() => {
+    const allIngredients = bun ? [...middle, bun, bun] : middle;
+    return allIngredients.filter(item => item._id === ingredient._id).length
+  }, [bun, middle, ingredient._id]);
 
   return (
       <>
-        <li className={burgerIngredientStyles.card} onClick={handleOpenModal}>
-          <img className='p-4' src={ingredient.image} alt={ingredient.name}/>
+        <li className={burgerIngredientStyles.card}
+            onClick={() => dispatch(selectIngredient(ingredient))}>
+          <img className={cn(burgerIngredientStyles.card__image, 'p-4')}
+               ref={dragRef}
+               src={ingredient.image}
+               alt={ingredient.name}/>
           {
             count > 0 ? <Counter count={count} size='default' extraClass='m-1'/> : null
           }
@@ -33,13 +46,10 @@ export const BurgerIngredient = ({ingredient, count}) => {
               {ingredient.name}
             </span>
         </li>
-        {isOpenModal && <IngredientDetails ingredient={ingredient} onClose={handleCloseModal}/>}
       </>
-
   );
 }
 
 BurgerIngredient.propTypes = {
   ingredient: ingredientPropTypes.isRequired,
-  count: PropTypes.number.isRequired
 }

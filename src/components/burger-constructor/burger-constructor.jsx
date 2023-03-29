@@ -1,40 +1,63 @@
-import {useState} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
 import cn from 'classnames';
-import {Button, CurrencyIcon} from '@ya.praktikum/react-developer-burger-ui-components';
-import {ConstructorList} from '../constructor-list/constructor-list';
+import {Button} from '@ya.praktikum/react-developer-burger-ui-components';
+import {Burger} from '../burger/burger';
+import {OrderTotal} from '../order-total/order-total';
+import {Modal} from '../modal/modal';
 import {OrderDetails} from '../order-details/order-details';
-import {ingredientsPropTypes} from '../../utils/prop-types';
+import {closeOrderModal, startCreatingOrder} from '../../services/actions/create-order';
+import {clearIngredients} from '../../services/actions/burger-constructor';
 import burgerConstructorStyles from './burger-constructor.module.css';
 
-export const BurgerConstructor = ({ingredients}) => {
+export const BurgerConstructor = () => {
 
-  const [isOpenModal, setIsOpenModal] = useState(false);
+  const dispatch = useDispatch();
 
-  function handleOpenModal() {
-    setIsOpenModal(true);
+  const {bun, middle, isOpenModal, isOrderProcessing, isOrderCreated} = useSelector(store => ({
+    bun: store.burgerConstructor.bun,
+    middle: store.burgerConstructor.middle,
+    isOpenModal: store.createOrder.isOpenModal,
+    isOrderProcessing: store.createOrder.isLoading,
+    isOrderCreated: store.createOrder.success,
+  }))
+
+  const isButtonDisabled = bun === null || middle.length === 0;
+
+  function handleCreateOrder() {
+    const ingredientIdList = [...middle, bun, bun].map(item => item._id);
+    dispatch(startCreatingOrder(ingredientIdList));
   }
 
-  function handleCloseModal() {
-    setIsOpenModal(false);
+  function handleClickCloseModal() {
+    if (!isOrderProcessing) {
+      dispatch(closeOrderModal());
+    }
+    if (isOrderCreated) {
+      dispatch(clearIngredients());
+    }
   }
 
   return (
-      <section className={cn(burgerConstructorStyles.section, 'pt-25 pl-3 pb-10')} aria-label='Конструктор бургера'>
-        <ConstructorList ingredients={ingredients}/>
-        <div className={cn(burgerConstructorStyles.price, 'mt-10 mr-4')}>
-          <div>
-            <span className='text text_type_digits-medium mr-4'>610</span>
-            <CurrencyIcon type='primary'/>
+      <>
+        <section className={cn(burgerConstructorStyles.section, 'pt-25 pl-3 pb-10')} aria-label='Конструктор бургера'>
+          <Burger/>
+          <div className={cn(burgerConstructorStyles.checkout, 'mt-10 mr-4')}>
+            <OrderTotal/>
+            <Button htmlType='button'
+                    type='primary'
+                    size='large'
+                    extraClass={burgerConstructorStyles.button}
+                    disabled={isButtonDisabled}
+                    onClick={handleCreateOrder}>
+              Оформить заказ
+            </Button>
           </div>
-          <Button htmlType='button' type='primary' size='large' onClick={handleOpenModal}>
-            Оформить заказ
-          </Button>
-          {isOpenModal && <OrderDetails onClose={handleCloseModal}/>}
-        </div>
-      </section>
-  );
-}
+        </section>
 
-BurgerConstructor.propTypes = {
-  ingredients: ingredientsPropTypes.isRequired
+        {isOpenModal &&
+            <Modal onClose={handleClickCloseModal}>
+              <OrderDetails/>
+            </Modal>}
+      </>
+  );
 }
