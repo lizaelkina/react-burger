@@ -1,7 +1,7 @@
 import {useDispatch, useSelector} from 'react-redux';
 import cn from 'classnames';
 import {Button} from '@ya.praktikum/react-developer-burger-ui-components';
-import {Burger} from '../burger/burger';
+import {Burger} from './burger/burger';
 import {OrderTotal} from '../order-total/order-total';
 import {Modal} from '../modal/modal';
 import {OrderDetails} from '../order-details/order-details';

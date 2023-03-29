@@ -3,8 +3,8 @@ import {useDispatch, useSelector} from 'react-redux';
 import {useDrag} from 'react-dnd';
 import cn from 'classnames';
 import {Counter, CurrencyIcon} from '@ya.praktikum/react-developer-burger-ui-components';
-import {ingredientPropTypes} from '../../utils/prop-types';
-import {selectIngredient} from '../../services/actions/selected-ingredient';
+import {ingredientPropTypes} from '../../../utils/prop-types';
+import {selectIngredient} from '../../../services/actions/selected-ingredient';
 import burgerIngredientStyles from './burger-ingredient.module.css';
 
 export const BurgerIngredient = ({ingredient}) => {

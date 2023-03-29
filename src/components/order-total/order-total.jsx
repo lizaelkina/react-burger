@@ -1,6 +1,6 @@
+import {useMemo} from 'react';
 import {useSelector} from 'react-redux';
 import {CurrencyIcon} from '@ya.praktikum/react-developer-burger-ui-components';
-import {useMemo} from 'react';
 
 export const OrderTotal = () => {
 

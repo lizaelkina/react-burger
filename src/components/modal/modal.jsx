@@ -3,7 +3,7 @@ import {createPortal} from 'react-dom';
 import PropTypes from 'prop-types';
 import cn from 'classnames';
 import {CloseIcon} from '@ya.praktikum/react-developer-burger-ui-components';
-import {ModalOverlay} from '../modal-overlay/modal-overlay';
+import {ModalOverlay} from './modal-overlay/modal-overlay';
 import modalStyles from './modal.module.css';
 
 const modalRoot = document.getElementById('modals');

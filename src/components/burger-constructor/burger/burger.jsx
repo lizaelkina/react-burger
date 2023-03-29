@@ -3,7 +3,7 @@ import {useDrop} from 'react-dnd';
 import cn from 'classnames';
 import {ConstructorElement} from '@ya.praktikum/react-developer-burger-ui-components';
 import {DraggableIngredient} from '../draggable-ingredient/draggable-ingredient';
-import {addIngredient} from '../../services/actions/burger-constructor';
+import {addIngredient} from '../../../services/actions/burger-constructor';
 import burgerStyles from './burger.module.css';
 
 export const Burger = () => {

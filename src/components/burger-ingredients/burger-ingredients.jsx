@@ -5,7 +5,7 @@ import cn from 'classnames';
 import {Tab} from '@ya.praktikum/react-developer-burger-ui-components';
 import {loadIngredients, selectIngredientGroup} from '../../services/actions/burger-ingredients';
 import {clearSelectedIngredient} from '../../services/actions/selected-ingredient';
-import {IngredientGroup} from '../ingredient-group/ingredient-group';
+import {IngredientGroup} from './ingredient-group/ingredient-group';
 import {IngredientDetails} from '../ingredient-details/ingredient-details';
 import {Modal} from '../modal/modal';
 import {Loader} from '../loader/loader';

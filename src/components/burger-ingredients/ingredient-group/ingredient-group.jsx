@@ -2,7 +2,7 @@ import {forwardRef} from 'react';
 import PropTypes from 'prop-types';
 import cn from 'classnames';
 import {BurgerIngredient} from '../burger-ingredient/burger-ingredient';
-import {ingredientsArrayTypes} from '../../utils/prop-types';
+import {ingredientsArrayTypes} from '../../../utils/prop-types';
 import ingredientGroupStyles from './ingredient-group.module.css';
 
 export const IngredientGroup = forwardRef(({ingredients, title, id}, ref) => {
