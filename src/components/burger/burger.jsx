@@ -39,7 +39,7 @@ export const Burger = () => {
         <ul className={cn(burgerStyles.list, burgerStyles.scroll, 'custom-scroll')}>
           {
             middle.map(ingredient => {
-              return <DraggableIngredient ingredient={ingredient} key={ingredient.uuid}/>
+              return (<DraggableIngredient ingredient={ingredient} key={ingredient.uuid}/>)
             })
           }
         </ul>

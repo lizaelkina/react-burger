@@ -9,19 +9,19 @@ import modalStyles from './modal.module.css';
 const modalRoot = document.getElementById('modals');
 
 export const Modal = ({title, onClose, children}) => {
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  function closePopupByEsc(event) {
-    if (event.key === 'Escape') {
-      onClose();
-    }
-  }
 
   useEffect(() => {
+    function closePopupByEsc(event) {
+      if (event.key === 'Escape') {
+        onClose();
+      }
+    }
+
     document.addEventListener('keydown', closePopupByEsc);
     return () => {
       document.removeEventListener('keydown', closePopupByEsc);
     }
-  }, [closePopupByEsc]);
+  }, [onClose])
 
   return createPortal(
       (

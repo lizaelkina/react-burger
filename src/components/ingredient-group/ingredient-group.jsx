@@ -12,8 +12,7 @@ export const IngredientGroup = forwardRef(({ingredients, title, id}, ref) => {
         <ul className={cn(ingredientGroupStyles.group, 'pt-6 pl-4 pb-10')} ref={ref}>
           {
             ingredients.map(ingredient => {
-              return <BurgerIngredient ingredient={ingredient}
-                                       key={ingredient._id}/>
+              return (<BurgerIngredient ingredient={ingredient} key={ingredient._id}/>)
             })
           }
         </ul>
