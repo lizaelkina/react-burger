@@ -15,7 +15,7 @@ export const OrderDetails = () => {
   }))
 
   return (
-      <div className={cn(orderDetailsStyles.card, 'pt-30 pl-25 pr-25 pb-30')}>
+      <section className={cn(orderDetailsStyles.card, 'pt-30 pl-25 pr-25 pb-30')}>
         {isLoading &&
             <div className={orderDetailsStyles.load}>
               <span className='text text_type_main-medium'>Формирование заказа...</span>
@@ -39,6 +39,6 @@ export const OrderDetails = () => {
               <span className='text text_type_main-default text_color_inactive'>Дождитесь готовности на орбитальной станции</span>
             </>
         }
-      </div>
+      </section>
   );
 }

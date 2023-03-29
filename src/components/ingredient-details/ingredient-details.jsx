@@ -6,7 +6,7 @@ import ingredientDetailsStyles from './ingredient-details.module.css';
 export const IngredientDetails = ({ingredient}) => {
 
   return (
-      <div className={cn(ingredientDetailsStyles.card, 'pb-15')}>
+      <section className={cn(ingredientDetailsStyles.card, 'pb-15')}>
         <img className={ingredientDetailsStyles.card__image} src={ingredient.image_large} alt={ingredient.name}/>
         <span className='text text_type_main-medium mt-4 mb-8'>{ingredient.name}</span>
         <div className={ingredientDetailsStyles.card__info}>
@@ -27,7 +27,7 @@ export const IngredientDetails = ({ingredient}) => {
             <span className='text text_type_main-default text_color_inactive'>{ingredient.carbohydrates}</span>
           </div>
         </div>
-      </div>
+      </section>
   );
 }
 
