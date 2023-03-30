@@ -24,6 +24,7 @@ export const AuthorizationForm = () => {
           <EmailInput autocomplete="off"
                       name={'email'}
                       value={valueEmail}
+                      placeholder={'email'}
                       size={'default'}
                       isIcon={false}
                       onChange={e => onChange}

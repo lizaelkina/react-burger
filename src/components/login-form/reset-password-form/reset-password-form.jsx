@@ -30,7 +30,7 @@ export const AuthorizationForm = () => {
                  onIconClick={onIconClick}
           />
           <Input autocomplete="off"
-                 name={'password'}
+                 name={'code'}
                  value={valueInput}
                  type={'text'}
                  placeholder={'Введите код из письма'}
