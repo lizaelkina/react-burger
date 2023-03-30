@@ -1,11 +1,9 @@
 import {useRef, useState} from 'react';
 import cn from 'classnames';
-import {EmailInput, Input, Tab} from '@ya.praktikum/react-developer-burger-ui-components';
+import {EmailInput, Input} from '@ya.praktikum/react-developer-burger-ui-components';
 import userProfileStyles from './user-profile.module.css'
 
 export const UserProfile = () => {
-
-  const [current, setCurrent] = useState('profile')
 
   const [valueEmail, setValueEmail] = useState('');
   const onChange = e => {
@@ -20,18 +18,20 @@ export const UserProfile = () => {
   }
 
   return (
-      <section className={cn(userProfileStyles.card)} aria-label='Личный кабинет пользователя'>
-        <nav className={cn(userProfileStyles.tab)}>
-          <Tab value='profile' active={current === 'profile'} onClick={setCurrent}>
-            <span className='text text_type_main-medium'>Профиль</span>
-          </Tab>
-          <Tab value='orders' active={current === 'orders'} onClick={setCurrent}>
+      <section className={userProfileStyles.section} aria-label='Личный кабинет пользователя'>
+        <nav className={userProfileStyles.nav}>
+          <a className={cn(userProfileStyles.link, userProfileStyles.link_type_current)} href='#'>
+            <span className='text text_type_main-medium text_color_primary'>Профиль</span>
+          </a>
+          <a className={userProfileStyles.link} href='#'>
             <span className='text text_type_main-medium'>История заказов</span>
-          </Tab>
-          <Tab value='exit' active={current === 'exit'} onClick={setCurrent}>
-            <span className={cn(userProfileStyles.text, 'text text_type_main-medium')}>Выход</span>
-          </Tab>
-          <span className='text text_type_main-small text_color_inactive mt-20'>В этом разделе вы можете<br></br>изменить свои персональные данные</span>
+          </a>
+          <a className={userProfileStyles.link} href='#'>
+            <span className='text text_type_main-medium'>Выход</span>
+          </a>
+          <span className='text text_type_main-small text_color_inactive mt-20'>
+            В этом разделе вы можете<br></br>изменить свои персональные данные
+          </span>
         </nav>
         <form className={cn(userProfileStyles.form, 'mb-20')}>
           <Input autoComplete='off'

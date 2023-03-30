@@ -8,13 +8,22 @@
 .main {
   overflow: hidden;
   display: flex;
-  align-items: center;
   justify-content: center;
   flex-grow: 1;
 }
 
-.container {
+.burger {
   height: 100%;
   display: flex;
   gap: 40px;
+}
+
+.login {
+  display: flex;
+  align-items: center;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
 }

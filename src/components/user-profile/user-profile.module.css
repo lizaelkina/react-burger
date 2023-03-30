@@ -1,26 +1,39 @@
-.card {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+.section {
   display: flex;
+  justify-content: center;
   gap: 60px;
 }
 
-.tab {
+.nav {
   width: 320px;
   display: flex;
   flex-direction: column;
 }
 
-.text {
-  align-items: start;
+.link {
+  min-width: 200px;
+  box-sizing: border-box;
+  padding: 16px 40px 16px 0;
+  text-decoration: none;
+  background-color: var(--background-alt);
+  box-shadow: inset 0 -1px 0 #2F2F37;
+  color: var(--text-inactive-color);
+  transition: var(--common-transition);
+}
+
+.link:hover {
+  color: var(--text-primary-color);
+}
+
+.link_type_current {
+  color: var(--text-primary-color);
+  box-shadow: inset 0 -2px 0 #4C4CFF;
+  pointer-events: none;
 }
 
 .form {
+  width: 860px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
   gap: 24px;
 }
