@@ -5,11 +5,11 @@ import {BurgerIngredient} from '../burger-ingredient/burger-ingredient';
 import {ingredientsArrayTypes} from '../../../utils/prop-types';
 import ingredientGroupStyles from './ingredient-group.module.css';
 
-export const IngredientGroup = forwardRef(({ingredients, title, id}, ref) => {
+export const IngredientGroup = forwardRef(({ingredients, title, id, titleRef}, ref) => {
   return (
       <>
-        <h2 className='text text_type_main-medium' id={id}>{title}</h2>
-        <ul className={cn(ingredientGroupStyles.group, 'pt-6 pl-4 pb-10')} ref={ref}>
+        <h2 className='text text_type_main-medium' id={id} ref={titleRef}>{title}</h2>
+        <ul className={cn(ingredientGroupStyles.group, 'pt-6 pl-4 pb-6')} ref={ref}>
           {
             ingredients.map(ingredient => {
               return (<BurgerIngredient ingredient={ingredient} key={ingredient._id}/>)

@@ -1,4 +1,4 @@
-import {useEffect, useMemo} from 'react';
+import {useEffect, useMemo, useRef} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {useInView} from 'react-intersection-observer';
 import cn from 'classnames';
@@ -15,9 +15,26 @@ import burgerIngredientsStyles from './burger-ingredients.module.css';
 export const BurgerIngredients = () => {
 
   const dispatch = useDispatch();
+
+  const {ingredients, isLoading, error, selectedGroup, selectedIngredient} = useSelector(store => ({
+    ingredients: store.burgerIngredients.ingredients,
+    isLoading: store.burgerIngredients.isLoading,
+    error: store.burgerIngredients.error,
+    selectedGroup: store.burgerIngredients.selectedGroup,
+    selectedIngredient: store.selectedIngredient.ingredient,
+  }))
+
+  const bun = useMemo(() => ingredients.filter(ingredient => ingredient.type === 'bun'), [ingredients]);
+  const main = useMemo(() => ingredients.filter(ingredient => ingredient.type === 'main'), [ingredients]);
+  const sauce = useMemo(() => ingredients.filter(ingredient => ingredient.type === 'sauce'), [ingredients]);
+
   const {ref: bunRef, inView: bunInView} = useInView();
   const {ref: sauceRef, inView: sauceInView} = useInView();
   const {ref: mainRef, inView: mainInView} = useInView();
+
+  const bunTitleRef = useRef(null);
+  const sauceTitleRef = useRef(null);
+  const mainTitleRef = useRef(null);
 
   useEffect(() => {
     dispatch(loadIngredients())
@@ -33,22 +50,17 @@ export const BurgerIngredients = () => {
     }
   }, [bunInView, sauceInView, mainInView, dispatch])
 
-  const {ingredients, isLoading, error, selectedGroup, selectedIngredient} = useSelector(store => ({
-    ingredients: store.burgerIngredients.ingredients,
-    isLoading: store.burgerIngredients.isLoading,
-    error: store.burgerIngredients.error,
-    selectedGroup: store.burgerIngredients.selectedGroup,
-    selectedIngredient: store.selectedIngredient.ingredient,
-  }))
-
-  const bun = useMemo(() => ingredients.filter(ingredient => ingredient.type === 'bun'), [ingredients]);
-  const main = useMemo(() => ingredients.filter(ingredient => ingredient.type === 'main'), [ingredients]);
-  const sauce = useMemo(() => ingredients.filter(ingredient => ingredient.type === 'sauce'), [ingredients]);
-
   function handleClickTab(value) {
     dispatch(selectIngredientGroup(value));
-    const title = document.getElementById(value);
-    if (bunRef) title.scrollIntoView({behavior: 'smooth'});
+    let title;
+    if (value === 'bun') {
+      title = bunTitleRef.current;
+    } else if (value === 'sauce') {
+      title = sauceTitleRef.current;
+    } else if (value === 'main') {
+      title = mainTitleRef.current;
+    }
+    if (title) title.scrollIntoView({behavior: 'smooth'});
   }
 
   return (
@@ -70,9 +82,9 @@ export const BurgerIngredients = () => {
           {!isLoading && error && <ErrorMessage message={error}/>}
           {!isLoading && !error &&
               <div className={cn(burgerIngredientsStyles.scroll, 'custom-scroll')}>
-                <IngredientGroup title='Булки' ingredients={bun} id='bun' ref={bunRef}/>
-                <IngredientGroup title='Соусы' ingredients={sauce} id='sauce' ref={sauceRef}/>
-                <IngredientGroup title='Начинки' ingredients={main} id='main' ref={mainRef}/>
+                <IngredientGroup title='Булки' ingredients={bun} id='bun' ref={bunRef} titleRef={bunTitleRef}/>
+                <IngredientGroup title='Соусы' ingredients={sauce} id='sauce' ref={sauceRef} titleRef={sauceTitleRef}/>
+                <IngredientGroup title='Начинки' ingredients={main} id='main' ref={mainRef} titleRef={mainTitleRef}/>
               </div>
           }
         </section>
