@@ -1,6 +1,6 @@
 import React from 'react';
 import cn from 'classnames';
-import {ingredientPropTypes} from '../../utils/prop-types';
+import {ingredientPropTypes} from '../../../utils/prop-types';
 import ingredientDetailsStyles from './ingredient-details.module.css';
 
 export const IngredientDetails = ({ingredient}) => {
