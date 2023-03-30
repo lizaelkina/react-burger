@@ -3,7 +3,7 @@ import cn from 'classnames';
 import {Button, Input} from '@ya.praktikum/react-developer-burger-ui-components';
 import resetFormStyles from './reset-password-form.module.css';
 
-export const AuthorizationForm = () => {
+export const ResetPasswordForm = () => {
 
   const [valueInput, setValueInput] = useState('');
   const inputRef = useRef(null);
@@ -16,7 +16,7 @@ export const AuthorizationForm = () => {
       <section className={cn(resetFormStyles.card)}>
         <h2 className='text text_type_main-medium mb-6'>Восстановление пароля</h2>
         <form className={cn(resetFormStyles.form, 'mb-20')}>
-          <Input autocomplete="off"
+          <Input autoComplete='off'
                  name={'password'}
                  value={valueInput}
                  type={'text'}
@@ -29,7 +29,7 @@ export const AuthorizationForm = () => {
                  onChange={e => setValueInput(e.target.value)}
                  onIconClick={onIconClick}
           />
-          <Input autocomplete="off"
+          <Input autoComplete='off'
                  name={'code'}
                  value={valueInput}
                  type={'text'}

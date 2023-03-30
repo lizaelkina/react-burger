@@ -19,9 +19,9 @@ export const RegistrationForm = () => {
 
   return (
       <section className={cn(registrationFormStyles.card)}>
-        <span className='text text_type_main-medium mb-6'>Регистрация</span>
-        <h2 className={cn(registrationFormStyles.form, 'mb-20')}>
-          <Input autocomplete="off"
+        <h2 className='text text_type_main-medium mb-6'>Регистрация</h2>
+        <form className={cn(registrationFormStyles.form, 'mb-20')}>
+          <Input autoComplete='off'
                  name={'name'}
                  value={valueInput}
                  type={'text'}
@@ -33,7 +33,7 @@ export const RegistrationForm = () => {
                  onChange={e => setValueInput(e.target.value)}
                  onIconClick={onIconClick}
           />
-          <EmailInput autocomplete="off"
+          <EmailInput autoComplete='off'
                       name={'email'}
                       value={valueEmail}
                       placeholder={'email'}
@@ -41,7 +41,7 @@ export const RegistrationForm = () => {
                       isIcon={false}
                       onChange={e => onChange}
           />
-          <Input autocomplete="off"
+          <Input autoComplete='off'
                  name={'password'}
                  value={valueInput}
                  type={'text'}
@@ -60,7 +60,7 @@ export const RegistrationForm = () => {
                   size='medium'>
             Зарегистрироваться
           </Button>
-        </h2>
+        </form>
         <div>
           <span className='text text_type_main-default text_color_inactive'>Уже зарегистрированы?</span>
           <Button extraClass={cn(registrationFormStyles.button_secondary, 'ml-2')}

@@ -21,7 +21,7 @@ export const AuthorizationForm = () => {
       <section className={cn(authorizationFormStyles.card)}>
         <h2 className='text text_type_main-medium mb-6'>Вход</h2>
         <form className={cn(authorizationFormStyles.form, 'mb-20')}>
-          <EmailInput autocomplete="off"
+          <EmailInput autoComplete='off'
                       name={'email'}
                       value={valueEmail}
                       placeholder={'email'}
@@ -29,7 +29,7 @@ export const AuthorizationForm = () => {
                       isIcon={false}
                       onChange={e => onChange}
           />
-          <Input autocomplete="off"
+          <Input autoComplete='off'
                  name={'password'}
                  value={valueInput}
                  type={'text'}

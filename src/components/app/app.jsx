@@ -14,6 +14,7 @@ export const App = () => {
           <DndProvider backend={HTML5Backend}>
             <BurgerIngredients/>
             <BurgerConstructor/>
+            {/*<UserProfile/>*/}
           </DndProvider>
         </main>
       </div>
