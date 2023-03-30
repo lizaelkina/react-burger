@@ -13,7 +13,7 @@ export const ResetPasswordForm = () => {
   }
 
   return (
-      <section className={cn(resetFormStyles.card)}>
+      <section className={cn(resetFormStyles.container)}>
         <h2 className='text text_type_main-medium mb-6'>Восстановление пароля</h2>
         <form className={cn(resetFormStyles.form, 'mb-20')}>
           <Input autoComplete='off'
