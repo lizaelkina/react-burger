@@ -1,7 +1,7 @@
 .section {
-  display: flex;
-  justify-content: center;
-  gap: 60px;
+  display: grid;
+  grid-template-columns: 1fr 480px 1fr;
+  column-gap: 60px;
 }
 
 .nav {
@@ -32,7 +32,6 @@
 }
 
 .form {
-  width: 860px;
   display: flex;
   flex-direction: column;
   gap: 24px;
