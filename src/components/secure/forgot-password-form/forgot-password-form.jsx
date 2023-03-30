@@ -11,7 +11,7 @@ export const ForgotPasswordForm = () => {
   }
 
   return (
-      <section className={cn(forgotFormStyles.card)}>
+      <section className={cn(forgotFormStyles.container)}>
         <h2 className='text text_type_main-medium mb-6'>Восстановление пароля</h2>
         <form className={cn(forgotFormStyles.form, 'mb-20')}>
           <EmailInput autoComplete='off'
