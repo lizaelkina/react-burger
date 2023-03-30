@@ -21,7 +21,6 @@ export const BurgerIngredient = ({ingredient}) => {
     middle: store.burgerConstructor.middle,
   }))
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   const count = useMemo(() => {
     const allIngredients = bun ? [...middle, bun, bun] : middle;
     return allIngredients.filter(item => item._id === ingredient._id).length

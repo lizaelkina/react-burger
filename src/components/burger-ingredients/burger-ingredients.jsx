@@ -48,14 +48,14 @@ export const BurgerIngredients = () => {
   function handleClickTab(value) {
     dispatch(selectIngredientGroup(value));
     const title = document.getElementById(value);
-    if (title) title.scrollIntoView({behavior: 'smooth'});
+    if (bunRef) title.scrollIntoView({behavior: 'smooth'});
   }
 
   return (
       <>
         <section className={burgerIngredientsStyles.section}>
           <h1 className='text text_type_main-large mt-10 mb-5'>Соберите бургер</h1>
-          <div className={cn(burgerIngredientsStyles.tab, 'mb-10')}>
+          <aside className={cn(burgerIngredientsStyles.tab, 'mb-10')}>
             <Tab value='bun' active={selectedGroup === 'bun'} onClick={handleClickTab}>
               Булки
             </Tab>
@@ -65,7 +65,7 @@ export const BurgerIngredients = () => {
             <Tab value='main' active={selectedGroup === 'main'} onClick={handleClickTab}>
               Начинки
             </Tab>
-          </div>
+          </aside>
           {isLoading && <Loader/>}
           {!isLoading && error && <ErrorMessage message={error}/>}
           {!isLoading && !error &&
