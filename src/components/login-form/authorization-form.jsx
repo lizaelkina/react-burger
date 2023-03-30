@@ -19,7 +19,7 @@ export const AuthorizationForm = () => {
 
   return (
       <section className={cn(authorizationFormStyles.card)}>
-        <span className='text text_type_main-medium mb-6'>Вход</span>
+        <h2 className='text text_type_main-medium mb-6'>Вход</h2>
         <form className={cn(authorizationFormStyles.form, 'mb-20')}>
           <EmailInput autocomplete="off"
                       name={'email'}

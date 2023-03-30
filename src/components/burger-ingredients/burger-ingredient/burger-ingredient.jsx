@@ -42,9 +42,9 @@ export const BurgerIngredient = ({ingredient}) => {
             <span className='text text_type_digits-default'>{ingredient.price}</span>
             <CurrencyIcon type='primary'/>
           </div>
-          <span className={cn(burgerIngredientStyles.card__name, 'text text_type_main-default')}>
+          <h3 className={cn(burgerIngredientStyles.card__name, 'text text_type_main-default')}>
               {ingredient.name}
-            </span>
+          </h3>
         </li>
       </>
   );

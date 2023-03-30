@@ -14,7 +14,7 @@ export const AuthorizationForm = () => {
 
   return (
       <section className={cn(resetFormStyles.card)}>
-        <span className='text text_type_main-medium mb-6'>Восстановление пароля</span>
+        <h2 className='text text_type_main-medium mb-6'>Восстановление пароля</h2>
         <form className={cn(resetFormStyles.form, 'mb-20')}>
           <Input autocomplete="off"
                  name={'password'}

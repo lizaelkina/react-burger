@@ -20,7 +20,7 @@ export const RegistrationForm = () => {
   return (
       <section className={cn(registrationFormStyles.card)}>
         <span className='text text_type_main-medium mb-6'>Регистрация</span>
-        <form className={cn(registrationFormStyles.form, 'mb-20')}>
+        <h2 className={cn(registrationFormStyles.form, 'mb-20')}>
           <Input autocomplete="off"
                  name={'name'}
                  value={valueInput}
@@ -60,7 +60,7 @@ export const RegistrationForm = () => {
                   size='medium'>
             Зарегистрироваться
           </Button>
-        </form>
+        </h2>
         <div>
           <span className='text text_type_main-default text_color_inactive'>Уже зарегистрированы?</span>
           <Button extraClass={cn(registrationFormStyles.button_secondary, 'ml-2')}
