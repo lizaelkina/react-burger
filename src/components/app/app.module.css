@@ -1,14 +1,20 @@
 .page {
   min-width: 1280px;
   height: 100vh;
-  margin: 0 auto;
   display: flex;
   flex-direction: column;
 }
 
 .main {
-  margin: 0 auto;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+}
+
+.container {
+  height: 100%;
   display: flex;
   gap: 40px;
 }

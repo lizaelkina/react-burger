@@ -11,10 +11,12 @@ export const App = () => {
       <div className={appStyles.page}>
         <AppHeader/>
         <main className={appStyles.main}>
-          <DndProvider backend={HTML5Backend}>
-            <BurgerIngredients/>
-            <BurgerConstructor/>
-          </DndProvider>
+          <div className={appStyles.container}>
+            <DndProvider backend={HTML5Backend}>
+              <BurgerIngredients/>
+              <BurgerConstructor/>
+            </DndProvider>
+          </div>
         </main>
       </div>
   );
