@@ -9,7 +9,7 @@ export const IngredientGroup = forwardRef(({ingredients, title, id, titleRef}, r
   return (
       <>
         <h2 className='text text_type_main-medium' id={id} ref={titleRef}>{title}</h2>
-        <ul className={cn(ingredientGroupStyles.group, 'pt-6 pl-4 pb-6')} ref={ref}>
+        <ul className={cn(ingredientGroupStyles.group, 'mt-6 ml-4 mb-10')} ref={ref}>
           {
             ingredients.map(ingredient => {
               return (<BurgerIngredient ingredient={ingredient} key={ingredient._id}/>)
