@@ -79,7 +79,9 @@ export const BurgerIngredients = () => {
             </Tab>
           </aside>
           {isLoading && <Loader/>}
-          {!isLoading && error && <ErrorMessage message={error}/>}
+          {!isLoading && error &&
+              <ErrorMessage message={error} title={'Ошибка загрузки данных. Попробуйте перезагрузить страницу.'}/>
+          }
           {!isLoading && !error &&
               <div className={cn(burgerIngredientsStyles.scroll, 'custom-scroll')}>
                 <IngredientGroup title='Булки' ingredients={bun} id='bun' ref={bunRef} titleRef={bunTitleRef}/>

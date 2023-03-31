@@ -22,7 +22,9 @@ export const OrderDetails = () => {
               <Loader/>
             </div>
         }
-        {!isLoading && !success && <ErrorMessage message={errorMessage}/>}
+        {!isLoading && !success &&
+            <ErrorMessage message={errorMessage} title={'Ошибка оформления заказа. Попробуйте ещё раз.'}/>
+        }
         {success &&
             <>
               <span className={cn(orderDetailsStyles.shadow, 'text text_type_digits-large mb-8')}>
