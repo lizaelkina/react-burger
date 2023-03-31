@@ -7,7 +7,7 @@ export const BurgerPrice = () => {
   const {bun, middle} = useSelector(store => ({
     bun: store.burgerConstructor.bun,
     middle: store.burgerConstructor.middle,
-  }))
+  }));
 
   const total = useMemo(() => {
     const allIngredients = bun ? [...middle, bun, bun] : middle;

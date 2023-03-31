@@ -22,7 +22,7 @@ export const BurgerIngredients = () => {
     error: store.burgerIngredients.error,
     selectedGroup: store.burgerIngredients.selectedGroup,
     selectedIngredient: store.selectedIngredient.ingredient,
-  }))
+  }));
 
   const bun = useMemo(() => ingredients.filter(ingredient => ingredient.type === 'bun'), [ingredients]);
   const main = useMemo(() => ingredients.filter(ingredient => ingredient.type === 'main'), [ingredients]);
@@ -38,7 +38,7 @@ export const BurgerIngredients = () => {
 
   useEffect(() => {
     dispatch(loadIngredients())
-  }, [dispatch])
+  }, [dispatch]);
 
   useEffect(() => {
     if (bunInView) {
@@ -48,7 +48,7 @@ export const BurgerIngredients = () => {
     } else if (mainInView) {
       dispatch(selectIngredientGroup('main'));
     }
-  }, [bunInView, sauceInView, mainInView, dispatch])
+  }, [bunInView, sauceInView, mainInView, dispatch]);
 
   function handleClickTab(value) {
     dispatch(selectIngredientGroup(value));

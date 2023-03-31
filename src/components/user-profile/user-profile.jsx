@@ -11,6 +11,7 @@ export const UserProfile = () => {
   }
 
   const [valueInput, setValueInput] = useState('');
+
   const inputRef = useRef(null);
   const onIconClick = () => {
     setTimeout(() => inputRef.current.focus(), 0)

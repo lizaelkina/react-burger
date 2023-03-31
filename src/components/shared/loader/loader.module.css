@@ -7,7 +7,7 @@
 }
 
 .loader {
-  border: 5px solid var(--background-element);
+  border: 8px solid var(--background-element);
   border-top-color: var(--text-inactive-color);
   border-radius: 50%;
   width: 40px;
@@ -16,6 +16,10 @@
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

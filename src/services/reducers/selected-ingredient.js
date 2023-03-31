@@ -1,7 +1,7 @@
 import {CLEAR_SELECTED_INGREDIENT, SELECT_INGREDIENT} from '../actions/selected-ingredient';
 
 const initialState = {
- ingredient: null,
+  ingredient: null,
 };
 
 export const selectedIngredientReducer = (state = initialState, action) => {

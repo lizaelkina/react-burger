@@ -18,7 +18,7 @@ export const RegistrationForm = () => {
   }
 
   return (
-      <section className={cn(registrationFormStyles.container)}>
+      <section className={registrationFormStyles.container}>
         <h2 className='text text_type_main-medium mb-6'>Регистрация</h2>
         <form className={cn(registrationFormStyles.form, 'mb-20')}>
           <Input autoComplete='off'
@@ -54,7 +54,7 @@ export const RegistrationForm = () => {
                  onChange={e => setValueInput(e.target.value)}
                  onIconClick={onIconClick}
           />
-          <Button extraClass={cn(registrationFormStyles.button_primary)}
+          <Button extraClass={registrationFormStyles.button_primary}
                   htmlType='submit'
                   type='primary'
                   size='medium'>

@@ -19,7 +19,7 @@ export const BurgerIngredient = ({ingredient}) => {
   const {bun, middle} = useSelector(store => ({
     bun: store.burgerConstructor.bun,
     middle: store.burgerConstructor.middle,
-  }))
+  }));
 
   const count = useMemo(() => {
     const allIngredients = bun ? [...middle, bun, bun] : middle;
@@ -42,7 +42,7 @@ export const BurgerIngredient = ({ingredient}) => {
             <CurrencyIcon type='primary'/>
           </div>
           <h3 className={cn(burgerIngredientStyles.card__name, 'text text_type_main-default')}>
-              {ingredient.name}
+            {ingredient.name}
           </h3>
         </li>
       </>

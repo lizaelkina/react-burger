@@ -5,7 +5,7 @@ import ingredientInfoStyles from './ingredient-info.module.css';
 export const IngredientInfo = ({ingredient}) => {
 
   return (
-      <section className={ingredientInfoStyles.container}>
+      <section className={ingredientInfoStyles.section}>
         <h2 className='text text_type_main-large'>Детали ингредиента</h2>
         <IngredientDetails ingredient={ingredient}/>
       </section>

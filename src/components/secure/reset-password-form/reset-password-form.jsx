@@ -13,7 +13,7 @@ export const ResetPasswordForm = () => {
   }
 
   return (
-      <section className={cn(resetFormStyles.container)}>
+      <section className={resetFormStyles.container}>
         <h2 className='text text_type_main-medium mb-6'>Восстановление пароля</h2>
         <form className={cn(resetFormStyles.form, 'mb-20')}>
           <Input autoComplete='off'
@@ -41,7 +41,7 @@ export const ResetPasswordForm = () => {
                  onChange={e => setValueInput(e.target.value)}
                  onIconClick={onIconClick}
           />
-          <Button extraClass={cn(resetFormStyles.button_primary)}
+          <Button extraClass={resetFormStyles.button_primary}
                   htmlType='submit'
                   type='primary'
                   size='medium'>

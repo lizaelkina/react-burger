@@ -24,5 +24,5 @@ IngredientGroup.propTypes = {
   ingredients: ingredientsArrayTypes.isRequired,
   title: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
-  titleRef: refPropTypes.isRequired
+  titleRef: refPropTypes.isRequired,
 }

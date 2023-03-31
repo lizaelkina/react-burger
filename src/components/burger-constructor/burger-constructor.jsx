@@ -19,7 +19,7 @@ export const BurgerConstructor = () => {
     isOpenModal: store.createOrder.isOpenModal,
     isOrderProcessing: store.createOrder.isLoading,
     isOrderCreated: store.createOrder.success,
-  }))
+  }));
 
   const isButtonDisabled = bun === null || middle.length === 0;
 

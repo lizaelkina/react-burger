@@ -11,7 +11,7 @@ export const Burger = () => {
   const {bun, middle} = useSelector(store => ({
     bun: store.burgerConstructor.bun,
     middle: store.burgerConstructor.middle,
-  }))
+  }));
 
   const dispatch = useDispatch();
 
@@ -23,7 +23,7 @@ export const Burger = () => {
     collect: monitor => ({
       isHover: monitor.isOver(),
     })
-  })
+  });
 
   return (
       <div className={cn(burgerStyles.order, isHover ? burgerStyles.order_drop : '')} ref={dropRef}>

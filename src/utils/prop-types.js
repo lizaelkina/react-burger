@@ -16,4 +16,5 @@ export const ingredientPropTypes = PropTypes.shape({
 })
 
 export const ingredientsArrayTypes = PropTypes.arrayOf(ingredientPropTypes);
-export const refPropTypes = PropTypes.shape({ current: PropTypes.instanceOf(Element) });
+
+export const refPropTypes = PropTypes.shape({current: PropTypes.instanceOf(Element)});

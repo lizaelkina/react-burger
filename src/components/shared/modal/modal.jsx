@@ -16,12 +16,11 @@ export const Modal = ({title, onClose, children}) => {
         onClose();
       }
     }
-
     document.addEventListener('keydown', closePopupByEsc);
     return () => {
       document.removeEventListener('keydown', closePopupByEsc);
     }
-  }, [onClose])
+  }, [onClose]);
 
   return createPortal(
       (
@@ -33,12 +32,12 @@ export const Modal = ({title, onClose, children}) => {
                     <header className={cn(modalStyles.modal__header, 'pt-10 pl-10 pr-10')}>
                       <h2 className='text text_type_main-large'>{title}</h2>
                       <button className={modalStyles.modal__close} aria-label='Закрыть окно'>
-                        <CloseIcon onClick={onClose} type='primary'/>
+                        <CloseIcon type='primary' onClick={onClose}/>
                       </button>
                     </header> :
                     <button className={cn(modalStyles.modal__close, modalStyles.modal__close_absolute)}
                             aria-label='Закрыть окно'>
-                      <CloseIcon onClick={onClose} type='primary'/>
+                      <CloseIcon type='primary' onClick={onClose}/>
                     </button>
               }
               {children}
@@ -50,11 +49,11 @@ export const Modal = ({title, onClose, children}) => {
 }
 
 Modal.defaultProps = {
-  title: ''
+  title: '',
 }
 
 Modal.propTypes = {
   title: PropTypes.string.isRequired,
   onClose: PropTypes.func.isRequired,
-  children: PropTypes.node.isRequired
+  children: PropTypes.node.isRequired,
 }

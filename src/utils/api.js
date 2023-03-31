@@ -24,6 +24,7 @@ const request = (endpoint, options) => {
 }
 
 export const getIngredients = () => request('ingredients');
+
 export const createOrder = (ingredientIdList) => request('orders',
     {
       method: 'POST',

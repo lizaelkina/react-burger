@@ -18,7 +18,7 @@ export const AuthorizationForm = () => {
   }
 
   return (
-      <section className={cn(authorizationFormStyles.container)}>
+      <section className={authorizationFormStyles.container}>
         <h2 className='text text_type_main-medium mb-6'>Вход</h2>
         <form className={cn(authorizationFormStyles.form, 'mb-20')}>
           <EmailInput autoComplete='off'
@@ -42,7 +42,7 @@ export const AuthorizationForm = () => {
                  onChange={e => setValueInput(e.target.value)}
                  onIconClick={onIconClick}
           />
-          <Button extraClass={cn(authorizationFormStyles.button_primary)}
+          <Button extraClass={authorizationFormStyles.button_primary}
                   htmlType='submit'
                   type='primary'
                   size='medium'>

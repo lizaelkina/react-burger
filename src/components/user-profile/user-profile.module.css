@@ -1,6 +1,6 @@
 .section {
   display: grid;
-  grid-template-columns: 1fr 480px 1fr;
+  grid-template-columns: 1fr fit-content(480px) 1fr;
   column-gap: 60px;
 }
 

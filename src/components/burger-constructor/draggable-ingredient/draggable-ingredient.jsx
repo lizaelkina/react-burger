@@ -57,7 +57,7 @@ export const DraggableIngredient = ({ingredient}) => {
     collect: (monitor) => ({
       isDragging: monitor.isDragging(),
     }),
-  })
+  });
 
   drag(drop(ref));
 
