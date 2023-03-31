@@ -16,5 +16,11 @@
 .burger {
   height: 100%;
   display: flex;
-  gap: 40px;
+  column-gap: 40px;
+}
+
+.profile {
+  display: grid;
+  grid-template-columns: 1fr fit-content(100%) 1fr;
+  column-gap: 60px;
 }

@@ -1,13 +1,14 @@
 import {DndProvider} from 'react-dnd';
 import {HTML5Backend} from 'react-dnd-html5-backend';
 import {AppHeader} from '../shared/app-header/app-header';
-import {BurgerIngredients} from '../burger-ingredients/burger-ingredients';
-import {BurgerConstructor} from '../burger-constructor/burger-constructor';
 // import {AuthorizationForm} from '../secure/authorization-form/authorization-form';
 // import {RegistrationForm} from '../secure/registration-form/registration-form';
 // import {ForgotPasswordForm} from '../secure/forgot-password-form/forgot-password-form';
 // import {ResetPasswordForm} from '../secure/reset-password-form/reset-password-form';
-// import {UserProfile} from '../user-profile/user-profile';
+// import {ProfileForm} from '../secure/profile-form/profile-form';
+// import {NavigationProfile} from '../navigation-profile/navigation-profile';
+import {BurgerIngredients} from '../burger-ingredients/burger-ingredients';
+import {BurgerConstructor} from '../burger-constructor/burger-constructor';
 import appStyles from './app.module.css';
 
 
@@ -23,14 +24,13 @@ export const App = () => {
               <BurgerConstructor/>
             </DndProvider>
           </div>
-          {/*<div className={appStyles.login}>*/}
-          {/*  <AuthorizationForm/>*/}
-          {/*  <RegistrationForm/>*/}
-          {/*  <ForgotPasswordForm/>*/}
-          {/*  <ResetPasswordForm/>*/}
-          {/*</div>*/}
+          {/*<AuthorizationForm/>*/}
+          {/*<RegistrationForm/>*/}
+          {/*<ForgotPasswordForm/>*/}
+          {/*<ResetPasswordForm/>*/}
           {/*<div className={appStyles.profile}>*/}
-          {/*  <UserProfile/>*/}
+          {/*  <NavigationProfile/>*/}
+          {/*  <ProfileForm/>*/}
           {/*</div>*/}
         </main>
       </div>
