@@ -1,0 +1,40 @@
+.done {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.figure {
+  position: fixed;
+  display: block;
+  width: 120px;
+  height: 120px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  animation: transform 10s linear infinite;
+}
+
+.pentagon {
+  background-image: url(./images/pentagon.svg);
+}
+
+.hexagon {
+  background-image: url(./images/hexagon.svg);
+}
+
+.polygon {
+  background-image: url(./images/polygon.svg);
+}
+
+@keyframes transform {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
