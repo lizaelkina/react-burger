@@ -40,15 +40,15 @@
 }
 
 .pentagon {
-  background-image: url(../../images/pentagon.svg);
+  background-image: url(../../../images/pentagon.svg);
 }
 
 .hexagon {
-  background-image: url(../../images/hexagon.svg);
+  background-image: url(../../../images/hexagon.svg);
 }
 
 .polygon {
-  background-image: url(../../images/polygon.svg);
+  background-image: url(../../../images/polygon.svg);
 }
 
 @keyframes transform {

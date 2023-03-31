@@ -1,4 +1,4 @@
-import {IngredientDetails} from './ingredient-details/ingredient-details';
+import {IngredientDetails} from '../shared/ingredient-details/ingredient-details';
 import {ingredientPropTypes} from '../../utils/prop-types';
 import ingredientInfoStyles from './ingredient-info.module.css';
 

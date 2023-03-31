@@ -6,10 +6,10 @@ import {Tab} from '@ya.praktikum/react-developer-burger-ui-components';
 import {loadIngredients, selectIngredientGroup} from '../../services/actions/burger-ingredients';
 import {clearSelectedIngredient} from '../../services/actions/selected-ingredient';
 import {IngredientGroup} from './ingredient-group/ingredient-group';
-import {IngredientDetails} from '../ingredient-info/ingredient-details/ingredient-details';
-import {Modal} from '../modal/modal';
-import {Loader} from '../loader/loader';
-import {ErrorMessage} from '../error-message/error-message';
+import {IngredientDetails} from '../shared/ingredient-details/ingredient-details';
+import {Modal} from '../shared/modal/modal';
+import {Loader} from '../shared/loader/loader';
+import {ErrorMessage} from '../shared/error-message/error-message';
 import burgerIngredientsStyles from './burger-ingredients.module.css';
 
 export const BurgerIngredients = () => {

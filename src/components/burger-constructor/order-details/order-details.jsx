@@ -1,8 +1,8 @@
 import {useSelector} from 'react-redux';
 import cn from 'classnames';
 import {CheckMarkIcon} from '@ya.praktikum/react-developer-burger-ui-components';
-import {Loader} from '../loader/loader';
-import {ErrorMessage} from '../error-message/error-message';
+import {Loader} from '../../shared/loader/loader';
+import {ErrorMessage} from '../../shared/error-message/error-message';
 import orderDetailsStyles from './order-details.module.css';
 
 export const OrderDetails = () => {

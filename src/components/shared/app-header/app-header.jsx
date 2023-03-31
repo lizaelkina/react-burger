@@ -7,11 +7,11 @@ export const AppHeader = () => {
       <header className={cn(appHeaderStyles.header, 'pt-4 pb-4')}>
         <nav className={appHeaderStyles.nav}>
           <div className={cn(appHeaderStyles.nav__group, appHeaderStyles.nav__group_links)}>
-            <a className={cn(appHeaderStyles.link, 'pt-4 pl-5 pr-5 pb-4')} href='#'>
+            <a className={cn(appHeaderStyles.link, 'pt-4 pl-5 pr-5 pb-4')} href='src/components/shared/app-header/app-header#'>
               <BurgerIcon type='primary'/>
               <span className='text text_type_main-default text_color_primary ml-2'>Конструктор</span>
             </a>
-            <a className={cn(appHeaderStyles.link, 'pt-4 pl-5 pr-5 pb-4')} href='#'
+            <a className={cn(appHeaderStyles.link, 'pt-4 pl-5 pr-5 pb-4')} href='src/components/shared/app-header/app-header#'
                aria-label='Логотип Stellar Burgers'>
               <ListIcon type="secondary"/>
               <span className='text text_type_main-default text_color_inactive ml-2'>Лента заказов</span>
@@ -21,7 +21,7 @@ export const AppHeader = () => {
             <Logo/>
           </div>
           <div className={cn(appHeaderStyles.nav__group, appHeaderStyles.nav__group_profile)}>
-            <a className={cn(appHeaderStyles.link, 'pt-4 pl-5 pr-5 pb-4')} href='#'>
+            <a className={cn(appHeaderStyles.link, 'pt-4 pl-5 pr-5 pb-4')} href='src/components/shared/app-header/app-header#'>
               <ProfileIcon type='secondary'/>
               <span className='text text_type_main-default text_color_inactive ml-2'>Личный кабинет</span>
             </a>
