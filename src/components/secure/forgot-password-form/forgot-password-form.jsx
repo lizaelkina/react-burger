@@ -6,9 +6,6 @@ import forgotFormStyles from './forgot-password-form.module.css';
 export const ForgotPasswordForm = () => {
 
   const [valueEmail, setValueEmail] = useState('');
-  const onChange = e => {
-    setValueEmail(e.target.value)
-  }
 
   return (
       <section className={forgotFormStyles.container}>
@@ -20,7 +17,7 @@ export const ForgotPasswordForm = () => {
                       placeholder={'Укажите e-mail'}
                       size={'default'}
                       isIcon={false}
-                      onChange={e => onChange}
+                      onChange={event => setValueEmail(event.target.value)}
           />
           <Button extraClass={forgotFormStyles.button_primary}
                   htmlType='submit'

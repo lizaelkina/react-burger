@@ -1,12 +1,15 @@
 import {useRef, useState} from 'react';
 import cn from 'classnames';
-import {Button, Input} from '@ya.praktikum/react-developer-burger-ui-components';
+import {Button, Input, PasswordInput} from '@ya.praktikum/react-developer-burger-ui-components';
 import resetFormStyles from './reset-password-form.module.css';
 
 export const ResetPasswordForm = () => {
 
-  const [valueInput, setValueInput] = useState('');
+  const [valuePassword, setValuePassword] = useState('');
+  const [valueCode, setValueCode] = useState('');
+
   const inputRef = useRef(null);
+
   const onIconClick = () => {
     setTimeout(() => inputRef.current.focus(), 0)
     alert('Icon Click Callback')
@@ -16,29 +19,24 @@ export const ResetPasswordForm = () => {
       <section className={resetFormStyles.container}>
         <h2 className='text text_type_main-medium mb-6'>Восстановление пароля</h2>
         <form className={cn(resetFormStyles.form, 'mb-20')}>
-          <Input autoComplete='off'
-                 name={'password'}
-                 value={valueInput}
-                 type={'text'}
-                 placeholder={'Введите новый пароль'}
-                 error={false}
-                 errorText={'Слишком простой пароль'}
-                 ref={inputRef}
-                 size={'default'}
-                 icon={'ShowIcon'}
-                 onChange={e => setValueInput(e.target.value)}
-                 onIconClick={onIconClick}
+          <PasswordInput autoComplete='on'
+                         name={'password'}
+                         value={valuePassword}
+                         placeholder={'Введите новый пароль'}
+                         size={'default'}
+                         icon={'ShowIcon'}
+                         onChange={event => setValuePassword(event.target.value)}
           />
           <Input autoComplete='off'
                  name={'code'}
-                 value={valueInput}
+                 value={valueCode}
                  type={'text'}
                  placeholder={'Введите код из письма'}
                  error={false}
                  errorText={'Неверный код'}
                  ref={inputRef}
                  size={'default'}
-                 onChange={e => setValueInput(e.target.value)}
+                 onChange={event => setValueCode(event.target.value)}
                  onIconClick={onIconClick}
           />
           <Button extraClass={resetFormStyles.button_primary}

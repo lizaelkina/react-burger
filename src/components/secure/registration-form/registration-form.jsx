@@ -1,17 +1,16 @@
 import {useRef, useState} from 'react';
 import cn from 'classnames';
-import {Button, EmailInput, Input} from '@ya.praktikum/react-developer-burger-ui-components';
+import {Button, EmailInput, Input, PasswordInput} from '@ya.praktikum/react-developer-burger-ui-components';
 import registrationFormStyles from './registration-form.module.css';
 
 export const RegistrationForm = () => {
 
+  const [valueName, setValueName] = useState('');
   const [valueEmail, setValueEmail] = useState('');
-  const onChange = e => {
-    setValueEmail(e.target.value)
-  }
+  const [valuePassword, setValuePassword] = useState('');
 
-  const [valueInput, setValueInput] = useState('');
   const inputRef = useRef(null);
+  
   const onIconClick = () => {
     setTimeout(() => inputRef.current.focus(), 0)
     alert('Icon Click Callback')
@@ -23,36 +22,31 @@ export const RegistrationForm = () => {
         <form className={cn(registrationFormStyles.form, 'mb-20')}>
           <Input autoComplete='off'
                  name={'name'}
-                 value={valueInput}
+                 value={valueName}
                  type={'text'}
                  placeholder={'Имя'}
                  error={false}
                  errorText={'Неккоректные данные'}
                  ref={inputRef}
                  size={'default'}
-                 onChange={e => setValueInput(e.target.value)}
+                 onChange={event => setValueName(event.target.value)}
                  onIconClick={onIconClick}
           />
           <EmailInput autoComplete='off'
                       name={'email'}
                       value={valueEmail}
-                      placeholder={'email'}
+                      placeholder={'E-mail'}
                       size={'default'}
                       isIcon={false}
-                      onChange={e => onChange}
+                      onChange={event => setValueEmail(event.target.value)}
           />
-          <Input autoComplete='off'
-                 name={'password'}
-                 value={valueInput}
-                 type={'text'}
-                 placeholder={'Пароль'}
-                 error={false}
-                 errorText={'Слишком простой пароль'}
-                 ref={inputRef}
-                 size={'default'}
-                 icon={'ShowIcon'}
-                 onChange={e => setValueInput(e.target.value)}
-                 onIconClick={onIconClick}
+          <PasswordInput autoComplete='off'
+                         name={'password'}
+                         value={valuePassword}
+                         placeholder={'Пароль'}
+                         size={'default'}
+                         icon={'ShowIcon'}
+                         onChange={event => setValuePassword(event.target.value)}
           />
           <Button extraClass={registrationFormStyles.button_primary}
                   htmlType='submit'
