@@ -7,8 +7,8 @@ export function SuccessStatus() {
       <div className={cn(successStatusStyles.done, 'mt-15 mb-15')}>
         <CheckMarkIcon type="primary"/>
         <div className={cn(successStatusStyles.figure, successStatusStyles.pentagon)}></div>
-        <div className={cn(successStatusStyles.figure, successStatusStyles.hexagon)}></div>
         <div className={cn(successStatusStyles.figure, successStatusStyles.polygon)}></div>
+        <div className={cn(successStatusStyles.figure, successStatusStyles.hexagon)}></div>
       </div>
   );
 }
