@@ -5,11 +5,8 @@
 }
 
 .link {
-  min-width: 200px;
-  box-sizing: border-box;
   padding: 16px 40px 16px 0;
   text-decoration: none;
-  background-color: var(--background-alt);
   color: var(--text-inactive-color);
   transition: var(--common-transition);
 }
@@ -18,7 +15,7 @@
   color: var(--text-primary-color);
 }
 
-.link_type_current {
+.link:global(.active) {
   color: var(--text-primary-color);
   pointer-events: none;
 }

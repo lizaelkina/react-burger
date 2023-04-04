@@ -9,28 +9,38 @@ export const AppHeader = () => {
         <nav className={appHeaderStyles.nav}>
           <div className={cn(appHeaderStyles.nav__group, appHeaderStyles.nav__group_links)}>
             <NavLink className={cn(appHeaderStyles.link, 'pt-4 pl-5 pr-5 pb-4')}
-                     activeClassName={appHeaderStyles.link_type_current}
                      to='/'>
-              <BurgerIcon type='primary'/>
-              <span className='text text_type_main-default text_color_primary'>Конструктор</span>
+              {({isActive}) => (
+                  <>
+                    <BurgerIcon type={isActive ? 'primary' : 'secondary'}/>
+                    <span className='text text_type_main-default'>Конструктор</span>
+                  </>
+              )}
             </NavLink>
             <NavLink className={cn(appHeaderStyles.link, 'pt-4 pl-5 pr-5 pb-4')}
-                     activeClassName={cn(appHeaderStyles.link_type_current, 'text_color_inactive')}
                      to='/feed'>
-              <ListIcon type="secondary"/>
-              <span className='text text_type_main-default text_color_inactive'>Лента заказов</span>
+              {({isActive}) => (
+                  <>
+                    <ListIcon type={isActive ? 'primary' : 'secondary'}/>
+                    <span className='text text_type_main-default'>Лента заказов</span>
+                  </>
+              )}
             </NavLink>
           </div>
-          <div className={cn(appHeaderStyles.nav__group, appHeaderStyles.nav__group_logo)}
-               aria-label='Логотип Stellar Burgers'>
+          <NavLink aria-label='Логотип Stellar Burgers'
+                   className={cn(appHeaderStyles.nav__group, appHeaderStyles.nav__group_logo)}
+                   to='/'>
             <Logo/>
-          </div>
+          </NavLink>
           <div className={cn(appHeaderStyles.nav__group, appHeaderStyles.nav__group_profile)}>
             <NavLink className={cn(appHeaderStyles.link, 'pt-4 pl-5 pr-5 pb-4')}
-                     activeClassName={appHeaderStyles.link_type_current}
                      to='/profile'>
-              <ProfileIcon type='secondary'/>
-              <span className='text text_type_main-default text_color_inactive'>Личный кабинет</span>
+              {({isActive}) => (
+                  <>
+                    <ProfileIcon type={isActive ? 'primary' : 'secondary'}/>
+                    <span className='text text_type_main-default'>Личный кабинет</span>
+                  </>
+              )}
             </NavLink>
           </div>
         </nav>
