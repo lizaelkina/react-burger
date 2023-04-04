@@ -9,8 +9,7 @@ export const AuthorizationForm = () => {
   const [valuePassword, setValuePassword] = useState('');
 
   return (
-      <section className={authorizationFormStyles.container}>
-        <h2 className='text text_type_main-medium mb-6'>Вход</h2>
+      <>
         <form className={cn(authorizationFormStyles.form, 'mb-20')}>
           <EmailInput autoComplete='off'
                       name={'email'}
@@ -28,31 +27,13 @@ export const AuthorizationForm = () => {
                          icon={'ShowIcon'}
                          onChange={event => setValuePassword(event.target.value)}
           />
-          <Button extraClass={authorizationFormStyles.button_primary}
+          <Button extraClass={authorizationFormStyles.button}
                   htmlType='submit'
                   type='primary'
                   size='medium'>
             Войти
           </Button>
         </form>
-        <div>
-          <span className='text text_type_main-default text_color_inactive'>Вы — новый пользователь?</span>
-          <Button extraClass={cn(authorizationFormStyles.button_secondary, 'ml-2')}
-                  htmlType='button'
-                  type='secondary'
-                  size='medium'>
-            Зарегистрироваться
-          </Button>
-        </div>
-        <div>
-          <span className='text text_type_main-default text_color_inactive'>Забыли пароль?</span>
-          <Button extraClass={cn(authorizationFormStyles.button_secondary, 'ml-2')}
-                  htmlType='button'
-                  type='secondary'
-                  size='medium'>
-            Восстановить пароль
-          </Button>
-        </div>
-      </section>
+      </>
   )
 }
