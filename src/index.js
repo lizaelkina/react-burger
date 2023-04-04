@@ -3,6 +3,7 @@ import ReactDOMClient from 'react-dom/client';
 import {applyMiddleware, compose, createStore} from 'redux';
 import {Provider} from 'react-redux';
 import thunk from 'redux-thunk';
+import {BrowserRouter} from 'react-router-dom';
 import {rootReducer} from './services/reducers/store';
 import {App} from './components/app/app';
 import './index.css';
@@ -23,8 +24,10 @@ const root = ReactDOMClient.createRoot(container);
 
 root.render(
     <React.StrictMode>
-      <Provider store={store}>
-        <App/>
-      </Provider>
+      <BrowserRouter>
+        <Provider store={store}>
+          <App/>
+        </Provider>
+      </BrowserRouter>
     </React.StrictMode>
 );
