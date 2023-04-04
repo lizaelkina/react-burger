@@ -1,7 +1,7 @@
 import cn from 'classnames';
 import {Button} from '@ya.praktikum/react-developer-burger-ui-components';
 import {AuthorizationForm} from '../../components/secure/authorization-form/authorization-form';
-import loginPageStyles from './login.module.css'
+import loginPageStyles from './login.module.css';
 
 export const LoginPage = () => {
   return (

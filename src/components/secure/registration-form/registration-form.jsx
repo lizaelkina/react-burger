@@ -10,15 +10,14 @@ export const RegistrationForm = () => {
   const [valuePassword, setValuePassword] = useState('');
 
   const inputRef = useRef(null);
-  
+
   const onIconClick = () => {
     setTimeout(() => inputRef.current.focus(), 0)
     alert('Icon Click Callback')
   }
 
   return (
-      <section className={registrationFormStyles.container}>
-        <h2 className='text text_type_main-medium mb-6'>Регистрация</h2>
+      <>
         <form className={cn(registrationFormStyles.form, 'mb-20')}>
           <Input autoComplete='off'
                  name={'name'}
@@ -48,22 +47,13 @@ export const RegistrationForm = () => {
                          icon={'ShowIcon'}
                          onChange={event => setValuePassword(event.target.value)}
           />
-          <Button extraClass={registrationFormStyles.button_primary}
+          <Button extraClass={registrationFormStyles.button}
                   htmlType='submit'
                   type='primary'
                   size='medium'>
             Зарегистрироваться
           </Button>
         </form>
-        <div>
-          <span className='text text_type_main-default text_color_inactive'>Уже зарегистрированы?</span>
-          <Button extraClass={cn(registrationFormStyles.button_secondary, 'ml-2')}
-                  htmlType='button'
-                  type='secondary'
-                  size='medium'>
-            Войти
-          </Button>
-        </div>
-      </section>
+      </>
   )
 }
