@@ -7,20 +7,17 @@ export const NavigationProfile = () => {
         <nav className={userProfileStyles.nav} aria-label='Личный кабинет пользователя'>
           <NavLink className={userProfileStyles.link}
                    activeClassName={userProfileStyles.link_type_current}
-                   to='/profile'
-          >
+                   to='/profile'>
             <span className='text text_type_main-medium text_color_primary'>Профиль</span>
           </NavLink>
           <NavLink className={userProfileStyles.link}
                    activeClassName={userProfileStyles.link_type_current}
-                   to='/profile/orders'
-          >
+                   to='/profile/orders'>
             <span className='text text_type_main-medium'>История заказов</span>
           </NavLink>
           <NavLink className={userProfileStyles.link}
                    activeClassName={userProfileStyles.link_type_current}
-                   to='/login'
-          >
+                   to='/login'>
             <span className='text text_type_main-medium'>Выход</span>
           </NavLink>
           <span className='text text_type_main-small text_color_inactive mt-20'>
