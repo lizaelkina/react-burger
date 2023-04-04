@@ -16,8 +16,7 @@ export const ResetPasswordForm = () => {
   }
 
   return (
-      <section className={resetFormStyles.container}>
-        <h2 className='text text_type_main-medium mb-6'>Восстановление пароля</h2>
+      <>
         <form className={cn(resetFormStyles.form, 'mb-20')}>
           <PasswordInput autoComplete='on'
                          name={'password'}
@@ -39,22 +38,13 @@ export const ResetPasswordForm = () => {
                  onChange={event => setValueCode(event.target.value)}
                  onIconClick={onIconClick}
           />
-          <Button extraClass={resetFormStyles.button_primary}
+          <Button extraClass={resetFormStyles.button}
                   htmlType='submit'
                   type='primary'
                   size='medium'>
             Сохранить
           </Button>
         </form>
-        <div>
-          <span className='text text_type_main-default text_color_inactive'>Вспомнили пароль?</span>
-          <Button extraClass={cn(resetFormStyles.button_secondary, 'ml-2')}
-                  htmlType='button'
-                  type='secondary'
-                  size='medium'>
-            Войти
-          </Button>
-        </div>
-      </section>
+      </>
   )
 }
