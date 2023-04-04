@@ -1,6 +1,5 @@
 import {useRef, useState} from 'react';
-import cn from 'classnames';
-import {EmailInput, Input, PasswordInput} from '@ya.praktikum/react-developer-burger-ui-components';
+import {Button, EmailInput, Input, PasswordInput} from '@ya.praktikum/react-developer-burger-ui-components';
 import profileFormStyles from './profile-form.module.css';
 
 export const ProfileForm = () => {
@@ -16,7 +15,7 @@ export const ProfileForm = () => {
   }
 
   return (
-      <form className={cn(profileFormStyles.form, 'mb-20')}>
+      <form className={profileFormStyles.form}>
         <Input autoComplete='off'
                name={'name'}
                value={valueName}
@@ -46,6 +45,20 @@ export const ProfileForm = () => {
                        icon={'EditIcon'}
                        onChange={event => setValuePassword(event.target.value)}
         />
+        <div className={profileFormStyles.container}>
+          <Button extraClass={profileFormStyles.button_secondary}
+                  htmlType='button'
+                  type='secondary'
+                  size='medium'>
+            Отмена
+          </Button>
+          <Button extraClass={profileFormStyles.button_primary}
+                  htmlType='submit'
+                  type='primary'
+                  size='medium'>
+            Сохранить
+          </Button>
+        </div>
       </form>
   )
 }

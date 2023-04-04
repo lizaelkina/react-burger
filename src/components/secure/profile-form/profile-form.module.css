@@ -3,3 +3,18 @@
   flex-direction: column;
   gap: 24px;
 }
+
+.container {
+  display: flex;
+  justify-content: flex-end;
+  gap: 20px;
+}
+
+.button_primary {
+  max-width: 167px;
+  width: 100%;
+}
+
+.button_secondary {
+  padding: 0;
+}
