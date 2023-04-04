@@ -1,9 +1,21 @@
+import {useNavigate} from 'react-router-dom';
 import cn from 'classnames';
 import {Button} from '@ya.praktikum/react-developer-burger-ui-components';
 import {AuthorizationForm} from '../../components/secure/authorization-form/authorization-form';
 import loginPageStyles from './login.module.css';
 
 export const LoginPage = () => {
+
+  const navigate = useNavigate();
+
+  function goRegister() {
+    navigate('/register');
+  }
+
+  function goForgot() {
+    navigate('/forgot-password');
+  }
+
   return (
       <section className={loginPageStyles.page}>
         <h2 className='text text_type_main-medium mb-6'>Вход</h2>
@@ -13,7 +25,8 @@ export const LoginPage = () => {
           <Button extraClass={cn(loginPageStyles.button, 'ml-2')}
                   htmlType='button'
                   type='secondary'
-                  size='medium'>
+                  size='medium'
+                  onClick={goRegister}>
             Зарегистрироваться
           </Button>
         </div>
@@ -22,7 +35,8 @@ export const LoginPage = () => {
           <Button extraClass={cn(loginPageStyles.button, 'ml-2')}
                   htmlType='button'
                   type='secondary'
-                  size='medium'>
+                  size='medium'
+                  onClick={goForgot}>
             Восстановить пароль
           </Button>
         </div>

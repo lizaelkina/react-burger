@@ -19,3 +19,7 @@
   color: var(--text-primary-color);
   pointer-events: none;
 }
+
+.info {
+  opacity: 0.4;
+}

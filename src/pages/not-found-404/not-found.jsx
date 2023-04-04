@@ -7,11 +7,11 @@ export const NotFound404 = () => {
 
   const navigate = useNavigate();
 
-  const goHome = () => {
+  function goHome() {
     navigate('/');
   }
 
-  const goBack = () => {
+  function goBack() {
     navigate(-1);
   }
 

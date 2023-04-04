@@ -1,9 +1,17 @@
 import cn from 'classnames';
+import {useNavigate} from 'react-router-dom';
 import {Button} from '@ya.praktikum/react-developer-burger-ui-components';
 import {RegistrationForm} from '../../components/secure/registration-form/registration-form';
 import registerPageStyles from './register.module.css';
 
 export const RegisterPage = () => {
+
+  const navigate = useNavigate();
+
+  function goLogin() {
+    navigate('/login');
+  }
+
   return (
       <section className={registerPageStyles.page}>
         <h2 className='text text_type_main-medium mb-6'>Регистрация</h2>
@@ -13,7 +21,8 @@ export const RegisterPage = () => {
           <Button extraClass={cn(registerPageStyles.button, 'ml-2')}
                   htmlType='button'
                   type='secondary'
-                  size='medium'>
+                  size='medium'
+                  onClick={goLogin}>
             Войти
           </Button>
         </div>
