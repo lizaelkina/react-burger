@@ -7,10 +7,12 @@ export const NavigationProfile = () => {
   return (
       <nav className={navProfileStyles.nav} aria-label='Личный кабинет пользователя'>
         <NavLink className={navProfileStyles.link}
+                 end={true}
                  to='/profile'>
           <span className='text text_type_main-medium'>Профиль</span>
         </NavLink>
         <NavLink className={navProfileStyles.link}
+                 end={true}
                  to='/profile/orders'>
           <span className='text text_type_main-medium'>История заказов</span>
         </NavLink>
