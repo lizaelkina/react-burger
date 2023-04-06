@@ -27,7 +27,6 @@ export const BurgerIngredient = ({ingredient}) => {
   }, [bun, middle, ingredient._id]);
 
   return (
-      // <Link className={burgerIngredientStyles.link} to='/ingredients/:id'>
       <>
         <li className={burgerIngredientStyles.card}
             onClick={() => dispatch(selectIngredient(ingredient))}>
@@ -47,7 +46,6 @@ export const BurgerIngredient = ({ingredient}) => {
           </h3>
         </li>
       </>
-      // </Link>
   );
 }
 
