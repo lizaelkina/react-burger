@@ -1,6 +1,7 @@
 import {useMemo} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {useDrag} from 'react-dnd';
+import {Link} from 'react-router-dom';
 import cn from 'classnames';
 import {Counter, CurrencyIcon} from '@ya.praktikum/react-developer-burger-ui-components';
 import {ingredientPropTypes} from '../../../utils/prop-types';
@@ -27,7 +28,8 @@ export const BurgerIngredient = ({ingredient}) => {
   }, [bun, middle, ingredient._id]);
 
   return (
-      <>
+      <Link className={burgerIngredientStyles.link}
+            to={`ingredients/${ingredient._id}`}>
         <li className={burgerIngredientStyles.card}
             onClick={() => dispatch(selectIngredient(ingredient))}>
           <img className={cn(burgerIngredientStyles.card__image, 'p-4')}
@@ -45,7 +47,7 @@ export const BurgerIngredient = ({ingredient}) => {
             {ingredient.name}
           </h3>
         </li>
-      </>
+      </Link>
   );
 }
 
