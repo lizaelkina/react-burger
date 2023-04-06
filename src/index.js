@@ -5,7 +5,7 @@ import {Provider} from 'react-redux';
 import thunk from 'redux-thunk';
 import {BrowserRouter} from 'react-router-dom';
 import {rootReducer} from './services/reducers/store';
-import {App} from './components/app/app';
+import {App} from './app';
 import './index.css';
 
 const composeEnhancers =
