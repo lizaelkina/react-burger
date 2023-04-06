@@ -1,5 +1,0 @@
-.page {
-  display: grid;
-  grid-template-columns: 1fr fit-content(100%) 1fr;
-  column-gap: 60px;
-}

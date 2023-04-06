@@ -1,8 +1,8 @@
 import {Outlet} from 'react-router';
 import {AppHeader} from '../app-header/app-header';
-import layoutPage from './layout-page.module.css'
+import layoutPage from './page-layout.module.css'
 
-export const LayoutPage = () => {
+export const PageLayout = () => {
   return (
       <div className={layoutPage.page}>
         <AppHeader/>

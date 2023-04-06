@@ -1,10 +1,10 @@
 import {Route, Routes} from 'react-router';
 import {useLocation, useNavigate} from 'react-router-dom';
 import {IngredientDetails} from './components/shared/ingredient-details/ingredient-details';
-import {LayoutPage} from './components/shared/layout-page/layout-page';
+import {PageLayout} from './components/shared/page-layout/page-layout';
 import {HomePage} from './pages/home/home';
-import {ProfilePage} from './pages/profile/profile';
-import {OrdersPage} from './pages/profile/orders/orders';
+import {ProfilePage} from './pages/user-account/profile/profile';
+import {OrdersPage} from './pages/user-account/orders/orders';
 import {LoginPage} from './pages/login/login';
 import {RegisterPage} from './pages/register/register';
 import {ForgotPasswordPage} from './pages/forgot-password/forgot-password';
@@ -12,6 +12,7 @@ import {ResetPasswordPage} from './pages/reset-password/reset-password';
 import {IngredientPage} from './pages/ingredient-info/ingredient-info';
 import {Modal} from './components/shared/modal/modal';
 import {NotFound404} from './pages/not-found-404/not-found';
+import {UserAccountLayout} from './pages/user-account/user-account-layout';
 
 export const App = () => {
 
@@ -26,11 +27,13 @@ export const App = () => {
   return (
       <>
         <Routes location={backgroundLocation || location}>
-          <Route path='/' element={<LayoutPage/>}>
+          <Route path='/' element={<PageLayout/>}>
             <Route index element={<HomePage/>}/>
             <Route path='ingredients/:id' element={<IngredientPage/>}/>
-            <Route path='profile' element={<ProfilePage/>}/>
-            <Route path='profile/orders' element={<OrdersPage/>}/>
+            <Route path='profile' element={<UserAccountLayout/>}>
+              <Route index element={<ProfilePage/>}/>
+              <Route path='orders' element={<OrdersPage/>}/>
+            </Route>
             <Route path='login' element={<LoginPage/>}/>
             <Route path='register' element={<RegisterPage/>}/>
             <Route path='forgot-password' element={<ForgotPasswordPage/>}/>

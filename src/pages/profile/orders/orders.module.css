@@ -1,6 +1,0 @@
-.page {
-  height: 320px;
-  display: grid;
-  grid-template-columns: 1fr 480px 1fr;
-  column-gap: 60px;
-}

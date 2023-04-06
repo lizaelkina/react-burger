@@ -1,4 +1,5 @@
 import {useRef, useState} from 'react';
+import cn from 'classnames';
 import {Button, EmailInput, Input, PasswordInput} from '@ya.praktikum/react-developer-burger-ui-components';
 import profileFormStyles from './profile-form.module.css';
 
@@ -15,7 +16,7 @@ export const ProfileForm = () => {
   }
 
   return (
-      <form className={profileFormStyles.form}>
+      <form className={cn(profileFormStyles.form, 'mt-30')}>
         <Input autoComplete='off'
                name={'name'}
                value={valueName}

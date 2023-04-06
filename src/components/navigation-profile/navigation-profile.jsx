@@ -1,11 +1,11 @@
-import cn from 'classnames';
 import {NavLink} from 'react-router-dom';
+import cn from 'classnames';
 import navProfileStyles from './navigation-profile.module.css';
 
 export const NavigationProfile = () => {
 
   return (
-      <nav className={navProfileStyles.nav} aria-label='Личный кабинет пользователя'>
+      <nav className={cn(navProfileStyles.nav, 'mt-30')} aria-label='Личный кабинет пользователя'>
         <NavLink className={navProfileStyles.link}
                  end={true}
                  to='/profile'>
