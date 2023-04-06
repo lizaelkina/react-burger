@@ -22,4 +22,4 @@
 
 ## GitHub Pages 
 
-- [Ссылка на сайт](https://lizapetkova.github.io/react-burger/)
+- [Ссылка на сайт](https://lizapetkova.github.io/)
