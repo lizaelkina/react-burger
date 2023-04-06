@@ -1,5 +1,7 @@
 import {Route, Routes} from 'react-router';
+import {useLocation, useNavigate} from 'react-router-dom';
 import {AppHeader} from '../shared/app-header/app-header';
+import {IngredientDetails} from '../shared/ingredient-details/ingredient-details';
 import {HomePage} from '../../pages/home/home';
 import {IngredientPage} from '../../pages/ingredient-info/ingredient-info';
 import {ProfilePage} from '../../pages/profile/profile';
@@ -10,14 +12,23 @@ import {ForgotPasswordPage} from '../../pages/forgot-password/forgot-password';
 import {ResetPasswordPage} from '../../pages/reset-password/reset-password';
 import {NotFound404} from '../../pages/not-found-404/not-found';
 import appStyles from './app.module.css';
+import {Modal} from '../shared/modal/modal';
 
 export const App = () => {
+
+  const location = useLocation();
+  const backgroundLocation = location.state?.backgroundLocation;
+  const navigation = useNavigate();
+
+  function closeModal() {
+    navigation(backgroundLocation.pathname, {replace: true});
+  }
 
   return (
       <div className={appStyles.page}>
         <AppHeader/>
         <main className={appStyles.main}>
-          <Routes>
+          <Routes location={backgroundLocation || location}>
             <Route path='/' element={<HomePage/>}/>
             <Route path='/ingredients/:id' element={<IngredientPage/>}/>
             <Route path='/profile' element={<ProfilePage/>}/>
@@ -28,6 +39,17 @@ export const App = () => {
             <Route path='/reset-password' element={<ResetPasswordPage/>}/>
             <Route path='*' element={<NotFound404/>}/>
           </Routes>
+
+          {backgroundLocation &&
+              <Routes>
+                {location.state?.ingredient &&
+                    <Route path='/ingredients/:id'
+                           element={
+                             <Modal title={'Детали ингредиента'} onClose={closeModal}>
+                               <IngredientDetails ingredient={location.state?.ingredient}/>
+                             </Modal>}>
+                    </Route>}
+              </Routes>}
         </main>
       </div>
   );
