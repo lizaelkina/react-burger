@@ -1,6 +1,6 @@
 import {Route, Routes} from 'react-router';
 import {useLocation, useNavigate} from 'react-router-dom';
-import {IngredientDetails} from './components/shared/ingredient-details/ingredient-details';
+import {IngredientDetails} from './components/burger-ingredients/ingredient-details/ingredient-details';
 import {PageLayout} from './components/shared/page-layout/page-layout';
 import {HomePage} from './pages/home/home';
 import {ProfilePage} from './pages/user-account/profile/profile';
