@@ -1,7 +1,7 @@
-import orderPageStyles from './orders.module.css'
+import {OrdersFeed} from '../../../components/order-feed/orders-feed';
 
 export const OrdersPage = () => {
   return (
-      <div className={orderPageStyles.container}></div>
+    <OrdersFeed/>
   )
 }
