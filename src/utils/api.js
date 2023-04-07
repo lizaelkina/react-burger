@@ -3,24 +3,19 @@ const DEFAULT_HEADER = {
   "Content-Type": "application/json",
 };
 
-const checkResponse = response => {
-  if (response.ok) {
-    return response.json();
-  }
-  return Promise.reject(`${response.status}`);
-};
-
-const checkSuccess = response => {
-  if (response && response.success) {
-    return response;
-  }
-  return Promise.reject(`Ответ: ${response}`);
-};
-
 const request = (endpoint, options) => {
   return fetch(`${API_URL}/${endpoint}`, options)
-      .then(checkResponse)
-      .then(checkSuccess)
+      .then(async response => {
+        try {
+          const json = await response.json()
+          if (response.ok && json.success) {
+            return Promise.resolve(json);
+          }
+          return Promise.reject(json?.message);
+        } catch (error) {
+          return Promise.reject(`Ошибка: ${response.status}`);
+        }
+      })
 }
 
 export const getIngredients = () => request('ingredients');
@@ -32,4 +27,11 @@ export const createOrder = (ingredientIdList) => request('orders',
       body: JSON.stringify({
         ingredients: ingredientIdList,
       })
+    });
+
+export const registerRequest = (formData) => request('auth/register',
+    {
+      method: 'POST',
+      headers: DEFAULT_HEADER,
+      body: JSON.stringify(formData),
     });

@@ -23,7 +23,7 @@ export const OrderDetails = () => {
             </div>
         }
         {!isLoading && !success &&
-            <ErrorMessage message={errorMessage} title={'Ошибка оформления заказа. Попробуйте ещё раз.'}/>
+            <ErrorMessage extraClass={orderDetailsStyles.error} message={errorMessage}/>
         }
         {success &&
             <>

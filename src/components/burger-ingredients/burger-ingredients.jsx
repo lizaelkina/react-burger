@@ -75,7 +75,7 @@ export const BurgerIngredients = () => {
         </aside>
         {isLoading && <Loader/>}
         {!isLoading && error &&
-            <ErrorMessage message={error} title={'Ошибка загрузки данных. Попробуйте перезагрузить страницу.'}/>
+            <ErrorMessage extraClass={burgerIngredientsStyles.section__error} message={error}/>
         }
         {!isLoading && !error &&
             <div className={cn(burgerIngredientsStyles.scroll, 'custom-scroll')}>

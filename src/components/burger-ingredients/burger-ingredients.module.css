@@ -13,3 +13,8 @@
   overflow-x: hidden;
   cursor: pointer;
 }
+
+.section__error {
+  width: 100%;
+  height: 100%;
+}
