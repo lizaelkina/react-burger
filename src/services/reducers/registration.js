@@ -13,6 +13,11 @@ const initialState = {
     email: '',
     password: '',
   },
+  formValidity: {
+    name: false,
+    email: false,
+    password: false,
+  },
   isLoading: false,
   success: false,
   errorMessage: null,
@@ -48,7 +53,12 @@ export const createRegistrationReducer = (state = initialState, action) => {
         formData: {
           ...state.formData,
           name: action.name,
-        }
+        },
+        formValidity: {
+          ...state.formValidity,
+          name: action.valid,
+        },
+        errorMessage: null,
       }
     }
     case REGISTRATION_CHANGE_EMAIL: {
@@ -57,7 +67,12 @@ export const createRegistrationReducer = (state = initialState, action) => {
         formData: {
           ...state.formData,
           email: action.email,
-        }
+        },
+        formValidity: {
+          ...state.formValidity,
+          email: action.valid,
+        },
+        errorMessage: null,
       }
     }
     case REGISTRATION_CHANGE_PASSWORD: {
@@ -66,7 +81,12 @@ export const createRegistrationReducer = (state = initialState, action) => {
         formData: {
           ...state.formData,
           password: action.password,
-        }
+        },
+        formValidity: {
+          ...state.formValidity,
+          password: action.valid,
+        },
+        errorMessage: null,
       }
     }
     default: {

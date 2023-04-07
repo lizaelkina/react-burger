@@ -24,23 +24,26 @@ export const startRegistration = (formData) => dispatch => {
   })
 }
 
-export function changeName(name) {
+export function changeName(name, valid) {
   return {
     type: REGISTRATION_CHANGE_NAME,
     name: name,
+    valid: valid,
   }
 }
 
-export function changeEmail(email) {
+export function changeEmail(email, valid) {
   return {
     type: REGISTRATION_CHANGE_EMAIL,
     email: email,
+    valid: valid,
   }
 }
 
-export function changePassword(password) {
+export function changePassword(password, valid) {
   return {
     type: REGISTRATION_CHANGE_PASSWORD,
     password: password,
+    valid: valid,
   }
 }
