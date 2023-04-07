@@ -35,3 +35,10 @@ export const registerRequest = (formData) => request('auth/register',
       headers: DEFAULT_HEADER,
       body: JSON.stringify(formData),
     });
+
+export const authorizationRequest = (formData) => request('auth/login',
+    {
+      method: 'POST',
+      headers: DEFAULT_HEADER,
+      body: JSON.stringify(formData),
+    });

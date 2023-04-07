@@ -6,7 +6,11 @@
   gap: 24px;
 }
 
-.button {
+.form__button {
   max-width: 128px;
   width: 100%;
+}
+
+.form__error {
+  min-height: 24px;
 }

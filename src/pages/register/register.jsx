@@ -16,7 +16,7 @@ export const RegisterPage = () => {
       <section className={registerPageStyles.page}>
         <h2 className='text text_type_main-medium mb-6'>Регистрация</h2>
         <RegistrationForm/>
-        <div>
+        <div className='mt-8'>
           <span className='text text_type_main-default text_color_inactive'>Уже зарегистрированы?</span>
           <Button extraClass={cn(registerPageStyles.button, 'ml-2')}
                   htmlType='button'

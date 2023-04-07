@@ -20,7 +20,7 @@ export const LoginPage = () => {
       <section className={loginPageStyles.page}>
         <h2 className='text text_type_main-medium mb-6'>Вход</h2>
         <AuthorizationForm/>
-        <div>
+        <div className='mt-8'>
           <span className='text text_type_main-default text_color_inactive'>Вы — новый пользователь?</span>
           <Button extraClass={cn(loginPageStyles.button, 'ml-2')}
                   htmlType='button'
