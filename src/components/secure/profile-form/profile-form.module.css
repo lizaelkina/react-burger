@@ -11,11 +11,15 @@
   gap: 20px;
 }
 
-.button_primary {
+.form__button_primary {
   max-width: 167px;
   width: 100%;
 }
 
-.button_secondary {
+.form__button_secondary {
   padding: 0;
+}
+
+.form__error {
+  min-height: 24px;
 }

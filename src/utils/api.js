@@ -59,3 +59,12 @@ export const resetPasswordRequest = (formData) => request('password-reset/reset'
     }
 );
 
+export const getProfile = () => request('auth/user');
+
+export const changeProfileRequest = (formData) => request('auth/user',
+    {
+      method: 'PATCH',
+      headers: DEFAULT_HEADER,
+      body: JSON.stringify(formData),
+    }
+);
