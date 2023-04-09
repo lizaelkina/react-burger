@@ -16,7 +16,7 @@ export const ForgotPasswordPage = () => {
       <section className={forgotPageStyles.page}>
         <h2 className='text text_type_main-medium mb-6'>Восстановление пароля</h2>
         <ForgotPasswordForm/>
-        <div>
+        <div className='mt-8'>
           <span className='text text_type_main-default text_color_inactive'>Вспомнили пароль?</span>
           <Button extraClass={cn(forgotPageStyles.button, 'ml-2')}
                   htmlType='button'

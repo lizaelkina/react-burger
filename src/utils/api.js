@@ -42,3 +42,11 @@ export const authorizationRequest = (formData) => request('auth/login',
       headers: DEFAULT_HEADER,
       body: JSON.stringify(formData),
     });
+
+export const forgotPasswordRequest = (formData) => request('password-reset',
+    {
+      method: 'POST',
+      headers: DEFAULT_HEADER,
+      body: JSON.stringify(formData),
+    }
+);
