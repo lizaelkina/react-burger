@@ -18,6 +18,11 @@ const initialState = {
   formData: {
     ...CURRENT_USER,
   },
+  formValidity: {
+    name: true,
+    email: true,
+    password: true,
+  },
   formDataChanged: false,
   isLoading: false,
   success: false,
@@ -55,6 +60,7 @@ export const createProfileReducer = (state = initialState, action) => {
           ...CURRENT_USER,
         },
         formDataChanged: false,
+        errorMessage: null,
       }
     }
     case PROFILE_CHANGE_NAME: {
@@ -63,6 +69,10 @@ export const createProfileReducer = (state = initialState, action) => {
         formData: {
           ...state.formData,
           name: action.name,
+        },
+        formValidity: {
+          ...state.formValidity,
+          name: action.valid,
         },
         formDataChanged: true,
         errorMessage: null,
@@ -75,6 +85,10 @@ export const createProfileReducer = (state = initialState, action) => {
           ...state.formData,
           email: action.email,
         },
+        formValidity: {
+          ...state.formValidity,
+          email: action.valid,
+        },
         formDataChanged: true,
         errorMessage: null,
       }
@@ -85,6 +99,10 @@ export const createProfileReducer = (state = initialState, action) => {
         formData: {
           ...state.formData,
           password: action.password,
+        },
+        formValidity: {
+          ...state.formValidity,
+          password: action.valid,
         },
         formDataChanged: true,
         errorMessage: null,

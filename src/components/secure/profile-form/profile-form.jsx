@@ -23,13 +23,16 @@ export const ProfileForm = () => {
 
   const dispatch = useDispatch();
 
-  const {isLoading, success, formData, formDataChanged, errorMessage} = useSelector(store => ({
+  const {isLoading, success, formData, formDataChanged, formValidity, errorMessage} = useSelector(store => ({
     isLoading: store.createProfile.isLoading,
     success: store.createProfile.success,
     formData: store.createProfile.formData,
     formDataChanged: store.createProfile.formDataChanged,
+    formValidity: store.createProfile.formValidity,
     errorMessage: store.createProfile.errorMessage,
-  }))
+  }));
+
+  const isFormValid = formValidity.name && formValidity.email && formValidity.password;
 
   const formSubmit = (event) => {
     event.preventDefault();
@@ -39,7 +42,8 @@ export const ProfileForm = () => {
   return (
       <form className={profileFormStyles.form} noValidate onSubmit={formSubmit}>
         <Input autoComplete='off'
-               minLength={1}
+               required={true}
+               minLength={2}
                type={'text'}
                name={'name'}
                value={formData.name}
@@ -50,25 +54,27 @@ export const ProfileForm = () => {
                disabled={inputNameDisabled}
                onBlur={() => setInputNameDisabled(true)}
                onIconClick={onIconClick}
-               onChange={event => dispatch(changeName(event.target.value))}
+               onChange={event => dispatch(changeName(event.target.value, event.target.validity.valid))}
         />
         <EmailInput autoComplete='off'
+                    required={true}
                     type={'email'}
                     name={'email'}
                     value={formData.email}
                     placeholder={'Логин'}
                     size={'default'}
                     isIcon={true}
-                    onChange={event => dispatch(changeEmail(event.target.value))}
+                    onChange={event => dispatch(changeEmail(event.target.value, event.target.validity.valid))}
         />
         <PasswordInput autoComplete='off'
+                       required={true}
                        minLength={6}
                        name={'password'}
                        value={formData.password}
                        placeholder={'Пароль'}
                        size={'default'}
                        icon={'EditIcon'}
-                       onChange={event => dispatch(changePassword(event.target.value))}
+                       onChange={event => dispatch(changePassword(event.target.value, event.target.validity.valid))}
         />
         {formDataChanged &&
             <>
@@ -83,7 +89,8 @@ export const ProfileForm = () => {
                 <Button extraClass={profileFormStyles.form__button_primary}
                         htmlType='submit'
                         type='primary'
-                        size='medium'>
+                        size='medium'
+                        disabled={!isFormValid}>
                   Сохранить
                 </Button>
               </div>

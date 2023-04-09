@@ -25,24 +25,27 @@ export const startChangedProfile = (formData) => dispatch => {
   })
 }
 
-export function changeName(name) {
+export function changeName(name, valid) {
   return {
     type: PROFILE_CHANGE_NAME,
     name: name,
+    valid: valid,
   }
 }
 
-export function changeEmail(email) {
+export function changeEmail(email, valid) {
   return {
     type: PROFILE_CHANGE_EMAIL,
     email: email,
+    valid: valid,
   }
 }
 
-export function changePassword(password) {
+export function changePassword(password, valid) {
   return {
     type: PROFILE_CHANGE_PASSWORD,
     password: password,
+    valid: valid,
   }
 }
 
