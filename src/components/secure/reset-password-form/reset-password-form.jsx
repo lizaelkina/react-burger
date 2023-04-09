@@ -1,50 +1,67 @@
-import {useRef, useState} from 'react';
-import cn from 'classnames';
+import {useRef} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
 import {Button, Input, PasswordInput} from '@ya.praktikum/react-developer-burger-ui-components';
+import {Loader} from '../../shared/loader/loader';
+import {ErrorMessage} from '../../shared/error-message/error-message';
+import {changeCode, changePassword, startResetPassword} from '../../../services/actions/reset-password';
 import resetFormStyles from './reset-password-form.module.css';
 
 export const ResetPasswordForm = () => {
 
-  const [valuePassword, setValuePassword] = useState('');
-  const [valueCode, setValueCode] = useState('');
-
+  const dispatch = useDispatch();
   const inputRef = useRef(null);
 
-  const onIconClick = () => {
-    setTimeout(() => inputRef.current.focus(), 0)
-    alert('Icon Click Callback')
+  const {isLoading, success, formData, formValidity, errorMessage} = useSelector(store => ({
+    isLoading: store.createResetPassword.isLoading,
+    success: store.createResetPassword.success,
+    formData: store.createResetPassword.formData,
+    formValidity: store.createResetPassword.formValidity,
+    errorMessage: store.createResetPassword.errorMessage,
+  }))
+
+  const isFormValid = formValidity.password && formValidity.code;
+
+  const formSubmit = (event) => {
+    event.preventDefault();
+    dispatch(startResetPassword(formData));
   }
 
   return (
-      <>
-        <form className={cn(resetFormStyles.form, 'mb-20')}>
-          <PasswordInput autoComplete='on'
-                         name={'password'}
-                         value={valuePassword}
-                         placeholder={'Введите новый пароль'}
-                         size={'default'}
-                         icon={'ShowIcon'}
-                         onChange={event => setValuePassword(event.target.value)}
-          />
-          <Input autoComplete='off'
-                 name={'code'}
-                 value={valueCode}
-                 type={'text'}
-                 placeholder={'Введите код из письма'}
-                 error={false}
-                 errorText={'Неверный код'}
-                 ref={inputRef}
-                 size={'default'}
-                 onChange={event => setValueCode(event.target.value)}
-                 onIconClick={onIconClick}
-          />
-          <Button extraClass={resetFormStyles.button}
-                  htmlType='submit'
-                  type='primary'
-                  size='medium'>
-            Сохранить
-          </Button>
-        </form>
-      </>
+      <form className={resetFormStyles.form} noValidate onSubmit={formSubmit}>
+        <PasswordInput autoComplete='off'
+                       required={true}
+                       minLength={6}
+                       name={'password'}
+                       value={formData.password}
+                       placeholder={'Введите новый пароль'}
+                       size={'default'}
+                       icon={'ShowIcon'}
+                       onChange={event => dispatch(changePassword(event.target.value, event.target.validity.valid))}
+        />
+        <Input autoComplete='off'
+               required={true}
+               minLength={4}
+               name={'code'}
+               value={formData.code}
+               type={'text'}
+               placeholder={'Введите код из письма'}
+               error={false}
+               errorText={'Неверный код'}
+               ref={inputRef}
+               size={'default'}
+               onChange={event => dispatch(changeCode(event.target.value, event.target.validity.valid))}
+        />
+        <Button extraClass={resetFormStyles.form__button}
+                htmlType='submit'
+                type='primary'
+                size='medium'
+                disabled={!isFormValid}>
+          Сохранить
+        </Button>
+        <div className={resetFormStyles.form__error}>
+          {!isLoading && errorMessage && <ErrorMessage message={errorMessage}/>}
+        </div>
+        {isLoading && <Loader overlay={true}/>}
+      </form>
   )
 }

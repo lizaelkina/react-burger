@@ -50,3 +50,12 @@ export const forgotPasswordRequest = (formData) => request('password-reset',
       body: JSON.stringify(formData),
     }
 );
+
+export const resetPasswordRequest = (formData) => request('password-reset/reset',
+    {
+      method: 'POST',
+      headers: DEFAULT_HEADER,
+      body: JSON.stringify(formData),
+    }
+);
+

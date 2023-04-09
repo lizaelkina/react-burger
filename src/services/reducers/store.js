@@ -5,6 +5,7 @@ import {createOrderReducer} from './create-order';
 import {createRegistrationReducer} from './registration';
 import {createAuthorizationReducer} from './authorization';
 import {createForgotPasswordReducer} from './forgot-password';
+import {createResetPasswordReducer} from './reset-password';
 
 export const rootReducer = combineReducers({
   burgerIngredients: burgerIngredientsReducer,
@@ -13,4 +14,5 @@ export const rootReducer = combineReducers({
   createRegistration: createRegistrationReducer,
   createAuthorization: createAuthorizationReducer,
   createForgotPassword: createForgotPasswordReducer,
+  createResetPassword: createResetPasswordReducer,
 });

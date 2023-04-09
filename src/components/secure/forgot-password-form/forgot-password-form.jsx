@@ -1,5 +1,4 @@
 import {useDispatch, useSelector} from 'react-redux';
-import cn from 'classnames';
 import {Button, EmailInput} from '@ya.praktikum/react-developer-burger-ui-components';
 import {Loader} from '../../shared/loader/loader';
 import {ErrorMessage} from '../../shared/error-message/error-message';
@@ -26,8 +25,9 @@ export const ForgotPasswordForm = () => {
   }
 
   return (
-      <form className={cn(forgotFormStyles.form)} noValidate onSubmit={formSubmit}>
+      <form className={forgotFormStyles.form} noValidate onSubmit={formSubmit}>
         <EmailInput autoComplete='off'
+                    required={true}
                     name={'e-mail'}
                     type={'email'}
                     value={formData.email}

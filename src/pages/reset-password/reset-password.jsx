@@ -16,7 +16,7 @@ export const ResetPasswordPage = () => {
       <section className={resetPageStyles.page}>
         <h2 className='text text_type_main-medium mb-6'>Восстановление пароля</h2>
         <ResetPasswordForm/>
-        <div>
+        <div className='mt-8'>
           <span className='text text_type_main-default text_color_inactive'>Вспомнили пароль?</span>
           <Button extraClass={cn(resetPageStyles.button, 'ml-2')}
                   htmlType='button'
