@@ -28,8 +28,8 @@ export const ForgotPasswordForm = () => {
       <form className={forgotFormStyles.form} noValidate onSubmit={formSubmit}>
         <EmailInput autoComplete='off'
                     required={true}
-                    name={'e-mail'}
                     type={'email'}
+                    name={'e-mail'}
                     value={formData.email}
                     placeholder={'Укажите e-mail'}
                     size={'default'}

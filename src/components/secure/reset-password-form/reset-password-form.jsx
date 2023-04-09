@@ -41,9 +41,9 @@ export const ResetPasswordForm = () => {
         <Input autoComplete='off'
                required={true}
                minLength={4}
+               type={'text'}
                name={'code'}
                value={formData.code}
-               type={'text'}
                placeholder={'Введите код из письма'}
                error={false}
                errorText={'Неверный код'}

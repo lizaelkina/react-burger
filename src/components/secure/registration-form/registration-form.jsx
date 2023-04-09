@@ -28,9 +28,9 @@ export const RegistrationForm = () => {
       <form className={registrationFormStyles.form} noValidate onSubmit={formSubmit}>
         <Input autoComplete='off'
                required={true}
+               type={'text'}
                name={'name'}
                value={formData.name}
-               type={'text'}
                placeholder={'Имя'}
                size={'default'}
                onChange={event => dispatch(changeName(event.target.value, event.target.validity.valid))}
