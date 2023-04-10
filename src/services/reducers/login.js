@@ -1,10 +1,10 @@
 import {
-  AUTHORIZATION_CHANGE_EMAIL,
-  AUTHORIZATION_CHANGE_PASSWORD,
-  AUTHORIZATION_FAILED,
-  AUTHORIZATION_LOADING,
-  AUTHORIZATION_SUCCESS
-} from '../actions/authorization';
+  LOGIN_CHANGE_EMAIL,
+  LOGIN_CHANGE_PASSWORD,
+  LOGIN_FAILED,
+  LOGIN_LOADING,
+  LOGIN_SUCCESS
+} from '../actions/login';
 
 const initialState = {
   formData: {
@@ -20,9 +20,9 @@ const initialState = {
   errorMessage: null,
 };
 
-export const createAuthorizationReducer = (state = initialState, action) => {
+export const createLoginReducer = (state = initialState, action) => {
   switch (action.type) {
-    case AUTHORIZATION_LOADING: {
+    case LOGIN_LOADING: {
       return {
         ...state,
         isLoading: true,
@@ -30,21 +30,21 @@ export const createAuthorizationReducer = (state = initialState, action) => {
         errorMessage: null,
       }
     }
-    case AUTHORIZATION_SUCCESS: {
+    case LOGIN_SUCCESS: {
       return {
         ...state,
         isLoading: false,
         success: true,
       }
     }
-    case AUTHORIZATION_FAILED: {
+    case LOGIN_FAILED: {
       return {
         ...state,
         isLoading: false,
         errorMessage: action.error,
       }
     }
-    case AUTHORIZATION_CHANGE_EMAIL: {
+    case LOGIN_CHANGE_EMAIL: {
       return {
         ...state,
         formData: {
@@ -58,7 +58,7 @@ export const createAuthorizationReducer = (state = initialState, action) => {
         errorMessage: null,
       }
     }
-    case AUTHORIZATION_CHANGE_PASSWORD: {
+    case LOGIN_CHANGE_PASSWORD: {
       return {
         ...state,
         formData: {

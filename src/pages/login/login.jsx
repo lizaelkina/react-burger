@@ -1,7 +1,7 @@
 import {useNavigate} from 'react-router-dom';
 import cn from 'classnames';
 import {Button} from '@ya.praktikum/react-developer-burger-ui-components';
-import {AuthorizationForm} from '../../components/secure/authorization-form/authorization-form';
+import {LoginForm} from '../../components/secure/login-form/login-form';
 import loginPageStyles from './login.module.css';
 
 export const LoginPage = () => {
@@ -19,7 +19,7 @@ export const LoginPage = () => {
   return (
       <section className={loginPageStyles.page}>
         <h2 className='text text_type_main-medium mb-6'>Вход</h2>
-        <AuthorizationForm/>
+        <LoginForm/>
         <div className='mt-8'>
           <span className='text text_type_main-default text_color_inactive'>Вы — новый пользователь?</span>
           <Button extraClass={cn(loginPageStyles.button, 'ml-2')}
