@@ -1,7 +1,7 @@
 import {useNavigate} from 'react-router-dom';
 import cn from 'classnames';
 import {Button} from '@ya.praktikum/react-developer-burger-ui-components';
-import {LoginForm} from '../../components/secure/login-form/login-form';
+import {LoginForm} from '../../components/forms/login-form/login-form';
 import loginPageStyles from './login.module.css';
 
 export const LoginPage = () => {

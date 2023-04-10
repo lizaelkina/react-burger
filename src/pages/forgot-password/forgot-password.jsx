@@ -1,7 +1,7 @@
 import {useNavigate} from 'react-router-dom';
 import cn from 'classnames';
 import {Button} from '@ya.praktikum/react-developer-burger-ui-components';
-import {ForgotPasswordForm} from '../../components/secure/forgot-password-form/forgot-password-form';
+import {ForgotPasswordForm} from '../../components/forms/forgot-password-form/forgot-password-form';
 import forgotPageStyles from './forgot-password.module.css';
 
 export const ForgotPasswordPage = () => {

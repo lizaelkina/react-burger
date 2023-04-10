@@ -1,7 +1,7 @@
 import {useNavigate} from 'react-router-dom';
 import cn from 'classnames';
 import {Button} from '@ya.praktikum/react-developer-burger-ui-components';
-import {ResetPasswordForm} from '../../components/secure/reset-password-form/reset-password-form';
+import {ResetPasswordForm} from '../../components/forms/reset-password-form/reset-password-form';
 import resetPageStyles from './reset-password.module.css';
 
 export const ResetPasswordPage = () => {

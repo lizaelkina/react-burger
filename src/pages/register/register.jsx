@@ -1,7 +1,7 @@
 import cn from 'classnames';
 import {useNavigate} from 'react-router-dom';
 import {Button} from '@ya.praktikum/react-developer-burger-ui-components';
-import {RegisterForm} from '../../components/secure/register-form/register-form';
+import {RegisterForm} from '../../components/forms/register-form/register-form';
 import registerPageStyles from './register.module.css';
 
 export const RegisterPage = () => {

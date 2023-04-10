@@ -1,12 +1,12 @@
 import {Outlet} from 'react-router';
 import {AppHeader} from '../app-header/app-header';
-import layoutPage from './page-layout.module.css'
+import pageLayoutStyles from './page-layout.module.css'
 
 export const PageLayout = () => {
   return (
-      <div className={layoutPage.page}>
+      <div className={pageLayoutStyles.page}>
         <AppHeader/>
-        <main className={layoutPage.main}>
+        <main className={pageLayoutStyles.main}>
           <Outlet/>
         </main>
       </div>
