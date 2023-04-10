@@ -1,11 +1,11 @@
 import {
-  REGISTRATION_CHANGE_EMAIL,
-  REGISTRATION_CHANGE_NAME,
-  REGISTRATION_CHANGE_PASSWORD,
-  REGISTRATION_FAILED,
-  REGISTRATION_LOADING,
-  REGISTRATION_SUCCESS
-} from '../actions/registration';
+  REGISTER_CHANGE_EMAIL,
+  REGISTER_CHANGE_NAME,
+  REGISTER_CHANGE_PASSWORD,
+  REGISTER_FAILED,
+  REGISTER_LOADING,
+  REGISTER_SUCCESS
+} from '../actions/register';
 
 const initialState = {
   formData: {
@@ -23,9 +23,9 @@ const initialState = {
   errorMessage: null,
 };
 
-export const createRegistrationReducer = (state = initialState, action) => {
+export const createRegisterReducer = (state = initialState, action) => {
   switch (action.type) {
-    case REGISTRATION_LOADING: {
+    case REGISTER_LOADING: {
       return {
         ...state,
         isLoading: true,
@@ -33,21 +33,21 @@ export const createRegistrationReducer = (state = initialState, action) => {
         errorMessage: null,
       }
     }
-    case REGISTRATION_SUCCESS: {
+    case REGISTER_SUCCESS: {
       return {
         ...state,
         isLoading: false,
         success: true,
       }
     }
-    case REGISTRATION_FAILED: {
+    case REGISTER_FAILED: {
       return {
         ...state,
         isLoading: false,
         errorMessage: action.error,
       }
     }
-    case REGISTRATION_CHANGE_NAME: {
+    case REGISTER_CHANGE_NAME: {
       return {
         ...state,
         formData: {
@@ -61,7 +61,7 @@ export const createRegistrationReducer = (state = initialState, action) => {
         errorMessage: null,
       }
     }
-    case REGISTRATION_CHANGE_EMAIL: {
+    case REGISTER_CHANGE_EMAIL: {
       return {
         ...state,
         formData: {
@@ -75,7 +75,7 @@ export const createRegistrationReducer = (state = initialState, action) => {
         errorMessage: null,
       }
     }
-    case REGISTRATION_CHANGE_PASSWORD: {
+    case REGISTER_CHANGE_PASSWORD: {
       return {
         ...state,
         formData: {

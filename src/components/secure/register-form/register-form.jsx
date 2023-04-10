@@ -2,30 +2,30 @@ import {useDispatch, useSelector} from 'react-redux';
 import {Button, EmailInput, Input, PasswordInput} from '@ya.praktikum/react-developer-burger-ui-components';
 import {Loader} from '../../shared/loader/loader';
 import {ErrorMessage} from '../../shared/error-message/error-message';
-import {changeEmail, changeName, changePassword, startRegistration} from '../../../services/actions/registration';
-import registrationFormStyles from './registration-form.module.css';
+import {changeEmail, changeName, changePassword, startRegister} from '../../../services/actions/register';
+import registerFormStyles from './register-form.module.css';
 
-export const RegistrationForm = () => {
+export const RegisterForm = () => {
 
   const dispatch = useDispatch();
 
   const {isLoading, success, formData, formValidity, errorMessage} = useSelector(store => ({
-    isLoading: store.createRegistration.isLoading,
-    success: store.createRegistration.success,
-    formData: store.createRegistration.formData,
-    formValidity: store.createRegistration.formValidity,
-    errorMessage: store.createRegistration.errorMessage,
+    isLoading: store.createRegister.isLoading,
+    success: store.createRegister.success,
+    formData: store.createRegister.formData,
+    formValidity: store.createRegister.formValidity,
+    errorMessage: store.createRegister.errorMessage,
   }));
 
   const isFormValid = formValidity.name && formValidity.email && formValidity.password;
 
   const formSubmit = (event) => {
     event.preventDefault();
-    dispatch(startRegistration(formData));
+    dispatch(startRegister(formData));
   }
 
   return (
-      <form className={registrationFormStyles.form} noValidate onSubmit={formSubmit}>
+      <form className={registerFormStyles.form} noValidate onSubmit={formSubmit}>
         <Input autoComplete='off'
                required={true}
                type={'text'}
@@ -55,14 +55,14 @@ export const RegistrationForm = () => {
                        icon={'ShowIcon'}
                        onChange={event => dispatch(changePassword(event.target.value, event.target.validity.valid))}
         />
-        <Button extraClass={registrationFormStyles.form__button}
+        <Button extraClass={registerFormStyles.form__button}
                 htmlType='submit'
                 type='primary'
                 size='medium'
                 disabled={!isFormValid}>
           Зарегистрироваться
         </Button>
-        <div className={registrationFormStyles.form__error}>
+        <div className={registerFormStyles.form__error}>
           {!isLoading && errorMessage && <ErrorMessage message={errorMessage}/>}
         </div>
         {isLoading && <Loader overlay={true}/>}

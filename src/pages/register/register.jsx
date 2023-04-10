@@ -1,7 +1,7 @@
 import cn from 'classnames';
 import {useNavigate} from 'react-router-dom';
 import {Button} from '@ya.praktikum/react-developer-burger-ui-components';
-import {RegistrationForm} from '../../components/secure/registration-form/registration-form';
+import {RegisterForm} from '../../components/secure/register-form/register-form';
 import registerPageStyles from './register.module.css';
 
 export const RegisterPage = () => {
@@ -15,7 +15,7 @@ export const RegisterPage = () => {
   return (
       <section className={registerPageStyles.page}>
         <h2 className='text text_type_main-medium mb-6'>Регистрация</h2>
-        <RegistrationForm/>
+        <RegisterForm/>
         <div className='mt-8'>
           <span className='text text_type_main-default text_color_inactive'>Уже зарегистрированы?</span>
           <Button extraClass={cn(registerPageStyles.button, 'ml-2')}
