@@ -9,7 +9,7 @@ import {
   changeName,
   changePassword,
   startChangedProfile
-} from '../../../services/actions/profile-form';
+} from '../../../services/actions/profile';
 import profileFormStyles from './profile-form.module.css';
 
 export const ProfileForm = () => {

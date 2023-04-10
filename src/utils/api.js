@@ -29,6 +29,8 @@ export const createOrder = (ingredientIdList) => request('orders',
       })
     });
 
+export const getUser = () => request('auth/user');
+
 export const registerRequest = (formData) => request('auth/register',
     {
       method: 'POST',
@@ -59,12 +61,18 @@ export const resetPasswordRequest = (formData) => request('password-reset/reset'
     }
 );
 
-export const getProfile = () => request('auth/user');
-
 export const changeProfileRequest = (formData) => request('auth/user',
     {
       method: 'PATCH',
       headers: DEFAULT_HEADER,
       body: JSON.stringify(formData),
+    }
+);
+
+export const logoutRequest = (token) => request('auth/logout',
+    {
+      method: 'POST',
+      headers: DEFAULT_HEADER,
+      body: JSON.stringify(token),
     }
 );

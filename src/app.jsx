@@ -43,13 +43,15 @@ export const App = () => {
         </Routes>
 
         {backgroundLocation &&
-            <Routes> {location.state?.ingredient &&
+            <Routes>
+              {location.state?.ingredient &&
                 <Route path='/ingredients/:id' element={
                   <Modal title={'Детали ингредиента'} onClose={closeModal}>
                     <IngredientDetails ingredient={location.state?.ingredient}/>
                   </Modal>}>
                 </Route>}
-            </Routes>}
+            </Routes>
+        }
       </>
   );
 }

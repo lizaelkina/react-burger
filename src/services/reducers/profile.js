@@ -6,7 +6,7 @@ import {
   PROFILE_FAILED,
   PROFILE_LOADING,
   PROFILE_SUCCESS
-} from '../actions/profile-form';
+} from '../actions/profile';
 
 const CURRENT_USER = {
   name: 'Liza',
