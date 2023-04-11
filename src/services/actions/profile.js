@@ -1,5 +1,6 @@
 import {changeProfileRequest} from '../../utils/api';
 
+export const PROFILE_INIT_STATE = 'PROFILE_INIT_STATE';
 export const PROFILE_CHANGE_NAME = 'PROFILE_CHANGE_NAME';
 export const PROFILE_CHANGE_EMAIL = 'PROFILE_CHANGE_EMAIL';
 export const PROFILE_CHANGE_PASSWORD = 'PROFILE_CHANGE_PASSWORD';
@@ -13,14 +14,14 @@ export const startChangedProfile = (formData) => dispatch => {
     type: PROFILE_LOADING,
   })
 
-  changeProfileRequest(formData).then(response => {
+  changeProfileRequest(formData).then(() => {
     dispatch({
       type: PROFILE_SUCCESS,
     })
-  }).catch(error => {
+  }).catch(response => {
     dispatch({
       type: PROFILE_FAILED,
-      error: error,
+      error: response.error,
     })
   })
 }
@@ -52,5 +53,12 @@ export function changePassword(password, valid) {
 export function cancelChanges() {
   return {
     type: PROFILE_CANCEL_CHANGES,
+  }
+}
+
+export function profileInitState(user) {
+  return {
+    type: PROFILE_INIT_STATE,
+    user: user,
   }
 }

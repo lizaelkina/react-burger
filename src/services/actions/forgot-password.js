@@ -10,14 +10,14 @@ export const startForgotPassword = (formData) => dispatch => {
     type: FORGOTPASSWORD_LOADING,
   })
 
-  forgotPasswordRequest(formData).then(response => {
+  forgotPasswordRequest(formData).then(() => {
     dispatch({
       type: FORGOTPASSWORD_SUCCESS,
     })
-  }).catch(error => {
+  }).catch(response => {
     dispatch({
       type: FORGOTPASSWORD_FAILED,
-      error: error,
+      error: response.error,
     })
   })
 }

@@ -1,6 +1,7 @@
 import {Route, Routes} from 'react-router';
 import {useLocation, useNavigate} from 'react-router-dom';
 import {IngredientDetails} from './components/burger-ingredients/ingredient-details/ingredient-details';
+import {ProtectedRoute} from './components/protected-route/protected-route';
 import {PageLayout} from './components/shared/page-layout/page-layout';
 import {HomePage} from './pages/home/home';
 import {UserAccountLayout} from './pages/user-account/user-account-layout';
@@ -18,6 +19,8 @@ export const App = () => {
 
   const location = useLocation();
   const backgroundLocation = location.state?.backgroundLocation;
+  const fromForgotPage = location.state?.fromForgot;
+
   const navigation = useNavigate();
 
   function closeModal() {
@@ -30,14 +33,20 @@ export const App = () => {
           <Route path='/' element={<PageLayout/>}>
             <Route index element={<HomePage/>}/>
             <Route path='ingredients/:id' element={<IngredientPage/>}/>
-            <Route path='profile' element={<UserAccountLayout/>}>
+            <Route path='profile' element={
+              <ProtectedRoute>
+                <UserAccountLayout/>
+              </ProtectedRoute>}>
               <Route index element={<ProfilePage/>}/>
               <Route path='orders' element={<OrdersPage/>}/>
             </Route>
-            <Route path='login' element={<LoginPage/>}/>
-            <Route path='register' element={<RegisterPage/>}/>
-            <Route path='forgot-password' element={<ForgotPasswordPage/>}/>
-            <Route path='reset-password' element={<ResetPasswordPage/>}/>
+            <Route path='login' element={<ProtectedRoute onlyUnAuth><LoginPage/></ProtectedRoute>}/>
+            <Route path='register' element={<ProtectedRoute onlyUnAuth><RegisterPage/></ProtectedRoute>}/>
+            <Route path='forgot-password' element={<ProtectedRoute onlyUnAuth><ForgotPasswordPage/></ProtectedRoute>}/>
+            {fromForgotPage &&
+                <Route path='reset-password'
+                       element={<ProtectedRoute onlyUnAuth><ResetPasswordPage/></ProtectedRoute>}>
+                </Route>}
             <Route path='*' element={<NotFound404/>}/>
           </Route>
         </Routes>
@@ -45,11 +54,11 @@ export const App = () => {
         {backgroundLocation &&
             <Routes>
               {location.state?.ingredient &&
-                <Route path='/ingredients/:id' element={
-                  <Modal title={'Детали ингредиента'} onClose={closeModal}>
-                    <IngredientDetails ingredient={location.state?.ingredient}/>
-                  </Modal>}>
-                </Route>}
+                  <Route path='/ingredients/:id' element={
+                    <Modal title={'Детали ингредиента'} onClose={closeModal}>
+                      <IngredientDetails ingredient={location.state?.ingredient}/>
+                    </Modal>}>
+                  </Route>}
             </Routes>
         }
       </>

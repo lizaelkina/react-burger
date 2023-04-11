@@ -11,14 +11,14 @@ export const startResetPassword = (formData) => dispatch => {
     type: RESETPASSWORD_LOADING,
   })
 
-  resetPasswordRequest(formData).then(response => {
+  resetPasswordRequest(formData).then(() => {
     dispatch({
       type: RESETPASSWORD_SUCCESS,
     })
-  }).catch(error => {
+  }).catch(response => {
     dispatch({
       type: RESETPASSWORD_FAILED,
-      error: error,
+      error: response.error,
     })
   })
 }

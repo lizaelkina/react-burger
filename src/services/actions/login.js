@@ -14,11 +14,14 @@ export const startLogin = (formData) => dispatch => {
   loginRequest(formData).then(response => {
     dispatch({
       type: LOGIN_SUCCESS,
+      user: response.user,
+      accessToken: response.accessToken,
+      refreshToken: response.refreshToken,
     })
-  }).catch(error => {
+  }).catch(response => {
     dispatch({
       type: LOGIN_FAILED,
-      error: error,
+      error: response.error,
     })
   })
 }

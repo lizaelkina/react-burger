@@ -18,10 +18,10 @@ export const loadIngredients = () => (dispatch, getState) => {
         type: GET_INGREDIENTS_SUCCESS,
         ingredients: response.data,
       })
-    }).catch(error => {
+    }).catch(response => {
       dispatch({
         type: GET_INGREDIENTS_FAILED,
-        error: error,
+        error: response.error,
       })
     })
   }

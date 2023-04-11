@@ -1,4 +1,5 @@
 import {useDispatch, useSelector} from 'react-redux';
+import {useNavigate} from 'react-router-dom';
 import cn from 'classnames';
 import {Button} from '@ya.praktikum/react-developer-burger-ui-components';
 import {Burger} from './burger/burger';
@@ -12,20 +13,26 @@ import burgerConstructorStyles from './burger-constructor.module.css';
 export const BurgerConstructor = () => {
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  const {bun, middle, isOpenModal, isOrderProcessing, isOrderCreated} = useSelector(store => ({
+  const {bun, middle, isOpenModal, isOrderProcessing, isOrderCreated, authUser} = useSelector(store => ({
     bun: store.burgerConstructor.bun,
     middle: store.burgerConstructor.middle,
     isOpenModal: store.createOrder.isOpenModal,
     isOrderProcessing: store.createOrder.isLoading,
     isOrderCreated: store.createOrder.success,
+    authUser: store.auth.user,
   }));
 
   const isButtonDisabled = bun === null || middle.length === 0;
 
   function handleCreateOrder() {
-    const ingredientIdList = [...middle, bun, bun].map(item => item._id);
-    dispatch(startCreatingOrder(ingredientIdList));
+    if (authUser) {
+      const ingredientIdList = [...middle, bun, bun].map(item => item._id);
+      dispatch(startCreatingOrder(ingredientIdList));
+    } else {
+      navigate('/login');
+    }
   }
 
   function handleClickCloseModal() {

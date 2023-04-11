@@ -15,11 +15,14 @@ export const startRegister = (formData) => dispatch => {
   registerRequest(formData).then(response => {
     dispatch({
       type: REGISTER_SUCCESS,
+      user: response.user,
+      accessToken: response.accessToken,
+      refreshToken: response.refreshToken,
     })
-  }).catch(error => {
+  }).catch(response => {
     dispatch({
       type: REGISTER_FAILED,
-      error: error,
+      error: response.error,
     })
   })
 }

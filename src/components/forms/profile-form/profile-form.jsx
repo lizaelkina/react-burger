@@ -1,4 +1,4 @@
-import {useRef, useState} from 'react';
+import {useEffect, useRef, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {Button, EmailInput, Input, PasswordInput} from '@ya.praktikum/react-developer-burger-ui-components';
 import {Loader} from '../../shared/loader/loader';
@@ -8,6 +8,7 @@ import {
   changeEmail,
   changeName,
   changePassword,
+  profileInitState,
   startChangedProfile
 } from '../../../services/actions/profile';
 import profileFormStyles from './profile-form.module.css';
@@ -23,14 +24,25 @@ export const ProfileForm = () => {
 
   const dispatch = useDispatch();
 
-  const {isLoading, success, formData, formDataChanged, formValidity, errorMessage} = useSelector(store => ({
+  const {isLoading, formData, formDataChanged, formValidity, errorMessage} = useSelector(store => ({
     isLoading: store.createProfile.isLoading,
-    success: store.createProfile.success,
     formData: store.createProfile.formData,
     formDataChanged: store.createProfile.formDataChanged,
     formValidity: store.createProfile.formValidity,
     errorMessage: store.createProfile.errorMessage,
   }));
+
+  const {authUser, isAuthChecked} = useSelector(store => ({
+    authUser: store.auth.user,
+    isAuthChecked: store.auth.isAuthChecked,
+  }))
+
+  useEffect(() => {
+    if (isAuthChecked && authUser) {
+      dispatch(profileInitState(authUser));
+    }
+  }, [authUser, dispatch, isAuthChecked]);
+
 
   const isFormValid = formValidity.name && formValidity.email && formValidity.password;
 
@@ -67,10 +79,9 @@ export const ProfileForm = () => {
                     onChange={event => dispatch(changeEmail(event.target.value, event.target.validity.valid))}
         />
         <PasswordInput autoComplete='off'
-                       required={true}
                        minLength={6}
                        name={'password'}
-                       value={formData.password}
+                       value={formData.password || ''}
                        placeholder={'Пароль'}
                        size={'default'}
                        icon={'EditIcon'}

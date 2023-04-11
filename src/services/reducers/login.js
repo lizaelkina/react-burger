@@ -1,10 +1,5 @@
-import {
-  LOGIN_CHANGE_EMAIL,
-  LOGIN_CHANGE_PASSWORD,
-  LOGIN_FAILED,
-  LOGIN_LOADING,
-  LOGIN_SUCCESS
-} from '../actions/login';
+import {LOGIN_CHANGE_EMAIL, LOGIN_CHANGE_PASSWORD, LOGIN_FAILED, LOGIN_LOADING, LOGIN_SUCCESS} from '../actions/login';
+import {AUTH_USER} from '../actions/auth';
 
 const initialState = {
   formData: {
@@ -17,11 +12,19 @@ const initialState = {
   },
   isLoading: false,
   success: false,
+  user: null,
+  accessToken: null,
+  refreshToken: null,
   errorMessage: null,
 };
 
 export const createLoginReducer = (state = initialState, action) => {
   switch (action.type) {
+    case AUTH_USER:
+      return {
+        ...state,
+        success: false,
+      }
     case LOGIN_LOADING: {
       return {
         ...state,
@@ -35,6 +38,9 @@ export const createLoginReducer = (state = initialState, action) => {
         ...state,
         isLoading: false,
         success: true,
+        user: action.user,
+        accessToken: action.accessToken,
+        refreshToken: action.refreshToken,
       }
     }
     case LOGIN_FAILED: {

@@ -1,8 +1,12 @@
+import {useDispatch} from 'react-redux';
 import {NavLink} from 'react-router-dom';
 import cn from 'classnames';
+import {logout} from '../../services/actions/auth';
 import navProfileStyles from './navigation-profile.module.css';
 
 export const NavigationProfile = () => {
+
+  const dispatch = useDispatch();
 
   return (
       <nav className={navProfileStyles.nav} aria-label='Личный кабинет пользователя'>
@@ -16,13 +20,10 @@ export const NavigationProfile = () => {
                  to='/profile/orders'>
           <span className='text text_type_main-medium'>История заказов</span>
         </NavLink>
-        <NavLink className={navProfileStyles.link}
-                 to='/login'>
+        <button className={cn(navProfileStyles.link, navProfileStyles.button)}
+                onClick={() => dispatch(logout())}>
           <span className='text text_type_main-medium'>Выход</span>
-        </NavLink>
-        <span className={cn(navProfileStyles.info, 'text text_type_main-default text_color_inactive mt-20')}>
-            В этом разделе вы можете<br></br>изменить свои персональные данные
-          </span>
+        </button>
       </nav>
   )
 }

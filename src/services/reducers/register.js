@@ -20,6 +20,9 @@ const initialState = {
   },
   isLoading: false,
   success: false,
+  user: null,
+  accessToken: null,
+  refreshToken: null,
   errorMessage: null,
 };
 
@@ -38,6 +41,9 @@ export const createRegisterReducer = (state = initialState, action) => {
         ...state,
         isLoading: false,
         success: true,
+        user: action.user,
+        accessToken: action.accessToken,
+        refreshToken: action.refreshToken,
       }
     }
     case REGISTER_FAILED: {

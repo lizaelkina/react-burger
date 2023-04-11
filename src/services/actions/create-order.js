@@ -15,10 +15,10 @@ export const startCreatingOrder = (ingredientIdList) => dispatch => {
       type: CREATE_ORDER_SUCCESS,
       number: response.order.number,
     })
-  }).catch(error => {
+  }).catch(response => {
     dispatch({
       type: CREATE_ORDER_FAILED,
-      error: error,
+      error: response.error,
     })
   })
 };

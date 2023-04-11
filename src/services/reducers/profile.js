@@ -4,20 +4,18 @@ import {
   PROFILE_CHANGE_NAME,
   PROFILE_CHANGE_PASSWORD,
   PROFILE_FAILED,
+  PROFILE_INIT_STATE,
   PROFILE_LOADING,
   PROFILE_SUCCESS
 } from '../actions/profile';
 
-const CURRENT_USER = {
-  name: 'Liza',
-  email: 'liza@mail.ru',
-  password: '123456',
-};
-
 const initialState = {
   formData: {
-    ...CURRENT_USER,
+    name: '',
+    email: '',
+    password: '',
   },
+  initData: {},
   formValidity: {
     name: true,
     email: true,
@@ -31,6 +29,12 @@ const initialState = {
 
 export const createProfileReducer = (state = initialState, action) => {
   switch (action.type) {
+    case PROFILE_INIT_STATE: {
+      return {
+        ...state,
+        formData: action.user,
+      }
+    }
     case PROFILE_LOADING: {
       return {
         ...state,
@@ -44,6 +48,7 @@ export const createProfileReducer = (state = initialState, action) => {
         ...state,
         isLoading: false,
         success: true,
+        formDataChanged: false,
       }
     }
     case PROFILE_FAILED: {
@@ -57,7 +62,7 @@ export const createProfileReducer = (state = initialState, action) => {
       return {
         ...state,
         formData: {
-          ...CURRENT_USER,
+          ...state.initData,
         },
         formDataChanged: false,
         errorMessage: null,

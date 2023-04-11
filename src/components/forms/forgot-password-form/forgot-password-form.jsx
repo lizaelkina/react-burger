@@ -1,3 +1,5 @@
+import {useEffect} from 'react';
+import {useNavigate} from 'react-router-dom';
 import {useDispatch, useSelector} from 'react-redux';
 import {Button, EmailInput} from '@ya.praktikum/react-developer-burger-ui-components';
 import {Loader} from '../../shared/loader/loader';
@@ -7,6 +9,7 @@ import forgotFormStyles from './forgot-password-form.module.css';
 
 export const ForgotPasswordForm = () => {
 
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const {isLoading, success, formData, formValidity, errorMessage} = useSelector(store => ({
@@ -16,6 +19,13 @@ export const ForgotPasswordForm = () => {
     formValidity: store.createForgotPassword.formValidity,
     errorMessage: store.createForgotPassword.errorMessage,
   }))
+
+
+  useEffect(() => {
+    if (success) {
+      navigate('/reset-password', {state: {fromForgot: true}});
+    }
+  }, [navigate, success]);
 
   const isFormValid = formValidity.email;
 
