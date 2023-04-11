@@ -14,7 +14,7 @@ export const IngredientPage = () => {
   const {ingredients, isLoading} = useSelector(store => ({
     ingredients: store.burgerIngredients.ingredients,
     isLoading: store.burgerIngredients.isLoading,
-  }))
+  }));
 
   useEffect(() => {
     dispatch(loadIngredients())
@@ -34,5 +34,5 @@ export const IngredientPage = () => {
             </section>}
         {ingredients.length > 0 && !ingredient && <NotFound404/>}
       </>
-  )
+  );
 }

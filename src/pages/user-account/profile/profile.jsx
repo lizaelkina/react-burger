@@ -5,5 +5,5 @@ export const ProfilePage = () => {
       <div className='mt-30'>
         <ProfileForm/>
       </div>
-  )
+  );
 }

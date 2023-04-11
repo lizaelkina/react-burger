@@ -35,9 +35,7 @@ export const BurgerIngredient = ({ingredient}) => {
                ref={dragRef}
                src={ingredient.image}
                alt={ingredient.name}/>
-          {
-            count > 0 ? <Counter count={count} size='default' extraClass='m-1'/> : null
-          }
+          {count > 0 ? <Counter count={count} size='default' extraClass='m-1'/> : null}
           <div className={burgerIngredientStyles.card__price}>
             <span className='text text_type_digits-default'>{ingredient.price}</span>
             <CurrencyIcon type='primary'/>

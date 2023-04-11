@@ -25,5 +25,5 @@ export const NavigationProfile = () => {
           <span className='text text_type_main-medium'>Выход</span>
         </button>
       </nav>
-  )
+  );
 }

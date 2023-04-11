@@ -1,4 +1,4 @@
-import {useEffect, useRef} from 'react';
+import {useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {useNavigate} from 'react-router-dom';
 import {Button, Input, PasswordInput} from '@ya.praktikum/react-developer-burger-ui-components';
@@ -11,7 +11,6 @@ export const ResetPasswordForm = () => {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const inputRef = useRef(null);
 
   const {isLoading, success, formData, formValidity, errorMessage} = useSelector(store => ({
     isLoading: store.createResetPassword.isLoading,
@@ -52,7 +51,6 @@ export const ResetPasswordForm = () => {
                name={'token'}
                value={formData.token}
                placeholder={'Введите код из письма'}
-               ref={inputRef}
                size={'default'}
                onChange={event => dispatch(changeCode(event.target.value, event.target.validity.valid))}
         />
@@ -68,5 +66,5 @@ export const ResetPasswordForm = () => {
         </div>
         {isLoading && <Loader overlay={true}/>}
       </form>
-  )
+  );
 }

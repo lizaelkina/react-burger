@@ -90,5 +90,5 @@ export const RegisterForm = () => {
         </div>
         {isLoading && <Loader overlay={true}/>}
       </form>
-  )
+  );
 }

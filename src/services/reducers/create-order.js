@@ -11,7 +11,7 @@ const initialState = {
   success: false,
   number: null,
   errorMessage: null,
-};
+}
 
 export const createOrderReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -50,4 +50,4 @@ export const createOrderReducer = (state = initialState, action) => {
       return state;
     }
   }
-};
+}

@@ -41,5 +41,5 @@ export const LoginPage = () => {
           </Button>
         </div>
       </section>
-  )
+  );
 }

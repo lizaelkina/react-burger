@@ -78,24 +78,21 @@ export const forgotPasswordRequest = (formData) => request('password-reset',
       method: 'POST',
       headers: DEFAULT_HEADER,
       body: JSON.stringify(formData),
-    }
-);
+    });
 
 export const resetPasswordRequest = (formData) => request('password-reset/reset',
     {
       method: 'POST',
       headers: DEFAULT_HEADER,
       body: JSON.stringify(formData),
-    }
-);
+    });
 
 export const changeProfileRequest = (formData) => requestWithRefresh('auth/user',
     {
       method: 'PATCH',
       headers: getHeadersWithToken(),
       body: JSON.stringify(formData),
-    }
-);
+    });
 
 export const refreshToken = () => request('auth/token',
     {
@@ -104,8 +101,7 @@ export const refreshToken = () => request('auth/token',
       body: JSON.stringify({
         token: getRefreshToken(),
       }),
-    }
-);
+    });
 
 export const logoutRequest = () => request('auth/logout',
     {
@@ -114,5 +110,4 @@ export const logoutRequest = () => request('auth/logout',
       body: JSON.stringify({
         token: getRefreshToken(),
       }),
-    }
-);
+    });

@@ -16,7 +16,7 @@ const initialState = {
   accessToken: null,
   refreshToken: null,
   errorMessage: null,
-};
+}
 
 export const createLoginReducer = (state = initialState, action) => {
   switch (action.type) {

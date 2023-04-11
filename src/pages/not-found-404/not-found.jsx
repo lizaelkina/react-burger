@@ -1,5 +1,5 @@
-import cn from 'classnames';
 import {useNavigate} from 'react-router-dom';
+import cn from 'classnames';
 import {Button} from '@ya.praktikum/react-developer-burger-ui-components';
 import notFoundStyles from './not-found.module.css';
 
@@ -43,5 +43,5 @@ export const NotFound404 = () => {
           </span>
         </div>
       </section>
-  )
+  );
 }

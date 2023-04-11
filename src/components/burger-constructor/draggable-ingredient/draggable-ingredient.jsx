@@ -74,7 +74,7 @@ export const DraggableIngredient = ({ingredient}) => {
             handleClose={() => dispatch(deleteIngredient(ingredient))}
         />
       </li>
-  )
+  );
 }
 
 DraggableIngredient.propTypes = {

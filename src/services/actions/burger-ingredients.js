@@ -25,7 +25,7 @@ export const loadIngredients = () => (dispatch, getState) => {
       })
     })
   }
-};
+}
 
 export function selectIngredientGroup(group) {
   return {

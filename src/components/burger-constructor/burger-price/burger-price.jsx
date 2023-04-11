@@ -11,7 +11,7 @@ export const BurgerPrice = () => {
 
   const total = useMemo(() => {
     const allIngredients = bun ? [...middle, bun, bun] : middle;
-    return allIngredients.reduce((result, item) => result + item.price, 0)
+    return allIngredients.reduce((result, item) => result + item.price, 0);
   }, [bun, middle]);
 
   return (
@@ -19,5 +19,5 @@ export const BurgerPrice = () => {
         <span className='text text_type_digits-medium mr-4'>{total}</span>
         <CurrencyIcon type='primary'/>
       </div>
-  )
+  );
 }

@@ -27,5 +27,5 @@ export const ResetPasswordPage = () => {
           </Button>
         </div>
       </section>
-  )
+  );
 }

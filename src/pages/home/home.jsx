@@ -12,5 +12,5 @@ export const HomePage = () => {
           <BurgerConstructor/>
         </DndProvider>
       </div>
-  )
+  );
 }

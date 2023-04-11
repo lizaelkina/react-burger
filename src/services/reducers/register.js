@@ -24,7 +24,7 @@ const initialState = {
   accessToken: null,
   refreshToken: null,
   errorMessage: null,
-};
+}
 
 export const createRegisterReducer = (state = initialState, action) => {
   switch (action.type) {

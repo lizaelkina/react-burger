@@ -74,9 +74,7 @@ export const BurgerIngredients = () => {
           </Tab>
         </aside>
         {isLoading && <Loader/>}
-        {!isLoading && error &&
-            <ErrorMessage extraClass={burgerIngredientsStyles.section__error} message={error}/>
-        }
+        {!isLoading && error && <ErrorMessage extraClass={burgerIngredientsStyles.section__error} message={error}/>}
         {!isLoading && !error &&
             <div className={cn(burgerIngredientsStyles.scroll, 'custom-scroll')}>
               <IngredientGroup title='Булки' ingredients={bun} id='bun' ref={bunRef} titleRef={bunTitleRef}/>

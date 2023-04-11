@@ -112,5 +112,5 @@ export const ProfileForm = () => {
         </div>
         {isLoading && <Loader overlay={true}/>}
       </form>
-  )
+  );
 }

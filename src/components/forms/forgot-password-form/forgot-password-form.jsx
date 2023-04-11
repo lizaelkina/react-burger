@@ -18,8 +18,7 @@ export const ForgotPasswordForm = () => {
     formData: store.createForgotPassword.formData,
     formValidity: store.createForgotPassword.formValidity,
     errorMessage: store.createForgotPassword.errorMessage,
-  }))
-
+  }));
 
   useEffect(() => {
     if (success) {
@@ -58,5 +57,5 @@ export const ForgotPasswordForm = () => {
         </div>
         {isLoading && <Loader overlay={true}/>}
       </form>
-  )
+  );
 }

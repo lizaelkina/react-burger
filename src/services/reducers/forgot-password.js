@@ -15,7 +15,7 @@ const initialState = {
   isLoading: false,
   success: false,
   errorMessage: null,
-};
+}
 
 export const createForgotPasswordReducer = (state = initialState, action) => {
   switch (action.type) {

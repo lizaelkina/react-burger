@@ -24,5 +24,5 @@ export const OrderCard = () => {
           </div>
         </div>
       </div>
-  )
+  );
 }

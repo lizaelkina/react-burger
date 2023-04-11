@@ -25,7 +25,7 @@ const initialState = {
   isLoading: false,
   success: false,
   errorMessage: null,
-};
+}
 
 export const createProfileReducer = (state = initialState, action) => {
   switch (action.type) {

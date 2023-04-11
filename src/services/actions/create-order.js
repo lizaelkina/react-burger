@@ -21,7 +21,7 @@ export const startCreatingOrder = (ingredientIdList) => dispatch => {
       error: response.error,
     })
   })
-};
+}
 
 export function closeOrderModal() {
   return {

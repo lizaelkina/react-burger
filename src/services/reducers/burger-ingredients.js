@@ -10,7 +10,7 @@ const initialState = {
   isLoading: false,
   error: null,
   selectedGroup: 'bun',
-};
+}
 
 export const burgerIngredientsReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -45,4 +45,4 @@ export const burgerIngredientsReducer = (state = initialState, action) => {
       return state;
     }
   }
-};
+}

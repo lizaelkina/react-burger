@@ -22,9 +22,7 @@ export const OrderDetails = () => {
               <Loader/>
             </div>
         }
-        {!isLoading && !success &&
-            <ErrorMessage extraClass={orderDetailsStyles.error} message={errorMessage}/>
-        }
+        {!isLoading && !success && <ErrorMessage extraClass={orderDetailsStyles.error} message={errorMessage}/>}
         {success &&
             <>
               <span className={cn(orderDetailsStyles.shadow, 'text text_type_digits-large mb-8')}>

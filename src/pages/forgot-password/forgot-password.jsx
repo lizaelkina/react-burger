@@ -27,5 +27,5 @@ export const ForgotPasswordPage = () => {
           </Button>
         </div>
       </section>
-  )
+  );
 }

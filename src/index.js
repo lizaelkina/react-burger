@@ -1,8 +1,8 @@
 import React from 'react';
-import ReactDOMClient from 'react-dom/client';
-import {applyMiddleware, compose, createStore} from 'redux';
 import {Provider} from 'react-redux';
+import {applyMiddleware, compose, createStore} from 'redux';
 import thunk from 'redux-thunk';
+import ReactDOMClient from 'react-dom/client';
 import {BrowserRouter} from 'react-router-dom';
 import {rootReducer} from './services/reducers/store';
 import {App} from './app';

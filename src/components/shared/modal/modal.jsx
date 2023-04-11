@@ -45,7 +45,7 @@ export const Modal = ({title, onClose, children}) => {
           </>
       ),
       modalRoot
-  )
+  );
 }
 
 Modal.defaultProps = {

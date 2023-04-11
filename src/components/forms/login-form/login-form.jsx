@@ -83,5 +83,5 @@ export const LoginForm = () => {
         </div>
         {isLoading && <Loader overlay={true}/>}
       </form>
-  )
+  );
 }

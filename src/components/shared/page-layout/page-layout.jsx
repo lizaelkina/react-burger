@@ -10,5 +10,5 @@ export const PageLayout = () => {
           <Outlet/>
         </main>
       </div>
-  )
+  );
 }

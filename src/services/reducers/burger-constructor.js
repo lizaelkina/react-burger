@@ -43,8 +43,8 @@ export const burgerConstructorReducer = (state = initialState, action) => {
       const fromElement = state.middle[fromIndex];
 
       const result = [...state.middle];
-      result.splice(fromIndex, 1)
-      result.splice(toIndex, 0, fromElement)
+      result.splice(fromIndex, 1);
+      result.splice(toIndex, 0, fromElement);
 
       return {
         ...state,
@@ -55,4 +55,4 @@ export const burgerConstructorReducer = (state = initialState, action) => {
       return state;
     }
   }
-};
+}
