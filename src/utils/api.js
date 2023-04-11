@@ -87,7 +87,7 @@ export const resetPasswordRequest = (formData) => request('password-reset/reset'
       body: JSON.stringify(formData),
     });
 
-export const changeProfileRequest = (formData) => requestWithRefresh('auth/user',
+export const updateProfileRequest = (formData) => requestWithRefresh('auth/user',
     {
       method: 'PATCH',
       headers: getHeadersWithToken(),

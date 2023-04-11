@@ -6,7 +6,7 @@ import {createRegisterReducer} from './register';
 import {createLoginReducer} from './login';
 import {createForgotPasswordReducer} from './forgot-password';
 import {createResetPasswordReducer} from './reset-password';
-import {createProfileReducer} from './profile';
+import {profileReducer} from './profile';
 import {createAuthReducer} from './auth';
 
 export const rootReducer = combineReducers({
@@ -17,6 +17,6 @@ export const rootReducer = combineReducers({
   createLogin: createLoginReducer,
   createForgotPassword: createForgotPasswordReducer,
   createResetPassword: createResetPasswordReducer,
-  createProfile: createProfileReducer,
+  profile: profileReducer,
   auth: createAuthReducer,
 });

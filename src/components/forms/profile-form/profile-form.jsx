@@ -25,11 +25,11 @@ export const ProfileForm = () => {
   const dispatch = useDispatch();
 
   const {isLoading, formData, formDataChanged, formValidity, errorMessage} = useSelector(store => ({
-    isLoading: store.createProfile.isLoading,
-    formData: store.createProfile.formData,
-    formDataChanged: store.createProfile.formDataChanged,
-    formValidity: store.createProfile.formValidity,
-    errorMessage: store.createProfile.errorMessage,
+    isLoading: store.profile.isLoading,
+    formData: store.profile.formData,
+    formDataChanged: store.profile.formDataChanged,
+    formValidity: store.profile.formValidity,
+    errorMessage: store.profile.errorMessage,
   }));
 
   const {authUser, isAuthChecked} = useSelector(store => ({

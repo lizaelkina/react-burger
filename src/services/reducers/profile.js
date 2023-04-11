@@ -27,12 +27,13 @@ const initialState = {
   errorMessage: null,
 }
 
-export const createProfileReducer = (state = initialState, action) => {
+export const profileReducer = (state = initialState, action) => {
   switch (action.type) {
     case PROFILE_INIT_STATE: {
       return {
         ...state,
         formData: action.user,
+        initData: action.user,
       }
     }
     case PROFILE_LOADING: {
@@ -49,6 +50,9 @@ export const createProfileReducer = (state = initialState, action) => {
         isLoading: false,
         success: true,
         formDataChanged: false,
+        initData: {
+          ...state.formData,
+        },
       }
     }
     case PROFILE_FAILED: {

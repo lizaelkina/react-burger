@@ -1,4 +1,4 @@
-import {changeProfileRequest} from '../../utils/api';
+import {updateProfileRequest} from '../../utils/api';
 
 export const PROFILE_INIT_STATE = 'PROFILE_INIT_STATE';
 export const PROFILE_CHANGE_NAME = 'PROFILE_CHANGE_NAME';
@@ -14,7 +14,7 @@ export const startChangedProfile = (formData) => dispatch => {
     type: PROFILE_LOADING,
   })
 
-  changeProfileRequest(formData).then(() => {
+  updateProfileRequest(formData).then(() => {
     dispatch({
       type: PROFILE_SUCCESS,
     })
