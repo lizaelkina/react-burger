@@ -14,9 +14,10 @@ export const startChangedProfile = (formData) => dispatch => {
     type: PROFILE_LOADING,
   })
 
-  updateProfileRequest(formData).then(() => {
+  updateProfileRequest(formData).then(response => {
     dispatch({
       type: PROFILE_SUCCESS,
+      user: response.user,
     })
   }).catch(response => {
     dispatch({

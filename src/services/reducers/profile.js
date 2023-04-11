@@ -50,9 +50,7 @@ export const profileReducer = (state = initialState, action) => {
         isLoading: false,
         success: true,
         formDataChanged: false,
-        initData: {
-          ...state.formData,
-        },
+        initData: action.user,
       }
     }
     case PROFILE_FAILED: {
