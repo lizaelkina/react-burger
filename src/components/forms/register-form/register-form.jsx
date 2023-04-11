@@ -36,7 +36,6 @@ export const RegisterForm = () => {
   useEffect(() => {
     if (success) {
       dispatch(authUser(user, accessToken, refreshToken));
-      navigate('/');
     }
   }, [accessToken, dispatch, navigate, refreshToken, success, user]);
 
