@@ -1,6 +1,6 @@
 import {
-  RESETPASSWORD_CHANGE_CODE,
   RESETPASSWORD_CHANGE_PASSWORD,
+  RESETPASSWORD_CHANGE_TOKEN,
   RESETPASSWORD_FAILED,
   RESETPASSWORD_LOADING,
   RESETPASSWORD_SUCCESS
@@ -9,11 +9,11 @@ import {
 const initialState = {
   formData: {
     password: '',
-    code: '',
+    token: '',
   },
   formValidity: {
     password: false,
-    code: false,
+    token: false,
   },
   isLoading: false,
   success: false,
@@ -58,16 +58,16 @@ export const createResetPasswordReducer = (state = initialState, action) => {
         errorMessage: null,
       }
     }
-    case RESETPASSWORD_CHANGE_CODE: {
+    case RESETPASSWORD_CHANGE_TOKEN: {
       return {
         ...state,
         formData: {
           ...state.formData,
-          code: action.code,
+          token: action.token,
         },
         formValidity: {
           ...state.formValidity,
-          code: action.valid,
+          token: action.valid,
         },
         errorMessage: null,
       }

@@ -1,5 +1,6 @@
-import {useRef} from 'react';
+import {useEffect, useRef} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
+import {useNavigate} from 'react-router-dom';
 import {Button, Input, PasswordInput} from '@ya.praktikum/react-developer-burger-ui-components';
 import {Loader} from '../../shared/loader/loader';
 import {ErrorMessage} from '../../shared/error-message/error-message';
@@ -9,6 +10,7 @@ import resetFormStyles from './reset-password-form.module.css';
 export const ResetPasswordForm = () => {
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const inputRef = useRef(null);
 
   const {isLoading, success, formData, formValidity, errorMessage} = useSelector(store => ({
@@ -17,9 +19,15 @@ export const ResetPasswordForm = () => {
     formData: store.createResetPassword.formData,
     formValidity: store.createResetPassword.formValidity,
     errorMessage: store.createResetPassword.errorMessage,
-  }))
+  }));
 
-  const isFormValid = formValidity.password && formValidity.code;
+  useEffect(() => {
+    if (success) {
+        navigate('/login');
+    }
+  }, [dispatch, navigate, success]);
+
+  const isFormValid = formValidity.password && formValidity.token;
 
   const formSubmit = (event) => {
     event.preventDefault();
@@ -40,13 +48,10 @@ export const ResetPasswordForm = () => {
         />
         <Input autoComplete='off'
                required={true}
-               minLength={4}
                type={'text'}
-               name={'code'}
-               value={formData.code}
+               name={'token'}
+               value={formData.token}
                placeholder={'Введите код из письма'}
-               error={false}
-               errorText={'Неверный код'}
                ref={inputRef}
                size={'default'}
                onChange={event => dispatch(changeCode(event.target.value, event.target.validity.valid))}

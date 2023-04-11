@@ -1,7 +1,7 @@
 import {resetPasswordRequest} from '../../utils/api';
 
 export const RESETPASSWORD_CHANGE_PASSWORD = 'RESETPASSWORD_CHANGE_EMAIL';
-export const RESETPASSWORD_CHANGE_CODE = 'RESETPASSWORD_CHANGE_CODE';
+export const RESETPASSWORD_CHANGE_TOKEN = 'RESETPASSWORD_CHANGE_TOKEN';
 export const RESETPASSWORD_LOADING = 'RESETPASSWORD_LOADING';
 export const RESETPASSWORD_SUCCESS = 'RESETPASSWORD_SUCCESS';
 export const RESETPASSWORD_FAILED = 'RESETPASSWORD_FAILED';
@@ -31,10 +31,10 @@ export function changePassword(password, valid) {
   }
 }
 
-export function changeCode(code, valid) {
+export function changeCode(token, valid) {
   return {
-    type: RESETPASSWORD_CHANGE_CODE,
-    code: code,
+    type: RESETPASSWORD_CHANGE_TOKEN,
+    token: token,
     valid: valid,
   }
 }
