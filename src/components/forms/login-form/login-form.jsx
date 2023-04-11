@@ -36,9 +36,6 @@ export const LoginForm = () => {
   useEffect(() => {
     if (success) {
       dispatch(authUser(user, accessToken, refreshToken));
-      setTimeout(() => {
-        navigate('/');
-      })
     }
   }, [accessToken, dispatch, navigate, refreshToken, success, user]);
 
