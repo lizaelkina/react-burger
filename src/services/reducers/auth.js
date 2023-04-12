@@ -6,7 +6,6 @@ import {
   LOGOUT_LOADING,
   LOGOUT_SUCCESS
 } from '../actions/auth';
-import {deleteAccessToken, deleteRefreshToken, setAccessToken, setRefreshToken} from '../../utils/token-store';
 
 const initialState = {
   user: null,
@@ -17,8 +16,6 @@ const initialState = {
 export const createAuthReducer = (state = initialState, action) => {
   switch (action.type) {
     case AUTH_USER: {
-      setRefreshToken(action.refreshToken);
-      setAccessToken(action.accessToken);
       return {
         ...state,
         user: action.user,
@@ -46,8 +43,6 @@ export const createAuthReducer = (state = initialState, action) => {
       }
     }
     case LOGOUT_SUCCESS: {
-      deleteAccessToken();
-      deleteRefreshToken();
       return {
         ...state,
         isLogoutLoading: false,
@@ -56,8 +51,6 @@ export const createAuthReducer = (state = initialState, action) => {
       }
     }
     case LOGOUT_FAILED: {
-      deleteAccessToken();
-      deleteRefreshToken();
       return {
         ...state,
         isLogoutLoading: false,

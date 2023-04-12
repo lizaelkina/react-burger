@@ -1,4 +1,5 @@
 import {getUser, logoutRequest} from '../../utils/api';
+import {deleteAccessToken, deleteRefreshToken, setAccessToken, setRefreshToken} from '../../utils/token-store';
 
 export const AUTH_USER = 'AUTH_USER';
 
@@ -10,6 +11,8 @@ export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';
 export const LOGOUT_FAILED = 'LOGOUT_FAILED';
 
 export function authUser(user, accessToken, refreshToken) {
+  setRefreshToken(refreshToken);
+  setAccessToken(accessToken);
   return {
     type: AUTH_USER,
     user: user,
@@ -29,6 +32,9 @@ export const startCheckUser = () => dispatch => {
       type: CHECK_USER_FAILED,
       error: response.error,
     })
+  }).finally(() => {
+    deleteAccessToken();
+    deleteRefreshToken();
   })
 }
 
