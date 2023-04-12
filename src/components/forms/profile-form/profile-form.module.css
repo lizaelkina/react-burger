@@ -1,0 +1,25 @@
+.form {
+  width: 480px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.container {
+  display: flex;
+  justify-content: flex-end;
+  gap: 20px;
+}
+
+.form__button_primary {
+  max-width: 167px;
+  width: 100%;
+}
+
+.form__button_secondary {
+  padding: 0;
+}
+
+.form__error {
+  min-height: 24px;
+}

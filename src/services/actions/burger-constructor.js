@@ -27,6 +27,6 @@ export function moveIngredient(fromUUID, toUUID) {
   return {
     type: MOVE_INGREDIENT,
     fromUUID,
-    toUUID
+    toUUID,
   }
 }

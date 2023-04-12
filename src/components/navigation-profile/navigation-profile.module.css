@@ -1,0 +1,28 @@
+.nav {
+  width: 320px;
+  display: flex;
+  flex-direction: column;
+}
+
+.link {
+  padding: 16px 40px 16px 0;
+  text-decoration: none;
+  color: var(--text-inactive-color);
+  transition: var(--common-transition);
+}
+
+.link:hover {
+  color: var(--text-primary-color);
+}
+
+.link:global(.active) {
+  color: var(--text-primary-color);
+  pointer-events: none;
+}
+
+.button {
+  border: 0;
+  background-color: transparent;
+  display: flex;
+  cursor: pointer;
+}

@@ -1,0 +1,17 @@
+.form {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+}
+
+.form__button {
+  max-width: 253px;
+  width: 100%;
+}
+
+.form__error {
+  min-height: 24px;
+}
