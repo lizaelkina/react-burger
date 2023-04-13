@@ -1,4 +1,3 @@
-import React from 'react';
 import {Provider} from 'react-redux';
 import {applyMiddleware, compose, createStore} from 'redux';
 import thunk from 'redux-thunk';
@@ -23,11 +22,9 @@ const container = document.getElementById('root');
 const root = ReactDOMClient.createRoot(container);
 
 root.render(
-    <React.StrictMode>
       <Provider store={store}>
         <BrowserRouter>
           <App/>
         </BrowserRouter>
       </Provider>
-    </React.StrictMode>
 );

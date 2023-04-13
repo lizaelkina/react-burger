@@ -1,8 +1,12 @@
-import PropTypes from 'prop-types';
+import {FC} from 'react';
 import {ModalOverlay} from '../modal/modal-overlay/modal-overlay';
 import loaderStyles from './loader.module.css';
 
-export const Loader = ({overlay}) => {
+interface ILoaderProps {
+  overlay: boolean;
+}
+
+export const Loader: FC<ILoaderProps> = ({overlay}) => {
   return (
       <>
         {overlay && <ModalOverlay/>}
@@ -11,8 +15,4 @@ export const Loader = ({overlay}) => {
         </div>
       </>
   );
-}
-
-Loader.propTypes = {
-  overlay: PropTypes.bool,
 }
