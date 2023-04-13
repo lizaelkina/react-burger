@@ -1,28 +1,36 @@
 import cn from 'classnames';
-import {CurrencyIcon, FormattedDate} from '@ya.praktikum/react-developer-burger-ui-components';
+import {Link} from 'react-router-dom';
+import {FormattedDate} from '@ya.praktikum/react-developer-burger-ui-components';
+import {OrderStatus} from '../order-status/order-status';
+import {OrderIngredient} from '../order-ingredient/order-ingredient';
+import {OrderPrice} from '../order-price/order-price';
 import orderCardStyles from './order-card.module.css';
 
 export const OrderCard = () => {
 
-  const today = new Date();
+  const date = new Date();
+  const orderStatus = false;
 
   return (
-      <div className={cn(orderCardStyles.card)}>
+      <Link className={cn(orderCardStyles.card, orderCardStyles.link)}
+            to='/id'>
         <div className={orderCardStyles.card__info}>
           <span className='text text_type_digits-default'>#034535</span>
-          <FormattedDate className='text text_type_main-default text_color_inactive' date={today}/>
+          <FormattedDate className='text text_type_main-default text_color_inactive' date={date}/>
         </div>
         <h4 className='text text_type_main-medium text_color_primary mt-6'>Death Star Starship Main бургер</h4>
-        <p className='text text_type_main-small text_color_primary mt-2'>Создан</p>
-        <div className={cn(orderCardStyles.card__content, 'mt-6')}>
-          <div className={orderCardStyles.card_container}>
-            <div className={orderCardStyles.card__image}></div>
-          </div>
-          <div className={orderCardStyles.card__total}>
-            <span className='text text_type_digits-default'>480</span>
-            <CurrencyIcon type='primary'/>
-          </div>
+        {orderStatus && <OrderStatus/>}
+        <div className={cn(orderCardStyles.card__container, 'mt-6')}>
+          <ul className={orderCardStyles.card__ingredients}>
+            <li className={orderCardStyles.list_item}>
+              <OrderIngredient extraClass={cn(orderCardStyles.ingredient_first)}/>
+{/*              <span className={cn(orderCardStyles.more, 'text text_type_digits-default')}>
+                  +3
+              </span>*/}
+            </li>
+          </ul>
+          <OrderPrice/>
         </div>
-      </div>
+      </Link>
   );
 }
