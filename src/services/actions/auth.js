@@ -32,9 +32,6 @@ export const startCheckUser = () => dispatch => {
       type: CHECK_USER_FAILED,
       error: response.error,
     })
-  }).finally(() => {
-    deleteAccessToken();
-    deleteRefreshToken();
   })
 }
 
@@ -43,11 +40,15 @@ export const logout = () => dispatch => {
     type: LOGOUT_LOADING,
   })
   logoutRequest().then(response => {
+    deleteAccessToken();
+    deleteRefreshToken();
     dispatch({
       type: LOGOUT_SUCCESS,
       user: response.user,
     })
   }).catch(response => {
+    deleteAccessToken();
+    deleteRefreshToken();
     dispatch({
       type: LOGOUT_FAILED,
       error: response.error,
