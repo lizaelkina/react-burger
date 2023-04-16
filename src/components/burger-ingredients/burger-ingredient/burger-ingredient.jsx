@@ -4,7 +4,7 @@ import {useDrag} from 'react-dnd';
 import {Link, useLocation} from 'react-router-dom';
 import cn from 'classnames';
 import {Counter, CurrencyIcon} from '@ya.praktikum/react-developer-burger-ui-components';
-import {ingredientPropTypes} from '../../../utils/prop-types';
+import {ingredientPropTypes} from '../../../utils/types';
 import burgerIngredientStyles from './burger-ingredient.module.css';
 
 export const BurgerIngredient = ({ingredient}) => {
