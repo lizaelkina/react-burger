@@ -1,4 +1,4 @@
-import {loginRequest} from '../../utils/api';
+import {api} from '../../utils/api';
 
 export const LOGIN_CHANGE_EMAIL = 'LOGIN_CHANGE_EMAIL';
 export const LOGIN_CHANGE_PASSWORD = 'LOGIN_CHANGE_PASSWORD';
@@ -11,7 +11,7 @@ export const startLogin = (formData) => dispatch => {
     type: LOGIN_LOADING,
   })
 
-  loginRequest(formData).then(response => {
+  api.login(formData).then(response => {
     dispatch({
       type: LOGIN_SUCCESS,
       user: response.user,

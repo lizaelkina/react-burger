@@ -1,4 +1,4 @@
-import {createOrder} from '../../utils/api';
+import {api} from '../../utils/api';
 
 export const CREATE_ORDER_LOADING = 'CREATE_ORDER_LOADING';
 export const CREATE_ORDER_SUCCESS = 'CREATE_ORDER_SUCCESS';
@@ -10,7 +10,7 @@ export const startCreatingOrder = (ingredientIdList) => dispatch => {
     type: CREATE_ORDER_LOADING,
   })
 
-  createOrder(ingredientIdList).then(response => {
+  api.createOrder(ingredientIdList).then(response => {
     dispatch({
       type: CREATE_ORDER_SUCCESS,
       number: response.order.number,

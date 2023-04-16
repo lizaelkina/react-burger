@@ -1,4 +1,4 @@
-import {forgotPasswordRequest} from '../../utils/api';
+import {api} from '../../utils/api';
 
 export const FORGOTPASSWORD_CHANGE_EMAIL = 'FORGOTPASSWORD_CHANGE_EMAIL';
 export const FORGOTPASSWORD_LOADING = 'FORGOTPASSWORD_LOADING';
@@ -10,7 +10,7 @@ export const startForgotPassword = (formData) => dispatch => {
     type: FORGOTPASSWORD_LOADING,
   })
 
-  forgotPasswordRequest(formData).then(() => {
+  api.forgotPassword(formData).then(() => {
     dispatch({
       type: FORGOTPASSWORD_SUCCESS,
     })

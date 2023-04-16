@@ -1,4 +1,4 @@
-import {getIngredients} from '../../utils/api';
+import {api} from '../../utils/api';
 
 export const GET_INGREDIENTS_LOADING = 'GET_INGREDIENTS_LOADING';
 export const GET_INGREDIENTS_SUCCESS = 'GET_INGREDIENTS_SUCCESS';
@@ -13,7 +13,7 @@ export const loadIngredients = () => (dispatch, getState) => {
       type: GET_INGREDIENTS_LOADING,
     })
 
-    getIngredients().then(response => {
+    api.getIngredients().then(response => {
       dispatch({
         type: GET_INGREDIENTS_SUCCESS,
         ingredients: response.data,

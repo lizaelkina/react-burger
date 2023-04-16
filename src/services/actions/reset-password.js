@@ -1,4 +1,4 @@
-import {resetPasswordRequest} from '../../utils/api';
+import {api} from '../../utils/api';
 
 export const RESETPASSWORD_CHANGE_PASSWORD = 'RESETPASSWORD_CHANGE_EMAIL';
 export const RESETPASSWORD_CHANGE_TOKEN = 'RESETPASSWORD_CHANGE_TOKEN';
@@ -11,7 +11,7 @@ export const startResetPassword = (formData) => dispatch => {
     type: RESETPASSWORD_LOADING,
   })
 
-  resetPasswordRequest(formData).then(() => {
+  api.resetPassword(formData).then(() => {
     dispatch({
       type: RESETPASSWORD_SUCCESS,
     })

@@ -1,4 +1,4 @@
-import {getUser, logoutRequest} from '../../utils/api';
+import {api} from '../../utils/api';
 import {deleteAccessToken, deleteRefreshToken, setAccessToken, setRefreshToken} from '../../utils/token-store';
 
 export const AUTH_USER = 'AUTH_USER';
@@ -22,7 +22,7 @@ export function authUser(user, accessToken, refreshToken) {
 }
 
 export const startCheckUser = () => dispatch => {
-  getUser().then(response => {
+  api.getUser().then(response => {
     dispatch({
       type: CHECK_USER_SUCCESS,
       user: response.user,
@@ -39,12 +39,12 @@ export const logout = () => dispatch => {
   dispatch({
     type: LOGOUT_LOADING,
   })
-  logoutRequest().then(response => {
+
+  api.logout().then(() => {
     deleteAccessToken();
     deleteRefreshToken();
     dispatch({
       type: LOGOUT_SUCCESS,
-      user: response.user,
     })
   }).catch(response => {
     deleteAccessToken();

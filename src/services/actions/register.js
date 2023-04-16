@@ -1,4 +1,4 @@
-import {registerRequest} from '../../utils/api';
+import {api} from '../../utils/api';
 
 export const REGISTER_CHANGE_NAME = 'REGISTER_CHANGE_NAME';
 export const REGISTER_CHANGE_EMAIL = 'REGISTER_CHANGE_EMAIL';
@@ -12,7 +12,7 @@ export const startRegister = (formData) => dispatch => {
     type: REGISTER_LOADING,
   })
 
-  registerRequest(formData).then(response => {
+  api.register(formData).then(response => {
     dispatch({
       type: REGISTER_SUCCESS,
       user: response.user,
