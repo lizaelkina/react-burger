@@ -3,7 +3,7 @@ import {ModalOverlay} from '../modal/modal-overlay/modal-overlay';
 import loaderStyles from './loader.module.css';
 
 interface ILoaderProps {
-  overlay: boolean;
+  overlay?: boolean;
 }
 
 export const Loader: FC<ILoaderProps> = ({overlay}) => {
