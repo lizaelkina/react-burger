@@ -7,13 +7,13 @@ import modalStyles from './modal.module.css';
 
 const modalRoot = document.getElementById('modals') as HTMLDivElement;
 
-interface IModalProps {
+type TModalProps = {
   title?: string;
   onClose: () => void;
   children: ReactNode;
-}
+};
 
-export const Modal: FC<IModalProps> = ({title, onClose, children}) => {
+export const Modal: FC<TModalProps> = ({title, onClose, children}) => {
 
   useEffect(() => {
     function closePopupByEsc(event: KeyboardEvent) {

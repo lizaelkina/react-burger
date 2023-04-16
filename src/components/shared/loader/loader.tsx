@@ -2,11 +2,11 @@ import {FC} from 'react';
 import {ModalOverlay} from '../modal/modal-overlay/modal-overlay';
 import loaderStyles from './loader.module.css';
 
-interface ILoaderProps {
+type TLoaderProps = {
   overlay?: boolean;
-}
+};
 
-export const Loader: FC<ILoaderProps> = ({overlay}) => {
+export const Loader: FC<TLoaderProps> = ({overlay}) => {
   return (
       <>
         {overlay && <ModalOverlay/>}
