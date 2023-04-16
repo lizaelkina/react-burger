@@ -16,6 +16,15 @@ export interface IIngredient {
   uuid?: string;
 }
 
+export interface IOrder {
+  number: number;
+}
+
+export interface IUser {
+  email: string;
+  name: string;
+}
+
 export const ingredientPropTypes = PropTypes.shape({
   _id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
