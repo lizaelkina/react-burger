@@ -1,9 +1,13 @@
-import React from 'react';
+import {FC} from 'react';
 import cn from 'classnames';
-import {ingredientPropTypes} from '../../../utils/data-types';
+import {IIngredient} from '../../../utils/data-types';
 import ingredientDetailsStyles from './ingredient-details.module.css';
 
-export const IngredientDetails = ({ingredient}) => {
+type TIngredientDetails = {
+  ingredient: IIngredient;
+};
+
+export const IngredientDetails: FC<TIngredientDetails> = ({ingredient}) => {
 
   return (
       <article className={cn(ingredientDetailsStyles.card, 'pb-15')}>
@@ -29,8 +33,4 @@ export const IngredientDetails = ({ingredient}) => {
         </div>
       </article>
   );
-}
-
-IngredientDetails.propTypes = {
-  ingredient: ingredientPropTypes.isRequired,
 }
