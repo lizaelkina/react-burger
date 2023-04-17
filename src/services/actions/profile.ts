@@ -1,6 +1,6 @@
 import {api, IUpdateProfileFormData} from '../../utils/api';
 import {IUser} from '../../utils/data-types';
-import {AppDispatch, AppThunk} from '../../index';
+import {AppDispatch, AppThunk} from '../index';
 
 export const PROFILE_INIT_STATE: 'PROFILE_INIT_STATE' = 'PROFILE_INIT_STATE';
 export const PROFILE_CHANGE_NAME: 'PROFILE_CHANGE_NAME' = 'PROFILE_CHANGE_NAME';

@@ -1,6 +1,6 @@
 import {api, IRegisterFormData} from '../../utils/api';
 import {IUser} from '../../utils/data-types';
-import {AppDispatch, AppThunk} from '../../index';
+import {AppDispatch, AppThunk} from '../index';
 
 export const REGISTER_CHANGE_NAME: 'REGISTER_CHANGE_NAME' = 'REGISTER_CHANGE_NAME';
 export const REGISTER_CHANGE_EMAIL: 'REGISTER_CHANGE_EMAIL' = 'REGISTER_CHANGE_EMAIL';

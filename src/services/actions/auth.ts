@@ -1,7 +1,7 @@
 import {api} from '../../utils/api';
 import {deleteAccessToken, deleteRefreshToken, setAccessToken, setRefreshToken} from '../../utils/token-store';
 import {IUser} from '../../utils/data-types';
-import {AppDispatch, AppThunk} from '../../index';
+import {AppDispatch, AppThunk} from '../index';
 
 export const AUTH_USER: 'AUTH_USER' = 'AUTH_USER';
 

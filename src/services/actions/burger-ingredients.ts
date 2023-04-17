@@ -1,6 +1,6 @@
 import {api} from '../../utils/api';
 import {IIngredient} from '../../utils/data-types';
-import {AppDispatch, AppThunk} from '../../index';
+import {AppDispatch, AppThunk, RootState} from '../index';
 
 export const GET_INGREDIENTS_LOADING: 'GET_INGREDIENTS_LOADING' = 'GET_INGREDIENTS_LOADING';
 export const GET_INGREDIENTS_SUCCESS: 'GET_INGREDIENTS_SUCCESS' = 'GET_INGREDIENTS_SUCCESS';
@@ -36,21 +36,21 @@ export type TBurgerIngredientsActions =
 export const loadIngredients: AppThunk = () => (dispatch: AppDispatch) => {
   // const ingredients = getState().burgerIngredients.ingredients;
   // if (ingredients.length === 0) {
-  dispatch({
-    type: GET_INGREDIENTS_LOADING,
-  })
+    dispatch({
+      type: GET_INGREDIENTS_LOADING,
+    })
 
-  api.getIngredients().then(response => {
-    dispatch({
-      type: GET_INGREDIENTS_SUCCESS,
-      ingredients: response.data,
+    api.getIngredients().then(response => {
+      dispatch({
+        type: GET_INGREDIENTS_SUCCESS,
+        ingredients: response.data,
+      })
+    }).catch(response => {
+      dispatch({
+        type: GET_INGREDIENTS_FAILED,
+        error: response.error,
+      })
     })
-  }).catch(response => {
-    dispatch({
-      type: GET_INGREDIENTS_FAILED,
-      error: response.error,
-    })
-  })
   // }
 }
 

@@ -1,7 +1,7 @@
 import {api, ILoginFormData} from '../../utils/api';
 import {IUser} from '../../utils/data-types';
 import {IAuthUserAction} from './auth';
-import {AppDispatch, AppThunk} from '../../index';
+import {AppDispatch, AppThunk} from '../index';
 
 export const LOGIN_CHANGE_EMAIL: 'LOGIN_CHANGE_EMAIL' = 'LOGIN_CHANGE_EMAIL';
 export const LOGIN_CHANGE_PASSWORD: 'LOGIN_CHANGE_PASSWORD' = 'LOGIN_CHANGE_PASSWORD';

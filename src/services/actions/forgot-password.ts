@@ -1,5 +1,5 @@
 import {api, IForgotPasswordFormData} from '../../utils/api';
-import {AppDispatch, AppThunk} from '../../index';
+import {AppDispatch, AppThunk} from '../index';
 
 export const FORGOTPASSWORD_CHANGE_EMAIL: 'FORGOTPASSWORD_CHANGE_EMAIL' = 'FORGOTPASSWORD_CHANGE_EMAIL';
 export const FORGOTPASSWORD_LOADING: 'FORGOTPASSWORD_LOADING' = 'FORGOTPASSWORD_LOADING';
