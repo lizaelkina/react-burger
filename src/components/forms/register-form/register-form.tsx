@@ -1,7 +1,7 @@
-import {useEffect} from 'react';
-import {useDispatch, useSelector} from 'react-redux';
+import {FormEvent, useEffect} from 'react';
 import {useNavigate} from 'react-router-dom';
 import {Button, EmailInput, Input, PasswordInput} from '@ya.praktikum/react-developer-burger-ui-components';
+import {useAppDispatch, useAppSelector} from '../../../services/hooks';
 import {Loader} from '../../shared/loader/loader';
 import {ErrorMessage} from '../../shared/error-message/error-message';
 import {authUser} from '../../../services/actions/auth';
@@ -10,7 +10,7 @@ import registerFormStyles from './register-form.module.css';
 
 export const RegisterForm = () => {
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
   const {
@@ -22,7 +22,7 @@ export const RegisterForm = () => {
     formData,
     formValidity,
     errorMessage
-  } = useSelector(store => ({
+  } = useAppSelector(store => ({
     isLoading: store.createRegister.isLoading,
     success: store.createRegister.success,
     user: store.createRegister.user,
@@ -34,14 +34,14 @@ export const RegisterForm = () => {
   }));
 
   useEffect(() => {
-    if (success) {
+    if (success && user && accessToken && refreshToken) {
       dispatch(authUser(user, accessToken, refreshToken));
     }
   }, [accessToken, dispatch, navigate, refreshToken, success, user]);
 
   const isFormValid = formValidity.name && formValidity.email && formValidity.password;
 
-  const formSubmit = (event) => {
+  const formSubmit = (event: FormEvent) => {
     event.preventDefault();
     dispatch(startRegister(formData));
   }
@@ -59,7 +59,6 @@ export const RegisterForm = () => {
         />
         <EmailInput autoComplete='off'
                     required={true}
-                    type={'email'}
                     name={'email'}
                     value={formData.email}
                     placeholder={'E-mail'}

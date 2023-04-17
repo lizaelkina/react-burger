@@ -1,6 +1,6 @@
-import {useEffect, useRef, useState} from 'react';
-import {useDispatch, useSelector} from 'react-redux';
+import {FormEvent, useEffect, useRef, useState} from 'react';
 import {Button, EmailInput, Input, PasswordInput} from '@ya.praktikum/react-developer-burger-ui-components';
+import {useAppDispatch, useAppSelector} from '../../../services/hooks';
 import {Loader} from '../../shared/loader/loader';
 import {ErrorMessage} from '../../shared/error-message/error-message';
 import {
@@ -16,26 +16,33 @@ import profileFormStyles from './profile-form.module.css';
 export const ProfileForm = () => {
 
   const [inputNameDisabled, setInputNameDisabled] = useState(true);
-  const inputRef = useRef(null);
+
+  const inputRef = useRef<HTMLInputElement>(null);
+
   const onIconClick = () => {
-    setTimeout(() => inputRef.current.focus(), 0);
+    setTimeout(() => inputRef.current?.focus(), 0);
     setInputNameDisabled(false);
   }
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
-  const {isLoading, formData, formDataChanged, formValidity, errorMessage} = useSelector(store => ({
+  const {
+    isLoading,
+    formData,
+    formDataChanged,
+    formValidity,
+    errorMessage,
+    authUser,
+    isAuthChecked
+  } = useAppSelector(store => ({
     isLoading: store.profile.isLoading,
     formData: store.profile.formData,
     formDataChanged: store.profile.formDataChanged,
     formValidity: store.profile.formValidity,
     errorMessage: store.profile.errorMessage,
-  }));
-
-  const {authUser, isAuthChecked} = useSelector(store => ({
     authUser: store.auth.user,
     isAuthChecked: store.auth.isAuthChecked,
-  }))
+  }));
 
   useEffect(() => {
     if (isAuthChecked && authUser) {
@@ -46,7 +53,7 @@ export const ProfileForm = () => {
 
   const isFormValid = formValidity.name && formValidity.email && formValidity.password;
 
-  const formSubmit = (event) => {
+  const formSubmit = (event: FormEvent) => {
     event.preventDefault();
     dispatch(startUpdateProfile(formData));
   }
@@ -70,7 +77,6 @@ export const ProfileForm = () => {
         />
         <EmailInput autoComplete='off'
                     required={true}
-                    type={'email'}
                     name={'email'}
                     value={formData.email}
                     placeholder={'Логин'}

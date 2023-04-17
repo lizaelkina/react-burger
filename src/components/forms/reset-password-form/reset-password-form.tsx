@@ -1,7 +1,7 @@
-import {useEffect} from 'react';
-import {useDispatch, useSelector} from 'react-redux';
+import {FormEvent, useEffect} from 'react';
 import {useNavigate} from 'react-router-dom';
 import {Button, Input, PasswordInput} from '@ya.praktikum/react-developer-burger-ui-components';
+import {useAppDispatch, useAppSelector} from '../../../services/hooks';
 import {Loader} from '../../shared/loader/loader';
 import {ErrorMessage} from '../../shared/error-message/error-message';
 import {changeCode, changePassword, startResetPassword} from '../../../services/actions/reset-password';
@@ -9,10 +9,10 @@ import resetFormStyles from './reset-password-form.module.css';
 
 export const ResetPasswordForm = () => {
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  const {isLoading, success, formData, formValidity, errorMessage} = useSelector(store => ({
+  const {isLoading, success, formData, formValidity, errorMessage} = useAppSelector(store => ({
     isLoading: store.createResetPassword.isLoading,
     success: store.createResetPassword.success,
     formData: store.createResetPassword.formData,
@@ -22,13 +22,13 @@ export const ResetPasswordForm = () => {
 
   useEffect(() => {
     if (success) {
-        navigate('/login');
+      navigate('/login');
     }
   }, [dispatch, navigate, success]);
 
   const isFormValid = formValidity.password && formValidity.token;
 
-  const formSubmit = (event) => {
+  const formSubmit = (event: FormEvent) => {
     event.preventDefault();
     dispatch(startResetPassword(formData));
   }

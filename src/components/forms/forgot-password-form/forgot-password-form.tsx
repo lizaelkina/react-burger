@@ -1,7 +1,7 @@
-import {useEffect} from 'react';
+import {FormEvent, useEffect} from 'react';
 import {useNavigate} from 'react-router-dom';
-import {useDispatch, useSelector} from 'react-redux';
 import {Button, EmailInput} from '@ya.praktikum/react-developer-burger-ui-components';
+import {useAppDispatch, useAppSelector} from '../../../services/hooks';
 import {Loader} from '../../shared/loader/loader';
 import {ErrorMessage} from '../../shared/error-message/error-message';
 import {changeEmail, startForgotPassword} from '../../../services/actions/forgot-password';
@@ -9,10 +9,10 @@ import forgotFormStyles from './forgot-password-form.module.css';
 
 export const ForgotPasswordForm = () => {
 
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const dispatch = useDispatch();
 
-  const {isLoading, success, formData, formValidity, errorMessage} = useSelector(store => ({
+  const {isLoading, success, formData, formValidity, errorMessage} = useAppSelector(store => ({
     isLoading: store.createForgotPassword.isLoading,
     success: store.createForgotPassword.success,
     formData: store.createForgotPassword.formData,
@@ -28,7 +28,7 @@ export const ForgotPasswordForm = () => {
 
   const isFormValid = formValidity.email;
 
-  const formSubmit = (event) => {
+  const formSubmit = (event: FormEvent) => {
     event.preventDefault();
     dispatch(startForgotPassword(formData));
   }
@@ -37,7 +37,6 @@ export const ForgotPasswordForm = () => {
       <form className={forgotFormStyles.form} noValidate onSubmit={formSubmit}>
         <EmailInput autoComplete='off'
                     required={true}
-                    type={'email'}
                     name={'e-mail'}
                     value={formData.email}
                     placeholder={'Укажите e-mail'}
