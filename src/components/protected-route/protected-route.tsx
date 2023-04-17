@@ -1,12 +1,18 @@
-import {useSelector} from 'react-redux';
-import {Navigate, useLocation} from 'react-router-dom';
+import {FC, ReactElement} from 'react';
+import {Navigate, RouteProps, useLocation} from 'react-router-dom';
+import {useAppSelector} from '../../services/hooks';
 import {Loader} from '../shared/loader/loader';
 
-export const ProtectedRoute = ({onlyUnAuth, children}) => {
+type TProtectedRouteProps = {
+  onlyUnAuth?: boolean;
+  children: ReactElement;
+} & RouteProps;
+
+export const ProtectedRoute: FC<TProtectedRouteProps> = ({onlyUnAuth, children}) => {
 
   const location = useLocation();
 
-  const {isAuthChecked, user} = useSelector((store) => ({
+  const {isAuthChecked, user} = useAppSelector((store) => ({
     isAuthChecked: store.auth.isAuthChecked,
     user: store.auth.user,
   }));

@@ -1,7 +1,7 @@
-import {useDispatch, useSelector} from 'react-redux';
 import {Route, Routes} from 'react-router';
 import {useLocation, useNavigate} from 'react-router-dom';
 import {IngredientDetails} from '../burger-ingredients/ingredient-details/ingredient-details';
+import {useAppDispatch, useAppSelector} from '../../services/hooks';
 import {ProtectedRoute} from '../protected-route/protected-route';
 import {PageLayout} from '../shared/page-layout/page-layout';
 import {HomePage} from '../../pages/home/home';
@@ -26,9 +26,9 @@ export const App = () => {
 
   const navigation = useNavigate();
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
-  const {isAuthChecked} = useSelector((store) => ({
+  const {isAuthChecked} = useAppSelector((store) => ({
     isAuthChecked: store.auth.isAuthChecked,
   }));
 
