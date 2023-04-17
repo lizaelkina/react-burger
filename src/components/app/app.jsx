@@ -1,3 +1,4 @@
+import {useDispatch, useSelector} from 'react-redux';
 import {Route, Routes} from 'react-router';
 import {useLocation, useNavigate} from 'react-router-dom';
 import {IngredientDetails} from '../burger-ingredients/ingredient-details/ingredient-details';
@@ -14,6 +15,8 @@ import {ResetPasswordPage} from '../../pages/reset-password/reset-password';
 import {IngredientPage} from '../../pages/ingredient-info/ingredient-info';
 import {Modal} from '../shared/modal/modal';
 import {NotFound404} from '../../pages/not-found-404/not-found';
+import {useEffect} from 'react';
+import {startCheckUser} from '../../services/actions/auth';
 
 export const App = () => {
 
@@ -22,6 +25,18 @@ export const App = () => {
   const fromForgotPage = location.state?.fromForgot;
 
   const navigation = useNavigate();
+
+  const dispatch = useDispatch();
+
+  const {isAuthChecked} = useSelector((store) => ({
+    isAuthChecked: store.auth.isAuthChecked,
+  }));
+
+  useEffect(() => {
+    if (!isAuthChecked) {
+      dispatch(startCheckUser())
+    }
+  }, [dispatch, isAuthChecked]);
 
   function closeModal() {
     navigation(backgroundLocation.pathname, {replace: true});
