@@ -4,16 +4,24 @@ import {
   CHECK_USER_SUCCESS,
   LOGOUT_FAILED,
   LOGOUT_LOADING,
-  LOGOUT_SUCCESS
+  LOGOUT_SUCCESS,
+  TAuthActions
 } from '../actions/auth';
+import {IUser} from '../../utils/data-types';
 
-const initialState = {
+type TAuthState = {
+  user: IUser | null;
+  isAuthChecked: boolean;
+  isLogoutLoading: boolean;
+}
+
+const initialState: TAuthState = {
   user: null,
   isAuthChecked: false,
   isLogoutLoading: false,
 }
 
-export const createAuthReducer = (state = initialState, action) => {
+export const createAuthReducer = (state = initialState, action: TAuthActions): TAuthState => {
   switch (action.type) {
     case AUTH_USER: {
       return {

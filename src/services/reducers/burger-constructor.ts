@@ -1,12 +1,24 @@
 import {v4 as uuidv4} from 'uuid';
-import {ADD_INGREDIENT, CLEAR_INGREDIENTS, DELETE_INGREDIENT, MOVE_INGREDIENT} from '../actions/burger-constructor';
+import {
+  ADD_INGREDIENT,
+  CLEAR_INGREDIENTS,
+  DELETE_INGREDIENT,
+  MOVE_INGREDIENT,
+  TBurgerConstructorActions
+} from '../actions/burger-constructor';
+import {IIngredient} from '../../utils/data-types';
 
-const initialState = {
+type TBurgerConstructorState = {
+  bun: IIngredient | null;
+  middle: Array<IIngredient>;
+}
+
+const initialState: TBurgerConstructorState = {
   bun: null,
   middle: [],
 }
 
-export const burgerConstructorReducer = (state = initialState, action) => {
+export const burgerConstructorReducer = (state = initialState, action: TBurgerConstructorActions): TBurgerConstructorState => {
   switch (action.type) {
     case ADD_INGREDIENT: {
       const ingredient = {

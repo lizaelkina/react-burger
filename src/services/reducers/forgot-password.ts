@@ -2,10 +2,24 @@ import {
   FORGOTPASSWORD_CHANGE_EMAIL,
   FORGOTPASSWORD_FAILED,
   FORGOTPASSWORD_LOADING,
-  FORGOTPASSWORD_SUCCESS
+  FORGOTPASSWORD_SUCCESS,
+  TForgotPasswordActions
 } from '../actions/forgot-password';
+import {IForgotPasswordFormData} from '../../utils/api';
 
-const initialState = {
+type TForgotPasswordFormValidity = {
+  email: boolean;
+}
+
+type TForgotPasswordState = {
+  formData: IForgotPasswordFormData;
+  formValidity: TForgotPasswordFormValidity;
+  isLoading: boolean;
+  success: boolean;
+  errorMessage: string | null;
+}
+
+const initialState: TForgotPasswordState = {
   formData: {
     email: '',
   },
@@ -17,7 +31,7 @@ const initialState = {
   errorMessage: null,
 }
 
-export const createForgotPasswordReducer = (state = initialState, action) => {
+export const createForgotPasswordReducer = (state = initialState, action: TForgotPasswordActions): TForgotPasswordState => {
   switch (action.type) {
     case FORGOTPASSWORD_LOADING: {
       return {

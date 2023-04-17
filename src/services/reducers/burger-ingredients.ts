@@ -2,17 +2,26 @@ import {
   GET_INGREDIENTS_FAILED,
   GET_INGREDIENTS_LOADING,
   GET_INGREDIENTS_SUCCESS,
-  SELECT_INGREDIENT_GROUP
+  SELECT_INGREDIENT_GROUP,
+  TBurgerIngredientsActions
 } from '../actions/burger-ingredients';
+import {IIngredient} from '../../utils/data-types';
 
-const initialState = {
+type TBurgerIngredientsState = {
+  ingredients: Array<IIngredient>;
+  isLoading: boolean;
+  error: string | null;
+  selectedGroup: string;
+}
+
+const initialState: TBurgerIngredientsState = {
   ingredients: [],
   isLoading: false,
   error: null,
   selectedGroup: 'bun',
 }
 
-export const burgerIngredientsReducer = (state = initialState, action) => {
+export const burgerIngredientsReducer = (state = initialState, action: TBurgerIngredientsActions): TBurgerIngredientsState => {
   switch (action.type) {
     case GET_INGREDIENTS_LOADING: {
       return {

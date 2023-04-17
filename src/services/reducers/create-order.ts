@@ -2,10 +2,19 @@ import {
   CLOSE_ORDER_MODAL,
   CREATE_ORDER_FAILED,
   CREATE_ORDER_LOADING,
-  CREATE_ORDER_SUCCESS
+  CREATE_ORDER_SUCCESS,
+  TCreateOrderActions
 } from '../actions/create-order';
 
-const initialState = {
+type TCreateOrderState = {
+  isOpenModal: boolean;
+  isLoading: boolean;
+  success: boolean;
+  number: number | null;
+  errorMessage: string | null;
+}
+
+const initialState: TCreateOrderState = {
   isOpenModal: false,
   isLoading: false,
   success: false,
@@ -13,7 +22,7 @@ const initialState = {
   errorMessage: null,
 }
 
-export const createOrderReducer = (state = initialState, action) => {
+export const createOrderReducer = (state = initialState, action: TCreateOrderActions): TCreateOrderState => {
   switch (action.type) {
     case CREATE_ORDER_LOADING: {
       return {

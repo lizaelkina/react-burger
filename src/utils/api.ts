@@ -199,7 +199,7 @@ interface IUpdateProfileResponse extends IResponse {
   user: IUser;
 }
 
-interface IRegisterFormData {
+export interface IRegisterFormData {
   name: string;
   email: string;
   password: string;
@@ -217,7 +217,7 @@ interface IRegisterFormData {
 //   }
 // }
 
-interface ILoginFormData {
+export interface ILoginFormData {
   email: string;
   password: string;
 }
@@ -232,7 +232,7 @@ interface ILoginFormData {
 //   }
 // }
 
-interface IForgotPasswordFormData {
+export interface IForgotPasswordFormData {
   email: string;
 }
 
@@ -244,7 +244,7 @@ interface IForgotPasswordFormData {
 //   }
 // }
 
-interface IResetPasswordFormData {
+export interface IResetPasswordFormData {
   password: string;
   token: string;
 }
@@ -259,7 +259,7 @@ interface IResetPasswordFormData {
 //   }
 // }
 
-interface IUpdateProfileFormData {
+export interface IUpdateProfileFormData {
   name: string;
   email: string;
   password: string;

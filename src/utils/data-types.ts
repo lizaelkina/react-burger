@@ -23,6 +23,7 @@ export interface IOrder {
 export interface IUser {
   email: string;
   name: string;
+  password: string;
 }
 
 export const ingredientPropTypes = PropTypes.shape({

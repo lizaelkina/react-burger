@@ -1,12 +1,27 @@
 import {
+  RESETPASSWORD_CHANGE_CODE,
   RESETPASSWORD_CHANGE_PASSWORD,
-  RESETPASSWORD_CHANGE_TOKEN,
   RESETPASSWORD_FAILED,
   RESETPASSWORD_LOADING,
-  RESETPASSWORD_SUCCESS
+  RESETPASSWORD_SUCCESS,
+  TResetPasswordActions
 } from '../actions/reset-password';
+import {IResetPasswordFormData} from '../../utils/api';
 
-const initialState = {
+type TResetPasswordFormValidity = {
+  password: boolean;
+  token: boolean;
+}
+
+type TResetPasswordState = {
+  formData: IResetPasswordFormData;
+  formValidity: TResetPasswordFormValidity;
+  isLoading: boolean;
+  success: boolean;
+  errorMessage: string | null;
+}
+
+const initialState: TResetPasswordState = {
   formData: {
     password: '',
     token: '',
@@ -20,7 +35,7 @@ const initialState = {
   errorMessage: null,
 }
 
-export const createResetPasswordReducer = (state = initialState, action) => {
+export const createResetPasswordReducer = (state = initialState, action: TResetPasswordActions): TResetPasswordState => {
   switch (action.type) {
     case RESETPASSWORD_LOADING: {
       return {
@@ -58,7 +73,7 @@ export const createResetPasswordReducer = (state = initialState, action) => {
         errorMessage: null,
       }
     }
-    case RESETPASSWORD_CHANGE_TOKEN: {
+    case RESETPASSWORD_CHANGE_CODE: {
       return {
         ...state,
         formData: {

@@ -9,7 +9,7 @@ import {
   changeName,
   changePassword,
   profileInitState,
-  startChangedProfile
+  startUpdateProfile
 } from '../../../services/actions/profile';
 import profileFormStyles from './profile-form.module.css';
 
@@ -48,7 +48,7 @@ export const ProfileForm = () => {
 
   const formSubmit = (event) => {
     event.preventDefault();
-    dispatch(startChangedProfile(formData));
+    dispatch(startUpdateProfile(formData));
   }
 
   return (

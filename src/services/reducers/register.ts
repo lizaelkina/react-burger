@@ -1,42 +1,54 @@
 import {
-  PROFILE_CANCEL_CHANGES,
-  PROFILE_CHANGE_EMAIL,
-  PROFILE_CHANGE_NAME,
-  PROFILE_CHANGE_PASSWORD,
-  PROFILE_FAILED,
-  PROFILE_INIT_STATE,
-  PROFILE_LOADING,
-  PROFILE_SUCCESS
-} from '../actions/profile';
+  REGISTER_CHANGE_EMAIL,
+  REGISTER_CHANGE_NAME,
+  REGISTER_CHANGE_PASSWORD,
+  REGISTER_FAILED,
+  REGISTER_LOADING,
+  REGISTER_SUCCESS,
+  TRegisterActions
+} from '../actions/register';
+import {IRegisterFormData} from '../../utils/api';
+import {IUser} from '../../utils/data-types';
 
-const initialState = {
+type TRegisterFormValidity = {
+  name: boolean;
+  email: boolean;
+  password: boolean;
+}
+
+type TRegisterState = {
+  formData: IRegisterFormData;
+  formValidity: TRegisterFormValidity;
+  isLoading: boolean;
+  success: boolean;
+  user: IUser | null;
+  accessToken: string | null;
+  refreshToken: string | null;
+  errorMessage: string | null;
+}
+
+const initialState: TRegisterState = {
   formData: {
     name: '',
     email: '',
     password: '',
   },
-  initData: {},
   formValidity: {
-    name: true,
-    email: true,
-    password: true,
+    name: false,
+    email: false,
+    password: false,
   },
-  formDataChanged: false,
   isLoading: false,
   success: false,
+  user: null,
+  accessToken: null,
+  refreshToken: null,
   errorMessage: null,
 }
 
-export const profileReducer = (state = initialState, action) => {
+export const createRegisterReducer = (state = initialState, action: TRegisterActions): TRegisterState => {
   switch (action.type) {
-    case PROFILE_INIT_STATE: {
-      return {
-        ...state,
-        formData: action.user,
-        initData: action.user,
-      }
-    }
-    case PROFILE_LOADING: {
+    case REGISTER_LOADING: {
       return {
         ...state,
         isLoading: true,
@@ -44,33 +56,24 @@ export const profileReducer = (state = initialState, action) => {
         errorMessage: null,
       }
     }
-    case PROFILE_SUCCESS: {
+    case REGISTER_SUCCESS: {
       return {
         ...state,
         isLoading: false,
         success: true,
-        formDataChanged: false,
-        initData: action.user,
+        user: action.user,
+        accessToken: action.accessToken,
+        refreshToken: action.refreshToken,
       }
     }
-    case PROFILE_FAILED: {
+    case REGISTER_FAILED: {
       return {
         ...state,
         isLoading: false,
         errorMessage: action.error,
       }
     }
-    case PROFILE_CANCEL_CHANGES: {
-      return {
-        ...state,
-        formData: {
-          ...state.initData,
-        },
-        formDataChanged: false,
-        errorMessage: null,
-      }
-    }
-    case PROFILE_CHANGE_NAME: {
+    case REGISTER_CHANGE_NAME: {
       return {
         ...state,
         formData: {
@@ -81,11 +84,10 @@ export const profileReducer = (state = initialState, action) => {
           ...state.formValidity,
           name: action.valid,
         },
-        formDataChanged: true,
         errorMessage: null,
       }
     }
-    case PROFILE_CHANGE_EMAIL: {
+    case REGISTER_CHANGE_EMAIL: {
       return {
         ...state,
         formData: {
@@ -96,11 +98,10 @@ export const profileReducer = (state = initialState, action) => {
           ...state.formValidity,
           email: action.valid,
         },
-        formDataChanged: true,
         errorMessage: null,
       }
     }
-    case PROFILE_CHANGE_PASSWORD: {
+    case REGISTER_CHANGE_PASSWORD: {
       return {
         ...state,
         formData: {
@@ -111,7 +112,6 @@ export const profileReducer = (state = initialState, action) => {
           ...state.formValidity,
           password: action.valid,
         },
-        formDataChanged: true,
         errorMessage: null,
       }
     }
