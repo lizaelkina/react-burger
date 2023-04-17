@@ -61,7 +61,7 @@ export const authUser = (user: IUser, accessToken: string, refreshToken: string)
   }
 }
 
-export const startCheckUser: AppThunk = () => (dispatch: AppDispatch) => {
+export const startCheckUser = (): AppThunk => (dispatch: AppDispatch) => {
   api.getUser().then(response => {
     dispatch({
       type: CHECK_USER_SUCCESS,
@@ -75,7 +75,7 @@ export const startCheckUser: AppThunk = () => (dispatch: AppDispatch) => {
   })
 }
 
-export const logout: AppThunk = () => (dispatch: AppDispatch) => {
+export const logout = (): AppThunk => (dispatch: AppDispatch) => {
   dispatch({
     type: LOGOUT_LOADING,
   })

@@ -30,7 +30,7 @@ export type TCreateOrderActions =
     | ICreateOrderFailedAction
     | ICloseOrderModalAction;
 
-export const startCreatingOrder: AppThunk = (ingredientIdList: Array<string>) => (dispatch: AppDispatch) => {
+export const startCreatingOrder = (ingredientIdList: Array<string>): AppThunk => (dispatch: AppDispatch) => {
   dispatch({
     type: CREATE_ORDER_LOADING,
   })

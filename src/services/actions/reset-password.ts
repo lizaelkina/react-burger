@@ -40,7 +40,7 @@ export type TResetPasswordActions =
     | IResetPasswordFailedAction;
 
 
-export const startResetPassword: AppThunk = (formData: IResetPasswordFormData) => (dispatch: AppDispatch) => {
+export const startResetPassword = (formData: IResetPasswordFormData): AppThunk => (dispatch: AppDispatch) => {
   dispatch({
     type: RESETPASSWORD_LOADING,
   })

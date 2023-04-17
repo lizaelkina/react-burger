@@ -51,7 +51,7 @@ export type TRegisterActions =
     | IRegisterSuccessAction
     | IRegisterFailedAction;
 
-export const startRegister: AppThunk = (formData: IRegisterFormData) => (dispatch: AppDispatch) => {
+export const startRegister = (formData: IRegisterFormData): AppThunk => (dispatch: AppDispatch) => {
   dispatch({
     type: REGISTER_LOADING,
   })

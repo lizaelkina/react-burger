@@ -45,7 +45,7 @@ export type TLoginActions =
     | ILoginFailedAction
     | IAuthUserAction;
 
-export const startLogin: AppThunk = (formData: ILoginFormData) => (dispatch: AppDispatch) => {
+export const startLogin = (formData: ILoginFormData): AppThunk => (dispatch: AppDispatch) => {
   dispatch({
     type: LOGIN_LOADING,
   })

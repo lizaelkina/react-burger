@@ -33,9 +33,9 @@ export type TBurgerIngredientsActions =
     | ISelectIngredientGroupAction;
 
 
-export const loadIngredients: AppThunk = () => (dispatch: AppDispatch) => {
-  // const ingredients = getState().burgerIngredients.ingredients;
-  // if (ingredients.length === 0) {
+export const loadIngredients = (): AppThunk => (dispatch: AppDispatch, getState: () => RootState) => {
+  const ingredients = getState().burgerIngredients.ingredients;
+  if (ingredients.length === 0) {
     dispatch({
       type: GET_INGREDIENTS_LOADING,
     })
@@ -51,7 +51,7 @@ export const loadIngredients: AppThunk = () => (dispatch: AppDispatch) => {
         error: response.error,
       })
     })
-  // }
+  }
 }
 
 export const selectIngredientGroup = (group: string): ISelectIngredientGroupAction => {

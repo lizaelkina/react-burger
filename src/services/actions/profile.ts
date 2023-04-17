@@ -62,7 +62,7 @@ export type TProfileActions =
     | IProfileFailedAction
     | IProfileCancelChangesAction;
 
-export const startUpdateProfile: AppThunk = (formData: IUpdateProfileFormData) => (dispatch: AppDispatch) => {
+export const startUpdateProfile = (formData: IUpdateProfileFormData): AppThunk => (dispatch: AppDispatch) => {
   dispatch({
     type: PROFILE_LOADING,
   })

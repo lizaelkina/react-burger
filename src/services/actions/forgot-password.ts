@@ -31,7 +31,7 @@ export type TForgotPasswordActions =
     | IForgotPasswordSuccessAction
     | IForgotPasswordFailedAction;
 
-export const startForgotPassword: AppThunk = (formData: IForgotPasswordFormData) => (dispatch: AppDispatch) => {
+export const startForgotPassword = (formData: IForgotPasswordFormData): AppThunk => (dispatch: AppDispatch) => {
   dispatch({
     type: FORGOTPASSWORD_LOADING,
   })
