@@ -1,8 +1,8 @@
 import {useEffect, useMemo, useRef} from 'react';
-import {useDispatch, useSelector} from 'react-redux';
 import {useInView} from 'react-intersection-observer';
 import cn from 'classnames';
 import {Tab} from '@ya.praktikum/react-developer-burger-ui-components';
+import {useAppDispatch, useAppSelector} from '../../services/hooks';
 import {loadIngredients, selectIngredientGroup} from '../../services/actions/burger-ingredients';
 import {IngredientGroup} from './ingredient-group/ingredient-group';
 import {Loader} from '../shared/loader/loader';
@@ -11,9 +11,9 @@ import burgerIngredientsStyles from './burger-ingredients.module.css';
 
 export const BurgerIngredients = () => {
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
-  const {ingredients, isLoading, error, selectedGroup} = useSelector(store => ({
+  const {ingredients, isLoading, error, selectedGroup} = useAppSelector(store => ({
     ingredients: store.burgerIngredients.ingredients,
     isLoading: store.burgerIngredients.isLoading,
     error: store.burgerIngredients.error,
@@ -28,9 +28,9 @@ export const BurgerIngredients = () => {
   const {ref: sauceRef, inView: sauceInView} = useInView();
   const {ref: mainRef, inView: mainInView} = useInView();
 
-  const bunTitleRef = useRef(null);
-  const sauceTitleRef = useRef(null);
-  const mainTitleRef = useRef(null);
+  const bunTitleRef = useRef<HTMLHeadingElement>(null);
+  const sauceTitleRef = useRef<HTMLHeadingElement>(null);
+  const mainTitleRef = useRef<HTMLHeadingElement>(null);
 
   useEffect(() => {
     dispatch(loadIngredients())
@@ -46,7 +46,7 @@ export const BurgerIngredients = () => {
     }
   }, [bunInView, sauceInView, mainInView, dispatch]);
 
-  function handleClickTab(value) {
+  function handleClickTab(value: string) {
     dispatch(selectIngredientGroup(value));
     let title;
     if (value === 'bun') {
@@ -77,9 +77,9 @@ export const BurgerIngredients = () => {
         {!isLoading && error && <ErrorMessage extraClass={burgerIngredientsStyles.section__error} message={error}/>}
         {!isLoading && !error &&
             <div className={cn(burgerIngredientsStyles.scroll, 'custom-scroll')}>
-              <IngredientGroup title='Булки' ingredients={bun} id='bun' ref={bunRef} titleRef={bunTitleRef}/>
-              <IngredientGroup title='Соусы' ingredients={sauce} id='sauce' ref={sauceRef} titleRef={sauceTitleRef}/>
-              <IngredientGroup title='Начинки' ingredients={main} id='main' ref={mainRef} titleRef={mainTitleRef}/>
+              <IngredientGroup title='Булки' ingredients={bun} id='bun' titleRef={bunTitleRef} ref={bunRef}/>
+              <IngredientGroup title='Соусы' ingredients={sauce} id='sauce' titleRef={sauceTitleRef} ref={sauceRef}/>
+              <IngredientGroup title='Начинки' ingredients={main} id='main' titleRef={mainTitleRef} ref={mainRef}/>
             </div>
         }
       </section>

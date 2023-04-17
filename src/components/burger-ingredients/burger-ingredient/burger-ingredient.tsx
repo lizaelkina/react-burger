@@ -1,13 +1,17 @@
-import {useMemo} from 'react';
-import {useSelector} from 'react-redux';
+import {FC, useMemo} from 'react';
 import {useDrag} from 'react-dnd';
 import {Link, useLocation} from 'react-router-dom';
 import cn from 'classnames';
+import {useAppSelector} from '../../../services/hooks';
 import {Counter, CurrencyIcon} from '@ya.praktikum/react-developer-burger-ui-components';
-import {ingredientPropTypes} from '../../../utils/data-types';
+import {IIngredient} from '../../../utils/data-types';
 import burgerIngredientStyles from './burger-ingredient.module.css';
 
-export const BurgerIngredient = ({ingredient}) => {
+type TBurgerIngredientProps = {
+  ingredient: IIngredient;
+};
+
+export const BurgerIngredient: FC<TBurgerIngredientProps> = ({ingredient}) => {
 
   const location = useLocation();
 
@@ -16,7 +20,7 @@ export const BurgerIngredient = ({ingredient}) => {
     item: ingredient,
   });
 
-  const {bun, middle} = useSelector(store => ({
+  const {bun, middle} = useAppSelector(store => ({
     bun: store.burgerConstructor.bun,
     middle: store.burgerConstructor.middle,
   }));
@@ -46,8 +50,4 @@ export const BurgerIngredient = ({ingredient}) => {
         </li>
       </Link>
   );
-}
-
-BurgerIngredient.propTypes = {
-  ingredient: ingredientPropTypes.isRequired,
 }
