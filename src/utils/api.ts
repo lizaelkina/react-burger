@@ -205,74 +205,22 @@ export interface IRegisterFormData {
   password: string;
 }
 
-// class RegisterFormData implements IRegisterFormData {
-//   email: string;
-//   name: string;
-//   password: string;
-//
-//   constructor(email: string, name: string, password: string) {
-//     this.email = email;
-//     this.name = name;
-//     this.password = password;
-//   }
-// }
-
 export interface ILoginFormData {
   email: string;
   password: string;
 }
 
-// class LoginFormData implements ILoginFormData {
-//   email: string;
-//   password: string;
-//
-//   constructor(email: string, password: string) {
-//     this.email = email;
-//     this.password = password;
-//   }
-// }
-
 export interface IForgotPasswordFormData {
   email: string;
 }
-
-// class ForgotPasswordFormData {
-//   email: string;
-//
-//   constructor(email: string) {
-//     this.email = email;
-//   }
-// }
 
 export interface IResetPasswordFormData {
   password: string;
   token: string;
 }
 
-// class ResetPasswordFormData implements IResetPasswordFormData {
-//   password: string;
-//   token: string;
-//
-//   constructor(password: string, token: string) {
-//     this.password = password;
-//     this.token = token;
-//   }
-// }
-
 export interface IUpdateProfileFormData {
   name: string;
   email: string;
   password: string;
 }
-
-// class UpdateProfileFormData implements IUpdateProfileFormData {
-//   email: string;
-//   name: string;
-//   password: string;
-//
-//   constructor(email: string, name: string, password: string) {
-//     this.email = email;
-//     this.name = name;
-//     this.password = password;
-//   }
-// }

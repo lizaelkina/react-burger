@@ -1,23 +1,24 @@
-import {useDispatch, useSelector} from 'react-redux';
 import {useDrop} from 'react-dnd';
 import cn from 'classnames';
 import {ConstructorElement} from '@ya.praktikum/react-developer-burger-ui-components';
 import {DraggableIngredient} from '../draggable-ingredient/draggable-ingredient';
 import {addIngredient} from '../../../services/actions/burger-constructor';
 import burgerStyles from './burger.module.css';
+import {useAppDispatch, useAppSelector} from '../../../services/hooks';
+import {IIngredient} from '../../../utils/data-types';
 
 export const Burger = () => {
 
-  const {bun, middle} = useSelector(store => ({
+  const {bun, middle} = useAppSelector(store => ({
     bun: store.burgerConstructor.bun,
     middle: store.burgerConstructor.middle,
   }));
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const [{isHover}, dropRef] = useDrop({
     accept: 'ingredient',
-    drop(ingredient) {
+    drop(ingredient: IIngredient) {
       dispatch(addIngredient(ingredient));
     },
     collect: monitor => ({
@@ -33,8 +34,8 @@ export const Burger = () => {
             type={'top'}
             isLocked={true}
             text={bun ? bun.name + ' (низ)' : 'Перетащите сюда булку' + (middle.length === 0 ? ' и начинку' : '')}
-            price={bun ? bun.price : null}
-            thumbnail={bun ? bun.image : null}
+            price={bun?.price ?? 0}
+            thumbnail={bun?.image ?? ''}
         />
         <ul className={cn(burgerStyles.list, burgerStyles.scroll, 'custom-scroll')}>
           {
@@ -49,8 +50,8 @@ export const Burger = () => {
             type={'bottom'}
             isLocked={true}
             text={bun ? bun.name + ' (низ)' : 'Перетащите сюда булку' + (middle.length === 0 ? ' и начинку' : '')}
-            price={bun ? bun.price : null}
-            thumbnail={bun ? bun.image : null}
+            price={bun?.price ?? 0}
+            thumbnail={bun?.image ?? ''}
         />
       </div>
   );

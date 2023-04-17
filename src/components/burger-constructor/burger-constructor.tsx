@@ -1,7 +1,7 @@
-import {useDispatch, useSelector} from 'react-redux';
 import {useNavigate} from 'react-router-dom';
 import cn from 'classnames';
 import {Button} from '@ya.praktikum/react-developer-burger-ui-components';
+import {useAppDispatch, useAppSelector} from '../../services/hooks';
 import {Burger} from './burger/burger';
 import {BurgerPrice} from './burger-price/burger-price';
 import {Modal} from '../shared/modal/modal';
@@ -12,10 +12,10 @@ import burgerConstructorStyles from './burger-constructor.module.css';
 
 export const BurgerConstructor = () => {
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  const {bun, middle, isOpenModal, isOrderProcessing, isOrderCreated, authUser} = useSelector(store => ({
+  const {bun, middle, isOpenModal, isOrderProcessing, isOrderCreated, authUser} = useAppSelector(store => ({
     bun: store.burgerConstructor.bun,
     middle: store.burgerConstructor.middle,
     isOpenModal: store.createOrder.isOpenModal,
@@ -28,7 +28,8 @@ export const BurgerConstructor = () => {
 
   function handleCreateOrder() {
     if (authUser) {
-      const ingredientIdList = [...middle, bun, bun].map(item => item._id);
+      const ingredientList = bun ? [...middle, bun, bun] : middle;
+      const ingredientIdList = ingredientList.map(item => item._id);
       dispatch(startCreatingOrder(ingredientIdList));
     } else {
       navigate('/login');

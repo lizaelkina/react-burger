@@ -1,27 +1,32 @@
-import {useRef} from 'react';
-import {useDispatch} from 'react-redux';
-import {useDrag, useDrop} from 'react-dnd';
+import {FC, useRef} from 'react';
+import {useDrag, useDrop, XYCoord} from 'react-dnd';
+import type {Identifier} from 'dnd-core';
 import cn from 'classnames';
 import {ConstructorElement, DragIcon} from '@ya.praktikum/react-developer-burger-ui-components';
+import {useAppDispatch} from '../../../services/hooks';
 import {deleteIngredient, moveIngredient} from '../../../services/actions/burger-constructor';
-import {ingredientPropTypes} from '../../../utils/data-types';
+import {IIngredient} from '../../../utils/data-types';
 import dragIngredientStyles from './draggable-ingredient.module.css';
 
-export const DraggableIngredient = ({ingredient}) => {
+type TDraggableIngredientProps = {
+  ingredient: IIngredient;
+};
 
-  const ref = useRef(null);
-  const dispatch = useDispatch();
+export const DraggableIngredient: FC<TDraggableIngredientProps> = ({ingredient}) => {
+
+  const ref = useRef<HTMLLIElement>(null);
+  const dispatch = useAppDispatch();
 
   const uuid = ingredient.uuid;
 
-  const [{handlerId}, drop] = useDrop({
+  const [{handlerId}, drop] = useDrop<IIngredient, void, { handlerId: Identifier | null }>({
     accept: 'middle',
     collect(monitor) {
       return {
         handlerId: monitor.getHandlerId(),
       }
     },
-    hover(item, monitor) {
+    hover(item: IIngredient, monitor) {
       if (!ref.current) {
         return;
       }
@@ -34,18 +39,17 @@ export const DraggableIngredient = ({ingredient}) => {
       const hoverBoundingRect = ref.current?.getBoundingClientRect();
       const hoverMiddleY = (hoverBoundingRect.bottom - hoverBoundingRect.top) / 2;
       const clientOffset = monitor.getClientOffset();
-      const hoverClientY = clientOffset.y - hoverBoundingRect.top;
+      const hoverClientY = (clientOffset as XYCoord).y - hoverBoundingRect.top;
 
-      if (dragUUID < hoverUUID && hoverClientY < hoverMiddleY) {
-        return;
+      if (dragUUID && hoverUUID) {
+        if (dragUUID < hoverUUID && hoverClientY < hoverMiddleY) {
+          return;
+        }
+        if (dragUUID > hoverUUID && hoverClientY > hoverMiddleY) {
+          return;
+        }
+        dispatch(moveIngredient(dragUUID, hoverUUID));
       }
-      if (dragUUID > hoverUUID && hoverClientY > hoverMiddleY) {
-        return;
-      }
-
-      dispatch(moveIngredient(dragUUID, hoverUUID));
-
-      item.index = hoverUUID;
     },
   })
 
@@ -75,8 +79,4 @@ export const DraggableIngredient = ({ingredient}) => {
         />
       </li>
   );
-}
-
-DraggableIngredient.propTypes = {
-  ingredient: ingredientPropTypes,
 }

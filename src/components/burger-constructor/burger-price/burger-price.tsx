@@ -1,10 +1,10 @@
 import {useMemo} from 'react';
-import {useSelector} from 'react-redux';
 import {CurrencyIcon} from '@ya.praktikum/react-developer-burger-ui-components';
+import {useAppSelector} from '../../../services/hooks';
 
 export const BurgerPrice = () => {
 
-  const {bun, middle} = useSelector(store => ({
+  const {bun, middle} = useAppSelector(store => ({
     bun: store.burgerConstructor.bun,
     middle: store.burgerConstructor.middle,
   }));

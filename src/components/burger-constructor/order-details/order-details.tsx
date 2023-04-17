@@ -1,5 +1,5 @@
-import {useSelector} from 'react-redux';
 import cn from 'classnames';
+import {useAppSelector} from '../../../services/hooks';
 import {SuccessStatus} from './success-status/success-status';
 import {Loader} from '../../shared/loader/loader';
 import {ErrorMessage} from '../../shared/error-message/error-message';
@@ -7,7 +7,7 @@ import orderDetailsStyles from './order-details.module.css';
 
 export const OrderDetails = () => {
 
-  const {isLoading, success, number, errorMessage} = useSelector(store => ({
+  const {isLoading, success, number, errorMessage} = useAppSelector(store => ({
     isLoading: store.createOrder.isLoading,
     success: store.createOrder.success,
     number: store.createOrder.number,
@@ -22,7 +22,8 @@ export const OrderDetails = () => {
               <Loader/>
             </div>
         }
-        {!isLoading && !success && <ErrorMessage extraClass={orderDetailsStyles.error} message={errorMessage}/>}
+        {!isLoading && !success && errorMessage &&
+            <ErrorMessage extraClass={orderDetailsStyles.error} message={errorMessage}/>}
         {success &&
             <>
               <span className={cn(orderDetailsStyles.shadow, 'text text_type_digits-large mb-8')}>
