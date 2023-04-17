@@ -1,12 +1,16 @@
-import {useDispatch} from 'react-redux';
 import {NavLink} from 'react-router-dom';
 import cn from 'classnames';
+import {useAppDispatch} from '../../services/hooks';
 import {logout} from '../../services/actions/auth';
 import navProfileStyles from './navigation-profile.module.css';
 
 export const NavigationProfile = () => {
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
+
+  function handleLogout() {
+    return dispatch(logout());
+  }
 
   return (
       <nav className={navProfileStyles.nav} aria-label='Личный кабинет пользователя'>
@@ -21,7 +25,7 @@ export const NavigationProfile = () => {
           <span className='text text_type_main-medium'>История заказов</span>
         </NavLink>
         <button className={cn(navProfileStyles.link, navProfileStyles.button)}
-                onClick={() => dispatch(logout())}>
+                onClick={handleLogout}>
           <span className='text text_type_main-medium'>Выход</span>
         </button>
       </nav>
