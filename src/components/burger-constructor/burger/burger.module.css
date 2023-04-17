@@ -33,6 +33,10 @@
   visibility: hidden;
 }
 
+.hide_icons :global(.constructor-element__price) {
+  visibility: hidden;
+}
+
 .scroll {
   overflow-y: auto;
   overflow-x: hidden;

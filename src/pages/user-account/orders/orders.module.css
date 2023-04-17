@@ -1,0 +1,6 @@
+.scroll {
+  margin: 40px 0 40px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  cursor: pointer;
+}

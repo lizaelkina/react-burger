@@ -1,0 +1,11 @@
+.created {
+  color: var(--colors-interface-error);
+}
+
+.pending {
+  color: var(--text-primary-color);
+}
+
+.done {
+  color: var(--colors-interface-success);
+}
