@@ -1,23 +1,21 @@
-import orderSumStyles from './order-sum.module.css';
 import cn from 'classnames';
+import orderSumStyles from './order-sum.module.css';
 
 export const OrderSum = () => {
   return (
-      <section className={orderSumStyles.section}>
+      <section className={cn(orderSumStyles.section)}>
         <div className={orderSumStyles.container}>
           <div className={orderSumStyles.column}>
             <h5 className='text text_type_main-medium text_color_primary mb-6'>Готовы:</h5>
-            <span className='text text_type_digits-default text_color_success mb-2'>034533</span>
-            <span className='text text_type_digits-default text_color_success mb-2'>034532</span>
-            <span className='text text_type_digits-default text_color_success mb-2'>034530</span>
-            <span className='text text_type_digits-default text_color_success mb-2'>034527</span>
-            <span className='text text_type_digits-default text_color_success mb-2'>034525</span>
+            <ul className={orderSumStyles.list}>
+              <li className='text text_type_digits-default text_color_success'>034533</li>
+            </ul>
           </div>
           <div className={orderSumStyles.column}>
             <h5 className='text text_type_main-medium text_color_primary mb-6'>В работе:</h5>
-            <span className='text text_type_digits-default mb-2'>034538</span>
-            <span className='text text_type_digits-default mb-2'>034541</span>
-            <span className='text text_type_digits-default mb-2'>034542</span>
+            <ul className={orderSumStyles.list}>
+              <li className='text text_type_digits-default mb-2'>034538</li>
+            </ul>
           </div>
         </div>
         <div>

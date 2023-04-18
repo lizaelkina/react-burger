@@ -7,8 +7,8 @@
   justify-content: center;
   box-sizing: border-box;
   padding: 5px;
-  border: 2px solid var(--colors-interface-accent);
+  border: 2px solid transparent;
   border-radius: 50%;
-  background-color: var(--background-alt);
+  background: linear-gradient(#131316,#131316) padding-box,linear-gradient(90deg,#801ab2,#4c4cff) border-box;
   object-fit: contain;
 }

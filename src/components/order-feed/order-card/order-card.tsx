@@ -24,9 +24,9 @@ export const OrderCard = () => {
           <ul className={orderCardStyles.card__ingredients}>
             <li className={orderCardStyles.list_item}>
               <OrderIngredient extraClass={cn(orderCardStyles.ingredient_first)}/>
-{/*              <span className={cn(orderCardStyles.more, 'text text_type_digits-default')}>
-                  +3
-              </span>*/}
+              {/*<span className={cn(orderCardStyles.more, 'text text_type_digits-default')}>*/}
+              {/*    +3*/}
+              {/*</span>*/}
             </li>
           </ul>
           <OrderPrice/>

@@ -17,6 +17,8 @@ import {Modal} from '../shared/modal/modal';
 import {NotFound404} from '../../pages/not-found-404/not-found';
 import {useEffect} from 'react';
 import {startCheckUser} from '../../services/actions/auth';
+import {FeedPage} from '../../pages/feed/feed';
+import {OrderInfoPage} from '../../pages/order-info/order-info';
 
 export const App = () => {
 
@@ -48,6 +50,8 @@ export const App = () => {
           <Route path='/' element={<PageLayout/>}>
             <Route index element={<HomePage/>}/>
             <Route path='ingredients/:id' element={<IngredientPage/>}/>
+            <Route path='feed' element={<FeedPage/>}/>
+              <Route path=':id' element={<OrderInfoPage/>}></Route>
             <Route path='profile' element={
               <ProtectedRoute>
                 <UserAccountLayout/>
