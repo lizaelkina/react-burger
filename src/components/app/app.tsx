@@ -1,6 +1,6 @@
 import {useEffect} from 'react';
 import {Route, Routes} from 'react-router';
-import {Navigate, useLocation, useNavigate} from 'react-router-dom';
+import {useLocation, useNavigate} from 'react-router-dom';
 import {IngredientDetails} from '../burger-ingredients/ingredient-details/ingredient-details';
 import {useAppDispatch, useAppSelector} from '../../services/hooks';
 import {startCheckUser} from '../../services/actions/auth';
@@ -59,8 +59,8 @@ export const App = () => {
               </ProtectedRoute>}>
               <Route index element={<ProfilePage/>}/>
               <Route path='orders' element={<OrdersPage/>}/>
-              <Route path='orders/:id' element={<Navigate to='/feed/:id' replace/>}></Route>
             </Route>
+            <Route path='profile/orders/:id' element={<ProtectedRoute><OrderInfoPage/></ProtectedRoute>}></Route>
             <Route path='login' element={<ProtectedRoute onlyUnAuth><LoginPage/></ProtectedRoute>}/>
             <Route path='register' element={<ProtectedRoute onlyUnAuth><RegisterPage/></ProtectedRoute>}/>
             <Route path='forgot-password' element={<ProtectedRoute onlyUnAuth><ForgotPasswordPage/></ProtectedRoute>}/>
@@ -76,7 +76,7 @@ export const App = () => {
             <Routes>
               {location.state?.ingredient &&
                   <Route path='ingredients/:id' element={
-                    <Modal title={'Детали ингредиента'} onClose={closeModal}>
+                    <Modal title={'Детали ингредиента'} extraClass='text_type_main-large' onClose={closeModal}>
                       <IngredientDetails ingredient={location.state?.ingredient}/>
                     </Modal>}>
                   </Route>
