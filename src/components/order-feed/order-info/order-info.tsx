@@ -10,9 +10,8 @@ export const OrderInfo = () => {
   const date = new Date();
 
   return (
-      <article className={orderInfoStyles.card}>
-        <span className={cn(orderInfoStyles.number, 'text text_type_digits-default mb-10')}>#034535</span>
-        <h4 className='text text_type_main-medium text_color_primary mb-3'>Death Star Starship Main бургер</h4>
+      <article className={cn(orderInfoStyles.card, 'pb-15')}>
+        <h5 className='text text_type_main-medium text_color_primary mt-5 mb-3'>Death Star Starship Main бургер</h5>
         <OrderStatus/>
         <span className='text text_type_main-medium text_color_primary mt-15 mb-6'>Состав:</span>
         <ul className={cn(orderInfoStyles.list, orderInfoStyles.scroll, 'custom-scroll')}>

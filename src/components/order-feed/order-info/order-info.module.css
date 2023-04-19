@@ -1,12 +1,8 @@
 .card {
-  width: 640px;
+  min-width: 640px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-}
-
-.number {
-  text-align: center;
 }
 
 .list {

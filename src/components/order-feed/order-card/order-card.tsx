@@ -1,5 +1,5 @@
 import cn from 'classnames';
-import {Link} from 'react-router-dom';
+import {Link, useLocation} from 'react-router-dom';
 import {FormattedDate} from '@ya.praktikum/react-developer-burger-ui-components';
 import {OrderStatus} from '../order-status/order-status';
 import {OrderIngredient} from '../order-ingredient/order-ingredient';
@@ -11,9 +11,12 @@ export const OrderCard = () => {
   const date = new Date();
   const orderStatus = false;
 
+  const location = useLocation();
+
   return (
       <Link className={cn(orderCardStyles.card, orderCardStyles.link)}
-            to='/id'>
+            state={{backgroundLocation: location}}
+            to={`:id`}>
         <div className={orderCardStyles.card__info}>
           <span className='text text_type_digits-default'>#034535</span>
           <FormattedDate className='text text_type_main-default text_color_inactive' date={date}/>
