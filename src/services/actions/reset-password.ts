@@ -1,5 +1,5 @@
 import {api, IResetPasswordFormData} from '../../utils/api';
-import {AppDispatch, AppThunk} from '../index';
+import {AppDispatch, AppThunk} from '../store';
 
 export const RESETPASSWORD_CHANGE_PASSWORD: 'RESETPASSWORD_CHANGE_PASSWORD' = 'RESETPASSWORD_CHANGE_PASSWORD';
 export const RESETPASSWORD_CHANGE_CODE: 'RESETPASSWORD_CHANGE_CODE' = 'RESETPASSWORD_CHANGE_CODE';

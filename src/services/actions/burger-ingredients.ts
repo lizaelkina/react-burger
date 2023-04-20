@@ -1,6 +1,6 @@
 import {api} from '../../utils/api';
 import {IIngredient} from '../../utils/data-types';
-import {AppDispatch, AppThunk, RootState} from '../index';
+import {AppDispatch, AppThunk, RootState} from '../store';
 
 export const GET_INGREDIENTS_LOADING: 'GET_INGREDIENTS_LOADING' = 'GET_INGREDIENTS_LOADING';
 export const GET_INGREDIENTS_SUCCESS: 'GET_INGREDIENTS_SUCCESS' = 'GET_INGREDIENTS_SUCCESS';

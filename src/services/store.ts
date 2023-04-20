@@ -1,7 +1,7 @@
 import {applyMiddleware, legacy_createStore as createStore} from 'redux';
 import thunk, {ThunkAction, ThunkDispatch} from 'redux-thunk';
 import {composeWithDevTools} from '@redux-devtools/extension';
-import {rootReducer} from './reducers/store';
+import {rootReducer} from './reducers/root-reducer';
 import {TAuthActions} from './actions/auth';
 import {TLoginActions} from './actions/login';
 import {TResetPasswordActions} from './actions/reset-password';
