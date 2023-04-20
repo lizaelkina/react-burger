@@ -1,38 +1,32 @@
-export const WS_USER_ORDERS_CONNECTION_START: 'WS_USER_ORDERS_CONNECTION_START' = 'WS_USER_ORDERS_CONNECTION_START';
-export const WS_USER_ORDERS_CONNECTION_SUCCESS: 'WS_USER_ORDERS_CONNECTION_SUCCESS' = 'WS_USER_ORDERS_CONNECTION_SUCCESS';
-export const WS_USER_ORDERS_CONNECTION_ERROR: 'WS_USER_ORDERS_CONNECTION_ERROR' = 'WS_USER_ORDERS_CONNECTION_ERROR';
-export const WS_USER_ORDERS_CONNECTION_CLOSED: 'WS_USER_ORDERS_CONNECTION_CLOSED' = 'WS_USER_ORDERS_CONNECTION_CLOSED';
-export const WS_USER_ORDERS_GET_MESSAGE: 'WS_USER_ORDERS_GET_MESSAGE' = 'WS_USER_ORDERS_GET_MESSAGE';
-export const WS_USER_ORDERS_SEND_MESSAGE: 'WS_USER_ORDERS_SEND_MESSAGE' = 'WS_USER_ORDERS_SEND_MESSAGE';
+export const WS_USER_ORDERS_CONNECT: 'WS_USER_ORDERS_CONNECT' = 'WS_USER_ORDERS_CONNECT';
+export const WS_USER_ORDERS_OPEN: 'WS_USER_ORDERS_OPEN' = 'WS_USER_ORDERS_OPEN';
+export const WS_USER_ORDERS_CLOSE: 'WS_USER_ORDERS_CLOSE' = 'WS_USER_ORDERS_CLOSE';
+export const WS_USER_ORDERS_ERROR: 'WS_USER_ORDERS_ERROR' = 'WS_USER_ORDERS_ERROR';
+export const WS_USER_ORDERS_MESSAGE: 'WS_USER_ORDERS_MESSAGE' = 'WS_USER_ORDERS_MESSAGE';
 
-export interface IWSUserOrdersConnectionStart {
-  readonly type: typeof WS_USER_ORDERS_CONNECTION_START;
+export interface IWsUserOrdersConnect {
+  readonly type: typeof WS_USER_ORDERS_CONNECT;
 }
 
-export interface IWSUserOrdersConnectionSuccess {
-  readonly type: typeof WS_USER_ORDERS_CONNECTION_SUCCESS;
+export interface IWsUserOrdersOpen {
+  readonly type: typeof WS_USER_ORDERS_OPEN;
 }
 
-export interface IWSUserOrdersConnectionError {
-  readonly type: typeof WS_USER_ORDERS_CONNECTION_ERROR;
+export interface IWsUserOrdersClose {
+  readonly type: typeof WS_USER_ORDERS_CLOSE;
 }
 
-export interface IWSUserOrdersConnectionClosed {
-  readonly type: typeof WS_USER_ORDERS_CONNECTION_CLOSED;
+export interface IWsUserOrdersError {
+  readonly type: typeof WS_USER_ORDERS_ERROR;
 }
 
-export interface IWSUserOrdersGetMessage {
-  readonly type: typeof WS_USER_ORDERS_GET_MESSAGE;
+export interface IWsUserOrdersMessage {
+  readonly type: typeof WS_USER_ORDERS_MESSAGE;
 }
 
-export interface IWSUserOrdersSendMessage {
-  readonly type: typeof WS_USER_ORDERS_SEND_MESSAGE;
-}
-
-export type TWSUserOrdersActions =
-    IWSUserOrdersConnectionStart
-    | IWSUserOrdersConnectionSuccess
-    | IWSUserOrdersConnectionError
-    | IWSUserOrdersConnectionClosed
-    | IWSUserOrdersGetMessage
-    | IWSUserOrdersSendMessage;
+export type TWsUserOrdersActions =
+    IWsUserOrdersConnect
+    | IWsUserOrdersOpen
+    | IWsUserOrdersError
+    | IWsUserOrdersClose
+    | IWsUserOrdersMessage;
