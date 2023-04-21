@@ -21,12 +21,14 @@ export const FeedPage = () => {
   return (
       <div className={feedPageStyles.page}>
         <h2 className={cn(feedPageStyles.text, 'text text_type_main-large')}>Лента заказов</h2>
-        <div className={cn(feedPageStyles.scroll, feedPageStyles.left, 'custom-scroll')}>
+        <section className={cn(feedPageStyles.scroll, feedPageStyles.left, 'custom-scroll')}
+                 aria-label='Список заказов'>
           <OrderFeed/>
-        </div>
-        <div className={cn(feedPageStyles.scroll, feedPageStyles.right, 'custom-scroll')}>
+        </section>
+        <section className={cn(feedPageStyles.scroll, feedPageStyles.right, 'custom-scroll')}
+                 aria-label='Данные о заказах'>
           <OrderSum/>
-        </div>
+        </section>
       </div>
   );
 }

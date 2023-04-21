@@ -14,26 +14,28 @@ export const OrderCard = () => {
   const location = useLocation();
 
   return (
-      <Link className={cn(orderCardStyles.card, orderCardStyles.link)}
+      <Link className={orderCardStyles.link}
             state={{backgroundLocation: location}}
             to={`:id`}>
-        <div className={orderCardStyles.card__info}>
-          <span className='text text_type_digits-default'>#034535</span>
-          <FormattedDate className='text text_type_main-default text_color_inactive' date={date}/>
-        </div>
-        <h4 className='text text_type_main-medium text_color_primary mt-6'>Death Star Starship Main бургер</h4>
-        {orderStatus && <OrderStatus/>}
-        <div className={cn(orderCardStyles.card__container, 'mt-6')}>
-          <ul className={orderCardStyles.card__ingredients}>
-            <li className={orderCardStyles.list_item}>
-              <OrderIngredient extraClass={cn(orderCardStyles.ingredient_first)}/>
-              {/*<span className={cn(orderCardStyles.more, 'text text_type_digits-default')}>*/}
-              {/*    +3*/}
-              {/*</span>*/}
-            </li>
-          </ul>
-          <OrderPrice/>
-        </div>
+        <li className={orderCardStyles.card}>
+          <div className={orderCardStyles.card__info}>
+            <span className='text text_type_digits-default'>#034535</span>
+            <FormattedDate className='text text_type_main-default text_color_inactive' date={date}/>
+          </div>
+          <h4 className='text text_type_main-medium text_color_primary mt-6'>Death Star Starship Main бургер</h4>
+          {orderStatus && <OrderStatus/>}
+          <div className={cn(orderCardStyles.card__container, 'mt-6')}>
+            <ul className={orderCardStyles.card__ingredients}>
+              <li className={orderCardStyles.list_item}>
+                <OrderIngredient extraClass={cn(orderCardStyles.ingredient_first)}/>
+                {/*<span className={cn(orderCardStyles.more, 'text text_type_digits-default')}>*/}
+                {/*    +3*/}
+                {/*</span>*/}
+              </li>
+            </ul>
+            <OrderPrice/>
+          </div>
+        </li>
       </Link>
   );
 }

@@ -17,7 +17,7 @@ export const NotFound404 = () => {
 
   return (
       <section className={notFoundStyles.page}>
-        <h1 className='text text_type_digits-large text_color_inactive'>404</h1>
+        <p className='text text_type_digits-large text_color_inactive'>404</p>
         <h2 className='text text_type_main-large text_color_inactive'>Страница не найдена</h2>
         <div className={cn(notFoundStyles.container, 'mt-20')}>
           <span className='text text_type_main-default text_color_active'>
