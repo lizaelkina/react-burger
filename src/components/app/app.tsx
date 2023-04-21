@@ -11,7 +11,7 @@ import {FeedPage} from '../../pages/feed/feed';
 import {OrderInfoPage} from '../../pages/order-info/order-info';
 import {UserAccountLayout} from '../../pages/user-account/user-account-layout';
 import {ProfilePage} from '../../pages/user-account/profile/profile';
-import {OrdersPage} from '../../pages/user-account/orders/orders';
+import {UserOrdersPage} from '../../pages/user-account/orders/user-orders';
 import {LoginPage} from '../../pages/login/login';
 import {RegisterPage} from '../../pages/register/register';
 import {ForgotPasswordPage} from '../../pages/forgot-password/forgot-password';
@@ -58,7 +58,7 @@ export const App = () => {
                 <UserAccountLayout/>
               </ProtectedRoute>}>
               <Route index element={<ProfilePage/>}/>
-              <Route path='orders' element={<OrdersPage/>}/>
+              <Route path='orders' element={<UserOrdersPage/>}/>
             </Route>
             <Route path='profile/orders/:id' element={<ProtectedRoute><OrderInfoPage/></ProtectedRoute>}></Route>
             <Route path='login' element={<ProtectedRoute onlyUnAuth><LoginPage/></ProtectedRoute>}/>
