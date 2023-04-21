@@ -42,14 +42,14 @@ export const socketMiddleware = (wsTypeActions: IWSTypeActions): Middleware => {
           dispatch({type: wsTypeActions.onOpen} as TApplicationActions);
         };
 
-        socket.onerror = event => {
-          dispatch({type: wsTypeActions.onError, error: event} as TApplicationActions);
-        };
-
         socket.onmessage = event => {
           const {data} = event;
           const parsedData = JSON.parse(data);
           dispatch({type: wsTypeActions.onMessage, data: parsedData} as TApplicationActions);
+        };
+
+        socket.onerror = event => {
+          dispatch({type: wsTypeActions.onError, error: event} as TApplicationActions);
         };
 
         socket.onclose = event => {

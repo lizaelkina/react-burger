@@ -52,6 +52,6 @@ export const wsUserOrdersConnect = (url: string, secure: boolean): IWSUserOrders
 
 export const wsUserOrdersDisconnect = () => {
   return {
-    type: WS_USER_ORDERS_CLOSE
+    type: WS_USER_ORDERS_CLOSE,
   }
 }

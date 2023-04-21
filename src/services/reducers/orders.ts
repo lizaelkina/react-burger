@@ -1,14 +1,25 @@
 import {IOrderList} from '../../utils/data-types';
-import {TWSOrdersActions, WS_ORDERS_CONNECT, WS_ORDERS_MESSAGE} from '../actions/orders';
+import {
+  TWSOrdersActions,
+  WS_ORDERS_CLOSE,
+  WS_ORDERS_CONNECT,
+  WS_ORDERS_ERROR,
+  WS_ORDERS_MESSAGE,
+  WS_ORDERS_OPEN
+} from '../actions/orders';
 
 type TOrdersState = {
-  wsConnected: boolean,
-  data: IOrderList | null,
+  wsConnecting: boolean;
+  wsConnected: boolean;
+  data: IOrderList | null;
+  error: string;
 }
 
 const initialState: TOrdersState = {
+  wsConnecting: false,
   wsConnected: false,
   data: null,
+  error: '',
 }
 
 export const wsOrdersReducer = (state = initialState, action: TWSOrdersActions): TOrdersState => {
@@ -16,13 +27,36 @@ export const wsOrdersReducer = (state = initialState, action: TWSOrdersActions):
     case WS_ORDERS_CONNECT: {
       return {
         ...state,
+        wsConnecting: true,
+        wsConnected: false,
+      }
+    }
+    case WS_ORDERS_OPEN: {
+      return {
+        ...state,
+        wsConnecting: false,
         wsConnected: true,
+      }
+    }
+    case WS_ORDERS_CLOSE: {
+      return {
+        ...state,
+        wsConnecting: false,
+        wsConnected: false,
       }
     }
     case WS_ORDERS_MESSAGE: {
       return {
         ...state,
         data: action.data,
+      }
+    }
+    case WS_ORDERS_ERROR: {
+      return {
+        ...state,
+        wsConnecting: false,
+        wsConnected: false,
+        error: action.type,
       }
     }
     default: {

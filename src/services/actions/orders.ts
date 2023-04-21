@@ -51,6 +51,6 @@ export const wsOrdersConnect = (url: string): IWSOrdersConnect => {
 
 export const wsOrdersDisconnect = () => {
   return {
-    type: WS_ORDERS_CLOSE
+    type: WS_ORDERS_CLOSE,
   }
 }
