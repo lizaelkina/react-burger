@@ -8,6 +8,8 @@ import {createForgotPasswordReducer} from './forgot-password';
 import {createResetPasswordReducer} from './reset-password';
 import {profileReducer} from './profile';
 import {createAuthReducer} from './auth';
+import {wsOrdersReducer} from './orders';
+import {wsUserOrdersReducer} from './user-orders';
 
 export const rootReducer = combineReducers({
   burgerIngredients: burgerIngredientsReducer,
@@ -19,4 +21,6 @@ export const rootReducer = combineReducers({
   createResetPassword: createResetPasswordReducer,
   profile: profileReducer,
   auth: createAuthReducer,
+  wsOrders: wsOrdersReducer,
+  wsUserOrders: wsUserOrdersReducer,
 });

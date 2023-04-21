@@ -11,15 +11,20 @@ import {TCreateOrderActions} from './actions/create-order';
 import {TBurgerIngredientsActions} from './actions/burger-ingredients';
 import {TBurgerConstructorActions} from './actions/burger-constructor';
 import {TRegisterActions} from './actions/register';
+import {TWSOrdersActions, wsOrdersTypeActions} from './actions/orders';
+import {TWSUserOrdersActions, wsUserOrdersTypeActions} from './actions/user-orders';
+import {socketMiddleware} from './middleware/socket-middleware';
 
 export const store = createStore(
     rootReducer,
     composeWithDevTools(
-        applyMiddleware(thunk)
+        applyMiddleware(thunk),
+        applyMiddleware(socketMiddleware(wsUserOrdersTypeActions)),
+        applyMiddleware(socketMiddleware(wsOrdersTypeActions)),
     )
 );
 
-type TApplicationActions =
+export type TApplicationActions =
     TAuthActions
     | TLoginActions
     | TResetPasswordActions
@@ -28,7 +33,9 @@ type TApplicationActions =
     | TCreateOrderActions
     | TBurgerIngredientsActions
     | TBurgerConstructorActions
-    | TRegisterActions;
+    | TRegisterActions
+    | TWSOrdersActions
+    | TWSUserOrdersActions;
 
 export type RootState = ReturnType<typeof store.getState>;
 
