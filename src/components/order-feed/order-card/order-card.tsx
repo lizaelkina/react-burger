@@ -1,12 +1,18 @@
+import {FC} from 'react';
 import cn from 'classnames';
 import {Link, useLocation} from 'react-router-dom';
 import {FormattedDate} from '@ya.praktikum/react-developer-burger-ui-components';
 import {OrderStatus} from '../order-status/order-status';
 import {OrderIngredient} from '../order-ingredient/order-ingredient';
 import {OrderPrice} from '../order-price/order-price';
+import {IOrder} from '../../../utils/data-types';
 import orderCardStyles from './order-card.module.css';
 
-export const OrderCard = () => {
+type TOrderCardProps = {
+  order: IOrder;
+};
+
+export const OrderCard: FC<TOrderCardProps> = ({order}) => {
 
   const date = new Date();
   const orderStatus = false;
@@ -19,10 +25,10 @@ export const OrderCard = () => {
             to={`:id`}>
         <li className={orderCardStyles.card}>
           <div className={orderCardStyles.card__info}>
-            <span className='text text_type_digits-default'>#034535</span>
+            <span className='text text_type_digits-default'>{order.number}</span>
             <FormattedDate className='text text_type_main-default text_color_inactive' date={date}/>
           </div>
-          <h4 className='text text_type_main-medium text_color_primary mt-6'>Death Star Starship Main бургер</h4>
+          <h4 className='text text_type_main-medium text_color_primary mt-6'>{order.name}</h4>
           {orderStatus && <OrderStatus/>}
           <div className={cn(orderCardStyles.card__container, 'mt-6')}>
             <ul className={orderCardStyles.card__ingredients}>

@@ -2,7 +2,6 @@
   box-sizing: border-box;
   margin-right: 8px;
   padding: 24px;
-  min-width: 584px;
   display: flex;
   flex-direction: column;
   border-radius: var(--common-border-radius-s);
