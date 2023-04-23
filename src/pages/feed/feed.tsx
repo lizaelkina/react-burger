@@ -27,7 +27,12 @@ export const FeedPage = () => {
         <h2 className={cn(feedPageStyles.text, 'text text_type_main-large')}>Лента заказов</h2>
         <section className={cn(feedPageStyles.scroll, feedPageStyles.left, 'custom-scroll')}
                  aria-label='Список заказов'>
-          <OrderFeed orders={orders}/>
+          {orders.length > 0
+              ? <OrderFeed orders={orders}/>
+              : <span className={cn(feedPageStyles.empty, 'text text_type_main-default text_color_inactive')}>
+                Заказов пока нет
+              </span>
+          }
         </section>
         <section className={cn(feedPageStyles.scroll, feedPageStyles.right, 'custom-scroll')}
                  aria-label='Данные о заказах'>

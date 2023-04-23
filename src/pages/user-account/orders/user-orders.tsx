@@ -23,7 +23,12 @@ export const UserOrdersPage = () => {
 
   return (
       <div className={cn(userOrdersPageStyles.scroll, 'custom-scroll')}>
-        <OrderFeed orders={userOrders}/>
+        {userOrders.length > 0
+            ? <OrderFeed orders={userOrders} showStatus={true}/>
+            : <span className={cn(userOrdersPageStyles.empty, 'text text_type_main-default text_color_inactive')}>
+                Заказов пока нет
+              </span>
+        }
       </div>
   );
 }

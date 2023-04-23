@@ -10,12 +10,10 @@ import orderCardStyles from './order-card.module.css';
 
 type TOrderCardProps = {
   order: IOrder;
+  showStatus?: boolean;
 };
 
-export const OrderCard: FC<TOrderCardProps> = ({order}) => {
-
-  const date = new Date();
-  const orderStatus = false;
+export const OrderCard: FC<TOrderCardProps> = ({order, showStatus}) => {
 
   const location = useLocation();
 
@@ -25,11 +23,12 @@ export const OrderCard: FC<TOrderCardProps> = ({order}) => {
             to={`:id`}>
         <li className={orderCardStyles.card}>
           <div className={orderCardStyles.card__info}>
-            <span className='text text_type_digits-default'>{order.number}</span>
-            <FormattedDate className='text text_type_main-default text_color_inactive' date={date}/>
+            <span className='text text_type_digits-default'>#{order.number}</span>
+            <FormattedDate className='text text_type_main-default text_color_inactive'
+                           date={new Date(order.createdAt)}/>
           </div>
           <h4 className='text text_type_main-medium text_color_primary mt-6'>{order.name}</h4>
-          {orderStatus && <OrderStatus/>}
+          {showStatus && <OrderStatus status={order.status}/>}
           <div className={cn(orderCardStyles.card__container, 'mt-6')}>
             <ul className={orderCardStyles.card__ingredients}>
               <li className={orderCardStyles.list_item}>

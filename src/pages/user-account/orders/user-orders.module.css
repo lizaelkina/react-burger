@@ -3,3 +3,9 @@
   overflow-y: auto;
   overflow-x: hidden;
 }
+
+.empty {
+  display: flex;
+  justify-content: center;
+  opacity: 0.4;
+}

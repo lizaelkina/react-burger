@@ -12,7 +12,7 @@ export const OrderInfo = () => {
   return (
       <article className={cn(orderInfoStyles.card, 'pb-15')}>
         <h5 className='text text_type_main-medium text_color_primary mt-5 mb-3'>Death Star Starship Main бургер</h5>
-        <OrderStatus/>
+        {/* TODO статус*/}
         <span className='text text_type_main-medium text_color_primary mt-15 mb-6'>Состав:</span>
         <ul className={cn(orderInfoStyles.list, orderInfoStyles.scroll, 'custom-scroll')}>
           <li className={orderInfoStyles.list_item}>
