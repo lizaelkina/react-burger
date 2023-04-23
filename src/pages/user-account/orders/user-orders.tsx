@@ -1,6 +1,6 @@
 import {useEffect} from 'react';
 import cn from 'classnames';
-import {useAppDispatch} from '../../../services/hooks';
+import {useAppDispatch, useAppSelector} from '../../../services/hooks';
 import {WS_USER_ORDERS_URL} from '../../../utils/api';
 import {wsUserOrdersConnect, wsUserOrdersDisconnect} from '../../../services/actions/user-orders';
 import {OrderFeed} from '../../../components/order-feed/order-feed';
@@ -17,9 +17,13 @@ export const UserOrdersPage = () => {
     }
   }, [dispatch]);
 
+  const {userOrders} = useAppSelector(store => ({
+    userOrders: store.wsUserOrders.data?.orders ?? [],
+  }));
+
   return (
       <div className={cn(userOrdersPageStyles.scroll, 'custom-scroll')}>
-        <OrderFeed/>
+        <OrderFeed orders={userOrders}/>
       </div>
   );
 }
