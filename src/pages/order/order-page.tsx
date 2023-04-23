@@ -1,29 +1,47 @@
+import {useEffect, useMemo} from 'react';
+import {useParams} from 'react-router';
 import cn from 'classnames';
+import {useAppDispatch, useAppSelector} from '../../services/hooks';
 import {OrderInfo} from '../../components/order-feed/order-info/order-info';
-import {IOrder} from '../../utils/data-types';
+import {WS_ORDERS_URL} from '../../utils/api';
+import {wsOrdersConnect, wsOrdersDisconnect} from '../../services/actions/orders';
+import {Loader} from '../../components/shared/loader/loader';
+import {NotFound404} from '../not-found-404/not-found';
 import orderPageStyles from './order-page.module.css';
 
 export const OrderPage = () => {
 
-  const order: IOrder = {
-    name: '',
-    ingredients: [
-      "60d3463f7034a000269f45e7",
-      "60d3463f7034a000269f45e9",
-      "60d3463f7034a000269f45e8",
-      "60d3463f7034a000269f45ea"
-    ],
-    _id: "",
-    status: "done",
-    number: 0,
-    createdAt: "2021-06-23T14:43:22.587Z",
-    updatedAt: "2021-06-23T14:43:22.603Z"
-  }
+  const dispatch = useAppDispatch();
 
+  const {orders, isLoading} = useAppSelector(store => ({
+    orders: store.wsOrders.data?.orders ?? [],
+    isLoading: store.wsOrders.wsConnecting,
+  }));
+
+  useEffect(() => {
+    dispatch(wsOrdersConnect(WS_ORDERS_URL))
+    return () => {
+      dispatch(wsOrdersDisconnect())
+    }
+  }, [dispatch]);
+
+  const {id} = useParams();
+
+
+  const order = useMemo(() => orders.find(order => order._id === id), [id, orders]);
+
+
+  console.info('OrderPage', id, order, orders)
   return (
-      <section className={orderPageStyles.page} aria-label='Детали заказа'>
-        <h4 className={cn(orderPageStyles.number, 'text text_type_digits-default mb-5')}>#034535</h4>
-        <OrderInfo order={order}/>
-      </section>
+      <>
+        {isLoading && <Loader/>}
+        {order &&
+            <section className={orderPageStyles.page} aria-label='Детали заказа'>
+              <h4 className={cn(orderPageStyles.number, 'text text_type_digits-default mb-5')}>{`#${order.number}`}</h4>
+              <OrderInfo order={order}/>
+            </section>
+        }
+        {orders.length > 0 && !order && <NotFound404/>}
+      </>
   );
 }

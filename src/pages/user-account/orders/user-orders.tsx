@@ -11,18 +11,18 @@ export const UserOrdersPage = () => {
 
   const dispatch = useAppDispatch();
 
+  const {userOrders, isLoading, success} = useAppSelector(store => ({
+    userOrders: store.wsUserOrders.data?.orders ?? [],
+    isLoading: store.wsUserOrders.wsConnecting,
+    success: store.wsUserOrders.wsConnected,
+  }));
+
   useEffect(() => {
     dispatch(wsUserOrdersConnect(WS_USER_ORDERS_URL, true))
     return () => {
       dispatch(wsUserOrdersDisconnect())
     }
   }, [dispatch]);
-
-  const {userOrders, isLoading, success} = useAppSelector(store => ({
-    userOrders: store.wsUserOrders.data?.orders ?? [],
-    isLoading: store.wsUserOrders.wsConnecting,
-    success: store.wsUserOrders.wsConnected,
-  }));
 
   return (
       <div className={cn(userOrdersPageStyles.scroll, 'custom-scroll')}>

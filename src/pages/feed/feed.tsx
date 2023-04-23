@@ -12,18 +12,18 @@ export const FeedPage = () => {
 
   const dispatch = useAppDispatch();
 
+  const {orders, isLoading, success} = useAppSelector(store => ({
+    orders: store.wsOrders.data?.orders ?? [],
+    isLoading: store.wsOrders.wsConnecting,
+    success: store.wsOrders.wsConnected,
+  }));
+
   useEffect(() => {
     dispatch(wsOrdersConnect(WS_ORDERS_URL))
     return () => {
       dispatch(wsOrdersDisconnect())
     }
   }, [dispatch]);
-
-  const {orders, isLoading, success} = useAppSelector(store => ({
-    orders: store.wsOrders.data?.orders ?? [],
-    isLoading: store.wsOrders.wsConnecting,
-    success: store.wsOrders.wsConnected,
-  }));
 
   return (
       <div className={feedPageStyles.page}>
