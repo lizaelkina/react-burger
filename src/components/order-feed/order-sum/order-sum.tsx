@@ -1,30 +1,48 @@
+import {useMemo} from 'react';
 import cn from 'classnames';
+import {useAppSelector} from '../../../services/hooks';
 import orderSumStyles from './order-sum.module.css';
 
 export const OrderSum = () => {
+
+  const {orders, total, totalToday} = useAppSelector(store => ({
+    orders: store.wsOrders.data?.orders ?? [],
+    total: store.wsOrders.data?.total,
+    totalToday: store.wsOrders.data?.totalToday,
+  }));
+
+  const doneOrders = useMemo(() => orders.filter(order => order.status === 'done').slice(0, 30), [orders]);
+  const pendingOrders = useMemo(() => orders.filter(order => order.status === 'pending').slice(0, 20), [orders]);
+
   return (
       <article className={cn(orderSumStyles.section)}>
         <div className={orderSumStyles.container}>
           <div className={orderSumStyles.column}>
             <h5 className='text text_type_main-medium text_color_primary mb-6'>Готовы:</h5>
             <ul className={orderSumStyles.list}>
-              <li className='text text_type_digits-default text_color_success'>034533</li>
+              {doneOrders.map(order => {
+                return (<li className='text text_type_digits-default text_color_success'
+                            key={order.number}>{order.number}</li>)
+              })}
             </ul>
           </div>
           <div className={orderSumStyles.column}>
             <h5 className='text text_type_main-medium text_color_primary mb-6'>В работе:</h5>
             <ul className={orderSumStyles.list}>
-              <li className='text text_type_digits-default mb-2'>034538</li>
+              {pendingOrders.map(order => {
+                return (<li className='text text_type_digits-default'
+                            key={order.number}>{order.number}</li>)
+              })}
             </ul>
           </div>
         </div>
         <div>
           <h5 className='text text_type_main-medium text_color_primary'>Выполнено за все время:</h5>
-          <span className={cn(orderSumStyles.shadow, 'text text_type_digits-large')}>28 752</span>
+          <span className={cn(orderSumStyles.shadow, 'text text_type_digits-large')}>{total}</span>
         </div>
         <div>
           <h5 className='text text_type_main-medium text_color_primary'>Выполнено за сегодня:</h5>
-          <span className={cn(orderSumStyles.shadow, 'text text_type_digits-large')}>138</span>
+          <span className={cn(orderSumStyles.shadow, 'text text_type_digits-large')}>{totalToday}</span>
         </div>
       </article>
   );
