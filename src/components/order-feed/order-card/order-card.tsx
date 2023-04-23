@@ -19,11 +19,11 @@ export const OrderCard: FC<TOrderCardProps> = ({order, showStatus}) => {
 
   return (
       <Link className={orderCardStyles.link}
-            state={{backgroundLocation: location}}
-            to={`:id`}>
+            state={{backgroundLocation: location, order: order}}
+            to={order._id}>
         <li className={orderCardStyles.card}>
           <div className={orderCardStyles.card__info}>
-            <span className='text text_type_digits-default'>#{order.number}</span>
+            <span className='text text_type_digits-default'>{`#${order.number}`}</span>
             <FormattedDate className='text text_type_main-default text_color_inactive'
                            date={new Date(order.createdAt)}/>
           </div>

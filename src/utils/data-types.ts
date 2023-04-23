@@ -26,8 +26,8 @@ export interface IOrder {
   name: string;
   status: string;
   number: number;
-  createdAt: Date;
-  updatedAt: Date;
+  createdAt: string;
+  updatedAt: string;
 }
 
 export interface IOrderList {

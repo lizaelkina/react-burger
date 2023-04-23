@@ -3,11 +3,11 @@ import cn from 'classnames';
 import {IIngredient} from '../../../utils/data-types';
 import ingredientDetailsStyles from './ingredient-details.module.css';
 
-type TIngredientDetails = {
+type TIngredientDetailsProps = {
   ingredient: IIngredient;
 };
 
-export const IngredientDetails: FC<TIngredientDetails> = ({ingredient}) => {
+export const IngredientDetails: FC<TIngredientDetailsProps> = ({ingredient}) => {
 
   return (
       <article className={cn(ingredientDetailsStyles.card, 'pb-15')}>
