@@ -2,6 +2,7 @@ import {IWSConnectAction, IWSErrorAction, IWSMessageAction, IWSTypeActions} from
 import {IOrderList} from '../../utils/data-types';
 
 export const WS_USER_ORDERS_CONNECT: 'WS_USER_ORDERS_CONNECT' = 'WS_USER_ORDERS_CONNECT';
+export const WS_USER_ORDERS_DISCONNECT: 'WS_USER_ORDERS_DISCONNECT' = 'WS_USER_ORDERS_DISCONNECT';
 export const WS_USER_ORDERS_OPEN: 'WS_USER_ORDERS_OPEN' = 'WS_USER_ORDERS_OPEN';
 export const WS_USER_ORDERS_CLOSE: 'WS_USER_ORDERS_CLOSE' = 'WS_USER_ORDERS_CLOSE';
 export const WS_USER_ORDERS_MESSAGE: 'WS_USER_ORDERS_MESSAGE' = 'WS_USER_ORDERS_MESSAGE';
@@ -9,6 +10,10 @@ export const WS_USER_ORDERS_ERROR: 'WS_USER_ORDERS_ERROR' = 'WS_USER_ORDERS_ERRO
 
 export interface IWSUserOrdersConnect extends IWSConnectAction {
   readonly type: typeof WS_USER_ORDERS_CONNECT;
+}
+
+export interface IWSUserOrdersDisconnect {
+  readonly type: typeof WS_USER_ORDERS_DISCONNECT;
 }
 
 export interface IWSUserOrdersOpen {
@@ -29,14 +34,16 @@ export interface IWSUserOrdersError extends IWSErrorAction {
 
 export const wsUserOrdersTypeActions: IWSTypeActions = {
   wsConnect: WS_USER_ORDERS_CONNECT,
+  wsDisconnect: WS_USER_ORDERS_DISCONNECT,
   onOpen: WS_USER_ORDERS_OPEN,
   onClose: WS_USER_ORDERS_CLOSE,
   onMessage: WS_USER_ORDERS_MESSAGE,
-  onError: WS_USER_ORDERS_ERROR,
+  onError: WS_USER_ORDERS_ERROR
 }
 
 export type TWSUserOrdersActions =
     IWSUserOrdersConnect
+    | IWSUserOrdersDisconnect
     | IWSUserOrdersOpen
     | IWSUserOrdersError
     | IWSUserOrdersClose
@@ -52,6 +59,6 @@ export const wsUserOrdersConnect = (url: string, secure: boolean): IWSUserOrders
 
 export const wsUserOrdersDisconnect = () => {
   return {
-    type: WS_USER_ORDERS_CLOSE,
+    type: WS_USER_ORDERS_DISCONNECT,
   }
 }

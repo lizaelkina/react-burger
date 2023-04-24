@@ -102,7 +102,7 @@ class Api {
         });
   }
 
-  private refreshToken(): Promise<IRefreshTokenResponse> {
+  refreshToken(): Promise<IRefreshTokenResponse> {
     return this.request('auth/token',
         {
           method: 'POST',

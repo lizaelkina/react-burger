@@ -54,8 +54,6 @@ export const wsOrdersReducer = (state = initialState, action: TWSOrdersActions):
     case WS_ORDERS_ERROR: {
       return {
         ...state,
-        wsConnecting: false,
-        wsConnected: false,
         error: action.type,
       }
     }
