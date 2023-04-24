@@ -27,11 +27,8 @@ export const OrderPage = () => {
 
   const {id} = useParams();
 
-
   const order = useMemo(() => orders.find(order => order._id === id), [id, orders]);
 
-
-  console.info('OrderPage', id, order, orders)
   return (
       <>
         {isLoading && <Loader/>}

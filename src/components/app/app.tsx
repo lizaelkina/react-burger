@@ -3,6 +3,7 @@ import {Route, Routes} from 'react-router';
 import {useLocation, useNavigate} from 'react-router-dom';
 import {IngredientDetails} from '../burger-ingredients/ingredient-details/ingredient-details';
 import {useAppDispatch, useAppSelector} from '../../services/hooks';
+import {loadIngredients} from '../../services/actions/burger-ingredients';
 import {startCheckUser} from '../../services/actions/auth';
 import {ProtectedRoute} from '../protected-route/protected-route';
 import {PageLayout} from '../shared/page-layout/page-layout';
@@ -34,6 +35,10 @@ export const App = () => {
   const {isAuthChecked} = useAppSelector((store) => ({
     isAuthChecked: store.auth.isAuthChecked,
   }));
+
+  useEffect(() => {
+    dispatch(loadIngredients())
+  }, [dispatch]);
 
   useEffect(() => {
     if (!isAuthChecked) {
@@ -82,21 +87,21 @@ export const App = () => {
                     </Modal>}>
                   </Route>
               }
-              {
-                <Route path='feed/:id' element={
-                  <Modal title={`#${location.state?.order?.number}`} extraClass='text_type_digits-default'
-                         onClose={closeModal}>
-                    <OrderInfo order={location.state?.order}/>
-                  </Modal>}>
-                </Route>
+              {location.state?.order?.number &&
+                  <Route path='feed/:id' element={
+                    <Modal title={`#${location.state?.order?.number}`} extraClass='text_type_digits-default'
+                           onClose={closeModal}>
+                      <OrderInfo order={location.state?.order}/>
+                    </Modal>}>
+                  </Route>
               }
-              {
-                <Route path='profile/orders/:id' element={
-                  <Modal title={`#${location.state?.order?.number}`} extraClass='text_type_digits-default'
-                         onClose={closeModal}>
-                    <OrderInfo order={location.state?.order}/>
-                  </Modal>}>
-                </Route>
+              {location.state?.order?.number &&
+                  <Route path='profile/orders/:id' element={
+                    <Modal title={`#${location.state?.order?.number}`} extraClass='text_type_digits-default'
+                           onClose={closeModal}>
+                      <OrderInfo order={location.state?.order}/>
+                    </Modal>}>
+                  </Route>
               }
             </Routes>
         }

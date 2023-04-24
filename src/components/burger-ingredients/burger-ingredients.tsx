@@ -3,7 +3,7 @@ import {useInView} from 'react-intersection-observer';
 import cn from 'classnames';
 import {Tab} from '@ya.praktikum/react-developer-burger-ui-components';
 import {useAppDispatch, useAppSelector} from '../../services/hooks';
-import {loadIngredients, selectIngredientGroup} from '../../services/actions/burger-ingredients';
+import {selectIngredientGroup} from '../../services/actions/burger-ingredients';
 import {IngredientGroup} from './ingredient-group/ingredient-group';
 import {Loader} from '../shared/loader/loader';
 import {ErrorMessage} from '../shared/error-message/error-message';
@@ -31,10 +31,6 @@ export const BurgerIngredients = () => {
   const bunTitleRef = useRef<HTMLHeadingElement>(null);
   const sauceTitleRef = useRef<HTMLHeadingElement>(null);
   const mainTitleRef = useRef<HTMLHeadingElement>(null);
-
-  useEffect(() => {
-    dispatch(loadIngredients())
-  }, [dispatch]);
 
   useEffect(() => {
     if (bunInView) {
