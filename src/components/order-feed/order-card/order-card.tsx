@@ -1,12 +1,13 @@
-import {FC} from 'react';
+import {FC, useMemo} from 'react';
 import cn from 'classnames';
 import {Link, useLocation} from 'react-router-dom';
 import {FormattedDate} from '@ya.praktikum/react-developer-burger-ui-components';
 import {OrderStatus} from '../order-status/order-status';
-import {OrderIngredient} from '../order-ingredient/order-ingredient';
+import {IngredientIcon} from '../ingredient-icon/ingredient-icon';
 import {OrderPrice} from '../order-price/order-price';
-import {IOrder} from '../../../utils/data-types';
+import {IIngredient, IOrder} from '../../../utils/data-types';
 import orderCardStyles from './order-card.module.css';
+import {useAppSelector} from '../../../services/hooks';
 
 type TOrderCardProps = {
   order: IOrder;
@@ -16,6 +17,18 @@ type TOrderCardProps = {
 export const OrderCard: FC<TOrderCardProps> = ({order, showStatus}) => {
 
   const location = useLocation();
+
+  const {ingredients} = useAppSelector(store => ({
+    ingredients: store.burgerIngredients.ingredients,
+  }));
+
+  const orderIngredients = useMemo(() => {
+    return order.ingredients.map(id => {
+      return ingredients.find(ingredient => ingredient._id === id);
+    }).filter(ingredient => {
+      return ingredient;
+    }) as IIngredient[];
+  }, [ingredients, order]);
 
   return (
       <Link className={orderCardStyles.link}
@@ -32,13 +45,13 @@ export const OrderCard: FC<TOrderCardProps> = ({order, showStatus}) => {
           <div className={cn(orderCardStyles.card__container, 'mt-6')}>
             <ul className={orderCardStyles.card__ingredients}>
               <li className={orderCardStyles.list_item}>
-                <OrderIngredient extraClass={cn(orderCardStyles.ingredient_first)}/>
+                <IngredientIcon extraClass={cn(orderCardStyles.ingredient_first)}/>
                 {/*<span className={cn(orderCardStyles.more, 'text text_type_digits-default')}>*/}
                 {/*    +3*/}
                 {/*</span>*/}
               </li>
             </ul>
-            <OrderPrice/>
+            <OrderPrice orderIngredients={orderIngredients}/>
           </div>
         </li>
       </Link>
