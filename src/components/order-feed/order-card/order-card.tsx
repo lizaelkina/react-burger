@@ -2,16 +2,25 @@ import {FC, useMemo} from 'react';
 import cn from 'classnames';
 import {Link, useLocation} from 'react-router-dom';
 import {FormattedDate} from '@ya.praktikum/react-developer-burger-ui-components';
+import {useAppSelector} from '../../../services/hooks';
 import {OrderStatus} from '../order-status/order-status';
 import {IngredientIcon} from '../ingredient-icon/ingredient-icon';
 import {OrderPrice} from '../order-price/order-price';
 import {IIngredient, IOrder} from '../../../utils/data-types';
 import orderCardStyles from './order-card.module.css';
-import {useAppSelector} from '../../../services/hooks';
 
 type TOrderCardProps = {
   order: IOrder;
   showStatus?: boolean;
+};
+
+const iconClass: { [key: string]: string } = {
+  index_0: orderCardStyles.ingredient_first,
+  index_1: orderCardStyles.ingredient_second,
+  index_2: orderCardStyles.ingredient_third,
+  index_3: orderCardStyles.ingredient_fourth,
+  index_4: orderCardStyles.ingredient_fifth,
+  index_5: orderCardStyles.ingredient_sixth,
 };
 
 export const OrderCard: FC<TOrderCardProps> = ({order, showStatus}) => {
@@ -30,6 +39,17 @@ export const OrderCard: FC<TOrderCardProps> = ({order, showStatus}) => {
     }) as IIngredient[];
   }, [ingredients, order]);
 
+  const uniqueIngredients = useMemo(() => {
+    const ingredientSet = new Set<IIngredient>(orderIngredients);
+    const result: IIngredient[] = Array.from(ingredientSet);
+    result.sort((a, b) => a.type === 'bun' ? -1 : b.type === 'bun' ? 1 : 0);
+    return result;
+  }, [orderIngredients]);
+
+  const visibleIngredients = useMemo(() => {
+    return uniqueIngredients.slice(0, 6);
+  }, [uniqueIngredients]);
+
   return (
       <Link className={orderCardStyles.link}
             state={{backgroundLocation: location, order: order}}
@@ -44,12 +64,19 @@ export const OrderCard: FC<TOrderCardProps> = ({order, showStatus}) => {
           {showStatus && <OrderStatus status={order.status}/>}
           <div className={cn(orderCardStyles.card__container, 'mt-6')}>
             <ul className={orderCardStyles.card__ingredients}>
-              <li className={orderCardStyles.list_item}>
-                <IngredientIcon extraClass={cn(orderCardStyles.ingredient_first)}/>
-                {/*<span className={cn(orderCardStyles.more, 'text text_type_digits-default')}>*/}
-                {/*    +3*/}
-                {/*</span>*/}
-              </li>
+              {visibleIngredients.map((ingredient, index) => {
+                return (
+                    <li className={orderCardStyles.list_item} key={ingredient._id}>
+                      {index === visibleIngredients.length - 1
+                          ? <IngredientIcon ingredient={ingredient}
+                                            moreCount={uniqueIngredients.length - visibleIngredients.length}
+                                            extraClass={iconClass['index_' + index]}/>
+                          : <IngredientIcon ingredient={ingredient}
+                                            extraClass={iconClass['index_' + index]}/>
+                      }
+                    </li>
+                )
+              })}
             </ul>
             <OrderPrice orderIngredients={orderIngredients}/>
           </div>

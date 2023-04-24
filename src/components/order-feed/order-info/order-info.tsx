@@ -55,8 +55,8 @@ export const OrderInfo: FC<TOrderInfoProps> = ({order}) => {
         <ul className={cn(orderInfoStyles.list, orderInfoStyles.scroll, 'custom-scroll')}>
           {ingredientWithCountList.map(item => {
             return (
-                <li className={orderInfoStyles.list_item}>
-                  <IngredientIcon/>
+                <li className={orderInfoStyles.list_item} key={item.ingredient._id}>
+                  <IngredientIcon ingredient={item.ingredient}/>
                   <span className={cn(orderInfoStyles.name, 'text text_type_main-default text_color_primary')}>
                       {item.ingredient.name}
                     </span>

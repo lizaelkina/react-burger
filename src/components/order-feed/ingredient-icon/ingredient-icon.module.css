@@ -10,5 +10,16 @@
   border: 2px solid transparent;
   border-radius: 50%;
   background: linear-gradient(#131316,#131316) padding-box,linear-gradient(90deg,#801ab2,#4c4cff) border-box;
-  object-fit: contain;
+  object-fit: cover;
+}
+
+.more {
+  position: absolute;
+  left: -50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.opacity {
+  opacity: .5;
 }
