@@ -51,7 +51,7 @@ export const OrderInfo: FC<TOrderInfoProps> = ({order}) => {
           {order.name}
         </h5>
         <OrderStatus status={order.status}/>
-        <span className='text text_type_main-medium text_color_primary mt-15 mb-6'>Состав:</span>
+        <span className='text text_type_main-medium text_color_primary mt-8 mb-6'>Состав:</span>
         <ul className={cn(orderInfoStyles.list, orderInfoStyles.scroll, 'custom-scroll')}>
           {ingredientWithCountList.map(item => {
             return (

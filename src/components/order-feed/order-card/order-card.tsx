@@ -60,7 +60,9 @@ export const OrderCard: FC<TOrderCardProps> = ({order, showStatus}) => {
             <FormattedDate className='text text_type_main-default text_color_inactive'
                            date={new Date(order.createdAt)}/>
           </div>
-          <h4 className='text text_type_main-medium text_color_primary mt-6'>{order.name}</h4>
+          <h4 className={cn(orderCardStyles.card__title, 'text text_type_main-medium text_color_primary mt-6')}>
+            {order.name}
+          </h4>
           {showStatus && <OrderStatus status={order.status}/>}
           <div className={cn(orderCardStyles.card__container, 'mt-6')}>
             <ul className={orderCardStyles.card__ingredients}>
