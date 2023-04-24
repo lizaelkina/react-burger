@@ -1,7 +1,10 @@
 .page {
-  margin: 40px 0 40px;
   display: grid;
   align-content: center;
   justify-content: center;
   grid-template-columns: 640px;
+}
+
+.number {
+  text-align: center;
 }

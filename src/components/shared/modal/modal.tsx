@@ -11,9 +11,10 @@ type TModalProps = {
   title?: string;
   onClose: () => void;
   children: ReactElement;
+  extraClass?: string;
 };
 
-export const Modal: FC<TModalProps> = ({title, onClose, children}) => {
+export const Modal: FC<TModalProps> = ({title, extraClass, onClose, children}) => {
 
   useEffect(() => {
     function closePopupByEsc(event: KeyboardEvent) {
@@ -35,7 +36,7 @@ export const Modal: FC<TModalProps> = ({title, onClose, children}) => {
             <div className={modalStyles.modal}>
               {title ?
                   <header className={cn(modalStyles.modal__header, 'pt-10 pl-10 pr-10')}>
-                    <h2 className='text text_type_main-large'>{title}</h2>
+                    <h2 className={cn('text', extraClass)}>{title}</h2>
                     <button className={modalStyles.modal__close} aria-label='Закрыть окно'>
                       <CloseIcon type='primary' onClick={onClose}/>
                     </button>

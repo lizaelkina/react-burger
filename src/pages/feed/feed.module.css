@@ -1,6 +1,8 @@
 .page {
   height: 100%;
   display: grid;
+  grid-template-columns: 604px 592px;
+  grid-template-rows: 80px 1fr;
   grid-template-areas:
     "text text"
     "left right";
@@ -26,5 +28,9 @@
 .scroll {
   overflow-y: auto;
   overflow-x: hidden;
-  cursor: pointer;
+}
+
+.empty {
+  display: flex;
+  opacity: 0.4;
 }

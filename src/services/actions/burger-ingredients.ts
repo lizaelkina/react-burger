@@ -1,6 +1,6 @@
 import {api} from '../../utils/api';
 import {IIngredient} from '../../utils/data-types';
-import {AppDispatch, AppThunk, RootState} from '../index';
+import {AppDispatch, AppThunk} from '../store';
 
 export const GET_INGREDIENTS_LOADING: 'GET_INGREDIENTS_LOADING' = 'GET_INGREDIENTS_LOADING';
 export const GET_INGREDIENTS_SUCCESS: 'GET_INGREDIENTS_SUCCESS' = 'GET_INGREDIENTS_SUCCESS';
@@ -33,25 +33,22 @@ export type TBurgerIngredientsActions =
     | ISelectIngredientGroupAction;
 
 
-export const loadIngredients = (): AppThunk => (dispatch: AppDispatch, getState: () => RootState) => {
-  const ingredients = getState().burgerIngredients.ingredients;
-  if (ingredients.length === 0) {
-    dispatch({
-      type: GET_INGREDIENTS_LOADING,
-    })
+export const loadIngredients = (): AppThunk => (dispatch: AppDispatch) => {
+  dispatch({
+    type: GET_INGREDIENTS_LOADING,
+  })
 
-    api.getIngredients().then(response => {
-      dispatch({
-        type: GET_INGREDIENTS_SUCCESS,
-        ingredients: response.data,
-      })
-    }).catch(response => {
-      dispatch({
-        type: GET_INGREDIENTS_FAILED,
-        error: response.error,
-      })
+  api.getIngredients().then(response => {
+    dispatch({
+      type: GET_INGREDIENTS_SUCCESS,
+      ingredients: response.data,
     })
-  }
+  }).catch(response => {
+    dispatch({
+      type: GET_INGREDIENTS_FAILED,
+      error: response.error,
+    })
+  })
 }
 
 export const selectIngredientGroup = (group: string): ISelectIngredientGroupAction => {

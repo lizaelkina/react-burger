@@ -1,0 +1,25 @@
+.image {
+  position: relative;
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  padding: 5px;
+  border: 2px solid transparent;
+  border-radius: 50%;
+  background: linear-gradient(#131316,#131316) padding-box,linear-gradient(90deg,#801ab2,#4c4cff) border-box;
+  object-fit: cover;
+}
+
+.more {
+  position: absolute;
+  left: -50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.opacity {
+  opacity: .5;
+}

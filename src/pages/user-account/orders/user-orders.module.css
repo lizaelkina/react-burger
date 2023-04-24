@@ -2,5 +2,10 @@
   margin: 40px 0 40px;
   overflow-y: auto;
   overflow-x: hidden;
-  cursor: pointer;
+}
+
+.empty {
+  display: flex;
+  justify-content: center;
+  opacity: 0.4;
 }

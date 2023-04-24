@@ -1,24 +1,17 @@
-import {useEffect, useMemo} from 'react';
+import {useMemo} from 'react';
 import {useParams} from 'react-router';
-import {loadIngredients} from '../../services/actions/burger-ingredients';
+import {useAppSelector} from '../../services/hooks';
 import {IngredientDetails} from '../../components/burger-ingredients/ingredient-details/ingredient-details';
 import {Loader} from '../../components/shared/loader/loader';
 import {NotFound404} from '../not-found-404/not-found';
 import ingredientPageStyles from './ingredient-info.module.css';
-import {useAppDispatch, useAppSelector} from '../../services/hooks';
 
 export const IngredientPage = () => {
-
-  const dispatch = useAppDispatch();
 
   const {ingredients, isLoading} = useAppSelector(store => ({
     ingredients: store.burgerIngredients.ingredients,
     isLoading: store.burgerIngredients.isLoading,
   }));
-
-  useEffect(() => {
-    dispatch(loadIngredients())
-  }, [dispatch]);
 
   const {id} = useParams();
 

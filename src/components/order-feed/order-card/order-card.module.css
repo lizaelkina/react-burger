@@ -2,11 +2,18 @@
   box-sizing: border-box;
   margin-right: 8px;
   padding: 24px;
-  min-width: 584px;
   display: flex;
   flex-direction: column;
   border-radius: var(--common-border-radius-s);
-  background: var(--background-element);
+  background: var(--background);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.04), 0 0 2px rgba(0, 0, 0, 0.06), 0 0 1px rgba(0, 0, 0, 0.04);
+}
+
+.card__title {
+  flex-direction: column;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .card__info {
@@ -64,17 +71,6 @@
 .ingredient_sixth {
   right: 100%;
   z-index: -6;
-}
-
-.opacity {
-  opacity: .5;
-}
-
-.more {
-  position: absolute;
-  left: -50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
 }
 
 .link {

@@ -15,7 +15,7 @@ export const OrderDetails = () => {
   }));
 
   return (
-      <section className={cn(orderDetailsStyles.container, 'pt-30 pl-25 pr-25 pb-30')}>
+      <section className={cn(orderDetailsStyles.container, 'pt-30 pl-25 pr-25 pb-30')} aria-label='Детали заказа'>
         {isLoading &&
             <div className={orderDetailsStyles.load}>
               <p className='text text_type_main-medium'>Формирование заказа...</p>

@@ -1,5 +1,8 @@
-import {getAccessToken, getRefreshToken, setAccessToken, setRefreshToken} from './token-store';
+import {getAccessTokenWithBearerTitle, getRefreshToken, setAccessToken, setRefreshToken} from './token-store';
 import {IIngredient, IOrder, IUser} from './data-types';
+
+export const WS_ORDERS_URL = 'wss://norma.nomoreparties.space/orders/all';
+export const WS_USER_ORDERS_URL = 'wss://norma.nomoreparties.space/orders';
 
 type ApiConfig = {
   baseUrl: string;
@@ -24,17 +27,6 @@ class Api {
 
   getIngredients(): Promise<IGetIngredientsResponse> {
     return this.request('ingredients');
-  }
-
-  createOrder(ingredientIdList: Array<string>): Promise<ICreateOrderResponse> {
-    return this.request('orders',
-        {
-          method: 'POST',
-          headers: this._defaultHeaders,
-          body: JSON.stringify({
-            ingredients: ingredientIdList,
-          })
-        });
   }
 
   getUser(): Promise<IGetUserResponse> {
@@ -99,7 +91,18 @@ class Api {
         });
   }
 
-  private refreshToken(): Promise<IRefreshTokenResponse> {
+  createOrder(ingredientIdList: Array<string>): Promise<ICreateOrderResponse> {
+    return this.requestWithRefresh('orders',
+        {
+          method: 'POST',
+          headers: this.getHeadersWithToken(),
+          body: JSON.stringify({
+            ingredients: ingredientIdList,
+          })
+        });
+  }
+
+  refreshToken(): Promise<IRefreshTokenResponse> {
     return this.request('auth/token',
         {
           method: 'POST',
@@ -147,7 +150,7 @@ class Api {
   private getHeadersWithToken() {
     return {
       ...this._defaultHeaders,
-      authorization: getAccessToken(),
+      authorization: getAccessTokenWithBearerTitle(),
     };
   }
 }

@@ -1,4 +1,7 @@
-.section {
+.list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
   display: flex;
   flex-direction: column;
   gap: 24px;
@@ -7,5 +10,4 @@
 .scroll {
   overflow-y: auto;
   overflow-x: hidden;
-  cursor: pointer;
 }

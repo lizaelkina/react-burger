@@ -12,9 +12,8 @@
 - React
 - Redux
 - TypeScript
-- JavaScript
-- HTML5
 - CCS3
+- HTML5
 
 ## Сборка проекта
 
