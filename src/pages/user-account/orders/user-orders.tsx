@@ -18,9 +18,9 @@ export const UserOrdersPage = () => {
   }));
 
   useEffect(() => {
-    dispatch(wsUserOrdersConnect(WS_USER_ORDERS_URL, true))
+    dispatch(wsUserOrdersConnect(WS_USER_ORDERS_URL, true));
     return () => {
-      dispatch(wsUserOrdersDisconnect())
+      dispatch(wsUserOrdersDisconnect());
     }
   }, [dispatch]);
 

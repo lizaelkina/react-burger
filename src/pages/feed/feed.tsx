@@ -19,9 +19,9 @@ export const FeedPage = () => {
   }));
 
   useEffect(() => {
-    dispatch(wsOrdersConnect(WS_ORDERS_URL))
+    dispatch(wsOrdersConnect(WS_ORDERS_URL));
     return () => {
-      dispatch(wsOrdersDisconnect())
+      dispatch(wsOrdersDisconnect());
     }
   }, [dispatch]);
 
