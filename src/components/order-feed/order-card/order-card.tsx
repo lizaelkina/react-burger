@@ -1,7 +1,7 @@
 import {FC, useMemo} from 'react';
 import cn from 'classnames';
 import {Link, useLocation} from 'react-router-dom';
-import {FormattedDate} from '@ya.praktikum/react-developer-burger-ui-components';
+import {PrettyDate} from '../../shared/pretty-date/pretty-date';
 import {useAppSelector} from '../../../services/hooks';
 import {OrderStatus} from '../order-status/order-status';
 import {IngredientIcon} from '../ingredient-icon/ingredient-icon';
@@ -57,8 +57,7 @@ export const OrderCard: FC<TOrderCardProps> = ({order, showStatus}) => {
         <li className={orderCardStyles.card}>
           <div className={orderCardStyles.card__info}>
             <span className='text text_type_digits-default'>{`#${order.number}`}</span>
-            <FormattedDate className='text text_type_main-default text_color_inactive'
-                           date={new Date(order.createdAt)}/>
+            <PrettyDate date={new Date(order.createdAt)}/>
           </div>
           <h4 className={cn(orderCardStyles.card__title, 'text text_type_main-medium text_color_primary mt-6')}>
             {order.name}

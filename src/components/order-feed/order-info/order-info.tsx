@@ -1,7 +1,8 @@
 import {FC, useMemo} from 'react';
 import cn from 'classnames';
-import {CurrencyIcon, FormattedDate} from '@ya.praktikum/react-developer-burger-ui-components';
+import {CurrencyIcon} from '@ya.praktikum/react-developer-burger-ui-components';
 import {useAppSelector} from '../../../services/hooks';
+import {PrettyDate} from '../../shared/pretty-date/pretty-date';
 import {OrderStatus} from '../order-status/order-status';
 import {IngredientIcon} from '../ingredient-icon/ingredient-icon';
 import {OrderPrice} from '../order-price/order-price';
@@ -71,7 +72,7 @@ export const OrderInfo: FC<TOrderInfoProps> = ({order}) => {
           }
         </ul>
         <div className={cn(orderInfoStyles.total, 'mt-10')}>
-          <FormattedDate className='text text_type_main-default text_color_inactive' date={new Date(order.createdAt)}/>
+          <PrettyDate date={new Date(order.createdAt)}/>
           <OrderPrice orderIngredients={orderIngredients}/>
         </div>
       </article>
