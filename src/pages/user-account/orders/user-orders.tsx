@@ -26,8 +26,7 @@ export const UserOrdersPage = () => {
 
   return (
       <div className={cn(userOrdersPageStyles.scroll, 'custom-scroll')}>
-        {isLoading && <Loader/>}
-        <OrderFeed orders={userOrders} showStatus={true}/>
+        {isLoading ? <Loader/> : <OrderFeed orders={userOrders} showStatus={true}/>}
         {!isLoading && !success &&
             <span className={cn(userOrdersPageStyles.empty, 'text text_type_main-default text_color_inactive')}>
                 Заказов пока нет
