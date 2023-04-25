@@ -48,7 +48,10 @@ export const wsUserOrdersReducer = (state = initialState, action: TWSUserOrdersA
     case WS_USER_ORDERS_MESSAGE: {
       return {
         ...state,
-        data: action.data,
+        data: {
+          ...action.data,
+          orders: action.data.orders.reverse(),
+        },
       }
     }
     case WS_USER_ORDERS_ERROR: {
