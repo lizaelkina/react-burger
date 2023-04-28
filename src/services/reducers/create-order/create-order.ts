@@ -14,7 +14,7 @@ type TCreateOrderState = {
   errorMessage: string | null;
 }
 
-const initialState: TCreateOrderState = {
+export const initialState: TCreateOrderState = {
   isOpenModal: false,
   isLoading: false,
   success: false,

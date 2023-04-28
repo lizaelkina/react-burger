@@ -27,7 +27,7 @@ type TRegisterState = {
   errorMessage: string | null;
 }
 
-const initialState: TRegisterState = {
+export const initialState: TRegisterState = {
   formData: {
     name: '',
     email: '',

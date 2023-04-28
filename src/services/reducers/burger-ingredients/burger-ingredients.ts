@@ -14,7 +14,7 @@ type TBurgerIngredientsState = {
   selectedGroup: string;
 }
 
-const initialState: TBurgerIngredientsState = {
+export const initialState: TBurgerIngredientsState = {
   ingredients: [],
   isLoading: false,
   error: null,

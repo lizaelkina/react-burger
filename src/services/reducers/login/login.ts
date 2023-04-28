@@ -26,7 +26,7 @@ type TLoginState = {
   errorMessage: string | null;
 }
 
-const initialState: TLoginState = {
+export const initialState: TLoginState = {
   formData: {
     email: '',
     password: '',

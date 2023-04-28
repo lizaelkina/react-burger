@@ -27,7 +27,7 @@ type TProfileState = {
   errorMessage: string | null;
 }
 
-const initialState: TProfileState = {
+export const initialState: TProfileState = {
   formData: {
     name: '',
     email: '',

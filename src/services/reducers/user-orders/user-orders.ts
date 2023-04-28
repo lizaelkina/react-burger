@@ -15,7 +15,7 @@ type TUserOrdersState = {
   error: string;
 }
 
-const initialState: TUserOrdersState = {
+export const initialState: TUserOrdersState = {
   wsConnecting: false,
   wsConnected: false,
   data: null,

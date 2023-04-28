@@ -19,7 +19,7 @@ type TForgotPasswordState = {
   errorMessage: string | null;
 }
 
-const initialState: TForgotPasswordState = {
+export const initialState: TForgotPasswordState = {
   formData: {
     email: '',
   },

@@ -15,7 +15,7 @@ type TOrdersState = {
   error: string;
 }
 
-const initialState: TOrdersState = {
+export const initialState: TOrdersState = {
   wsConnecting: false,
   wsConnected: false,
   data: null,
