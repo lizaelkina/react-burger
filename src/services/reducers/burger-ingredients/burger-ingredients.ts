@@ -4,8 +4,8 @@ import {
   GET_INGREDIENTS_SUCCESS,
   SELECT_INGREDIENT_GROUP,
   TBurgerIngredientsActions
-} from '../actions/burger-ingredients';
-import {IIngredient} from '../../utils/data-types';
+} from '../../actions/burger-ingredients';
+import {IIngredient} from '../../../utils/data-types';
 
 type TBurgerIngredientsState = {
   ingredients: Array<IIngredient>;

@@ -8,8 +8,8 @@ import {
   PROFILE_LOADING,
   PROFILE_SUCCESS,
   TProfileActions
-} from '../actions/profile';
-import {IUpdateProfileFormData} from '../../utils/api';
+} from '../../actions/profile';
+import {IUpdateProfileFormData} from '../../../utils/api';
 
 type TProfileFormValidity = {
   name: boolean;

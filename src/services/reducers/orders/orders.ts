@@ -1,4 +1,4 @@
-import {IOrderList} from '../../utils/data-types';
+import {IOrderList} from '../../../utils/data-types';
 import {
   TWSOrdersActions,
   WS_ORDERS_CLOSE,
@@ -6,7 +6,7 @@ import {
   WS_ORDERS_ERROR,
   WS_ORDERS_MESSAGE,
   WS_ORDERS_OPEN
-} from '../actions/orders';
+} from '../../actions/orders';
 
 type TOrdersState = {
   wsConnecting: boolean;

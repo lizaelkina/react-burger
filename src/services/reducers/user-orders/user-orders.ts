@@ -5,8 +5,8 @@ import {
   WS_USER_ORDERS_ERROR,
   WS_USER_ORDERS_MESSAGE,
   WS_USER_ORDERS_OPEN
-} from '../actions/user-orders';
-import {IOrderList} from '../../utils/data-types';
+} from '../../actions/user-orders';
+import {IOrderList} from '../../../utils/data-types';
 
 type TUserOrdersState = {
   wsConnecting: boolean;

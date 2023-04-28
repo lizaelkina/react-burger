@@ -5,8 +5,8 @@ import {
   DELETE_INGREDIENT,
   MOVE_INGREDIENT,
   TBurgerConstructorActions
-} from '../actions/burger-constructor';
-import {IIngredient} from '../../utils/data-types';
+} from '../../actions/burger-constructor';
+import {IIngredient} from '../../../utils/data-types';
 
 type TBurgerConstructorState = {
   bun: IIngredient | null;

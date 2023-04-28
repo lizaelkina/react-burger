@@ -4,7 +4,7 @@ import {
   CREATE_ORDER_LOADING,
   CREATE_ORDER_SUCCESS,
   TCreateOrderActions
-} from '../actions/create-order';
+} from '../../actions/create-order';
 
 type TCreateOrderState = {
   isOpenModal: boolean;

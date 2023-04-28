@@ -5,8 +5,8 @@ import {
   RESETPASSWORD_LOADING,
   RESETPASSWORD_SUCCESS,
   TResetPasswordActions
-} from '../actions/reset-password';
-import {IResetPasswordFormData} from '../../utils/api';
+} from '../../actions/reset-password';
+import {IResetPasswordFormData} from '../../../utils/api';
 
 type TResetPasswordFormValidity = {
   password: boolean;

@@ -1,23 +1,24 @@
 import {
-  LOGIN_CHANGE_EMAIL,
-  LOGIN_CHANGE_PASSWORD,
-  LOGIN_FAILED,
-  LOGIN_LOADING,
-  LOGIN_SUCCESS,
-  TLoginActions
-} from '../actions/login';
-import {AUTH_USER} from '../actions/auth';
-import {ILoginFormData} from '../../utils/api';
-import {IUser} from '../../utils/data-types';
+  REGISTER_CHANGE_EMAIL,
+  REGISTER_CHANGE_NAME,
+  REGISTER_CHANGE_PASSWORD,
+  REGISTER_FAILED,
+  REGISTER_LOADING,
+  REGISTER_SUCCESS,
+  TRegisterActions
+} from '../../actions/register';
+import {IRegisterFormData} from '../../../utils/api';
+import {IUser} from '../../../utils/data-types';
 
-type TLoginFormValidity = {
+type TRegisterFormValidity = {
+  name: boolean;
   email: boolean;
   password: boolean;
 }
 
-type TLoginState = {
-  formData: ILoginFormData;
-  formValidity: TLoginFormValidity;
+type TRegisterState = {
+  formData: IRegisterFormData;
+  formValidity: TRegisterFormValidity;
   isLoading: boolean;
   success: boolean;
   user: IUser | null;
@@ -26,12 +27,14 @@ type TLoginState = {
   errorMessage: string | null;
 }
 
-const initialState: TLoginState = {
+const initialState: TRegisterState = {
   formData: {
+    name: '',
     email: '',
     password: '',
   },
   formValidity: {
+    name: false,
     email: false,
     password: false,
   },
@@ -43,14 +46,9 @@ const initialState: TLoginState = {
   errorMessage: null,
 }
 
-export const createLoginReducer = (state = initialState, action: TLoginActions): TLoginState => {
+export const createRegisterReducer = (state = initialState, action: TRegisterActions): TRegisterState => {
   switch (action.type) {
-    case AUTH_USER:
-      return {
-        ...state,
-        success: false,
-      }
-    case LOGIN_LOADING: {
+    case REGISTER_LOADING: {
       return {
         ...state,
         isLoading: true,
@@ -58,7 +56,7 @@ export const createLoginReducer = (state = initialState, action: TLoginActions):
         errorMessage: null,
       }
     }
-    case LOGIN_SUCCESS: {
+    case REGISTER_SUCCESS: {
       return {
         ...state,
         isLoading: false,
@@ -68,14 +66,28 @@ export const createLoginReducer = (state = initialState, action: TLoginActions):
         refreshToken: action.refreshToken,
       }
     }
-    case LOGIN_FAILED: {
+    case REGISTER_FAILED: {
       return {
         ...state,
         isLoading: false,
         errorMessage: action.error,
       }
     }
-    case LOGIN_CHANGE_EMAIL: {
+    case REGISTER_CHANGE_NAME: {
+      return {
+        ...state,
+        formData: {
+          ...state.formData,
+          name: action.name,
+        },
+        formValidity: {
+          ...state.formValidity,
+          name: action.valid,
+        },
+        errorMessage: null,
+      }
+    }
+    case REGISTER_CHANGE_EMAIL: {
       return {
         ...state,
         formData: {
@@ -89,7 +101,7 @@ export const createLoginReducer = (state = initialState, action: TLoginActions):
         errorMessage: null,
       }
     }
-    case LOGIN_CHANGE_PASSWORD: {
+    case REGISTER_CHANGE_PASSWORD: {
       return {
         ...state,
         formData: {
