@@ -54,7 +54,7 @@ export const wsOrdersReducer = (state = initialState, action: TWSOrdersActions):
     case WS_ORDERS_ERROR: {
       return {
         ...state,
-        error: action.type,
+        error: action.error,
       }
     }
     default: {
