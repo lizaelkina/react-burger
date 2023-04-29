@@ -1,6 +1,6 @@
 import {createAuthReducer, initialState} from './auth';
 import {
-  AUTH_USER,
+  authUser,
   CHECK_USER_FAILED,
   CHECK_USER_SUCCESS,
   LOGOUT_FAILED,
@@ -23,17 +23,14 @@ describe('check auth reducer', () => {
   });
 
   it('should return auth user state', () => {
-    const accessTokenTest = 'accessTokenTest';
-    const refreshTokenTest = 'refreshTokenTest';
     expect(
         createAuthReducer(
             initialState,
-            {
-              type: AUTH_USER,
-              user: testUser,
-              accessToken: accessTokenTest,
-              refreshToken: refreshTokenTest,
-            }
+            authUser(
+                testUser,
+                'accessTokenTest',
+                'refreshTokenTest'
+            )
         )
     ).toEqual({
       ...initialState,
