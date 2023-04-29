@@ -34,7 +34,7 @@ describe('check burger-ingredients reducer', () => {
             initialState,
             {
               type: GET_INGREDIENTS_SUCCESS,
-              ingredients: ingredients
+              ingredients: ingredients,
             }
         )
     ).toEqual({
@@ -51,7 +51,7 @@ describe('check burger-ingredients reducer', () => {
             initialState,
             {
               type: GET_INGREDIENTS_FAILED,
-              error: error
+              error: error,
             }
         )
     ).toEqual({
