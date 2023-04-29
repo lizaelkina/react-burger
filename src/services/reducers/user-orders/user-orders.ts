@@ -57,7 +57,7 @@ export const wsUserOrdersReducer = (state = initialState, action: TWSUserOrdersA
     case WS_USER_ORDERS_ERROR: {
       return {
         ...state,
-        error: action.type,
+        error: action.error,
       }
     }
     default: {
