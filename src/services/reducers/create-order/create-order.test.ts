@@ -30,37 +30,35 @@ describe('check create-order reducer', () => {
   });
 
   it('should return success state', () => {
-    const testNumber = 1;
     expect(
         createOrderReducer(
             initialState,
             {
               type: CREATE_ORDER_SUCCESS,
-              number: testNumber,
+              number: 1,
             }
         )
     ).toEqual({
       ...initialState,
       isLoading: false,
       success: true,
-      number: testNumber,
+      number: 1,
     });
   });
 
   it('should return failed state', () => {
-    const testError = 'testError';
     expect(
         createOrderReducer(
             initialState,
             {
               type: CREATE_ORDER_FAILED,
-              error: testError,
+              error: 'testError',
             }
         )
     ).toEqual({
       ...initialState,
       isLoading: false,
-      errorMessage: testError,
+      errorMessage: 'testError',
     });
   });
 

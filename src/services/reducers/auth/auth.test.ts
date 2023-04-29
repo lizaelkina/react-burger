@@ -10,12 +10,10 @@ import {
 import {IUser} from '../../../utils/data-types';
 
 const testUser: IUser = {
-  email: 'test@mail.ru',
-  name: 'Тест',
+  email: 'email',
+  name: 'name',
   password: '123456',
 };
-
-const testError = 'testError';
 
 describe('check auth reducer', () => {
   it('should return initial state', () => {
@@ -61,7 +59,7 @@ describe('check auth reducer', () => {
             initialState,
             {
               type: CHECK_USER_FAILED,
-              error: testError,
+              error: 'testError',
             }
         )
     ).toEqual({
@@ -107,7 +105,7 @@ describe('check auth reducer', () => {
             initialState,
             {
               type: LOGOUT_FAILED,
-              error: testError,
+              error: 'testError',
             }
         )
     ).toEqual({

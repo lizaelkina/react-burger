@@ -4,13 +4,10 @@ import {IUser} from '../../../utils/data-types';
 import {AUTH_USER} from '../../actions/auth';
 
 const testUser: IUser = {
-  email: 'test@mail.ru',
-  name: 'Тест',
+  email: 'email',
+  name: 'name',
   password: '123456',
 };
-
-const accessTokenTest = 'accessTokenTest';
-const refreshTokenTest = 'refreshTokenTest';
 
 describe('check login reducer', () => {
   it('should return initial state', () => {
@@ -24,8 +21,8 @@ describe('check login reducer', () => {
             {
               type: AUTH_USER,
               user: testUser,
-              accessToken: accessTokenTest,
-              refreshToken: refreshTokenTest,
+              accessToken: 'accessTokenTest',
+              refreshToken: 'refreshTokenTest',
             }
         )
     ).toEqual({
@@ -57,8 +54,8 @@ describe('check login reducer', () => {
             {
               type: LOGIN_SUCCESS,
               user: testUser,
-              accessToken: accessTokenTest,
-              refreshToken: refreshTokenTest,
+              accessToken: 'accessTokenTest',
+              refreshToken: 'refreshTokenTest',
             }
         )
     ).toEqual({
@@ -66,25 +63,24 @@ describe('check login reducer', () => {
       isLoading: false,
       success: true,
       user: testUser,
-      accessToken: accessTokenTest,
-      refreshToken: refreshTokenTest,
+      accessToken: 'accessTokenTest',
+      refreshToken: 'refreshTokenTest',
     });
   });
 
   it('should return failed state', () => {
-    const testError = 'testError';
     expect(
         createLoginReducer(
             initialState,
             {
               type: LOGIN_FAILED,
-              error: testError,
+              error: 'testError',
             }
         )
     ).toEqual({
       ...initialState,
       isLoading: false,
-      errorMessage: testError,
+      errorMessage: 'testError',
     });
   });
 
@@ -92,13 +88,13 @@ describe('check login reducer', () => {
     expect(
         createLoginReducer(
             initialState,
-            changeEmail('test@mail.ru', true)
+            changeEmail('email', true)
         )
     ).toEqual({
       ...initialState,
       formData: {
         ...initialState.formData,
-        email: 'test@mail.ru',
+        email: 'email',
       },
       formValidity: {
         ...initialState.formValidity,

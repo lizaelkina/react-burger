@@ -11,10 +11,10 @@ function createOrder(id: string, number: number) {
   return {
     _id: id,
     ingredients: [],
-    status: '',
-    name: '',
-    createdAt: '',
-    updatedAt: '',
+    status: 'status',
+    name: 'name',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt',
     number: number,
   };
 }
@@ -101,19 +101,18 @@ describe('check user-orders reducer', () => {
   });
 
   it('should return error state', () => {
-    const testError = 'testError';
     expect(
         wsUserOrdersReducer(
             initialState,
             {
               type: WS_USER_ORDERS_ERROR,
-              error: testError,
+              error: 'testError',
             }
         )
     ).toEqual({
       ...initialState,
-      error: testError,
-    })
+      error: 'testError',
+    });
   });
 
 });

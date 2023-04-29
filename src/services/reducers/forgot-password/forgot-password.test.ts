@@ -43,19 +43,18 @@ describe('check forgot-password reducer', () => {
   });
 
   it('should return failed state', () => {
-    const testError = 'testError';
     expect(
         createForgotPasswordReducer(
             initialState,
             {
               type: FORGOTPASSWORD_FAILED,
-              error: testError,
+              error: 'testError',
             }
         )
     ).toEqual({
       ...initialState,
       isLoading: false,
-      errorMessage: testError,
+      errorMessage: 'testError',
     });
   });
 
@@ -63,12 +62,12 @@ describe('check forgot-password reducer', () => {
     expect(
         createForgotPasswordReducer(
             initialState,
-            changeEmail('test@mail.ru', true)
+            changeEmail('email', true)
         )
     ).toEqual({
       ...initialState,
       formData: {
-        email: 'test@mail.ru',
+        email: 'email',
       },
       formValidity: {
         email: true,

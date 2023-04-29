@@ -7,6 +7,21 @@ import {
 } from '../../actions/burger-ingredients';
 import {IIngredient} from '../../../utils/data-types';
 
+const testIngredient: IIngredient = {
+  _id: '_id',
+  name: 'name',
+  type: 'bun',
+  proteins: 10,
+  fat: 10,
+  carbohydrates: 10,
+  calories: 100,
+  price: 1000,
+  image: 'image',
+  image_mobile: 'image_mobile',
+  image_large: 'image_large',
+  __v: 0,
+}
+
 describe('check burger-ingredients reducer', () => {
   it('should return initial state', () => {
     expect(burgerIngredientsReducer(undefined, {} as any)).toEqual(initialState);
@@ -17,7 +32,7 @@ describe('check burger-ingredients reducer', () => {
         burgerIngredientsReducer(
             initialState,
             {
-              type: GET_INGREDIENTS_LOADING
+              type: GET_INGREDIENTS_LOADING,
             }
         )
     ).toEqual({
@@ -28,36 +43,34 @@ describe('check burger-ingredients reducer', () => {
   });
 
   it('should return success state', () => {
-    const ingredients: IIngredient[] = [];
     expect(
         burgerIngredientsReducer(
             initialState,
             {
               type: GET_INGREDIENTS_SUCCESS,
-              ingredients: ingredients,
+              ingredients: [testIngredient],
             }
         )
     ).toEqual({
       ...initialState,
       isLoading: false,
-      ingredients: [...ingredients],
+      ingredients: [testIngredient],
     });
   });
 
   it('should return failed state', () => {
-    const error = 'error';
     expect(
         burgerIngredientsReducer(
             initialState,
             {
               type: GET_INGREDIENTS_FAILED,
-              error: error,
+              error: 'error',
             }
         )
     ).toEqual({
       ...initialState,
       isLoading: false,
-      error: error,
+      error: 'error',
     });
   });
 

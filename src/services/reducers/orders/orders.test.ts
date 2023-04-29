@@ -12,7 +12,7 @@ const testOrderList: IOrderList = {
   orders: [],
   success: false,
   total: 0,
-  totalToday: 0
+  totalToday: 0,
 };
 
 describe('check orders reducer', () => {
@@ -79,18 +79,17 @@ describe('check orders reducer', () => {
   });
 
   it('should return error state', () => {
-    const testError = 'testError';
     expect(
         wsOrdersReducer(
             initialState,
             {
               type: WS_ORDERS_ERROR,
-              error: testError,
+              error: 'testError',
             }
         )
     ).toEqual({
       ...initialState,
-      error: testError,
+      error: 'testError',
     })
   });
 
