@@ -10,7 +10,7 @@ import {IIngredient} from '../../../utils/data-types';
 
 type TBurgerConstructorState = {
   bun: IIngredient | null;
-  middle: Array<IIngredient>;
+  middle: IIngredient[];
 }
 
 export const initialState: TBurgerConstructorState = {

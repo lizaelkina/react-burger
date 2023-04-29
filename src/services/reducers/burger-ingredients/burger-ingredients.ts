@@ -8,7 +8,7 @@ import {
 import {IIngredient} from '../../../utils/data-types';
 
 type TBurgerIngredientsState = {
-  ingredients: Array<IIngredient>;
+  ingredients:IIngredient[];
   isLoading: boolean;
   error: string | null;
   selectedGroup: string;

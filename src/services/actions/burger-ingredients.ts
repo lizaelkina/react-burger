@@ -13,7 +13,7 @@ export interface IGetIngredientsLoadingAction {
 
 export interface IGetIngredientsSuccessAction {
   readonly type: typeof GET_INGREDIENTS_SUCCESS;
-  ingredients: Array<IIngredient>;
+  ingredients: IIngredient[];
 }
 
 export interface IGetIngredientsFailedAction {
