@@ -24,7 +24,7 @@ describe('check user-orders reducer', () => {
     expect(wsUserOrdersReducer(undefined, {} as any)).toEqual(initialState);
   });
 
-  it('should return connect state', () => {
+  it('should handle connect action', () => {
     expect(
         wsUserOrdersReducer(
             initialState,
@@ -37,7 +37,7 @@ describe('check user-orders reducer', () => {
     });
   });
 
-  it('should return open state', () => {
+  it('should handle open action', () => {
     expect(
         wsUserOrdersReducer(
             initialState,
@@ -52,7 +52,7 @@ describe('check user-orders reducer', () => {
     });
   });
 
-  it('should return close state', () => {
+  it('should handle close action', () => {
     expect(
         wsUserOrdersReducer(
             initialState,
@@ -67,7 +67,7 @@ describe('check user-orders reducer', () => {
     });
   });
 
-  it('should return message state', () => {
+  it('should handle message action', () => {
     expect(
         wsUserOrdersReducer(
             initialState,
@@ -100,7 +100,7 @@ describe('check user-orders reducer', () => {
     });
   });
 
-  it('should return error state', () => {
+  it('should handle error action', () => {
     expect(
         wsUserOrdersReducer(
             initialState,

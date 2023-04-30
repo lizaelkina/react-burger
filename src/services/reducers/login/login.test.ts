@@ -14,7 +14,7 @@ describe('check login reducer', () => {
     expect(createLoginReducer(undefined, {} as any)).toEqual(initialState);
   });
 
-  it('should check auth user', () => {
+  it('should handle check auth user action', () => {
     expect(
         createLoginReducer(
             initialState,
@@ -31,7 +31,7 @@ describe('check login reducer', () => {
     });
   });
 
-  it('should return loading state', () => {
+  it('should handle loading action', () => {
     expect(
         createLoginReducer(
             initialState,
@@ -47,7 +47,7 @@ describe('check login reducer', () => {
     });
   });
 
-  it('should return success state', () => {
+  it('should handle success action', () => {
     expect(
         createLoginReducer(
             initialState,
@@ -68,7 +68,7 @@ describe('check login reducer', () => {
     });
   });
 
-  it('should return failed state', () => {
+  it('should handle failed action', () => {
     expect(
         createLoginReducer(
             initialState,
@@ -84,7 +84,7 @@ describe('check login reducer', () => {
     });
   });
 
-  it('should return change email state', () => {
+  it('should handle change email action', () => {
     expect(
         createLoginReducer(
             initialState,
@@ -103,7 +103,7 @@ describe('check login reducer', () => {
     });
   });
 
-  it('should return change password state', () => {
+  it('should handle change password action', () => {
     expect(
         createLoginReducer(
             initialState,

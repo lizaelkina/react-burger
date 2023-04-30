@@ -11,7 +11,7 @@ describe('check create-order reducer', () => {
     expect(createOrderReducer(undefined, {} as any)).toEqual(initialState);
   });
 
-  it('should return loading state', () => {
+  it('should handle loading action', () => {
     expect(
         createOrderReducer(
             initialState,
@@ -29,7 +29,7 @@ describe('check create-order reducer', () => {
     });
   });
 
-  it('should return success state', () => {
+  it('should handle success action', () => {
     expect(
         createOrderReducer(
             initialState,
@@ -46,7 +46,7 @@ describe('check create-order reducer', () => {
     });
   });
 
-  it('should return failed state', () => {
+  it('should handle failed action', () => {
     expect(
         createOrderReducer(
             initialState,
@@ -62,7 +62,7 @@ describe('check create-order reducer', () => {
     });
   });
 
-  it('should return close modal state', () => {
+  it('should handle close modal action', () => {
     expect(
         createOrderReducer(
             initialState,

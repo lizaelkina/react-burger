@@ -20,7 +20,7 @@ describe('check auth reducer', () => {
     expect(createAuthReducer(undefined, {} as any)).toEqual(initialState);
   });
 
-  it('should return auth user state', () => {
+  it('should handle auth user action', () => {
     expect(
         createAuthReducer(
             initialState,
@@ -37,7 +37,7 @@ describe('check auth reducer', () => {
     });
   });
 
-  it('should return check user success state', () => {
+  it('should handle check user success action', () => {
     expect(
         createAuthReducer(
             initialState,
@@ -53,7 +53,7 @@ describe('check auth reducer', () => {
     });
   });
 
-  it('should return check user failed state', () => {
+  it('should handle check user failed action', () => {
     expect(
         createAuthReducer(
             initialState,
@@ -69,7 +69,7 @@ describe('check auth reducer', () => {
     });
   });
 
-  it('should return logout loading state', () => {
+  it('should handle logout loading action', () => {
     expect(
         createAuthReducer(
             initialState,
@@ -83,7 +83,7 @@ describe('check auth reducer', () => {
     });
   });
 
-  it('should return logout success state', () => {
+  it('should handle logout success action', () => {
     expect(
         createAuthReducer(
             initialState,
@@ -99,7 +99,7 @@ describe('check auth reducer', () => {
     });
   });
 
-  it('should return logout failed state', () => {
+  it('should handle logout failed action', () => {
     expect(
         createAuthReducer(
             initialState,

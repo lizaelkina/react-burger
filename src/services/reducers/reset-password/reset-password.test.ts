@@ -12,7 +12,7 @@ describe('check reset-password reducer', () => {
     expect(createResetPasswordReducer(undefined, {} as any)).toEqual(initialState);
   });
 
-  it('should return loading state', () => {
+  it('should handle loading action', () => {
     expect(
         createResetPasswordReducer(
             initialState,
@@ -28,7 +28,7 @@ describe('check reset-password reducer', () => {
     });
   });
 
-  it('should return success state', () => {
+  it('should handle success action', () => {
     expect(
         createResetPasswordReducer(
             initialState,
@@ -43,7 +43,7 @@ describe('check reset-password reducer', () => {
     });
   });
 
-  it('should return failed state', () => {
+  it('should handle failed action', () => {
     expect(
         createResetPasswordReducer(
             initialState,
@@ -59,7 +59,7 @@ describe('check reset-password reducer', () => {
     });
   });
 
-  it('should return change password state', () => {
+  it('should handle change password action', () => {
     expect(
         createResetPasswordReducer(
             initialState,
@@ -79,7 +79,7 @@ describe('check reset-password reducer', () => {
     });
   });
 
-  it('should return change code state', () => {
+  it('should handle change code action', () => {
     expect(
         createResetPasswordReducer(
             initialState,

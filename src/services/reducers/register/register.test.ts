@@ -20,7 +20,7 @@ describe('check register reducer', () => {
     expect(createRegisterReducer(undefined, {} as any)).toEqual(initialState);
   });
 
-  it('should return loading state', () => {
+  it('should handle loading action', () => {
     expect(
         createRegisterReducer(
             initialState,
@@ -36,7 +36,7 @@ describe('check register reducer', () => {
     });
   });
 
-  it('should return success state', () => {
+  it('should handle success action', () => {
     expect(
         createRegisterReducer(
             initialState,
@@ -57,7 +57,7 @@ describe('check register reducer', () => {
     });
   });
 
-  it('should return failed state', () => {
+  it('should handle failed action', () => {
     expect(
         createRegisterReducer(
             initialState,
@@ -73,7 +73,7 @@ describe('check register reducer', () => {
     });
   });
 
-  it('should return change name state', () => {
+  it('should handle change name action', () => {
     expect(
         createRegisterReducer(
             initialState,
@@ -93,7 +93,7 @@ describe('check register reducer', () => {
     });
   });
 
-  it('should return change email state', () => {
+  it('should handle change email action', () => {
     expect(
         createRegisterReducer(
             initialState,
@@ -113,7 +113,7 @@ describe('check register reducer', () => {
     });
   });
 
-  it('should return change password state', () => {
+  it('should handle change password action', () => {
     expect(
         createRegisterReducer(
             initialState,

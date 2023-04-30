@@ -19,7 +19,6 @@ const testIngredient: IIngredient = {
   image: 'image',
   image_mobile: 'image_mobile',
   image_large: 'image_large',
-  __v: 0,
 }
 
 describe('check burger-ingredients reducer', () => {
@@ -27,7 +26,7 @@ describe('check burger-ingredients reducer', () => {
     expect(burgerIngredientsReducer(undefined, {} as any)).toEqual(initialState);
   });
 
-  it('should return loading state', () => {
+  it('should handle loading action', () => {
     expect(
         burgerIngredientsReducer(
             initialState,
@@ -42,7 +41,7 @@ describe('check burger-ingredients reducer', () => {
     });
   });
 
-  it('should return success state', () => {
+  it('should handle success action', () => {
     expect(
         burgerIngredientsReducer(
             initialState,
@@ -58,7 +57,7 @@ describe('check burger-ingredients reducer', () => {
     });
   });
 
-  it('should return failed state', () => {
+  it('should handle failed action', () => {
     expect(
         burgerIngredientsReducer(
             initialState,
@@ -74,7 +73,7 @@ describe('check burger-ingredients reducer', () => {
     });
   });
 
-  it('should return select group state', () => {
+  it('should handle select group action', () => {
     expect(
         burgerIngredientsReducer(
             initialState,

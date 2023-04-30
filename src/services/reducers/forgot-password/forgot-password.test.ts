@@ -11,7 +11,7 @@ describe('check forgot-password reducer', () => {
     expect(createForgotPasswordReducer(undefined, {} as any)).toEqual(initialState);
   });
 
-  it('should return loading state', () => {
+  it('should handle loading action', () => {
     expect(
         createForgotPasswordReducer(
             initialState,
@@ -27,7 +27,7 @@ describe('check forgot-password reducer', () => {
     });
   });
 
-  it('should return success state', () => {
+  it('should handle success action', () => {
     expect(
         createForgotPasswordReducer(
             initialState,
@@ -42,7 +42,7 @@ describe('check forgot-password reducer', () => {
     });
   });
 
-  it('should return failed state', () => {
+  it('should handle failed action', () => {
     expect(
         createForgotPasswordReducer(
             initialState,
@@ -58,7 +58,7 @@ describe('check forgot-password reducer', () => {
     });
   });
 
-  it('should return change email state', () => {
+  it('should handle change email action', () => {
     expect(
         createForgotPasswordReducer(
             initialState,

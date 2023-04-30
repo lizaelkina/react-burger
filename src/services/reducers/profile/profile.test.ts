@@ -22,7 +22,7 @@ describe('check profile reducer', () => {
     expect(profileReducer(undefined, {} as any)).toEqual(initialState);
   });
 
-  it('should return profile init state', () => {
+  it('should handle profile init action', () => {
     expect(
         profileReducer(
             initialState,
@@ -35,7 +35,7 @@ describe('check profile reducer', () => {
     });
   });
 
-  it('should return loading state', () => {
+  it('should handle loading action', () => {
     expect(
         profileReducer(
             initialState,
@@ -51,7 +51,7 @@ describe('check profile reducer', () => {
     });
   });
 
-  it('should return success state', () => {
+  it('should handle success action', () => {
     expect(
         profileReducer(
             initialState,
@@ -69,7 +69,7 @@ describe('check profile reducer', () => {
     })
   });
 
-  it('should return failed state', () => {
+  it('should handle failed action', () => {
     expect(
         profileReducer(
             initialState,
@@ -85,7 +85,7 @@ describe('check profile reducer', () => {
     })
   });
 
-  it('should return cancel changes state', () => {
+  it('should handle cancel changes action', () => {
     expect(
         profileReducer(
             initialState,
@@ -101,7 +101,7 @@ describe('check profile reducer', () => {
     });
   });
 
-  it('should return change name state', () => {
+  it('should handle change name action', () => {
     expect(
         profileReducer(
             initialState,
@@ -122,7 +122,7 @@ describe('check profile reducer', () => {
     });
   });
 
-  it('should return change email state', () => {
+  it('should handle change email action', () => {
     expect(
         profileReducer(
             initialState,
@@ -143,7 +143,7 @@ describe('check profile reducer', () => {
     });
   });
 
-  it('should return change password state', () => {
+  it('should handle change password action', () => {
     expect(
         profileReducer(
             initialState,
