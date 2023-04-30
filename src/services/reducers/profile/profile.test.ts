@@ -14,7 +14,7 @@ import {IUser} from '../../../utils/data-types';
 const testUser: IUser = {
   email: 'email',
   name: 'name',
-  password: '1',
+  password: '123456',
 };
 
 describe('check profile reducer', () => {
