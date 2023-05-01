@@ -6,6 +6,7 @@ import {
   RESETPASSWORD_LOADING,
   RESETPASSWORD_SUCCESS
 } from '../../actions/reset-password';
+import {newTestPassword, testError, testRefreshToken} from '../../../utils/data-test';
 
 describe('check reset-password reducer', () => {
   it('should return initial state', () => {
@@ -49,13 +50,13 @@ describe('check reset-password reducer', () => {
             initialState,
             {
               type: RESETPASSWORD_FAILED,
-              error: 'testError',
+              error: testError,
             }
         )
     ).toEqual({
       ...initialState,
       isLoading: false,
-      errorMessage: 'testError',
+      errorMessage: testError,
     });
   });
 
@@ -63,13 +64,13 @@ describe('check reset-password reducer', () => {
     expect(
         createResetPasswordReducer(
             initialState,
-            changePassword('newPassword', true)
+            changePassword(newTestPassword, true)
         )
     ).toEqual({
       ...initialState,
       formData: {
         ...initialState.formData,
-        password: 'newPassword',
+        password: newTestPassword,
       },
       formValidity: {
         ...initialState.formValidity,
@@ -83,13 +84,13 @@ describe('check reset-password reducer', () => {
     expect(
         createResetPasswordReducer(
             initialState,
-            changeCode('newCode', true)
+            changeCode(testRefreshToken, true)
         )
     ).toEqual({
       ...initialState,
       formData: {
         ...initialState.formData,
-        token: 'newCode',
+        token: testRefreshToken,
       },
       formValidity: {
         ...initialState.formValidity,

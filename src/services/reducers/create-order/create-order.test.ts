@@ -5,6 +5,7 @@ import {
   CREATE_ORDER_LOADING,
   CREATE_ORDER_SUCCESS
 } from '../../actions/create-order';
+import {testError} from '../../../utils/data-test';
 
 describe('check create-order reducer', () => {
   it('should return initial state', () => {
@@ -52,13 +53,13 @@ describe('check create-order reducer', () => {
             initialState,
             {
               type: CREATE_ORDER_FAILED,
-              error: 'testError',
+              error: testError,
             }
         )
     ).toEqual({
       ...initialState,
       isLoading: false,
-      errorMessage: 'testError',
+      errorMessage: testError,
     });
   });
 

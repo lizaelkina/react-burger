@@ -6,14 +6,7 @@ import {
   WS_ORDERS_OPEN,
   wsOrdersConnect
 } from '../../actions/orders';
-import {IOrderList} from '../../../utils/data-types';
-
-const testOrderList: IOrderList = {
-  orders: [],
-  success: false,
-  total: 0,
-  totalToday: 0,
-};
+import {testError, testOrderList, testUrl} from '../../../utils/data-test';
 
 describe('check orders reducer', () => {
   it('should return initial state', () => {
@@ -24,7 +17,7 @@ describe('check orders reducer', () => {
     expect(
         wsOrdersReducer(
             initialState,
-            wsOrdersConnect(''),
+            wsOrdersConnect(testUrl),
         )
     ).toEqual({
       ...initialState,
@@ -84,12 +77,12 @@ describe('check orders reducer', () => {
             initialState,
             {
               type: WS_ORDERS_ERROR,
-              error: 'testError',
+              error: testError,
             }
         )
     ).toEqual({
       ...initialState,
-      error: 'testError',
+      error: testError,
     })
   });
 

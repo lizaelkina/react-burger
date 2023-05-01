@@ -7,13 +7,7 @@ import {
   LOGOUT_LOADING,
   LOGOUT_SUCCESS
 } from '../../actions/auth';
-import {IUser} from '../../../utils/data-types';
-
-const testUser: IUser = {
-  email: 'email',
-  name: 'name',
-  password: '123456',
-};
+import {testAccessToken, testError, testRefreshToken, testUser} from '../../../utils/data-test';
 
 describe('check auth reducer', () => {
   it('should return initial state', () => {
@@ -26,8 +20,8 @@ describe('check auth reducer', () => {
             initialState,
             authUser(
                 testUser,
-                'accessTokenTest',
-                'refreshTokenTest'
+                testAccessToken,
+                testRefreshToken,
             )
         )
     ).toEqual({
@@ -59,7 +53,7 @@ describe('check auth reducer', () => {
             initialState,
             {
               type: CHECK_USER_FAILED,
-              error: 'testError',
+              error: testError,
             }
         )
     ).toEqual({
@@ -105,7 +99,7 @@ describe('check auth reducer', () => {
             initialState,
             {
               type: LOGOUT_FAILED,
-              error: 'testError',
+              error: testError,
             }
         )
     ).toEqual({

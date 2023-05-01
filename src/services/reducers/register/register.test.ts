@@ -7,13 +7,15 @@ import {
   REGISTER_LOADING,
   REGISTER_SUCCESS
 } from '../../actions/register';
-import {IUser} from '../../../utils/data-types';
-
-const testUser: IUser = {
-  email: 'email',
-  name: 'name',
-  password: '123456',
-};
+import {
+  testAccessToken,
+  testEmail,
+  testError,
+  testName,
+  testPassword,
+  testRefreshToken,
+  testUser
+} from '../../../utils/data-test';
 
 describe('check register reducer', () => {
   it('should return initial state', () => {
@@ -43,8 +45,8 @@ describe('check register reducer', () => {
             {
               type: REGISTER_SUCCESS,
               user: testUser,
-              accessToken: 'accessTokenTest',
-              refreshToken: 'refreshTokenTest',
+              accessToken: testAccessToken,
+              refreshToken: testRefreshToken,
             }
         )
     ).toEqual({
@@ -52,8 +54,8 @@ describe('check register reducer', () => {
       isLoading: false,
       success: true,
       user: testUser,
-      accessToken: 'accessTokenTest',
-      refreshToken: 'refreshTokenTest',
+      accessToken: testAccessToken,
+      refreshToken: testRefreshToken,
     });
   });
 
@@ -63,13 +65,13 @@ describe('check register reducer', () => {
             initialState,
             {
               type: REGISTER_FAILED,
-              error: 'testError',
+              error: testError,
             }
         )
     ).toEqual({
       ...initialState,
       isLoading: false,
-      errorMessage: 'testError',
+      errorMessage: testError,
     });
   });
 
@@ -77,13 +79,13 @@ describe('check register reducer', () => {
     expect(
         createRegisterReducer(
             initialState,
-            changeName('newName', true)
+            changeName(testName, true)
         )
     ).toEqual({
       ...initialState,
       formData: {
         ...initialState.formData,
-        name: 'newName',
+        name: testName,
       },
       formValidity: {
         ...initialState.formValidity,
@@ -97,13 +99,13 @@ describe('check register reducer', () => {
     expect(
         createRegisterReducer(
             initialState,
-            changeEmail('newEmail', true)
+            changeEmail(testEmail, true)
         )
     ).toEqual({
       ...initialState,
       formData: {
         ...initialState.formData,
-        email: 'newEmail',
+        email: testEmail,
       },
       formValidity: {
         ...initialState.formValidity,
@@ -117,13 +119,13 @@ describe('check register reducer', () => {
     expect(
         createRegisterReducer(
             initialState,
-            changePassword('newPassword', true)
+            changePassword(testPassword, true)
         )
     ).toEqual({
       ...initialState,
       formData: {
         ...initialState.formData,
-        password: 'newPassword',
+        password: testPassword,
       },
       formValidity: {
         ...initialState.formValidity,

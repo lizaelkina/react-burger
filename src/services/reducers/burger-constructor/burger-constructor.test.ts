@@ -1,26 +1,6 @@
 import {burgerConstructorReducer, initialState} from './burger-constructor';
 import {addIngredient, clearIngredients, deleteIngredient, moveIngredient} from '../../actions/burger-constructor';
-import {IIngredient} from '../../../utils/data-types';
-
-function createTestIngredient(id: string, type: 'bun' | 'sauce' | 'main', uuid?: string): IIngredient {
-  const ingredient = {
-    _id: id,
-    name: 'name',
-    type: type,
-    proteins: 10,
-    fat: 10,
-    carbohydrates: 10,
-    calories: 100,
-    price: 1000,
-    image: 'image',
-    image_mobile: 'image_mobile',
-    image_large: 'image_large',
-  }
-  return uuid ? {
-    ...ingredient,
-    uuid: uuid,
-  } : ingredient;
-}
+import {createTestIngredient} from '../../../utils/data-test';
 
 describe('check burger-constructor reducer', () => {
   it('should return initial state', () => {

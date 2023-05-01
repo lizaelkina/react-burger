@@ -5,21 +5,7 @@ import {
   GET_INGREDIENTS_SUCCESS,
   selectIngredientGroup
 } from '../../actions/burger-ingredients';
-import {IIngredient} from '../../../utils/data-types';
-
-const testIngredient: IIngredient = {
-  _id: '_id',
-  name: 'name',
-  type: 'bun',
-  proteins: 10,
-  fat: 10,
-  carbohydrates: 10,
-  calories: 100,
-  price: 1000,
-  image: 'image',
-  image_mobile: 'image_mobile',
-  image_large: 'image_large',
-}
+import {createTestIngredient, testError} from '../../../utils/data-test';
 
 describe('check burger-ingredients reducer', () => {
   it('should return initial state', () => {
@@ -47,13 +33,13 @@ describe('check burger-ingredients reducer', () => {
             initialState,
             {
               type: GET_INGREDIENTS_SUCCESS,
-              ingredients: [testIngredient],
+              ingredients: [createTestIngredient('1', 'bun')],
             }
         )
     ).toEqual({
       ...initialState,
       isLoading: false,
-      ingredients: [testIngredient],
+      ingredients: [createTestIngredient('1', 'bun')],
     });
   });
 
@@ -63,13 +49,13 @@ describe('check burger-ingredients reducer', () => {
             initialState,
             {
               type: GET_INGREDIENTS_FAILED,
-              error: 'error',
+              error: testError,
             }
         )
     ).toEqual({
       ...initialState,
       isLoading: false,
-      error: 'error',
+      error: testError,
     });
   });
 

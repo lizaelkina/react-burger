@@ -1,13 +1,14 @@
 import {createLoginReducer, initialState} from './login';
 import {changeEmail, changePassword, LOGIN_FAILED, LOGIN_LOADING, LOGIN_SUCCESS} from '../../actions/login';
-import {IUser} from '../../../utils/data-types';
 import {AUTH_USER} from '../../actions/auth';
-
-const testUser: IUser = {
-  email: 'email',
-  name: 'name',
-  password: '123456',
-};
+import {
+  testAccessToken,
+  testEmail,
+  testError,
+  testPassword,
+  testRefreshToken,
+  testUser
+} from '../../../utils/data-test';
 
 describe('check login reducer', () => {
   it('should return initial state', () => {
@@ -21,8 +22,8 @@ describe('check login reducer', () => {
             {
               type: AUTH_USER,
               user: testUser,
-              accessToken: 'accessTokenTest',
-              refreshToken: 'refreshTokenTest',
+              accessToken: testAccessToken,
+              refreshToken: testRefreshToken,
             }
         )
     ).toEqual({
@@ -54,8 +55,8 @@ describe('check login reducer', () => {
             {
               type: LOGIN_SUCCESS,
               user: testUser,
-              accessToken: 'accessTokenTest',
-              refreshToken: 'refreshTokenTest',
+              accessToken: testAccessToken,
+              refreshToken: testRefreshToken,
             }
         )
     ).toEqual({
@@ -63,8 +64,8 @@ describe('check login reducer', () => {
       isLoading: false,
       success: true,
       user: testUser,
-      accessToken: 'accessTokenTest',
-      refreshToken: 'refreshTokenTest',
+      accessToken: testAccessToken,
+      refreshToken: testRefreshToken,
     });
   });
 
@@ -74,13 +75,13 @@ describe('check login reducer', () => {
             initialState,
             {
               type: LOGIN_FAILED,
-              error: 'testError',
+              error: testError,
             }
         )
     ).toEqual({
       ...initialState,
       isLoading: false,
-      errorMessage: 'testError',
+      errorMessage: testError,
     });
   });
 
@@ -88,13 +89,13 @@ describe('check login reducer', () => {
     expect(
         createLoginReducer(
             initialState,
-            changeEmail('email', true)
+            changeEmail(testEmail, true)
         )
     ).toEqual({
       ...initialState,
       formData: {
         ...initialState.formData,
-        email: 'email',
+        email: testEmail,
       },
       formValidity: {
         ...initialState.formValidity,
@@ -107,13 +108,13 @@ describe('check login reducer', () => {
     expect(
         createLoginReducer(
             initialState,
-            changePassword('123456', true)
+            changePassword(testPassword, true)
         )
     ).toEqual({
       ...initialState,
       formData: {
         ...initialState.formData,
-        password: '123456',
+        password: testPassword,
       },
       formValidity: {
         ...initialState.formValidity,

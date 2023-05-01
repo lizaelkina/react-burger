@@ -5,6 +5,7 @@ import {
   FORGOTPASSWORD_LOADING,
   FORGOTPASSWORD_SUCCESS
 } from '../../actions/forgot-password';
+import {testEmail, testError} from '../../../utils/data-test';
 
 describe('check forgot-password reducer', () => {
   it('should return initial state', () => {
@@ -48,13 +49,13 @@ describe('check forgot-password reducer', () => {
             initialState,
             {
               type: FORGOTPASSWORD_FAILED,
-              error: 'testError',
+              error: testError,
             }
         )
     ).toEqual({
       ...initialState,
       isLoading: false,
-      errorMessage: 'testError',
+      errorMessage: testError,
     });
   });
 
@@ -62,12 +63,12 @@ describe('check forgot-password reducer', () => {
     expect(
         createForgotPasswordReducer(
             initialState,
-            changeEmail('email', true)
+            changeEmail(testEmail, true)
         )
     ).toEqual({
       ...initialState,
       formData: {
-        email: 'email',
+        email: testEmail,
       },
       formValidity: {
         email: true,

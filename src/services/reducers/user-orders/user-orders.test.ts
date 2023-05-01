@@ -6,18 +6,7 @@ import {
   WS_USER_ORDERS_OPEN,
   wsUserOrdersConnect
 } from '../../actions/user-orders';
-
-function createOrder(id: string, number: number) {
-  return {
-    _id: id,
-    ingredients: [],
-    status: 'status',
-    name: 'name',
-    createdAt: 'createdAt',
-    updatedAt: 'updatedAt',
-    number: number,
-  };
-}
+import {createOrder, testError} from '../../../utils/data-test';
 
 describe('check user-orders reducer', () => {
   it('should return initial state', () => {
@@ -75,9 +64,9 @@ describe('check user-orders reducer', () => {
               type: WS_USER_ORDERS_MESSAGE,
               data: {
                 orders: [
-                  createOrder('1', 1),
-                  createOrder('2', 2),
-                  createOrder('3', 3),
+                  createOrder('1'),
+                  createOrder('2'),
+                  createOrder('3'),
                 ],
                 success: false,
                 total: 0,
@@ -89,9 +78,9 @@ describe('check user-orders reducer', () => {
       ...initialState,
       data: {
         orders: [
-          createOrder('3', 3),
-          createOrder('2', 2),
-          createOrder('1', 1),
+          createOrder('3'),
+          createOrder('2'),
+          createOrder('1'),
         ],
         success: false,
         total: 0,
@@ -106,12 +95,12 @@ describe('check user-orders reducer', () => {
             initialState,
             {
               type: WS_USER_ORDERS_ERROR,
-              error: 'testError',
+              error: testError,
             }
         )
     ).toEqual({
       ...initialState,
-      error: 'testError',
+      error: testError,
     });
   });
 
