@@ -1,6 +1,7 @@
 import {getAccessTokenWithBearerTitle, getRefreshToken, setAccessToken, setRefreshToken} from './token-store';
 import {IIngredient, IOrder, IUser} from './data-types';
 
+export const API_URL = 'https://norma.nomoreparties.space/api';
 export const WS_ORDERS_URL = 'wss://norma.nomoreparties.space/orders/all';
 export const WS_USER_ORDERS_URL = 'wss://norma.nomoreparties.space/orders';
 
@@ -8,9 +9,8 @@ type ApiConfig = {
   baseUrl: string;
   defaultHeaders: { [key: string]: string };
 }
-
 const config: ApiConfig = {
-  baseUrl: 'https://norma.nomoreparties.space/api',
+  baseUrl: API_URL,
   defaultHeaders: {
     "Content-Type": "application/json",
   }
