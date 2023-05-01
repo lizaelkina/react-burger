@@ -6,7 +6,7 @@ import {
   WS_USER_ORDERS_OPEN,
   wsUserOrdersConnect
 } from '../../actions/user-orders';
-import {createOrder, testError} from '../../../utils/data-test';
+import {createOrder, testError, testUrl} from '../../../utils/data-test';
 
 describe('check user-orders reducer', () => {
   it('should return initial state', () => {
@@ -17,7 +17,7 @@ describe('check user-orders reducer', () => {
     expect(
         wsUserOrdersReducer(
             initialState,
-            wsUserOrdersConnect('', true),
+            wsUserOrdersConnect(testUrl, true),
         )
     ).toEqual({
       ...initialState,
