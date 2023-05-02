@@ -16,7 +16,7 @@ export const BurgerPrice = () => {
 
   return (
       <div>
-        <span className='text text_type_digits-medium mr-4'>{total}</span>
+        <span className='text text_type_digits-medium mr-4' data-cy='priceOrder'>{total}</span>
         <CurrencyIcon type='primary'/>
       </div>
   );
