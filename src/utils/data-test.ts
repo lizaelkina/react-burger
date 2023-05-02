@@ -1,22 +1,28 @@
 import {IIngredient, IOrder, IOrderList, IUser} from './data-types';
 
-export function createTestIngredient(id: string, type: 'bun' | 'sauce' | 'main', uuid?: string): IIngredient {
+export const testIngredientImage = 'https://code.s3.yandex.net/react/code/bun-02.png';
+export const testLargeIngredientImage = 'https://code.s3.yandex.net/react/code/bun-02-large.png';
+
+export function createTestIngredient(
+    id: string,
+    type: 'bun' | 'sauce' | 'main',
+    options: any = {}): IIngredient {
   const ingredient = {
     _id: id,
-    name: 'name',
+    name: options?.name ?? 'Название ингредиента',
     type: type,
-    proteins: 10,
-    fat: 10,
-    carbohydrates: 10,
-    calories: 100,
-    price: 1000,
-    image: 'image',
+    proteins: options?.proteins ?? 90,
+    fat: options?.fat ?? 80,
+    carbohydrates: options?.carbohydrates ?? 70,
+    calories: options?.calories ?? 100,
+    price: options?.price ?? 1000,
+    image: options?.image ?? testIngredientImage,
     image_mobile: 'image_mobile',
-    image_large: 'image_large',
+    image_large: testLargeIngredientImage,
   }
-  return uuid ? {
+  return options?.uuid ? {
     ...ingredient,
-    uuid: uuid,
+    uuid: options.uuid,
   } : ingredient;
 }
 

@@ -72,18 +72,18 @@ describe('check burger-constructor reducer', () => {
     expect(
         burgerConstructorReducer(
             {
-              bun: createTestIngredient('1', 'bun', '1'),
+              bun: createTestIngredient('1', 'bun', {uuid: '1'}),
               middle: [
-                createTestIngredient('2', 'main', '2'),
-                createTestIngredient('3', 'sauce', '3'),
+                createTestIngredient('2', 'main', {uuid: '2'}),
+                createTestIngredient('3', 'sauce', {uuid: '3'}),
               ],
             },
-            deleteIngredient(createTestIngredient('3', 'sauce', '3'))
+            deleteIngredient(createTestIngredient('3', 'sauce', {uuid: '3'}))
         )
     ).toEqual({
-      bun: createTestIngredient('1', 'bun', '1'),
+      bun: createTestIngredient('1', 'bun', {uuid: '1'}),
       middle: [
-        createTestIngredient('2', 'main', '2'),
+        createTestIngredient('2', 'main', {uuid: '2'}),
       ]
     });
   });
@@ -109,21 +109,21 @@ describe('check burger-constructor reducer', () => {
     expect(
         burgerConstructorReducer(
             {
-              bun: createTestIngredient('1', 'bun', '1'),
+              bun: createTestIngredient('1', 'bun', {uuid: '1'}),
               middle: [
-                createTestIngredient('2', 'main', '2'),
-                createTestIngredient('4', 'main', '4'),
-                createTestIngredient('3', 'sauce', '3'),
+                createTestIngredient('2', 'main', {uuid: '2'}),
+                createTestIngredient('4', 'main', {uuid: '4'}),
+                createTestIngredient('3', 'sauce', {uuid: '3'}),
               ],
             },
             moveIngredient('4', '3')
         )
     ).toEqual({
-      bun: createTestIngredient('1', 'bun', '1'),
+      bun: createTestIngredient('1', 'bun', {uuid: '1'}),
       middle: [
-        createTestIngredient('2', 'main', '2'),
-        createTestIngredient('3', 'sauce', '3'),
-        createTestIngredient('4', 'main', '4'),
+        createTestIngredient('2', 'main', {uuid: '2'}),
+        createTestIngredient('3', 'sauce', {uuid: '3'}),
+        createTestIngredient('4', 'main', {uuid: '4'}),
       ],
     });
   });
