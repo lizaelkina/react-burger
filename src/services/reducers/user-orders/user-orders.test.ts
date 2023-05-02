@@ -6,7 +6,7 @@ import {
   WS_USER_ORDERS_OPEN,
   wsUserOrdersConnect
 } from '../../actions/user-orders';
-import {createOrder, testError, testUrl} from '../../../utils/data-test';
+import {createTestOrder, testError, testUrl} from '../../../utils/data-test';
 
 describe('check user-orders reducer', () => {
   it('should return initial state', () => {
@@ -64,9 +64,9 @@ describe('check user-orders reducer', () => {
               type: WS_USER_ORDERS_MESSAGE,
               data: {
                 orders: [
-                  createOrder('1'),
-                  createOrder('2'),
-                  createOrder('3'),
+                  createTestOrder('1'),
+                  createTestOrder('2'),
+                  createTestOrder('3'),
                 ],
                 success: false,
                 total: 0,
@@ -78,9 +78,9 @@ describe('check user-orders reducer', () => {
       ...initialState,
       data: {
         orders: [
-          createOrder('3'),
-          createOrder('2'),
-          createOrder('1'),
+          createTestOrder('3'),
+          createTestOrder('2'),
+          createTestOrder('1'),
         ],
         success: false,
         total: 0,

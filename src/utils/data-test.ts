@@ -26,7 +26,7 @@ export function createTestIngredient(
   } : ingredient;
 }
 
-export function createOrder(id: string): IOrder {
+export function createTestOrder(id: string): IOrder {
   return {
     _id: id,
     ingredients: [],
