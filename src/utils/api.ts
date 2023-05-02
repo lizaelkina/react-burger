@@ -161,11 +161,11 @@ interface IResponse {
   success: boolean;
 }
 
-interface IGetIngredientsResponse extends IResponse {
+export interface IGetIngredientsResponse extends IResponse {
   data: Array<IIngredient>;
 }
 
-interface ICreateOrderResponse extends IResponse {
+export interface ICreateOrderResponse extends IResponse {
   order: IOrder;
 }
 
