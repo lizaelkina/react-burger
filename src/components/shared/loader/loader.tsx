@@ -1,5 +1,5 @@
 import {FC} from 'react';
-import {ModalOverlay} from '../modal/modal-overlay/modal-overlay';
+import {Overlay} from '../overlay/overlay';
 import loaderStyles from './loader.module.css';
 
 type TLoaderProps = {
@@ -9,7 +9,7 @@ type TLoaderProps = {
 export const Loader: FC<TLoaderProps> = ({overlay}) => {
   return (
       <>
-        {overlay && <ModalOverlay/>}
+        {overlay && <Overlay/>}
         <div className={overlay ? loaderStyles.overlay : loaderStyles.container}>
           <div className={loaderStyles.loader}></div>
         </div>

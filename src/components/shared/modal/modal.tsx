@@ -2,7 +2,7 @@ import {FC, ReactElement, useEffect} from 'react';
 import {createPortal} from 'react-dom';
 import cn from 'classnames';
 import {CloseIcon} from '@ya.praktikum/react-developer-burger-ui-components';
-import {ModalOverlay} from './modal-overlay/modal-overlay';
+import {Overlay} from '../overlay/overlay';
 import modalStyles from './modal.module.css';
 
 const modalRoot = document.getElementById('modals') as HTMLDivElement;
@@ -32,7 +32,7 @@ export const Modal: FC<TModalProps> = ({title, extraClass, onClose, children}) =
   return createPortal(
       (
           <>
-            <ModalOverlay onClick={onClose}/>
+            <Overlay onClick={onClose}/>
             <div className={modalStyles.modal}>
               {title ?
                   <header className={cn(modalStyles.modal__header, 'pt-10 pl-10 pr-10')}>
