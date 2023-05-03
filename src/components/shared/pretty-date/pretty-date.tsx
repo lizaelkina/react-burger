@@ -6,6 +6,9 @@ type TPrettyDateProps = {
   date: Date;
 };
 
+const getFormattedTime = (date: Date): string =>
+    `${String(date.getHours()).padStart(2, '0')}:${String(date.getMinutes()).padStart(2, '0')}`;
+
 const isToday = (date: Date): boolean => {
   const startOfDate = DateTime.fromJSDate(date).startOf('day');
   const today = DateTime.now().startOf('day');
@@ -22,10 +25,8 @@ const diffDays = (date: Date): number => {
   return Math.floor(DateTime.now().diff(DateTime.fromJSDate(date), 'days').days);
 }
 
-export const getFormattedTime = (date: Date): string =>
-    `${String(date.getHours()).padStart(2, '0')}:${String(date.getMinutes()).padStart(2, '0')}`;
-
 export const PrettyDate: FC<TPrettyDateProps> = ({date}) => {
+
   let prettyDate;
   const time = getFormattedTime(date);
   if (isToday(date)) {

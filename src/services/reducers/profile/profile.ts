@@ -1,54 +1,64 @@
 import {
-  REGISTER_CHANGE_EMAIL,
-  REGISTER_CHANGE_NAME,
-  REGISTER_CHANGE_PASSWORD,
-  REGISTER_FAILED,
-  REGISTER_LOADING,
-  REGISTER_SUCCESS,
-  TRegisterActions
-} from '../actions/register';
-import {IRegisterFormData} from '../../utils/api';
-import {IUser} from '../../utils/data-types';
+  PROFILE_CANCEL_CHANGES,
+  PROFILE_CHANGE_EMAIL,
+  PROFILE_CHANGE_NAME,
+  PROFILE_CHANGE_PASSWORD,
+  PROFILE_FAILED,
+  PROFILE_INIT_STATE,
+  PROFILE_LOADING,
+  PROFILE_SUCCESS,
+  TProfileActions
+} from '../../actions/profile';
+import {IUpdateProfileFormData} from '../../../utils/api';
 
-type TRegisterFormValidity = {
+type TProfileFormValidity = {
   name: boolean;
   email: boolean;
   password: boolean;
 }
 
-type TRegisterState = {
-  formData: IRegisterFormData;
-  formValidity: TRegisterFormValidity;
+type TProfileState = {
+  formData: IUpdateProfileFormData;
+  initData: IUpdateProfileFormData;
+  formValidity: TProfileFormValidity;
+  formDataChanged: boolean;
   isLoading: boolean;
   success: boolean;
-  user: IUser | null;
-  accessToken: string | null;
-  refreshToken: string | null;
   errorMessage: string | null;
 }
 
-const initialState: TRegisterState = {
+export const initialState: TProfileState = {
   formData: {
     name: '',
     email: '',
     password: '',
   },
-  formValidity: {
-    name: false,
-    email: false,
-    password: false,
+  initData: {
+    name: '',
+    email: '',
+    password: '',
   },
+  formValidity: {
+    name: true,
+    email: true,
+    password: true,
+  },
+  formDataChanged: false,
   isLoading: false,
   success: false,
-  user: null,
-  accessToken: null,
-  refreshToken: null,
   errorMessage: null,
 }
 
-export const createRegisterReducer = (state = initialState, action: TRegisterActions): TRegisterState => {
+export const profileReducer = (state = initialState, action: TProfileActions): TProfileState => {
   switch (action.type) {
-    case REGISTER_LOADING: {
+    case PROFILE_INIT_STATE: {
+      return {
+        ...state,
+        formData: action.user,
+        initData: action.user,
+      }
+    }
+    case PROFILE_LOADING: {
       return {
         ...state,
         isLoading: true,
@@ -56,24 +66,33 @@ export const createRegisterReducer = (state = initialState, action: TRegisterAct
         errorMessage: null,
       }
     }
-    case REGISTER_SUCCESS: {
+    case PROFILE_SUCCESS: {
       return {
         ...state,
         isLoading: false,
         success: true,
-        user: action.user,
-        accessToken: action.accessToken,
-        refreshToken: action.refreshToken,
+        formDataChanged: false,
+        initData: action.user,
       }
     }
-    case REGISTER_FAILED: {
+    case PROFILE_FAILED: {
       return {
         ...state,
         isLoading: false,
         errorMessage: action.error,
       }
     }
-    case REGISTER_CHANGE_NAME: {
+    case PROFILE_CANCEL_CHANGES: {
+      return {
+        ...state,
+        formData: {
+          ...state.initData,
+        },
+        formDataChanged: false,
+        errorMessage: null,
+      }
+    }
+    case PROFILE_CHANGE_NAME: {
       return {
         ...state,
         formData: {
@@ -84,10 +103,11 @@ export const createRegisterReducer = (state = initialState, action: TRegisterAct
           ...state.formValidity,
           name: action.valid,
         },
+        formDataChanged: true,
         errorMessage: null,
       }
     }
-    case REGISTER_CHANGE_EMAIL: {
+    case PROFILE_CHANGE_EMAIL: {
       return {
         ...state,
         formData: {
@@ -98,10 +118,11 @@ export const createRegisterReducer = (state = initialState, action: TRegisterAct
           ...state.formValidity,
           email: action.valid,
         },
+        formDataChanged: true,
         errorMessage: null,
       }
     }
-    case REGISTER_CHANGE_PASSWORD: {
+    case PROFILE_CHANGE_PASSWORD: {
       return {
         ...state,
         formData: {
@@ -112,6 +133,7 @@ export const createRegisterReducer = (state = initialState, action: TRegisterAct
           ...state.formValidity,
           password: action.valid,
         },
+        formDataChanged: true,
         errorMessage: null,
       }
     }

@@ -40,7 +40,7 @@ export const FeedPage = () => {
         </section>
         <section className={cn(feedPageStyles.scroll, feedPageStyles.right, 'custom-scroll')}
                  aria-label='Данные о заказах'>
-          <OrderSum/>
+          {isLoading ? <Loader/> : <OrderSum/>}
         </section>
       </div>
   );

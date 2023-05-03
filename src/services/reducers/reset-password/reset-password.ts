@@ -5,8 +5,8 @@ import {
   RESETPASSWORD_LOADING,
   RESETPASSWORD_SUCCESS,
   TResetPasswordActions
-} from '../actions/reset-password';
-import {IResetPasswordFormData} from '../../utils/api';
+} from '../../actions/reset-password';
+import {IResetPasswordFormData} from '../../../utils/api';
 
 type TResetPasswordFormValidity = {
   password: boolean;
@@ -21,7 +21,7 @@ type TResetPasswordState = {
   errorMessage: string | null;
 }
 
-const initialState: TResetPasswordState = {
+export const initialState: TResetPasswordState = {
   formData: {
     password: '',
     token: '',

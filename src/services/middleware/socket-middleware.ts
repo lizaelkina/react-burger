@@ -9,7 +9,7 @@ export interface IWSConnectAction {
 }
 
 export interface IWSErrorAction {
-  event: Event;
+  error: string;
 }
 
 export interface IWSMessageAction<T> {

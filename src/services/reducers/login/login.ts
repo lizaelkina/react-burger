@@ -5,10 +5,10 @@ import {
   LOGIN_LOADING,
   LOGIN_SUCCESS,
   TLoginActions
-} from '../actions/login';
-import {AUTH_USER} from '../actions/auth';
-import {ILoginFormData} from '../../utils/api';
-import {IUser} from '../../utils/data-types';
+} from '../../actions/login';
+import {AUTH_USER} from '../../actions/auth';
+import {ILoginFormData} from '../../../utils/api';
+import {IUser} from '../../../utils/data-types';
 
 type TLoginFormValidity = {
   email: boolean;
@@ -26,7 +26,7 @@ type TLoginState = {
   errorMessage: string | null;
 }
 
-const initialState: TLoginState = {
+export const initialState: TLoginState = {
   formData: {
     email: '',
     password: '',

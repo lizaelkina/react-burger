@@ -26,7 +26,8 @@ export const OrderDetails = () => {
             <ErrorMessage extraClass={orderDetailsStyles.error} message={errorMessage}/>}
         {success &&
             <>
-              <span className={cn(orderDetailsStyles.shadow, 'text text_type_digits-large mb-8')}>
+              <span className={cn(orderDetailsStyles.shadow, 'text text_type_digits-large mb-8')}
+                    data-cy='orderNumber'>
                 {number}
               </span>
               <h3 className='text text_type_main-medium'>идентификатор заказа</h3>

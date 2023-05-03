@@ -5,8 +5,8 @@ import {
   WS_USER_ORDERS_ERROR,
   WS_USER_ORDERS_MESSAGE,
   WS_USER_ORDERS_OPEN
-} from '../actions/user-orders';
-import {IOrderList} from '../../utils/data-types';
+} from '../../actions/user-orders';
+import {IOrderList} from '../../../utils/data-types';
 
 type TUserOrdersState = {
   wsConnecting: boolean;
@@ -15,7 +15,7 @@ type TUserOrdersState = {
   error: string;
 }
 
-const initialState: TUserOrdersState = {
+export const initialState: TUserOrdersState = {
   wsConnecting: false,
   wsConnected: false,
   data: null,
@@ -48,13 +48,16 @@ export const wsUserOrdersReducer = (state = initialState, action: TWSUserOrdersA
     case WS_USER_ORDERS_MESSAGE: {
       return {
         ...state,
-        data: action.data,
+        data: {
+          ...action.data,
+          orders: action.data.orders.reverse(),
+        },
       }
     }
     case WS_USER_ORDERS_ERROR: {
       return {
         ...state,
-        error: action.type,
+        error: action.error,
       }
     }
     default: {

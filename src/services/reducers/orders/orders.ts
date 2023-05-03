@@ -1,4 +1,4 @@
-import {IOrderList} from '../../utils/data-types';
+import {IOrderList} from '../../../utils/data-types';
 import {
   TWSOrdersActions,
   WS_ORDERS_CLOSE,
@@ -6,7 +6,7 @@ import {
   WS_ORDERS_ERROR,
   WS_ORDERS_MESSAGE,
   WS_ORDERS_OPEN
-} from '../actions/orders';
+} from '../../actions/orders';
 
 type TOrdersState = {
   wsConnecting: boolean;
@@ -15,7 +15,7 @@ type TOrdersState = {
   error: string;
 }
 
-const initialState: TOrdersState = {
+export const initialState: TOrdersState = {
   wsConnecting: false,
   wsConnected: false,
   data: null,
@@ -54,7 +54,7 @@ export const wsOrdersReducer = (state = initialState, action: TWSOrdersActions):
     case WS_ORDERS_ERROR: {
       return {
         ...state,
-        error: action.type,
+        error: action.error,
       }
     }
     default: {

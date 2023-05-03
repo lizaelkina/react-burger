@@ -6,8 +6,8 @@ import {
   LOGOUT_LOADING,
   LOGOUT_SUCCESS,
   TAuthActions
-} from '../actions/auth';
-import {IUser} from '../../utils/data-types';
+} from '../../actions/auth';
+import {IUser} from '../../../utils/data-types';
 
 type TAuthState = {
   user: IUser | null;
@@ -15,7 +15,7 @@ type TAuthState = {
   isLogoutLoading: boolean;
 }
 
-const initialState: TAuthState = {
+export const initialState: TAuthState = {
   user: null,
   isAuthChecked: false,
   isLogoutLoading: false,

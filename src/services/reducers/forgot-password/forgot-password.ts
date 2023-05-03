@@ -4,8 +4,8 @@ import {
   FORGOTPASSWORD_LOADING,
   FORGOTPASSWORD_SUCCESS,
   TForgotPasswordActions
-} from '../actions/forgot-password';
-import {IForgotPasswordFormData} from '../../utils/api';
+} from '../../actions/forgot-password';
+import {IForgotPasswordFormData} from '../../../utils/api';
 
 type TForgotPasswordFormValidity = {
   email: boolean;
@@ -19,7 +19,7 @@ type TForgotPasswordState = {
   errorMessage: string | null;
 }
 
-const initialState: TForgotPasswordState = {
+export const initialState: TForgotPasswordState = {
   formData: {
     email: '',
   },
