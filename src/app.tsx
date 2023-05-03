@@ -1,26 +1,26 @@
 import {useEffect} from 'react';
 import {Route, Routes} from 'react-router';
 import {useLocation, useNavigate} from 'react-router-dom';
-import {IngredientDetails} from '../burger-ingredients/ingredient-details/ingredient-details';
-import {useAppDispatch, useAppSelector} from '../../services/hooks';
-import {loadIngredients} from '../../services/actions/burger-ingredients';
-import {startCheckUser} from '../../services/actions/auth';
-import {ProtectedRoute} from '../protected-route/protected-route';
-import {PageLayout} from '../shared/page-layout/page-layout';
-import {HomePage} from '../../pages/home/home';
-import {FeedPage} from '../../pages/feed/feed';
-import {OrderPage} from '../../pages/order/order-page';
-import {UserAccountLayout} from '../../pages/user-account/user-account-layout';
-import {ProfilePage} from '../../pages/user-account/profile/profile';
-import {UserOrdersPage} from '../../pages/user-account/orders/user-orders';
-import {LoginPage} from '../../pages/login/login';
-import {RegisterPage} from '../../pages/register/register';
-import {ForgotPasswordPage} from '../../pages/forgot-password/forgot-password';
-import {ResetPasswordPage} from '../../pages/reset-password/reset-password';
-import {IngredientPage} from '../../pages/ingredient-info/ingredient-info';
-import {OrderInfo} from '../order-feed/order-info/order-info';
-import {Modal} from '../shared/modal/modal';
-import {NotFound404} from '../../pages/not-found-404/not-found';
+import {IngredientDetails} from './components/burger-ingredients/ingredient-details/ingredient-details';
+import {useAppDispatch, useAppSelector} from './services/hooks';
+import {loadIngredients} from './services/actions/burger-ingredients';
+import {startCheckUser} from './services/actions/auth';
+import {ProtectedRoute} from './components/protected-route/protected-route';
+import {PageLayout} from './components/shared/page-layout/page-layout';
+import {HomePage} from './pages/home/home';
+import {FeedPage} from './pages/feed/feed';
+import {OrderPage} from './pages/order/order-page';
+import {UserAccountLayout} from './pages/user-account/user-account-layout';
+import {ProfilePage} from './pages/user-account/profile/profile';
+import {UserOrdersPage} from './pages/user-account/orders/user-orders';
+import {LoginPage} from './pages/login/login';
+import {RegisterPage} from './pages/register/register';
+import {ForgotPasswordPage} from './pages/forgot-password/forgot-password';
+import {ResetPasswordPage} from './pages/reset-password/reset-password';
+import {IngredientPage} from './pages/ingredient-info/ingredient-info';
+import {OrderInfo} from './components/order-feed/order-info/order-info';
+import {Modal} from './components/shared/modal/modal';
+import {NotFound404} from './pages/not-found-404/not-found';
 
 export const App = () => {
 
