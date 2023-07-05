@@ -19,11 +19,10 @@
 
 - Create React App (CRA)
 
-## Ссылка на сайт
+## GitHub Pages
 
-- https://stellarburger-by-liza.nomoredomains.monster/
+- [Ссылка на сайт](https://lizapetkova.github.io/react-burger/)
 
-[//]: # (## GitHub Pages )
+[//]: # (## Ссылка на сайт)
 [//]: # ()
-[//]: # (- [Ссылка на сайт]&#40;https://lizapetkova.github.io/react-burger/&#41;)
-
+[//]: # (- https://stellarburger-by-liza.nomoredomains.monster/)
