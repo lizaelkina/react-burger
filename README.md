@@ -19,6 +19,6 @@
 
 - Create React App (CRA)
 
-## GitHub Pages 
+## Ссылка на проект
 
-- [Ссылка на сайт](https://lizapetkova.github.io/react-burger/)
+- http://react-burger.elkacloud.ru/
