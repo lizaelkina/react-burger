@@ -15,3 +15,5 @@ root.render(
       </BrowserRouter>
     </Provider>
 );
+
+/* HashRouter вместо BrowserRouter для публикации на gh-pages */
