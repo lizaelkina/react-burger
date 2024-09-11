@@ -21,4 +21,4 @@
 
 ## Ссылка на проект
 
-- http://react-burger.elkacloud.ru
+- https://lizaelkina.github.io/react-burger/
