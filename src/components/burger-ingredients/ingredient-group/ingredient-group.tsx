@@ -19,7 +19,7 @@ export const IngredientGroup = forwardRef<TUlRef, TIngredientGroupProps>(
       return (
           <>
             <h2 className='text text_type_main-medium' id={id} ref={titleRef}>{title}</h2>
-            <ul className={cn(ingredientGroupStyles.group, 'mt-6 ml-4 mb-10')} ref={ref}>
+            <ul className={cn(ingredientGroupStyles.group, 'mt-6 mb-10')} ref={ref}>
               {
                 ingredients.map(ingredient => {
                   return (<BurgerIngredient ingredient={ingredient} key={ingredient._id}/>)
