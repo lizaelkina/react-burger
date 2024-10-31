@@ -16,5 +16,5 @@
 - React
 - Redux
 - TypeScript
-- CCS3
+- CSS3
 - HTML5
